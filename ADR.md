@@ -1,6 +1,8 @@
-Project Name: [Your Project Name] Decision Title: [e.g., Select SvelteKit for Capstone Web App] Status: [Proposed | Accepted] Date: [YYYY-MM-DD]
+Project Name: [WebChef] Decision Title: [Selecting framework] Status: [Accepted] Date: [2026-06-16]
 
 1. Context Describe the problem and constraints that required a decision.
+
+- Our team needed a framework so we picked Svelte as its highly configurable and very modular.
 
 Example: “Our team needed a framework for a semester-long capstone app. Bakeoff metrics showed significant differences in LCP, bundle size, and implementation speed across three candidates.”
 
@@ -12,8 +14,7 @@ Example: “We will use SvelteKit as the primary full-stack framework for the ca
 
 Metric A: (e.g., “Our JS Bundle was 40% smaller than the nearest competitor.”)
 Metric B: (e.g., “Documentation score was 5/5, which is critical for our team.”)
-Metric C: (e.g., “HMR was instant, reducing friction during UI iteration.”)
-4. Consequences and Risks Identify trade-offs, known risks, and how your team will mitigate them.
+Metric C: (e.g., “HMR was instant, reducing friction during UI iteration.”) 4. Consequences and Risks Identify trade-offs, known risks, and how your team will mitigate them.
 
 Example: “The biggest risk with this stack is the smaller community. We will mitigate this by relying heavily on the official Discord and keeping our dependencies minimal to avoid abandoned libraries.”
 
