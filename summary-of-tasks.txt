@@ -1,0 +1,18 @@
+2026-06-23 — Peter
+Set up the database models only (no server, client, or dependencies).
+Created supabase/migrations/20260623000000_initial_schema.sql defining 6 tables:
+  - users (account + XP/streak gamification state, keyed by Auth0 sub)
+  - units (top-level course groupings, ordered)
+  - lessons (belong to a unit, ordered, XP reward)
+  - steps (lesson interactions; type-tagged with JSONB content)
+  - user_progress (per-user lesson completion + score, unique per user+lesson)
+  - recipes (recipe library, optionally tied to a lesson)
+Added FK indexes and CHECK constraints. Leaderboard intentionally left as a
+query over users.xp (not a table). RLS policies, functions, and seed data
+deferred to separate tasks.
+
+2026-06-23 — Peter
+Installed the Supabase CLI as a pinned dev dependency (supabase ^2.107.0) via
+npm. Created root package.json + package-lock.json (committed for reproducible
+team installs). Run the CLI with `npx supabase`. node_modules already gitignored.
+Next: supabase init + login + link + db push (needs project credentials).
