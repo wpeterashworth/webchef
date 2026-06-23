@@ -1,4 +1,4 @@
-Project Name: [WebChef] Decision Title: [Select Svelte framework] Status: [Accepted] Date: [2026-06-16]
+Project Name: WebChef | Decision Title: Select Svelte framework | Status: Accepted | Date: 2026-06-16
 
 1. Context Describe the problem and constraints that required a decision.
 
