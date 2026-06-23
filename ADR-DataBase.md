@@ -1,4 +1,4 @@
-Project Name: [WebChef] Decision Title: [Selecting Database] Status: [Accepted] Date: [2026-06-16]
+Project Name: WebChef Decision | Title: Selecting Database | Status: Accepted | Date: 2026-06-16
 
 1. Context Describe the problem and constraints that required a decision.
    - Our Team was stuck on what database to use we were inbetween postgress and NoSQL but in the end we decided on using Supabase as the postgress database which will allow all of us to see and use the same database together.
