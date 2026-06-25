@@ -21,5 +21,8 @@
   "private": "true",
   "devDependencies": {
     "supabase": "^2.107.0"
+  },
+  "dependencies": {
+    "pnpm": "^11.9.0"
   }
 }

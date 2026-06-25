@@ -5,9 +5,9 @@
     <h1>WebChef</h1>
     <nav class="navigation">
     <img
-        id="heroImage"
+        id="logo"
         src="/images/penguinhero.webp"
-        alt="WebChef hero image"
+        alt="WebChef penguin standing image"
     />
     <ul>
         <li><a href="#">Home</a></li>
