@@ -1,0 +1,1584 @@
+[
+  {
+    "category": "Ingredient Substitutions",
+    "skill": "Dairy Swaps",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A pancake recipe calls for 1 cup of buttermilk. Which substitution works best?",
+        "options": [
+          "1 cup milk mixed with 1 tablespoon lemon juice",
+          "1 cup heavy cream mixed with 1 tablespoon oil",
+          "1 cup water mixed with 1 teaspoon salt",
+          "1 cup melted butter"
+        ],
+        "correct_answer": "1 cup milk mixed with 1 tablespoon lemon juice",
+        "safety_tip": "Let the milk and lemon juice sit for about 5 minutes before using it so the mixture can thicken slightly.",
+        "explanation": "The acid in the lemon juice gives regular milk the acidity needed to act similarly to buttermilk in pancakes and other baked goods."
+      },
+      {
+        "id": 2,
+        "question": "A soup recipe calls for 1 cup of whole milk, but you only have evaporated milk. What should you use?",
+        "options": [
+          "1/2 cup evaporated milk mixed with 1/2 cup water",
+          "1 cup evaporated milk mixed with 1 cup water",
+          "1/4 cup evaporated milk mixed with 3/4 cup oil",
+          "1 cup sweetened condensed milk"
+        ],
+        "correct_answer": "1/2 cup evaporated milk mixed with 1/2 cup water",
+        "safety_tip": "Check the can carefully because evaporated milk and sweetened condensed milk are not interchangeable.",
+        "explanation": "Evaporated milk is concentrated, so combining equal parts evaporated milk and water creates a mixture similar to regular milk."
+      },
+      {
+        "id": 3,
+        "question": "Which ingredient is the best easy substitute for sour cream in a baked potato topping?",
+        "options": [
+          "Plain Greek yogurt",
+          "Vanilla pudding",
+          "Whipped butter",
+          "Cottage cheese mixed with sugar"
+        ],
+        "correct_answer": "Plain Greek yogurt",
+        "safety_tip": "Use plain, unsweetened yogurt so the flavor of the dish does not become sweet.",
+        "explanation": "Plain Greek yogurt has a similar thickness and tangy flavor, making it a good substitute for sour cream."
+      },
+      {
+        "id": 4,
+        "question": "A creamy pasta sauce calls for 1 cup of half-and-half. Which substitute is most appropriate?",
+        "options": [
+          "3/4 cup whole milk mixed with 1/4 cup heavy cream",
+          "1 cup water mixed with 1 tablespoon flour",
+          "1/2 cup butter mixed with 1/2 cup oil",
+          "1 cup skim milk mixed with lemon juice"
+        ],
+        "correct_answer": "3/4 cup whole milk mixed with 1/4 cup heavy cream",
+        "safety_tip": "Add dairy gradually to a hot sauce and avoid rapid boiling to reduce the chance of curdling.",
+        "explanation": "Combining whole milk and heavy cream creates a fat level and texture similar to half-and-half."
+      },
+      {
+        "id": 5,
+        "question": "Which substitute works best for 1 cup of heavy cream in a soup when the cream does not need to be whipped?",
+        "options": [
+          "3/4 cup milk mixed with 1/4 cup melted butter",
+          "1 cup skim milk mixed with vinegar",
+          "1 cup water mixed with melted cheese",
+          "1/2 cup milk mixed with 1/2 cup lemon juice"
+        ],
+        "correct_answer": "3/4 cup milk mixed with 1/4 cup melted butter",
+        "safety_tip": "Allow the melted butter to cool slightly before mixing it with cold milk to prevent splattering or separation.",
+        "explanation": "The milk provides liquid while the butter adds fat, creating a useful heavy cream substitute for cooking and baking."
+      },
+      {
+        "id": 6,
+        "question": "A muffin recipe calls for 1 cup of plain yogurt. Which ingredient is the closest substitute?",
+        "options": [
+          "1 cup sour cream",
+          "1 cup whipped cream",
+          "1 cup sweetened condensed milk",
+          "1 cup melted butter"
+        ],
+        "correct_answer": "1 cup sour cream",
+        "safety_tip": "Use unflavored sour cream so you do not accidentally change the sweetness or flavor of the muffins.",
+        "explanation": "Sour cream has a similar thickness, moisture level, and acidity, so it can usually replace plain yogurt in baked goods."
+      },
+      {
+        "id": 7,
+        "question": "A recipe calls for 1 cup of whole milk, but you only have skim milk and butter. Which substitution is best?",
+        "options": [
+          "1 cup skim milk mixed with about 2 teaspoons melted butter",
+          "1 cup skim milk mixed with 2 tablespoons lemon juice",
+          "1/2 cup skim milk mixed with 1/2 cup water",
+          "1 cup melted butter"
+        ],
+        "correct_answer": "1 cup skim milk mixed with about 2 teaspoons melted butter",
+        "safety_tip": "Mix the melted butter into the milk slowly so it combines as evenly as possible.",
+        "explanation": "Adding a small amount of butter increases the fat content of skim milk, making it closer to whole milk."
+      },
+      {
+        "id": 8,
+        "question": "Which ingredient can replace milk in mashed potatoes while still adding a creamy texture?",
+        "options": [
+          "Unsweetened plain oat milk",
+          "Fruit punch",
+          "Sweetened condensed milk",
+          "Lemonade"
+        ],
+        "correct_answer": "Unsweetened plain oat milk",
+        "safety_tip": "Always choose an unsweetened and unflavored dairy-free milk for savory recipes.",
+        "explanation": "Unsweetened plain oat milk has a mild flavor and creamy texture that works well in mashed potatoes."
+      },
+      {
+        "id": 9,
+        "question": "A cheesecake-style dip calls for cream cheese. Which substitute will provide the most similar texture?",
+        "options": [
+          "Mascarpone cheese",
+          "Shredded mozzarella",
+          "Liquid coffee creamer",
+          "Melted butter"
+        ],
+        "correct_answer": "Mascarpone cheese",
+        "safety_tip": "Keep soft cheeses refrigerated and do not leave them at room temperature for more than two hours.",
+        "explanation": "Mascarpone is a soft, creamy cheese with a texture close to cream cheese, although its flavor is milder."
+      },
+      {
+        "id": 10,
+        "question": "A casserole recipe calls for 1 cup of ricotta cheese. Which substitution is most suitable?",
+        "options": [
+          "1 cup cottage cheese",
+          "1 cup shredded cheddar",
+          "1 cup heavy cream",
+          "1 cup vanilla yogurt"
+        ],
+        "correct_answer": "1 cup cottage cheese",
+        "safety_tip": "Drain excess liquid from cottage cheese before adding it to prevent the casserole from becoming watery.",
+        "explanation": "Cottage cheese has a similar mild flavor and moist texture, making it a practical substitute for ricotta in casseroles."
+      }
+    ]
+  },
+  {
+    "category": "Ingredient Substitutions",
+    "skill": "Herb & Spice Alts",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A recipe calls for 1 tablespoon of fresh basil, but you only have dried basil. What should you use?",
+        "options": [
+          "1 teaspoon dried basil",
+          "1 tablespoon dried basil",
+          "1 teaspoon dried rosemary",
+          "1 tablespoon fresh parsley"
+        ],
+        "correct_answer": "1 teaspoon dried basil",
+        "safety_tip": "Dried herbs are usually more concentrated than fresh herbs, so begin with a smaller amount.",
+        "explanation": "A common substitution ratio is 1 teaspoon of dried herbs for every 1 tablespoon of fresh herbs."
+      },
+      {
+        "id": 2,
+        "question": "Which herb is the best substitute for fresh parsley when it is mainly used as a garnish?",
+        "options": [
+          "Fresh cilantro",
+          "Dried cinnamon",
+          "Fresh rosemary",
+          "Ground cloves"
+        ],
+        "correct_answer": "Fresh cilantro",
+        "safety_tip": "Taste a small leaf first because cilantro has a stronger and more distinctive flavor than parsley.",
+        "explanation": "Fresh cilantro can provide a similar leafy appearance and fresh flavor, although it will give the dish a slightly different taste."
+      },
+      {
+        "id": 3,
+        "question": "A recipe calls for thyme, but none is available. Which herb is the most suitable substitute?",
+        "options": [
+          "Oregano",
+          "Cinnamon",
+          "Dill",
+          "Mint"
+        ],
+        "correct_answer": "Oregano",
+        "safety_tip": "Add the substitute gradually because oregano can taste stronger than thyme.",
+        "explanation": "Oregano and thyme both have earthy, savory flavors and are commonly used in similar dishes."
+      },
+      {
+        "id": 4,
+        "question": "Which mixture can replace 1 teaspoon of pumpkin pie spice?",
+        "options": [
+          "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon nutmeg",
+          "1/2 teaspoon paprika and 1/2 teaspoon garlic powder",
+          "1 teaspoon dried basil",
+          "1/2 teaspoon cumin and 1/2 teaspoon oregano"
+        ],
+        "correct_answer": "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon nutmeg",
+        "safety_tip": "Measure strong spices carefully because adding too much nutmeg or ginger can overpower the recipe.",
+        "explanation": "Pumpkin pie spice is typically a blend of warm spices such as cinnamon, ginger, nutmeg, cloves, and allspice."
+      },
+      {
+        "id": 5,
+        "question": "A recipe calls for 1 teaspoon of allspice. Which mixture is an appropriate substitute?",
+        "options": [
+          "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon cloves",
+          "1 teaspoon black pepper",
+          "1/2 teaspoon garlic powder and 1/2 teaspoon onion powder",
+          "1 teaspoon dried parsley"
+        ],
+        "correct_answer": "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon cloves",
+        "safety_tip": "Use cloves sparingly because their flavor is especially strong.",
+        "explanation": "A combination of cinnamon, ginger, and cloves creates the warm, complex flavor associated with allspice."
+      },
+      {
+        "id": 6,
+        "question": "Which herb can best replace rosemary in a roasted chicken recipe?",
+        "options": [
+          "Thyme",
+          "Mint",
+          "Cilantro",
+          "Dill"
+        ],
+        "correct_answer": "Thyme",
+        "safety_tip": "Remove tough herb stems before serving, especially when using fresh woody herbs.",
+        "explanation": "Thyme has an earthy, savory flavor that pairs well with roasted chicken and can replace rosemary without making the dish taste sweet or sharply different."
+      },
+      {
+        "id": 7,
+        "question": "A recipe calls for ground cumin, but you do not have any. Which spice is the closest substitute?",
+        "options": [
+          "Ground coriander",
+          "Ground cinnamon",
+          "Ground ginger",
+          "Ground cloves"
+        ],
+        "correct_answer": "Ground coriander",
+        "safety_tip": "Start with slightly less coriander and taste the dish before adding more.",
+        "explanation": "Ground coriander has a warm, earthy flavor that can replace cumin in some savory recipes, though it is milder and slightly more citrusy."
+      },
+      {
+        "id": 8,
+        "question": "Which seasoning is the best substitute for Italian seasoning?",
+        "options": [
+          "A mixture of dried basil, oregano, and thyme",
+          "A mixture of cinnamon, ginger, and nutmeg",
+          "A mixture of cumin, turmeric, and chili powder",
+          "A mixture of dill, mint, and cloves"
+        ],
+        "correct_answer": "A mixture of dried basil, oregano, and thyme",
+        "safety_tip": "Crush dried herbs between clean fingers before adding them to help release their aroma.",
+        "explanation": "Italian seasoning commonly contains dried herbs such as basil, oregano, thyme, rosemary, and marjoram."
+      },
+      {
+        "id": 9,
+        "question": "A recipe calls for fresh garlic, but only garlic powder is available. What is an appropriate substitute for one garlic clove?",
+        "options": [
+          "1/8 teaspoon garlic powder",
+          "1 teaspoon garlic powder",
+          "1 tablespoon garlic powder",
+          "1/8 teaspoon onion salt"
+        ],
+        "correct_answer": "1/8 teaspoon garlic powder",
+        "safety_tip": "Add garlic powder carefully because its concentrated flavor can become overpowering.",
+        "explanation": "Approximately 1/8 teaspoon of garlic powder can replace one average fresh garlic clove."
+      },
+      {
+        "id": 10,
+        "question": "Which spice can substitute for smoked paprika when a smoky flavor is not essential?",
+        "options": [
+          "Regular paprika",
+          "Ground cinnamon",
+          "Ground mustard",
+          "Ground cloves"
+        ],
+        "correct_answer": "Regular paprika",
+        "safety_tip": "Check the label before adding paprika because hot paprika may add more heat than expected.",
+        "explanation": "Regular paprika provides a similar color and mild pepper flavor, although it does not provide the smokiness of smoked paprika."
+      }
+    ]
+  },
+  {
+    "category": "Ingredient Substitutions",
+    "skill": "Baking Binders & Thickeners",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A sauce recipe calls for 1 tablespoon of cornstarch, but you only have all-purpose flour. What should you use?",
+        "options": [
+          "2 tablespoons all-purpose flour",
+          "1 teaspoon all-purpose flour",
+          "1 tablespoon baking powder",
+          "2 tablespoons granulated sugar"
+        ],
+        "correct_answer": "2 tablespoons all-purpose flour",
+        "safety_tip": "Flour must be cooked thoroughly to remove its raw taste and make it safe to eat.",
+        "explanation": "All-purpose flour has less thickening power than cornstarch, so about 2 tablespoons of flour are needed to replace 1 tablespoon of cornstarch."
+      },
+      {
+        "id": 2,
+        "question": "Which ingredient can replace cornstarch in an equal amount when thickening a fruit filling?",
+        "options": [
+          "Arrowroot starch",
+          "Baking soda",
+          "Powdered sugar",
+          "Cream of tartar"
+        ],
+        "correct_answer": "Arrowroot starch",
+        "safety_tip": "Mix arrowroot with a cool liquid before adding it to a hot filling to help prevent lumps.",
+        "explanation": "Arrowroot starch has thickening properties similar to cornstarch and can often replace it using a one-to-one ratio."
+      },
+      {
+        "id": 3,
+        "question": "Which mixture can replace one egg as a binder in muffins or cookies?",
+        "options": [
+          "1 tablespoon ground flaxseed mixed with 3 tablespoons water",
+          "1 tablespoon flour mixed with 1 tablespoon oil",
+          "1 teaspoon baking soda mixed with 3 tablespoons water",
+          "3 tablespoons melted butter mixed with salt"
+        ],
+        "correct_answer": "1 tablespoon ground flaxseed mixed with 3 tablespoons water",
+        "safety_tip": "Let the flaxseed mixture rest for several minutes until it becomes thick and gel-like.",
+        "explanation": "Ground flaxseed absorbs water and forms a gel that can help bind ingredients together in many baked goods."
+      },
+      {
+        "id": 4,
+        "question": "A brownie recipe needs one egg mainly for binding. Which fruit-based substitute is most appropriate?",
+        "options": [
+          "1/4 cup unsweetened applesauce",
+          "1 cup apple juice",
+          "1 tablespoon lemon zest",
+          "1/4 cup dried apple pieces"
+        ],
+        "correct_answer": "1/4 cup unsweetened applesauce",
+        "safety_tip": "Use unsweetened applesauce so you do not accidentally add too much sugar to the batter.",
+        "explanation": "About 1/4 cup of applesauce can replace one egg by adding moisture and helping hold the brownie ingredients together."
+      },
+      {
+        "id": 5,
+        "question": "Which substitute can replace one egg as a binder in banana bread?",
+        "options": [
+          "1/4 cup mashed ripe banana",
+          "1/4 cup sliced banana",
+          "1 teaspoon banana extract",
+          "1 cup banana-flavored yogurt"
+        ],
+        "correct_answer": "1/4 cup mashed ripe banana",
+        "safety_tip": "Remember that mashed banana adds sweetness and banana flavor, so it works best in compatible recipes.",
+        "explanation": "Mashed banana adds moisture and helps bind the ingredients, making it useful as an egg substitute in quick breads."
+      },
+      {
+        "id": 6,
+        "question": "Which ingredient is commonly used to help bind gluten-free bread dough?",
+        "options": [
+          "Xanthan gum",
+          "Baking cocoa",
+          "Powdered sugar",
+          "Vanilla extract"
+        ],
+        "correct_answer": "Xanthan gum",
+        "safety_tip": "Measure xanthan gum carefully because using too much can make baked goods gummy or overly dense.",
+        "explanation": "Xanthan gum helps hold gluten-free dough together and provides some of the structure normally created by gluten."
+      },
+      {
+        "id": 7,
+        "question": "A pudding recipe needs a starch thickener, but cornstarch is unavailable. Which substitute is most suitable?",
+        "options": [
+          "Potato starch",
+          "Baking powder",
+          "Gelatin dessert powder",
+          "Table salt"
+        ],
+        "correct_answer": "Potato starch",
+        "safety_tip": "Whisk potato starch into a cool liquid before heating it to reduce clumping.",
+        "explanation": "Potato starch is a strong starch-based thickener that can be used in many puddings, sauces, and fillings."
+      },
+      {
+        "id": 8,
+        "question": "Which ingredient is the best plant-based substitute for gelatin when making a firm dessert gel?",
+        "options": [
+          "Agar-agar",
+          "Cornmeal",
+          "Baking soda",
+          "Bread flour"
+        ],
+        "correct_answer": "Agar-agar",
+        "safety_tip": "Follow the package directions because agar-agar may need to boil before it activates properly.",
+        "explanation": "Agar-agar is made from seaweed and forms a firm gel, making it a common plant-based alternative to gelatin."
+      },
+      {
+        "id": 9,
+        "question": "A recipe calls for a cornstarch slurry. What is the correct way to prepare the substitute before adding it to hot liquid?",
+        "options": [
+          "Mix the starch with cold water until smooth",
+          "Sprinkle the dry starch directly into boiling liquid",
+          "Mix the starch with hot oil until browned",
+          "Combine the starch with baking soda"
+        ],
+        "correct_answer": "Mix the starch with cold water until smooth",
+        "safety_tip": "Pour the slurry into the hot liquid gradually while stirring to prevent lumps and splashing.",
+        "explanation": "Starch disperses more evenly in cold water, creating a smooth slurry that thickens when heated."
+      },
+      {
+        "id": 10,
+        "question": "Which ingredient can replace bread crumbs as a binder in a savory baked loaf?",
+        "options": [
+          "Finely ground rolled oats",
+          "Granulated sugar",
+          "Cornstarch mixed with oil",
+          "Baking powder"
+        ],
+        "correct_answer": "Finely ground rolled oats",
+        "safety_tip": "Check that the oats are certified gluten-free when cooking for someone with a gluten allergy or celiac disease.",
+        "explanation": "Finely ground oats absorb moisture and help hold the loaf together in a way similar to bread crumbs."
+      }
+    ]
+  },
+  {
+    "category": "Recipe Adjustment",
+    "skill": "Scaling Ratios",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A soup recipe serves 4 people and uses 2 cups of broth. How much broth is needed to serve 8 people?",
+        "options": ["3 cups", "4 cups", "6 cups", "8 cups"],
+        "correct_answer": "4 cups",
+        "safety_tip": "When doubling a recipe, multiply each ingredient amount by 2.",
+        "explanation": "Serving 8 people instead of 4 doubles the recipe, so 2 cups of broth becomes 4 cups."
+      },
+      {
+        "id": 2,
+        "question": "A cookie recipe makes 24 cookies and requires 3 cups of flour. How much flour is needed to make 12 cookies?",
+        "options": ["1 cup", "1 1/2 cups", "2 cups", "2 1/2 cups"],
+        "correct_answer": "1 1/2 cups",
+        "safety_tip": "Use level measuring cups when measuring flour, and avoid packing it down.",
+        "explanation": "Making 12 cookies is half of the original batch, so 3 cups of flour must be divided by 2."
+      },
+      {
+        "id": 3,
+        "question": "A recipe serves 6 and uses 1 1/2 teaspoons of salt. How much salt is needed to serve 12?",
+        "options": ["2 teaspoons", "2 1/2 teaspoons", "3 teaspoons", "4 teaspoons"],
+        "correct_answer": "3 teaspoons",
+        "safety_tip": "Measure salt carefully because small scaling errors can noticeably change the flavor.",
+        "explanation": "Serving 12 instead of 6 doubles the recipe, so 1 1/2 teaspoons becomes 3 teaspoons."
+      },
+      {
+        "id": 4,
+        "question": "A pasta recipe serves 8 and uses 2 pounds of pasta. How much pasta is needed to serve 2 people?",
+        "options": ["1/4 pound", "1/2 pound", "1 pound", "1 1/2 pounds"],
+        "correct_answer": "1/2 pound",
+        "safety_tip": "Keep the same ingredient-to-serving ratio when reducing a recipe.",
+        "explanation": "Two servings are one-fourth of eight servings, so 2 pounds divided by 4 equals 1/2 pound."
+      },
+      {
+        "id": 5,
+        "question": "A pancake recipe makes 10 pancakes using 2 eggs. How many eggs are needed to make 20 pancakes?",
+        "options": ["3 eggs", "4 eggs", "5 eggs", "6 eggs"],
+        "correct_answer": "4 eggs",
+        "safety_tip": "Wash your hands and any surfaces that come into contact with raw eggs.",
+        "explanation": "Making 20 pancakes doubles the original recipe, so 2 eggs becomes 4 eggs."
+      },
+      {
+        "id": 6,
+        "question": "A sauce recipe makes 3 cups and uses 3/4 cup of tomato paste. How much tomato paste is needed to make 1 cup of sauce?",
+        "options": ["1/4 cup", "1/3 cup", "1/2 cup", "2/3 cup"],
+        "correct_answer": "1/4 cup",
+        "safety_tip": "Divide every ingredient by the same number when reducing the total yield.",
+        "explanation": "One cup is one-third of the original 3-cup yield, so 3/4 cup divided by 3 equals 1/4 cup."
+      },
+      {
+        "id": 7,
+        "question": "A muffin recipe makes 12 muffins and uses 1/2 cup of sugar. How much sugar is needed to make 18 muffins?",
+        "options": ["2/3 cup", "3/4 cup", "1 cup", "1 1/4 cups"],
+        "correct_answer": "3/4 cup",
+        "safety_tip": "Find the scaling factor before changing any ingredient amounts.",
+        "explanation": "Eighteen muffins are 1.5 times the original batch, so 1/2 cup multiplied by 1.5 equals 3/4 cup."
+      },
+      {
+        "id": 8,
+        "question": "A bread recipe uses 4 cups of flour and 2 cups of water. If you use 6 cups of flour, how much water keeps the same ratio?",
+        "options": ["2 cups", "3 cups", "4 cups", "5 cups"],
+        "correct_answer": "3 cups",
+        "safety_tip": "Maintain the original flour-to-water ratio to avoid dough that is too dry or too wet.",
+        "explanation": "The recipe uses 1 cup of water for every 2 cups of flour, so 6 cups of flour requires 3 cups of water."
+      },
+      {
+        "id": 9,
+        "question": "A casserole recipe serves 5 and uses 10 ounces of cheese. How much cheese is needed to serve 15?",
+        "options": ["20 ounces", "25 ounces", "30 ounces", "35 ounces"],
+        "correct_answer": "30 ounces",
+        "safety_tip": "Keep dairy refrigerated until you are ready to prepare the dish.",
+        "explanation": "Serving 15 people is three times the original yield, so 10 ounces multiplied by 3 equals 30 ounces."
+      },
+      {
+        "id": 10,
+        "question": "A salad dressing recipe uses 3 tablespoons of oil for every 1 tablespoon of vinegar. How much oil is needed if you use 4 tablespoons of vinegar?",
+        "options": ["7 tablespoons", "8 tablespoons", "12 tablespoons", "16 tablespoons"],
+        "correct_answer": "12 tablespoons",
+        "safety_tip": "Measure both ingredients with the same type of measuring spoon to keep the ratio consistent.",
+        "explanation": "The ratio is 3 tablespoons of oil for each tablespoon of vinegar, so 4 tablespoons of vinegar requires 12 tablespoons of oil."
+      }
+    ]
+  },
+  {
+    "category": "Recipe Adjustment",
+    "skill": "Emergency Flavor Tuning",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A pot of vegetable soup tastes bland even though the ingredients are fully cooked. What should you try first?",
+        "options": [
+          "Add a small amount of salt, stir, and taste again",
+          "Add an entire cup of sugar",
+          "Boil the soup until half of it evaporates",
+          "Add several tablespoons of baking soda"
+        ],
+        "correct_answer": "Add a small amount of salt, stir, and taste again",
+        "safety_tip": "Add seasoning gradually because you can add more salt, but removing excess salt is difficult.",
+        "explanation": "A small amount of salt can bring out flavors that are already present. Stirring and tasting after each addition prevents over-seasoning."
+      },
+      {
+        "id": 2,
+        "question": "A tomato sauce tastes too acidic. Which adjustment is most appropriate?",
+        "options": [
+          "Add a small pinch of sugar and taste again",
+          "Add a large amount of vinegar",
+          "Add several spoonfuls of raw flour",
+          "Add extra lemon juice"
+        ],
+        "correct_answer": "Add a small pinch of sugar and taste again",
+        "safety_tip": "Use only a small amount of sugar at a time so the sauce does not become noticeably sweet.",
+        "explanation": "A small amount of sugar can balance excessive acidity without completely changing the flavor of the tomato sauce."
+      },
+      {
+        "id": 3,
+        "question": "A curry tastes too spicy for your guests. What is the best way to reduce the perceived heat?",
+        "options": [
+          "Stir in coconut milk or plain yogurt",
+          "Add more chili powder",
+          "Add black pepper",
+          "Boil the curry without a lid for 20 minutes"
+        ],
+        "correct_answer": "Stir in coconut milk or plain yogurt",
+        "safety_tip": "Lower the heat before adding yogurt so it is less likely to curdle.",
+        "explanation": "Fat and dairy proteins can soften the sensation of chili heat, while adding more liquid also spreads the spicy compounds through a larger volume."
+      },
+      {
+        "id": 4,
+        "question": "A stew tastes too salty. Which emergency adjustment is most effective?",
+        "options": [
+          "Add more unsalted broth and other unseasoned ingredients",
+          "Add another tablespoon of salt",
+          "Add baking powder",
+          "Cook the stew until most of the liquid evaporates"
+        ],
+        "correct_answer": "Add more unsalted broth and other unseasoned ingredients",
+        "safety_tip": "Taste the broth before adding it to confirm that it is unsalted or low in sodium.",
+        "explanation": "Adding unseasoned ingredients increases the total volume and dilutes the excess salt. Evaporation would concentrate the salt and make the problem worse."
+      },
+      {
+        "id": 5,
+        "question": "A cream sauce tastes overly rich and heavy. What can you add to brighten and balance it?",
+        "options": [
+          "A small squeeze of lemon juice",
+          "A large spoonful of butter",
+          "A cup of heavy cream",
+          "A tablespoon of powdered sugar"
+        ],
+        "correct_answer": "A small squeeze of lemon juice",
+        "safety_tip": "Remove the sauce from high heat and add acid gradually to reduce the risk of curdling.",
+        "explanation": "A small amount of acid can cut through richness and make a heavy sauce taste more balanced."
+      },
+      {
+        "id": 6,
+        "question": "A homemade salad dressing tastes too sour. Which adjustment is most appropriate?",
+        "options": [
+          "Whisk in a little more oil and a small amount of sweetener",
+          "Add more vinegar",
+          "Add lemon juice and salt",
+          "Add raw cornstarch"
+        ],
+        "correct_answer": "Whisk in a little more oil and a small amount of sweetener",
+        "safety_tip": "Make small adjustments and taste between additions so the dressing remains balanced.",
+        "explanation": "Additional oil dilutes the acid, while a small amount of sweetener can soften the perception of sourness."
+      },
+      {
+        "id": 7,
+        "question": "A pan sauce tastes bitter because the garlic was slightly overcooked. What is the best immediate response?",
+        "options": [
+          "Transfer the sauce to a clean pan and balance it with a little fat or sweetness",
+          "Scrape the darkest burned pieces into the sauce",
+          "Add more burnt garlic",
+          "Reduce the sauce until it becomes thicker"
+        ],
+        "correct_answer": "Transfer the sauce to a clean pan and balance it with a little fat or sweetness",
+        "safety_tip": "Do not scrape burned residue from the bottom of the pan because it can intensify bitterness.",
+        "explanation": "Moving the sauce prevents further contact with burned residue, and a small amount of fat or sweetness may soften mild bitterness."
+      },
+      {
+        "id": 8,
+        "question": "A bean chili tastes flat even after enough salt has been added. Which ingredient could provide needed brightness?",
+        "options": [
+          "A small splash of lime juice",
+          "More cooking oil",
+          "A spoonful of plain flour",
+          "An extra cup of water"
+        ],
+        "correct_answer": "A small splash of lime juice",
+        "safety_tip": "Add acidic ingredients near the end and taste after each small addition.",
+        "explanation": "Acid can brighten flavors and add contrast when a dish tastes flat despite having enough salt."
+      },
+      {
+        "id": 9,
+        "question": "A sauce has become too sweet. What is the best way to rebalance it?",
+        "options": [
+          "Add a small amount of acid and a pinch of salt",
+          "Add more sugar",
+          "Add sweetened condensed milk",
+          "Reduce it until the sugar becomes more concentrated"
+        ],
+        "correct_answer": "Add a small amount of acid and a pinch of salt",
+        "safety_tip": "Add vinegar or citrus juice a few drops at a time to avoid making the sauce too sour.",
+        "explanation": "Acid and salt can reduce the perception of excessive sweetness and restore balance without adding more sugar."
+      },
+      {
+        "id": 10,
+        "question": "A finished rice dish tastes one-dimensional but is already salty enough. Which addition is most likely to improve its flavor?",
+        "options": [
+          "Fresh herbs and a little citrus zest",
+          "More table salt",
+          "A large amount of water",
+          "Uncooked baking soda"
+        ],
+        "correct_answer": "Fresh herbs and a little citrus zest",
+        "safety_tip": "Wash fresh herbs and citrus thoroughly before chopping or zesting them.",
+        "explanation": "Fresh herbs add aroma, while citrus zest adds brightness without significantly increasing saltiness or changing the dish's texture."
+      }
+    ]
+  },
+  {
+    "category": "Recipe Adjustment",
+    "skill": "Texture Fixes",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A soup is much thinner than intended. What is the best way to thicken it quickly without creating lumps?",
+        "options": [
+          "Stir in a slurry made from cornstarch and cold water",
+          "Sprinkle dry flour directly onto the soup",
+          "Add several tablespoons of cooking oil",
+          "Pour in additional broth"
+        ],
+        "correct_answer": "Stir in a slurry made from cornstarch and cold water",
+        "safety_tip": "Mix the cornstarch with cold water before adding it, then stir the hot soup continuously.",
+        "explanation": "A cornstarch slurry disperses smoothly and thickens the soup as it heats. Adding dry starch directly can create lumps."
+      },
+      {
+        "id": 2,
+        "question": "Mashed potatoes have become too watery. Which adjustment is most likely to improve their texture?",
+        "options": [
+          "Stir in instant potato flakes a little at a time",
+          "Add more warm milk",
+          "Add a cup of water",
+          "Mix in raw cornstarch without heating"
+        ],
+        "correct_answer": "Stir in instant potato flakes a little at a time",
+        "safety_tip": "Add the flakes gradually because too much can make the potatoes dry or pasty.",
+        "explanation": "Instant potato flakes absorb excess moisture and thicken mashed potatoes without adding a strong new flavor."
+      },
+      {
+        "id": 3,
+        "question": "A cooked sauce is too thick. What is the best way to thin it while maintaining control of the texture?",
+        "options": [
+          "Whisk in a small amount of warm liquid at a time",
+          "Add a large amount of cold water all at once",
+          "Cook the sauce longer without a lid",
+          "Add extra flour"
+        ],
+        "correct_answer": "Whisk in a small amount of warm liquid at a time",
+        "safety_tip": "Add liquid gradually and keep the heat moderate to prevent splashing or sudden separation.",
+        "explanation": "Adding warm liquid slowly allows you to loosen the sauce evenly without making it unexpectedly watery."
+      },
+      {
+        "id": 4,
+        "question": "A cream sauce looks grainy and has started to separate. What should you try first?",
+        "options": [
+          "Remove it from the heat and whisk in a small amount of warm cream",
+          "Boil it rapidly for several minutes",
+          "Add dry bread crumbs",
+          "Freeze the sauce immediately"
+        ],
+        "correct_answer": "Remove it from the heat and whisk in a small amount of warm cream",
+        "safety_tip": "High heat can cause dairy sauces to separate, so lower or remove the heat before attempting a repair.",
+        "explanation": "Reducing the heat stops further separation, and gently whisking in warm cream may help restore a smoother emulsion."
+      },
+      {
+        "id": 5,
+        "question": "A batch of cooked rice is slightly too wet. What is the best immediate fix?",
+        "options": [
+          "Spread it on a tray or cook it briefly uncovered over low heat",
+          "Add more water and cover it tightly",
+          "Stir it constantly over high heat",
+          "Mix in uncooked rice and serve immediately"
+        ],
+        "correct_answer": "Spread it on a tray or cook it briefly uncovered over low heat",
+        "safety_tip": "Keep the heat low and watch the rice closely so the bottom does not burn.",
+        "explanation": "Exposing the rice to air or gentle heat allows excess moisture to evaporate without adding more liquid."
+      },
+      {
+        "id": 6,
+        "question": "A gravy contains small lumps after thickening. What is the best way to improve its texture?",
+        "options": [
+          "Whisk thoroughly or strain it through a fine-mesh strainer",
+          "Add more dry flour",
+          "Let the gravy cool without stirring",
+          "Add chopped vegetables"
+        ],
+        "correct_answer": "Whisk thoroughly or strain it through a fine-mesh strainer",
+        "safety_tip": "Hold the strainer securely and pour hot gravy carefully to prevent burns.",
+        "explanation": "Whisking can break up small lumps, while straining physically removes lumps and produces a smoother gravy."
+      },
+      {
+        "id": 7,
+        "question": "Cookie dough is dry and crumbly and will not hold together. What is the best adjustment?",
+        "options": [
+          "Add a small amount of milk or water, one teaspoon at a time",
+          "Add another full cup of flour",
+          "Bake the dough for twice as long",
+          "Add several tablespoons of baking powder"
+        ],
+        "correct_answer": "Add a small amount of milk or water, one teaspoon at a time",
+        "safety_tip": "Add liquid slowly because too much can make the dough sticky and cause the cookies to spread.",
+        "explanation": "A small amount of liquid can restore enough moisture for the dough to hold together without changing it dramatically."
+      },
+      {
+        "id": 8,
+        "question": "A homemade salad dressing separates immediately after mixing. What should you do?",
+        "options": [
+          "Whisk vigorously while slowly adding the oil",
+          "Add all the oil at once without stirring",
+          "Heat the dressing until it boils",
+          "Add dry flour directly to the dressing"
+        ],
+        "correct_answer": "Whisk vigorously while slowly adding the oil",
+        "safety_tip": "Use a stable bowl and pour the oil in a thin stream to maintain control while whisking.",
+        "explanation": "Slowly adding oil while whisking helps break the oil into tiny droplets and creates a more stable emulsion."
+      },
+      {
+        "id": 9,
+        "question": "A custard is slightly lumpy after cooking. Which method is most likely to make it smoother?",
+        "options": [
+          "Press it through a fine-mesh strainer while it is still warm",
+          "Stir in uncooked flour",
+          "Boil it again over high heat",
+          "Add crushed crackers"
+        ],
+        "correct_answer": "Press it through a fine-mesh strainer while it is still warm",
+        "safety_tip": "Handle the warm custard carefully and use a heat-resistant utensil when pressing it through the strainer.",
+        "explanation": "Straining removes small pieces of overcooked egg and produces a smoother custard texture."
+      },
+      {
+        "id": 10,
+        "question": "A casserole topping is soft instead of crisp. What is the best way to improve it near the end of cooking?",
+        "options": [
+          "Broil it briefly while watching it closely",
+          "Cover it tightly with foil",
+          "Pour water over the topping",
+          "Lower the oven temperature and add more sauce"
+        ],
+        "correct_answer": "Broil it briefly while watching it closely",
+        "safety_tip": "Broilers can burn food quickly, so remain nearby and check the topping frequently.",
+        "explanation": "Brief exposure to intense top heat can brown and crisp the surface without significantly overcooking the entire casserole."
+      }
+    ]
+  },
+  {
+    "category": "How to Cook",
+    "skill": "Sautéing & Pan-Searing",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the main difference between sautéing and pan-searing?",
+        "options": [
+          "Sautéing usually cooks smaller pieces quickly, while pan-searing browns the surface of larger pieces",
+          "Sautéing requires water, while pan-searing requires steam",
+          "Sautéing is done in an oven, while pan-searing is done in a microwave",
+          "Sautéing always uses low heat, while pan-searing uses no heat"
+        ],
+        "correct_answer": "Sautéing usually cooks smaller pieces quickly, while pan-searing browns the surface of larger pieces",
+        "safety_tip": "Use long-handled utensils and keep the pan handle turned away from the edge of the stove.",
+        "explanation": "Sautéing typically uses relatively small pieces of food that cook quickly, while pan-searing focuses on creating a browned crust on larger portions."
+      },
+      {
+        "id": 2,
+        "question": "Why should a skillet usually be preheated before sautéing vegetables?",
+        "options": [
+          "A preheated skillet helps the vegetables cook quickly and brown instead of slowly steaming",
+          "A preheated skillet prevents vegetables from becoming warm",
+          "A preheated skillet removes the need for cooking oil",
+          "A preheated skillet guarantees that vegetables cannot burn"
+        ],
+        "correct_answer": "A preheated skillet helps the vegetables cook quickly and brown instead of slowly steaming",
+        "safety_tip": "Do not leave an empty pan unattended because it can overheat quickly.",
+        "explanation": "Starting with a properly heated skillet encourages browning and helps moisture evaporate instead of collecting in the pan."
+      },
+      {
+        "id": 3,
+        "question": "Which oil is generally appropriate for pan-searing over medium-high heat?",
+        "options": [
+          "Canola oil",
+          "Toasted sesame oil",
+          "Whole milk",
+          "Maple syrup"
+        ],
+        "correct_answer": "Canola oil",
+        "safety_tip": "If oil begins smoking heavily, reduce the heat and carefully move the pan away from the burner.",
+        "explanation": "Canola oil has a relatively high smoke point and a neutral flavor, making it suitable for medium-high-heat cooking."
+      },
+      {
+        "id": 4,
+        "question": "Why should meat usually be patted dry before pan-searing?",
+        "options": [
+          "Removing surface moisture helps the meat brown more effectively",
+          "Drying the meat lowers its internal temperature",
+          "Drying the meat fully cooks the outside",
+          "Removing moisture prevents all sticking without oil"
+        ],
+        "correct_answer": "Removing surface moisture helps the meat brown more effectively",
+        "safety_tip": "Discard paper towels that touched raw meat and wash your hands immediately afterward.",
+        "explanation": "Surface moisture must evaporate before browning can begin, so drying the meat helps it develop a better crust."
+      },
+      {
+        "id": 5,
+        "question": "What usually happens when too much food is placed in a sauté pan at once?",
+        "options": [
+          "The food releases moisture and is more likely to steam than brown",
+          "The food immediately becomes crispier",
+          "The pan temperature rises dramatically",
+          "The food cooks without needing to be stirred"
+        ],
+        "correct_answer": "The food releases moisture and is more likely to steam than brown",
+        "safety_tip": "Cook in batches when necessary so food can be spread in a single layer.",
+        "explanation": "Crowding traps moisture and lowers the pan temperature, which interferes with browning."
+      },
+      {
+        "id": 6,
+        "question": "When pan-searing a piece of chicken, when should you usually try to turn it?",
+        "options": [
+          "After the first side has browned and releases from the pan fairly easily",
+          "Immediately after placing it in the pan",
+          "Every five seconds",
+          "Only after adding cold water to the pan"
+        ],
+        "correct_answer": "After the first side has browned and releases from the pan fairly easily",
+        "safety_tip": "Use tongs rather than a fork to reduce splattering and avoid puncturing the meat repeatedly.",
+        "explanation": "Once a crust forms, the food often releases more easily. Turning it too early can tear the surface and reduce browning."
+      },
+      {
+        "id": 7,
+        "question": "What is the safest response if cooking oil catches fire in a skillet?",
+        "options": [
+          "Turn off the heat and cover the skillet with a metal lid",
+          "Pour water directly onto the fire",
+          "Carry the burning skillet outside",
+          "Blow forcefully on the flames"
+        ],
+        "correct_answer": "Turn off the heat and cover the skillet with a metal lid",
+        "safety_tip": "Never use water on a grease fire because it can spread burning oil.",
+        "explanation": "Turning off the heat and covering the pan removes heat and oxygen, which can extinguish a small grease fire."
+      },
+      {
+        "id": 8,
+        "question": "Why are vegetables often cut into similarly sized pieces before sautéing?",
+        "options": [
+          "Similar sizes help the pieces cook at approximately the same rate",
+          "Similar sizes remove the need to heat the pan",
+          "Similar sizes prevent vegetables from browning",
+          "Similar sizes make all vegetables taste identical"
+        ],
+        "correct_answer": "Similar sizes help the pieces cook at approximately the same rate",
+        "safety_tip": "Use a stable cutting board and keep your fingertips curled away from the knife blade.",
+        "explanation": "Uniform pieces are more likely to finish cooking together, reducing the chance of some pieces being raw while others overcook."
+      },
+      {
+        "id": 9,
+        "question": "What is deglazing after pan-searing?",
+        "options": [
+          "Adding liquid to the hot pan to loosen browned bits from the bottom",
+          "Cooling the pan by placing it in the freezer",
+          "Scrubbing the pan with soap while it is still on the burner",
+          "Coating the food with powdered sugar"
+        ],
+        "correct_answer": "Adding liquid to the hot pan to loosen browned bits from the bottom",
+        "safety_tip": "Add liquid carefully because a hot pan may create steam and splattering.",
+        "explanation": "Deglazing dissolves flavorful browned bits, called fond, so they can be incorporated into a sauce."
+      },
+      {
+        "id": 10,
+        "question": "How should the doneness of a pan-seared chicken breast be checked most reliably?",
+        "options": [
+          "Measure the internal temperature with a food thermometer",
+          "Judge only by the color of the skillet",
+          "Press the raw center with a bare finger",
+          "Assume it is done when the outside begins browning"
+        ],
+        "correct_answer": "Measure the internal temperature with a food thermometer",
+        "safety_tip": "Chicken should reach an internal temperature of 165°F in its thickest part.",
+        "explanation": "A thermometer checks whether the center has reached a safe temperature, while surface color alone cannot confirm doneness."
+      }
+    ]
+  },
+  {
+    "category": "How to Cook",
+    "skill": "Boiling, Simmering, & Poaching",
+    "questions": [
+      {
+        "id": 11,
+        "question": "Which description best matches a full boil?",
+        "options": [
+          "Large bubbles continuously rise and break across the liquid's surface",
+          "The liquid remains completely still",
+          "Only one small bubble appears every few minutes",
+          "The liquid is frozen around the edges"
+        ],
+        "correct_answer": "Large bubbles continuously rise and break across the liquid's surface",
+        "safety_tip": "Keep pot handles turned inward and avoid leaning directly over boiling liquid.",
+        "explanation": "At a full boil, vigorous bubbles form throughout the liquid and continuously break at the surface."
+      },
+      {
+        "id": 12,
+        "question": "How does simmering differ from boiling?",
+        "options": [
+          "Simmering uses gentler heat and produces smaller, less vigorous bubbles",
+          "Simmering always uses a higher temperature than boiling",
+          "Simmering requires the liquid to be frozen first",
+          "Simmering means cooking without any liquid"
+        ],
+        "correct_answer": "Simmering uses gentler heat and produces smaller, less vigorous bubbles",
+        "safety_tip": "Lower the burner after liquid reaches a boil if the recipe calls for a simmer.",
+        "explanation": "A simmer is gentler than a full boil and is useful for foods that need steady cooking without aggressive movement."
+      },
+      {
+        "id": 13,
+        "question": "Which cooking method uses liquid kept below a simmer to cook delicate foods gently?",
+        "options": [
+          "Poaching",
+          "Broiling",
+          "Searing",
+          "Deep-frying"
+        ],
+        "correct_answer": "Poaching",
+        "safety_tip": "Keep the liquid hot but not rapidly bubbling so delicate foods do not break apart.",
+        "explanation": "Poaching cooks food in gently heated liquid, usually below the temperature of a simmer."
+      },
+      {
+        "id": 14,
+        "question": "Which food is commonly cooked by poaching?",
+        "options": [
+          "Eggs",
+          "Dry crackers",
+          "Frozen pizza",
+          "Bread dough"
+        ],
+        "correct_answer": "Eggs",
+        "safety_tip": "Lower eggs gently into the liquid to prevent splashing hot water.",
+        "explanation": "Poached eggs are cooked gently in hot water without their shells, allowing the whites to set while the yolks remain tender."
+      },
+      {
+        "id": 15,
+        "question": "Why are soups and stews often simmered instead of boiled vigorously?",
+        "options": [
+          "Gentle simmering develops flavor while reducing the chance of toughening or breaking ingredients apart",
+          "Simmering prevents the ingredients from becoming warm",
+          "Simmering cooks food instantly",
+          "Simmering removes all liquid from the pot"
+        ],
+        "correct_answer": "Gentle simmering develops flavor while reducing the chance of toughening or breaking ingredients apart",
+        "safety_tip": "Stir occasionally and scrape the bottom gently to prevent ingredients from sticking.",
+        "explanation": "A simmer cooks food steadily and gently, helping flavors combine while protecting delicate ingredients."
+      },
+      {
+        "id": 16,
+        "question": "When boiling pasta, why should the pot contain plenty of water?",
+        "options": [
+          "It gives the pasta room to move and helps prevent excessive sticking",
+          "It guarantees that the pasta cannot overcook",
+          "It eliminates the need to heat the water",
+          "It turns the pasta into a baked dish"
+        ],
+        "correct_answer": "It gives the pasta room to move and helps prevent excessive sticking",
+        "safety_tip": "Lower pasta into boiling water carefully to avoid splashes.",
+        "explanation": "A generous amount of water allows pasta pieces to circulate and helps dilute released starch."
+      },
+      {
+        "id": 17,
+        "question": "What should you do after adding pasta to boiling water?",
+        "options": [
+          "Stir it soon after adding it to help prevent sticking",
+          "Turn off the heat immediately",
+          "Add ice cubes until the water stops bubbling",
+          "Cover the pot and leave it untouched for an hour"
+        ],
+        "correct_answer": "Stir it soon after adding it to help prevent sticking",
+        "safety_tip": "Use a long spoon and stir away from your body to reduce the risk of splashing.",
+        "explanation": "Pasta is most likely to stick together shortly after entering the water, so early stirring helps separate the pieces."
+      },
+      {
+        "id": 18,
+        "question": "What is the safest way to drain a large pot of boiling pasta?",
+        "options": [
+          "Use oven mitts, pour slowly into a stable colander, and direct steam away from your face",
+          "Carry the pot using one bare hand",
+          "Pour the water toward your body",
+          "Place a plastic bag over the pot and turn it upside down"
+        ],
+        "correct_answer": "Use oven mitts, pour slowly into a stable colander, and direct steam away from your face",
+        "safety_tip": "Hot steam can burn skin even without direct contact with the water.",
+        "explanation": "Protective mitts, a stable colander, and controlled pouring reduce the risk of spills, steam burns, and dropped cookware."
+      },
+      {
+        "id": 19,
+        "question": "If a pot begins boiling over, what should you do first?",
+        "options": [
+          "Reduce or turn off the heat and carefully move the pot if necessary",
+          "Pour cooking oil onto the burner",
+          "Place your hand over the pot",
+          "Add flour directly to the burner"
+        ],
+        "correct_answer": "Reduce or turn off the heat and carefully move the pot if necessary",
+        "safety_tip": "Do not grab a hot pot without dry oven mitts or potholders.",
+        "explanation": "Reducing the heat slows the bubbling and helps stop the liquid from spilling over the sides."
+      },
+      {
+        "id": 20,
+        "question": "Why should poaching liquid not be allowed to boil vigorously?",
+        "options": [
+          "Rapid bubbling can damage delicate food and cook it unevenly",
+          "Boiling makes the liquid colder",
+          "Boiling prevents food from cooking",
+          "Rapid bubbling removes all flavor immediately"
+        ],
+        "correct_answer": "Rapid bubbling can damage delicate food and cook it unevenly",
+        "safety_tip": "Adjust the burner as needed to keep the liquid calm, with little or no visible bubbling.",
+        "explanation": "Poaching relies on gentle heat. Vigorous boiling can break delicate foods apart and make proteins tough."
+      }
+    ]
+  },
+  {
+    "category": "How to Cook",
+    "skill": "Oven Roasting vs. Baking",
+    "questions": [
+      {
+        "id": 21,
+        "question": "Which statement best explains the traditional difference between roasting and baking?",
+        "options": [
+          "Roasting is commonly used for meats and vegetables, while baking is commonly used for breads, pastries, and casseroles",
+          "Roasting uses only water, while baking uses only oil",
+          "Roasting takes place in a refrigerator, while baking takes place outdoors",
+          "Roasting never uses heat, while baking always uses a microwave"
+        ],
+        "correct_answer": "Roasting is commonly used for meats and vegetables, while baking is commonly used for breads, pastries, and casseroles",
+        "safety_tip": "Use oven mitts whenever placing food into or removing food from a hot oven.",
+        "explanation": "Both methods use dry oven heat, but roasting is generally associated with browning meats and vegetables, while baking is associated with structured mixtures and doughs."
+      },
+      {
+        "id": 22,
+        "question": "Why are vegetables often spread in a single layer before roasting?",
+        "options": [
+          "A single layer allows hot air to circulate and encourages browning",
+          "A single layer prevents the vegetables from heating",
+          "A single layer makes oil unnecessary in every recipe",
+          "A single layer guarantees that vegetables cannot burn"
+        ],
+        "correct_answer": "A single layer allows hot air to circulate and encourages browning",
+        "safety_tip": "Use a rimmed baking sheet so oil and vegetables are less likely to slide into the oven.",
+        "explanation": "Spacing reduces trapped moisture and exposes more surface area to dry heat, which promotes caramelization and browning."
+      },
+      {
+        "id": 23,
+        "question": "Why is accurate measuring especially important when baking?",
+        "options": [
+          "Baking depends on specific ingredient ratios for structure and chemical reactions",
+          "Baking ingredients never interact with one another",
+          "Measurements only affect the color of the baking pan",
+          "Baking temperatures automatically correct every measuring error"
+        ],
+        "correct_answer": "Baking depends on specific ingredient ratios for structure and chemical reactions",
+        "safety_tip": "Use dry measuring cups for dry ingredients and liquid measuring cups for liquids.",
+        "explanation": "Flour, liquid, fat, sugar, and leavening agents must remain in workable proportions for baked goods to rise and set properly."
+      },
+      {
+        "id": 24,
+        "question": "Why should an oven usually be preheated before baking cookies?",
+        "options": [
+          "The correct starting temperature helps the cookies spread, rise, and set as intended",
+          "Preheating makes cookie dough safe to eat raw",
+          "Preheating removes the need for a baking sheet",
+          "Preheating prevents cookies from ever browning"
+        ],
+        "correct_answer": "The correct starting temperature helps the cookies spread, rise, and set as intended",
+        "safety_tip": "Confirm that the oven is empty before preheating it.",
+        "explanation": "Placing cookies into a fully heated oven allows the ingredients to react according to the recipe's intended timing."
+      },
+      {
+        "id": 25,
+        "question": "Which method is most appropriate for cooking seasoned potato pieces until browned and crisp?",
+        "options": [
+          "Roasting",
+          "Poaching",
+          "Steaming in a sealed bowl",
+          "Soaking in cold water without cooking"
+        ],
+        "correct_answer": "Roasting",
+        "safety_tip": "Cut the potato pieces into similar sizes so they cook evenly.",
+        "explanation": "Roasting uses dry heat to cook the potatoes while browning and crisping their surfaces."
+      },
+      {
+        "id": 26,
+        "question": "Why should roasted vegetables usually be tossed with a moderate amount of oil?",
+        "options": [
+          "Oil promotes browning and helps seasonings adhere",
+          "Oil keeps the vegetables completely raw",
+          "Oil lowers the oven temperature to freezing",
+          "Oil replaces the need to wash the vegetables"
+        ],
+        "correct_answer": "Oil promotes browning and helps seasonings adhere",
+        "safety_tip": "Use only enough oil to coat the vegetables lightly because excess oil can drip or smoke.",
+        "explanation": "A thin coating of oil improves heat transfer, encourages browning, and helps herbs and spices stick to the food."
+      },
+      {
+        "id": 27,
+        "question": "What can happen if a cake is removed from the oven before its center has set?",
+        "options": [
+          "The center may sink or remain gummy",
+          "The cake will automatically become crisp throughout",
+          "The cake will continue rising forever",
+          "The center will instantly freeze"
+        ],
+        "correct_answer": "The center may sink or remain gummy",
+        "safety_tip": "Use a toothpick or other recipe-recommended doneness test without touching the hot pan.",
+        "explanation": "The cake's structure needs enough heat and time to set. Removing it too early may cause the unsupported center to collapse."
+      },
+      {
+        "id": 28,
+        "question": "What is the most reliable way to determine whether a roasted whole chicken is safely cooked?",
+        "options": [
+          "Check the internal temperature in the thickest part with a food thermometer",
+          "Judge only by how brown the skin appears",
+          "Assume it is done when the oven timer first rings",
+          "Touch the hot chicken with a bare hand"
+        ],
+        "correct_answer": "Check the internal temperature in the thickest part with a food thermometer",
+        "safety_tip": "Poultry should reach an internal temperature of 165°F without the thermometer touching bone.",
+        "explanation": "Browning does not prove that the center is safely cooked, so internal temperature is the most dependable test."
+      },
+      {
+        "id": 29,
+        "question": "Why should an oven door not be opened repeatedly while a cake is baking?",
+        "options": [
+          "Opening the door releases heat and may cause uneven baking or collapse",
+          "Opening the door makes the oven permanently hotter",
+          "Opening the door instantly burns the cake",
+          "Opening the door adds too much flour to the batter"
+        ],
+        "correct_answer": "Opening the door releases heat and may cause uneven baking or collapse",
+        "safety_tip": "Use the oven light and window to check progress when possible.",
+        "explanation": "Frequent temperature drops can interrupt rising and setting, especially during the early stages of baking."
+      },
+      {
+        "id": 30,
+        "question": "Why are roasted vegetables sometimes turned or stirred halfway through cooking?",
+        "options": [
+          "Turning exposes different surfaces to the hot pan and promotes more even browning",
+          "Turning prevents any part of the vegetables from becoming warm",
+          "Turning adds moisture without using liquid",
+          "Turning eliminates the need to finish cooking them"
+        ],
+        "correct_answer": "Turning exposes different surfaces to the hot pan and promotes more even browning",
+        "safety_tip": "Pull the oven rack out carefully and use a heat-resistant spatula while wearing oven mitts.",
+        "explanation": "The surfaces touching the hot pan usually brown fastest, so turning the pieces helps multiple sides develop color."
+      }
+    ]
+  },
+  {
+    "category": "Utensil Handling",
+    "skill": "Essential Knife Work",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the safest way to hold food while slicing it with a chef's knife?",
+        "options": [
+          "Curl your fingertips under and guide the knife with your knuckles",
+          "Lay your fingertips flat beside the blade",
+          "Hold the food in your palm while cutting",
+          "Press the food down with your thumb near the blade"
+        ],
+        "correct_answer": "Curl your fingertips under and guide the knife with your knuckles",
+        "safety_tip": "Keep your fingertips tucked behind your knuckles so the side of the blade can move safely past them.",
+        "explanation": "The claw grip protects the fingertips while allowing the knuckles to guide the knife during controlled cuts."
+      },
+      {
+        "id": 2,
+        "question": "What should you place under a cutting board to keep it from sliding?",
+        "options": [
+          "A damp kitchen towel",
+          "A dry sheet of paper",
+          "A layer of cooking oil",
+          "A metal baking sheet"
+        ],
+        "correct_answer": "A damp kitchen towel",
+        "safety_tip": "Make sure the towel lies flat so the cutting board remains level.",
+        "explanation": "A damp towel creates friction between the counter and cutting board, helping prevent unexpected movement."
+      },
+      {
+        "id": 3,
+        "question": "Which knife is generally the best choice for chopping onions, herbs, and vegetables?",
+        "options": [
+          "Chef's knife",
+          "Butter knife",
+          "Steak knife",
+          "Oyster knife"
+        ],
+        "correct_answer": "Chef's knife",
+        "safety_tip": "Choose a knife that feels balanced and comfortable in your hand.",
+        "explanation": "A chef's knife has a broad, versatile blade designed for slicing, chopping, and mincing many common ingredients."
+      },
+      {
+        "id": 4,
+        "question": "Why is a sharp knife usually safer than a dull knife?",
+        "options": [
+          "A sharp knife requires less force and is less likely to slip",
+          "A sharp knife cannot cut skin",
+          "A sharp knife automatically stops at the cutting board",
+          "A sharp knife does not require proper hand placement"
+        ],
+        "correct_answer": "A sharp knife requires less force and is less likely to slip",
+        "safety_tip": "Even a sharp knife can cause injury, so always use controlled movements and proper hand placement.",
+        "explanation": "Dull knives require extra pressure, which increases the chance that the blade will slip unexpectedly."
+      },
+      {
+        "id": 5,
+        "question": "What is the safest way to carry a kitchen knife across a room?",
+        "options": [
+          "Hold it at your side with the blade pointed downward",
+          "Hold it above your shoulder with the blade forward",
+          "Carry it flat on your open palm",
+          "Hide it inside a folded towel"
+        ],
+        "correct_answer": "Hold it at your side with the blade pointed downward",
+        "safety_tip": "Announce that you are carrying a knife when moving through a busy kitchen.",
+        "explanation": "Keeping the blade pointed downward and close to your side reduces the chance of accidentally cutting someone."
+      },
+      {
+        "id": 6,
+        "question": "If a knife begins falling from the counter, what should you do?",
+        "options": [
+          "Step back and let it fall",
+          "Try to catch it by the handle",
+          "Pin it against the cabinet with your leg",
+          "Grab the blade before it reaches the floor"
+        ],
+        "correct_answer": "Step back and let it fall",
+        "safety_tip": "Never attempt to catch a falling knife because the blade may rotate unpredictably.",
+        "explanation": "Stepping away prevents hand and foot injuries. A falling knife is safer to retrieve only after it has landed."
+      },
+      {
+        "id": 7,
+        "question": "Which cutting technique is most appropriate for finely cutting fresh herbs?",
+        "options": [
+          "Use a controlled rocking motion with a chef's knife",
+          "Strike downward with the knife as hard as possible",
+          "Saw through the herbs with a butter knife",
+          "Hold the herbs in the air while slicing"
+        ],
+        "correct_answer": "Use a controlled rocking motion with a chef's knife",
+        "safety_tip": "Keep the tip of the knife near the cutting board and move the handle in a controlled arc.",
+        "explanation": "A rocking motion allows the curved blade of a chef's knife to repeatedly pass through herbs efficiently and evenly."
+      },
+      {
+        "id": 8,
+        "question": "Why should vegetables be cut into similar-sized pieces before cooking?",
+        "options": [
+          "Similar pieces cook at approximately the same rate",
+          "Similar pieces eliminate the need for heat",
+          "Similar pieces prevent all browning",
+          "Similar pieces make every vegetable taste identical"
+        ],
+        "correct_answer": "Similar pieces cook at approximately the same rate",
+        "safety_tip": "Create a flat side on round vegetables before making additional cuts so they do not roll.",
+        "explanation": "Uniform pieces are more likely to finish cooking together, reducing undercooked and overcooked portions."
+      },
+      {
+        "id": 9,
+        "question": "What should you do before cutting a round onion or potato?",
+        "options": [
+          "Cut a flat surface so the ingredient rests securely",
+          "Balance it on its smallest end",
+          "Coat the cutting board with oil",
+          "Hold it above the cutting board"
+        ],
+        "correct_answer": "Cut a flat surface so the ingredient rests securely",
+        "safety_tip": "Stabilize round ingredients before making smaller or more precise cuts.",
+        "explanation": "A flat surface prevents the ingredient from rolling while you cut it."
+      },
+      {
+        "id": 10,
+        "question": "What is the safest way to wash a sharp kitchen knife?",
+        "options": [
+          "Wash it individually with the blade visible and pointed away from you",
+          "Leave it hidden under soapy water in the sink",
+          "Scrub both sides while holding the cutting edge",
+          "Place it loosely beneath other dishes"
+        ],
+        "correct_answer": "Wash it individually with the blade visible and pointed away from you",
+        "safety_tip": "Never leave sharp knives submerged where someone may reach into the water without seeing them.",
+        "explanation": "Keeping the knife visible and washing it separately reduces the chance of accidental contact with the blade."
+      }
+    ]
+  },
+  {
+    "category": "Utensil Handling",
+    "skill": "Pan & Surface Matching",
+    "questions": [
+      {
+        "id": 11,
+        "question": "Which pan is best suited for searing a steak and developing a browned crust?",
+        "options": [
+          "Cast-iron skillet",
+          "Thin disposable aluminum pan",
+          "Glass pie plate",
+          "Plastic storage container"
+        ],
+        "correct_answer": "Cast-iron skillet",
+        "safety_tip": "Cast-iron handles become extremely hot, so use a dry oven mitt or handle cover.",
+        "explanation": "Cast iron retains heat well and provides a hot, stable surface for strong browning."
+      },
+      {
+        "id": 12,
+        "question": "Which pan is generally best for cooking delicate eggs with minimal sticking?",
+        "options": [
+          "Nonstick skillet",
+          "Unseasoned cast-iron grill pan",
+          "Stainless-steel stockpot",
+          "Glass casserole dish"
+        ],
+        "correct_answer": "Nonstick skillet",
+        "safety_tip": "Avoid using metal utensils that can scratch a nonstick coating.",
+        "explanation": "A nonstick surface allows delicate foods such as eggs to release more easily with a small amount of fat."
+      },
+      {
+        "id": 13,
+        "question": "Which cookware is most appropriate for simmering an acidic tomato sauce?",
+        "options": [
+          "Stainless-steel saucepan",
+          "Unlined copper pan",
+          "Unseasoned aluminum pan for several hours",
+          "Damaged nonstick skillet with peeling coating"
+        ],
+        "correct_answer": "Stainless-steel saucepan",
+        "safety_tip": "Do not cook with pans that have loose, peeling, or badly damaged coatings.",
+        "explanation": "Stainless steel is nonreactive and can hold acidic foods without noticeably affecting their flavor."
+      },
+      {
+        "id": 14,
+        "question": "Which vessel is best for boiling a large batch of pasta?",
+        "options": [
+          "A large stockpot",
+          "A shallow frying pan",
+          "A muffin tin",
+          "A small ramekin"
+        ],
+        "correct_answer": "A large stockpot",
+        "safety_tip": "Do not overfill the pot, and turn its handles inward to reduce spill risks.",
+        "explanation": "A stockpot provides enough room for water and pasta to circulate while reducing the chance of boiling over."
+      },
+      {
+        "id": 15,
+        "question": "Which baking surface is most appropriate for roasting vegetables until browned?",
+        "options": [
+          "A rimmed metal sheet pan",
+          "A deep bowl covered tightly with foil",
+          "A plastic serving tray",
+          "An insulated cooler"
+        ],
+        "correct_answer": "A rimmed metal sheet pan",
+        "safety_tip": "Use a rimmed pan so oil and food are less likely to slide into the oven.",
+        "explanation": "A metal sheet pan exposes vegetables to dry heat and gives them space to brown, while the rim contains oil and juices."
+      },
+      {
+        "id": 16,
+        "question": "Why is a heavy-bottomed saucepan useful for cooking custard or thick sauces?",
+        "options": [
+          "It distributes heat more evenly and reduces scorching",
+          "It makes stirring unnecessary",
+          "It keeps ingredients permanently cold",
+          "It prevents liquids from ever boiling"
+        ],
+        "correct_answer": "It distributes heat more evenly and reduces scorching",
+        "safety_tip": "Even with a heavy pan, stir thick mixtures regularly and control the heat.",
+        "explanation": "A thick base moderates direct burner heat, helping prevent concentrated hot spots that can burn delicate mixtures."
+      },
+      {
+        "id": 17,
+        "question": "Which surface is safest for cutting raw chicken?",
+        "options": [
+          "A washable, nonporous cutting board",
+          "A cloth placemat",
+          "An unfinished wooden countertop",
+          "A stack of paper towels"
+        ],
+        "correct_answer": "A washable, nonporous cutting board",
+        "safety_tip": "Wash the board, knife, hands, and nearby surfaces thoroughly after handling raw chicken.",
+        "explanation": "A nonporous cutting board is easier to clean and sanitize after contact with raw poultry."
+      },
+      {
+        "id": 18,
+        "question": "Why should cookware placed on a glass stovetop have a flat bottom?",
+        "options": [
+          "A flat bottom improves contact and promotes even heating",
+          "A flat bottom prevents the pan from becoming hot",
+          "A flat bottom makes the pan safe to drop",
+          "A flat bottom eliminates the need to monitor cooking"
+        ],
+        "correct_answer": "A flat bottom improves contact and promotes even heating",
+        "safety_tip": "Lift heavy pans instead of dragging them across a glass stovetop to reduce scratching.",
+        "explanation": "Good contact between the pan and cooking surface helps transfer heat evenly and keeps the pan stable."
+      },
+      {
+        "id": 19,
+        "question": "Which cookware should be used under an oven broiler?",
+        "options": [
+          "A broiler-safe metal pan",
+          "A plastic food container",
+          "A paper plate",
+          "A storage bowl not labeled oven-safe"
+        ],
+        "correct_answer": "A broiler-safe metal pan",
+        "safety_tip": "Verify that the pan is broiler-safe because intense direct heat can damage unsuitable cookware.",
+        "explanation": "Metal pans labeled for broiler use can tolerate the strong radiant heat produced by a broiler."
+      },
+      {
+        "id": 20,
+        "question": "Which pan is best for making a stir-fry over high heat?",
+        "options": [
+          "A wok or wide carbon-steel skillet",
+          "A glass loaf pan",
+          "A ceramic mixing bowl",
+          "A narrow saucepan filled to the top"
+        ],
+        "correct_answer": "A wok or wide carbon-steel skillet",
+        "safety_tip": "Have ingredients prepared before heating the pan because stir-frying happens quickly.",
+        "explanation": "A wok or wide skillet provides high heat, room for movement, and a broad cooking surface for rapid cooking."
+      }
+    ]
+  },
+  {
+    "category": "Utensil Handling",
+    "skill": "Hack-it-With-What-You-Have",
+    "questions": [
+      {
+        "id": 21,
+        "question": "You need to roll out dough but do not own a rolling pin. What is the best substitute?",
+        "options": [
+          "A clean, smooth-sided bottle",
+          "A serrated knife",
+          "A hot skillet",
+          "A cardboard box"
+        ],
+        "correct_answer": "A clean, smooth-sided bottle",
+        "safety_tip": "Make sure the bottle is clean, dry, sealed, and free of cracks before using it.",
+        "explanation": "A smooth cylindrical bottle can press and roll dough in a way similar to a rolling pin."
+      },
+      {
+        "id": 22,
+        "question": "You do not have a pastry brush. What can you use to spread oil lightly over bread or vegetables?",
+        "options": [
+          "A folded paper towel or the back of a spoon",
+          "A metal whisk",
+          "A dry measuring cup",
+          "A cheese grater"
+        ],
+        "correct_answer": "A folded paper towel or the back of a spoon",
+        "safety_tip": "Do not use a paper towel on a hot pan or near an open flame.",
+        "explanation": "A folded paper towel or spoon can spread a thin coating of oil across a cool food surface."
+      },
+      {
+        "id": 23,
+        "question": "You need to strain pasta but do not have a colander. What is the safest substitute?",
+        "options": [
+          "Hold a fitted lid slightly open while pouring carefully",
+          "Pour the pasta directly into the sink",
+          "Use your bare hand to hold the pasta back",
+          "Poke holes into a plastic storage bag"
+        ],
+        "correct_answer": "Hold a fitted lid slightly open while pouring carefully",
+        "safety_tip": "Wear oven mitts, keep the lid secure, and pour hot water away from your body.",
+        "explanation": "A fitted lid can retain the pasta while allowing water to drain through a small opening."
+      },
+      {
+        "id": 24,
+        "question": "You do not have a garlic press. What is the best alternative for finely preparing garlic?",
+        "options": [
+          "Mince it with a knife",
+          "Leave the cloves whole in every recipe",
+          "Crush it with a drinking glass in your hand",
+          "Grind it in a pepper mill"
+        ],
+        "correct_answer": "Mince it with a knife",
+        "safety_tip": "Create a flat side on the garlic clove before mincing so it stays stable.",
+        "explanation": "A chef's knife can cut garlic into very small pieces without requiring a specialized press."
+      },
+      {
+        "id": 25,
+        "question": "You need to mash potatoes but do not have a potato masher. What should you use?",
+        "options": [
+          "A sturdy fork",
+          "A balloon whisk over high heat",
+          "A sharp knife held vertically",
+          "A plastic bag filled with air"
+        ],
+        "correct_answer": "A sturdy fork",
+        "safety_tip": "Mash the potatoes in a stable bowl or pot placed on a heat-resistant surface.",
+        "explanation": "A sturdy fork can press softened potatoes into a mashed texture, although the result may be slightly less smooth."
+      },
+      {
+        "id": 26,
+        "question": "You need to juice a lemon but do not have a citrus juicer. What is the best method?",
+        "options": [
+          "Squeeze the lemon by hand over a strainer or between your fingers",
+          "Blend the whole lemon with its peel",
+          "Boil the lemon until it dissolves",
+          "Strike the lemon with the edge of a pan"
+        ],
+        "correct_answer": "Squeeze the lemon by hand over a strainer or between your fingers",
+        "safety_tip": "Keep lemon juice away from cuts because the acid may sting.",
+        "explanation": "Hand-squeezing releases the juice, while a strainer or your fingers can catch the seeds."
+      },
+      {
+        "id": 27,
+        "question": "You do not have a kitchen scale, but a recipe calls for four equal burger portions. What is the best approach?",
+        "options": [
+          "Divide the mixture into halves and then divide each half again",
+          "Make one large portion and three very small portions",
+          "Cook the entire mixture before dividing it",
+          "Add water until every portion fills a cup"
+        ],
+        "correct_answer": "Divide the mixture into halves and then divide each half again",
+        "safety_tip": "Wash your hands after handling raw ground meat and avoid touching other surfaces.",
+        "explanation": "Repeatedly dividing the mixture in half creates four portions that are reasonably similar in size."
+      },
+      {
+        "id": 28,
+        "question": "You need a makeshift double boiler to melt chocolate gently. Which setup is best?",
+        "options": [
+          "Place a heat-safe bowl over a saucepan of gently simmering water",
+          "Place a plastic bowl directly on a burner",
+          "Put chocolate in a dry skillet over maximum heat",
+          "Seal chocolate inside a glass jar and boil it rapidly"
+        ],
+        "correct_answer": "Place a heat-safe bowl over a saucepan of gently simmering water",
+        "safety_tip": "Keep the bowl above the water rather than touching it, and prevent water from entering the chocolate.",
+        "explanation": "Steam gently warms the bowl and reduces the risk of scorching the chocolate."
+      },
+      {
+        "id": 29,
+        "question": "You need to flatten chicken breasts but do not own a meat mallet. What can you use?",
+        "options": [
+          "The flat bottom of a heavy pan",
+          "The cutting edge of a chef's knife",
+          "A glass cup held by its rim",
+          "A fork used to tear the meat"
+        ],
+        "correct_answer": "The flat bottom of a heavy pan",
+        "safety_tip": "Place the chicken between sheets of plastic wrap or inside a sturdy food-safe bag before flattening.",
+        "explanation": "The broad, flat bottom of a heavy pan can apply even pressure without cutting or tearing the meat."
+      },
+      {
+        "id": 30,
+        "question": "You need to cover a bowl of rising dough but do not have plastic wrap. What is the best substitute?",
+        "options": [
+          "A clean, slightly damp kitchen towel",
+          "A sheet of sandpaper",
+          "An uncovered metal rack",
+          "A pile of dry flour"
+        ],
+        "correct_answer": "A clean, slightly damp kitchen towel",
+        "safety_tip": "Use a clean towel and keep it away from active burners or other heat sources.",
+        "explanation": "A slightly damp towel helps prevent the dough's surface from drying out while still allowing it to rise."
+      }
+    ]
+  }
+]
