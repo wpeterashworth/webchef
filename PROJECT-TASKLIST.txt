@@ -1,0 +1,194 @@
+==============================================================================
+ WEBCHEF / COOKQUEST - PROJECT TASK LIST
+ Step-by-step build order, from beginning to end.
+ Intended to be copied into a Trello board (each PHASE = a list/column,
+ each numbered item = a card). Work top to bottom; later phases depend on
+ earlier ones unless marked [parallel].
+==============================================================================
+
+PROJECT SUMMARY
+---------------
+A Duolingo-style cooking education app. Users sign in, take short lessons
+(ingredient substitutions, safe cooking temperatures, prep/cook time
+estimation), get instant feedback, earn scores/XP, build streaks, and level
+up through tiers with themed names.
+
+TECH STACK (already decided - see the ADRs)
+  Frontend:  Svelte / SvelteKit
+  Backend:   Node.js + Express  OR  SvelteKit API routes  (DECISION PENDING)
+  Database:  PostgreSQL on Supabase (shared team instance)
+  Auth:      Auth0
+  Hosting:   Render
+
+CURRENT STATE (as of writing - what's already done)
+  [DONE] ADRs written (Svelte, Database, framework)
+  [DONE] spec.md / CookQuest spec finalized
+  [DONE] Supabase project linked + initial schema migration
+         (6 tables: users, units, lessons, steps, user_progress, recipes)
+  [DONE] Supabase CLI installed as dev dependency
+  [DONE] Partial client scaffolding (index.html, app.svelte, header/footer/
+         landing components, main.css, main.js, hero/favicon images)
+  [TODO] Everything below.
+
+LEGEND
+  [BLOCKER]  must be finished before most other work can proceed
+  [parallel] can be done at the same time as sibling tasks by other teammates
+  (owner)    fill in the teammate's name on the Trello card
+  (est)      add your own time estimate on the Trello card
+
+==============================================================================
+ PHASE 0 - TEAM SETUP & GROUND RULES   [BLOCKER]
+==============================================================================
+0.1  Create the Trello board with these phases as lists/columns.
+0.2  Agree on branch naming: feature/<desc>, fix/<desc>. PR + 1 review
+     before merging to main. (Already in README - confirm everyone agrees.)
+0.3  Confirm every teammate can clone the repo and run git.
+0.4  Share credentials securely via Microsoft Teams (NOT committed):
+     Supabase connection string + password, Auth0 domain/client/secret.
+0.5  RESOLVE THE OPEN DECISION: SvelteKit API routes vs. separate Express
+     server. Everything in the backend phases depends on this answer.
+     -> Recommendation: SvelteKit API routes (one app, less to deploy/maintain
+        for a course project). Decide as a team and record it in ADR-Svelte.md.
+0.6  Assign initial owners to Phase 1 cards.
+
+==============================================================================
+ PHASE 1 - FOUNDATION & ENVIRONMENT   [BLOCKER]
+==============================================================================
+1.1  Create .env.example (template, committed) and confirm .env is gitignored.
+1.2  Each teammate creates their own local .env from the template and fills in
+     the shared Supabase + Auth0 values.
+1.3  Verify everyone can connect to the shared Supabase database
+     (run `npx supabase` / open the dashboard).
+1.4  Finalize project structure based on the Phase 0.5 decision:
+       - If SvelteKit-only: scaffold a proper SvelteKit app in /client.
+       - If separate API: create /server with routes/controllers/db folders.
+1.5  Get a "hello world" page running locally for ALL teammates
+     (npm install + npm run dev works on every machine). DONE = green light.
+
+==============================================================================
+ PHASE 2 - DATABASE FINALIZATION
+==============================================================================
+2.1  Review the existing migration (20260623000000_initial_schema.sql) as a
+     team and confirm the 6 tables match the spec's data models.
+2.2  Add any missing tables/fields the spec implies:
+       - levels (levelNumber, levelName, minScore, maxScore, themeColor)
+       - challenge_attempts (or fold into user_progress - decide)
+       - streak_events (if tracking streak history, not just a count)
+2.3  Decide leaderboard approach (currently a query over users.xp - confirm).
+2.4  Write seed data: starter units, a few lessons + questions, level tiers
+     with themed names (e.g. "Microwaved Meal Preparer", "Saucy Starter").
+2.5  Add RLS (Row Level Security) policies so users only see/edit their own
+     progress. (Deferred in the initial migration - do it now.)
+2.6  TEAM RULE: announce schema changes in Teams BEFORE applying them; keep
+     all changes as migration files, never ad-hoc dashboard edits.
+
+==============================================================================
+ PHASE 3 - AUTHENTICATION (Auth0)   [BLOCKER for any user-specific feature]
+==============================================================================
+3.1  Configure the Auth0 application (callback URLs, allowed origins) for both
+     local dev and the future Render URL.
+3.2  Implement signup / login / logout flow in the app.
+3.3  On first login, create a matching row in the users table (keyed by the
+     Auth0 `sub`).
+3.4  Protect routes/endpoints so only signed-in users reach lessons/dashboard.
+3.5  Implement GET /api/me (or equivalent) returning the signed-in profile.
+3.6  Verify: a brand-new user can register, log in, and a users row is created.
+
+==============================================================================
+ PHASE 4 - BACKEND API   (build endpoints in priority order)
+==============================================================================
+  Build P1 endpoints first (lessons + attempts), then P2 (progress/streaks),
+  then P3 (challenges), then admin/social last.
+
+  P1 - Core learning loop:
+4.1  GET  /api/lessons                       list available lessons
+4.2  GET  /api/lessons/:lessonId             lesson details + questions
+4.3  POST /api/lessons/:lessonId/attempts    submit answers, score + feedback
+       -> This endpoint also updates score, XP, streak, and level.
+
+  P2 - Progress & streaks:
+4.4  GET  /api/progress                       progress summary for dashboard
+4.5  GET  /api/progress/:lessonId             progress for one lesson
+4.6  GET  /api/streaks                         current streak + history
+4.7  Level-up logic: when score crosses a threshold, level +1 and update the
+     displayed level name (FR-011 / SC-006).
+
+  P3 - Challenges:
+4.8  POST /api/challenges/:challengeId/attempts   submit a challenge result
+4.9  GET  /api/recommendations                next lessons / weak-area review
+
+  Later / additional:
+4.10 POST /api/admin/lessons  +  PUT /api/admin/lessons/:lessonId  (authoring)
+4.11 POST /api/shares/progress       shareable progress snapshot
+4.12 POST /api/challenges/invite     challenge a friend
+
+==============================================================================
+ PHASE 5 - FRONTEND UI   (can run [parallel] with Phase 4 using mock data)
+==============================================================================
+5.1  Finish the landing page + shared layout (header/footer already started).
+5.2  Auth UI: login / signup buttons wired to Auth0; signed-in vs signed-out
+     states.
+5.3  Dashboard / Home screen (see spec wireframe): greeting, streak, score,
+     current level + level name, "Continue Learning", today's review, % done.
+5.4  Lesson screen: question prompt, answer options, "Check Answer"
+     (wireframe in spec).
+5.5  Feedback screen: correct/incorrect, explanation, score delta, streak,
+     level-up message. Immediate feedback after EVERY answer (FR-005).
+5.6  Challenge mode screens (ingredient selection, timing estimation).
+5.7  Progress/profile view (completion, accuracy, weak areas, streak).
+5.8  Connect all screens to the real API (replace mock data once Phase 4 lands).
+5.9  Responsive styling pass (mobile-friendly - audience is on phones).
+
+==============================================================================
+ PHASE 6 - CONTENT
+==============================================================================
+6.1  Write real lesson content for the 3 required topics:
+       - Ingredient substitutions
+       - Safe cooking temperatures (meats)
+       - Prep/cook time estimation
+6.2  Define the level tiers + themed names + score thresholds.
+6.3  Load content via seed/migration so every teammate has the same data.
+
+==============================================================================
+ PHASE 7 - TESTING & POLISH
+==============================================================================
+7.1  Walk through each spec acceptance scenario manually and check it passes.
+7.2  Handle edge cases from the spec:
+       - repeated wrong answers
+       - multiple valid substitutions
+       - "close but not exact" temperature answers
+       - brand-new user with no streak/progress
+       - lesson content updated after a user completed it
+7.3  Verify the success criteria (SC-001..SC-006), e.g. new user -> first
+     lesson in under 3 minutes.
+7.4  Basic error handling + loading states across the UI.
+7.5  Cross-browser / mobile check.
+
+==============================================================================
+ PHASE 8 - DEPLOYMENT (Render)
+==============================================================================
+8.1  Create the Render service(s) (one if SvelteKit-only, two if separate API).
+8.2  Set production environment variables in the Render dashboard.
+8.3  Point Auth0 callback/allowed URLs at the production domain.
+8.4  Deploy, run a full smoke test on the live site.
+8.5  Share the live URL; confirm the team and instructor can access it.
+
+==============================================================================
+ SUGGESTED TRELLO COLUMN SETUP
+==============================================================================
+  Backlog | To Do (current phase) | In Progress | In Review (PR open) | Done
+
+  - Keep only the ACTIVE phase's cards in "To Do"; leave future phases in
+    Backlog so the board isn't overwhelming.
+  - Label cards by area: frontend / backend / database / auth / content / devops.
+  - A card moves to "In Review" when a PR is open, "Done" after merge to main.
+
+==============================================================================
+ WHAT TO DO NEXT (right now)
+==============================================================================
+  1. Phase 0.5 - decide SvelteKit-only vs. separate Express server. THIS UNBLOCKS
+     the most work. (Recommendation above: go SvelteKit-only.)
+  2. Phase 1 - get every teammate running the app locally with their own .env.
+  3. In parallel, start Phase 2 (database review + seed) and Phase 3 (Auth0),
+     since the whole learning loop depends on both.
+==============================================================================
