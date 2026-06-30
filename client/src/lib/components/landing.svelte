@@ -11,3 +11,6 @@
 
 <button onclick={() => onAction?.()}>Trigger Action</button>
 
+<style>
+    
+</style>

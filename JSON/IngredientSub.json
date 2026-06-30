@@ -1,0 +1,410 @@
+  [
+  {
+    "category": "Ingredient Substitutions",
+    "skill": "Dairy Swaps",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A pancake recipe calls for 1 cup of buttermilk. Which substitution works best?",
+        "options": [
+          "1 cup milk mixed with 1 tablespoon lemon juice",
+          "1 cup heavy cream mixed with 1 tablespoon oil",
+          "1 cup water mixed with 1 teaspoon salt",
+          "1 cup melted butter"
+        ],
+        "correct_answer": "1 cup milk mixed with 1 tablespoon lemon juice",
+        "safety_tip": "Let the milk and lemon juice sit for about 5 minutes before using it so the mixture can thicken slightly.",
+        "explanation": "The acid in the lemon juice gives regular milk the acidity needed to act similarly to buttermilk in pancakes and other baked goods."
+      },
+      {
+        "id": 2,
+        "question": "A soup recipe calls for 1 cup of whole milk, but you only have evaporated milk. What should you use?",
+        "options": [
+          "1/2 cup evaporated milk mixed with 1/2 cup water",
+          "1 cup evaporated milk mixed with 1 cup water",
+          "1/4 cup evaporated milk mixed with 3/4 cup oil",
+          "1 cup sweetened condensed milk"
+        ],
+        "correct_answer": "1/2 cup evaporated milk mixed with 1/2 cup water",
+        "safety_tip": "Check the can carefully because evaporated milk and sweetened condensed milk are not interchangeable.",
+        "explanation": "Evaporated milk is concentrated, so combining equal parts evaporated milk and water creates a mixture similar to regular milk."
+      },
+      {
+        "id": 3,
+        "question": "Which ingredient is the best easy substitute for sour cream in a baked potato topping?",
+        "options": [
+          "Plain Greek yogurt",
+          "Vanilla pudding",
+          "Whipped butter",
+          "Cottage cheese mixed with sugar"
+        ],
+        "correct_answer": "Plain Greek yogurt",
+        "safety_tip": "Use plain, unsweetened yogurt so the flavor of the dish does not become sweet.",
+        "explanation": "Plain Greek yogurt has a similar thickness and tangy flavor, making it a good substitute for sour cream."
+      },
+      {
+        "id": 4,
+        "question": "A creamy pasta sauce calls for 1 cup of half-and-half. Which substitute is most appropriate?",
+        "options": [
+          "3/4 cup whole milk mixed with 1/4 cup heavy cream",
+          "1 cup water mixed with 1 tablespoon flour",
+          "1/2 cup butter mixed with 1/2 cup oil",
+          "1 cup skim milk mixed with lemon juice"
+        ],
+        "correct_answer": "3/4 cup whole milk mixed with 1/4 cup heavy cream",
+        "safety_tip": "Add dairy gradually to a hot sauce and avoid rapid boiling to reduce the chance of curdling.",
+        "explanation": "Combining whole milk and heavy cream creates a fat level and texture similar to half-and-half."
+      },
+      {
+        "id": 5,
+        "question": "Which substitute works best for 1 cup of heavy cream in a soup when the cream does not need to be whipped?",
+        "options": [
+          "3/4 cup milk mixed with 1/4 cup melted butter",
+          "1 cup skim milk mixed with vinegar",
+          "1 cup water mixed with melted cheese",
+          "1/2 cup milk mixed with 1/2 cup lemon juice"
+        ],
+        "correct_answer": "3/4 cup milk mixed with 1/4 cup melted butter",
+        "safety_tip": "Allow the melted butter to cool slightly before mixing it with cold milk to prevent splattering or separation.",
+        "explanation": "The milk provides liquid while the butter adds fat, creating a useful heavy cream substitute for cooking and baking."
+      },
+      {
+        "id": 6,
+        "question": "A muffin recipe calls for 1 cup of plain yogurt. Which ingredient is the closest substitute?",
+        "options": [
+          "1 cup sour cream",
+          "1 cup whipped cream",
+          "1 cup sweetened condensed milk",
+          "1 cup melted butter"
+        ],
+        "correct_answer": "1 cup sour cream",
+        "safety_tip": "Use unflavored sour cream so you do not accidentally change the sweetness or flavor of the muffins.",
+        "explanation": "Sour cream has a similar thickness, moisture level, and acidity, so it can usually replace plain yogurt in baked goods."
+      },
+      {
+        "id": 7,
+        "question": "A recipe calls for 1 cup of whole milk, but you only have skim milk and butter. Which substitution is best?",
+        "options": [
+          "1 cup skim milk mixed with about 2 teaspoons melted butter",
+          "1 cup skim milk mixed with 2 tablespoons lemon juice",
+          "1/2 cup skim milk mixed with 1/2 cup water",
+          "1 cup melted butter"
+        ],
+        "correct_answer": "1 cup skim milk mixed with about 2 teaspoons melted butter",
+        "safety_tip": "Mix the melted butter into the milk slowly so it combines as evenly as possible.",
+        "explanation": "Adding a small amount of butter increases the fat content of skim milk, making it closer to whole milk."
+      },
+      {
+        "id": 8,
+        "question": "Which ingredient can replace milk in mashed potatoes while still adding a creamy texture?",
+        "options": [
+          "Unsweetened plain oat milk",
+          "Fruit punch",
+          "Sweetened condensed milk",
+          "Lemonade"
+        ],
+        "correct_answer": "Unsweetened plain oat milk",
+        "safety_tip": "Always choose an unsweetened and unflavored dairy-free milk for savory recipes.",
+        "explanation": "Unsweetened plain oat milk has a mild flavor and creamy texture that works well in mashed potatoes."
+      },
+      {
+        "id": 9,
+        "question": "A cheesecake-style dip calls for cream cheese. Which substitute will provide the most similar texture?",
+        "options": [
+          "Mascarpone cheese",
+          "Shredded mozzarella",
+          "Liquid coffee creamer",
+          "Melted butter"
+        ],
+        "correct_answer": "Mascarpone cheese",
+        "safety_tip": "Keep soft cheeses refrigerated and do not leave them at room temperature for more than two hours.",
+        "explanation": "Mascarpone is a soft, creamy cheese with a texture close to cream cheese, although its flavor is milder."
+      },
+      {
+        "id": 10,
+        "question": "A casserole recipe calls for 1 cup of ricotta cheese. Which substitution is most suitable?",
+        "options": [
+          "1 cup cottage cheese",
+          "1 cup shredded cheddar",
+          "1 cup heavy cream",
+          "1 cup vanilla yogurt"
+        ],
+        "correct_answer": "1 cup cottage cheese",
+        "safety_tip": "Drain excess liquid from cottage cheese before adding it to prevent the casserole from becoming watery.",
+        "explanation": "Cottage cheese has a similar mild flavor and moist texture, making it a practical substitute for ricotta in casseroles."
+      }
+    ]
+  },
+  {
+    "category": "Ingredient Substitutions",
+    "skill": "Herb & Spice Alts",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A recipe calls for 1 tablespoon of fresh basil, but you only have dried basil. What should you use?",
+        "options": [
+          "1 teaspoon dried basil",
+          "1 tablespoon dried basil",
+          "1 teaspoon dried rosemary",
+          "1 tablespoon fresh parsley"
+        ],
+        "correct_answer": "1 teaspoon dried basil",
+        "safety_tip": "Dried herbs are usually more concentrated than fresh herbs, so begin with a smaller amount.",
+        "explanation": "A common substitution ratio is 1 teaspoon of dried herbs for every 1 tablespoon of fresh herbs."
+      },
+      {
+        "id": 2,
+        "question": "Which herb is the best substitute for fresh parsley when it is mainly used as a garnish?",
+        "options": [
+          "Fresh cilantro",
+          "Dried cinnamon",
+          "Fresh rosemary",
+          "Ground cloves"
+        ],
+        "correct_answer": "Fresh cilantro",
+        "safety_tip": "Taste a small leaf first because cilantro has a stronger and more distinctive flavor than parsley.",
+        "explanation": "Fresh cilantro can provide a similar leafy appearance and fresh flavor, although it will give the dish a slightly different taste."
+      },
+      {
+        "id": 3,
+        "question": "A recipe calls for thyme, but none is available. Which herb is the most suitable substitute?",
+        "options": [
+          "Oregano",
+          "Cinnamon",
+          "Dill",
+          "Mint"
+        ],
+        "correct_answer": "Oregano",
+        "safety_tip": "Add the substitute gradually because oregano can taste stronger than thyme.",
+        "explanation": "Oregano and thyme both have earthy, savory flavors and are commonly used in similar dishes."
+      },
+      {
+        "id": 4,
+        "question": "Which mixture can replace 1 teaspoon of pumpkin pie spice?",
+        "options": [
+          "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon nutmeg",
+          "1/2 teaspoon paprika and 1/2 teaspoon garlic powder",
+          "1 teaspoon dried basil",
+          "1/2 teaspoon cumin and 1/2 teaspoon oregano"
+        ],
+        "correct_answer": "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon nutmeg",
+        "safety_tip": "Measure strong spices carefully because adding too much nutmeg or ginger can overpower the recipe.",
+        "explanation": "Pumpkin pie spice is typically a blend of warm spices such as cinnamon, ginger, nutmeg, cloves, and allspice."
+      },
+      {
+        "id": 5,
+        "question": "A recipe calls for 1 teaspoon of allspice. Which mixture is an appropriate substitute?",
+        "options": [
+          "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon cloves",
+          "1 teaspoon black pepper",
+          "1/2 teaspoon garlic powder and 1/2 teaspoon onion powder",
+          "1 teaspoon dried parsley"
+        ],
+        "correct_answer": "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon cloves",
+        "safety_tip": "Use cloves sparingly because their flavor is especially strong.",
+        "explanation": "A combination of cinnamon, ginger, and cloves creates the warm, complex flavor associated with allspice."
+      },
+      {
+        "id": 6,
+        "question": "Which herb can best replace rosemary in a roasted chicken recipe?",
+        "options": [
+          "Thyme",
+          "Mint",
+          "Cilantro",
+          "Dill"
+        ],
+        "correct_answer": "Thyme",
+        "safety_tip": "Remove tough herb stems before serving, especially when using fresh woody herbs.",
+        "explanation": "Thyme has an earthy, savory flavor that pairs well with roasted chicken and can replace rosemary without making the dish taste sweet or sharply different."
+      },
+      {
+        "id": 7,
+        "question": "A recipe calls for ground cumin, but you do not have any. Which spice is the closest substitute?",
+        "options": [
+          "Ground coriander",
+          "Ground cinnamon",
+          "Ground ginger",
+          "Ground cloves"
+        ],
+        "correct_answer": "Ground coriander",
+        "safety_tip": "Start with slightly less coriander and taste the dish before adding more.",
+        "explanation": "Ground coriander has a warm, earthy flavor that can replace cumin in some savory recipes, though it is milder and slightly more citrusy."
+      },
+      {
+        "id": 8,
+        "question": "Which seasoning is the best substitute for Italian seasoning?",
+        "options": [
+          "A mixture of dried basil, oregano, and thyme",
+          "A mixture of cinnamon, ginger, and nutmeg",
+          "A mixture of cumin, turmeric, and chili powder",
+          "A mixture of dill, mint, and cloves"
+        ],
+        "correct_answer": "A mixture of dried basil, oregano, and thyme",
+        "safety_tip": "Crush dried herbs between clean fingers before adding them to help release their aroma.",
+        "explanation": "Italian seasoning commonly contains dried herbs such as basil, oregano, thyme, rosemary, and marjoram."
+      },
+      {
+        "id": 9,
+        "question": "A recipe calls for fresh garlic, but only garlic powder is available. What is an appropriate substitute for one garlic clove?",
+        "options": [
+          "1/8 teaspoon garlic powder",
+          "1 teaspoon garlic powder",
+          "1 tablespoon garlic powder",
+          "1/8 teaspoon onion salt"
+        ],
+        "correct_answer": "1/8 teaspoon garlic powder",
+        "safety_tip": "Add garlic powder carefully because its concentrated flavor can become overpowering.",
+        "explanation": "Approximately 1/8 teaspoon of garlic powder can replace one average fresh garlic clove."
+      },
+      {
+        "id": 10,
+        "question": "Which spice can substitute for smoked paprika when a smoky flavor is not essential?",
+        "options": [
+          "Regular paprika",
+          "Ground cinnamon",
+          "Ground mustard",
+          "Ground cloves"
+        ],
+        "correct_answer": "Regular paprika",
+        "safety_tip": "Check the label before adding paprika because hot paprika may add more heat than expected.",
+        "explanation": "Regular paprika provides a similar color and mild pepper flavor, although it does not provide the smokiness of smoked paprika."
+      }
+    ]
+  },
+  {
+    "category": "Ingredient Substitutions",
+    "skill": "Baking Binders & Thickeners",
+    "questions": [
+      {
+        "id": 1,
+        "question": "A sauce recipe calls for 1 tablespoon of cornstarch, but you only have all-purpose flour. What should you use?",
+        "options": [
+          "2 tablespoons all-purpose flour",
+          "1 teaspoon all-purpose flour",
+          "1 tablespoon baking powder",
+          "2 tablespoons granulated sugar"
+        ],
+        "correct_answer": "2 tablespoons all-purpose flour",
+        "safety_tip": "Flour must be cooked thoroughly to remove its raw taste and make it safe to eat.",
+        "explanation": "All-purpose flour has less thickening power than cornstarch, so about 2 tablespoons of flour are needed to replace 1 tablespoon of cornstarch."
+      },
+      {
+        "id": 2,
+        "question": "Which ingredient can replace cornstarch in an equal amount when thickening a fruit filling?",
+        "options": [
+          "Arrowroot starch",
+          "Baking soda",
+          "Powdered sugar",
+          "Cream of tartar"
+        ],
+        "correct_answer": "Arrowroot starch",
+        "safety_tip": "Mix arrowroot with a cool liquid before adding it to a hot filling to help prevent lumps.",
+        "explanation": "Arrowroot starch has thickening properties similar to cornstarch and can often replace it using a one-to-one ratio."
+      },
+      {
+        "id": 3,
+        "question": "Which mixture can replace one egg as a binder in muffins or cookies?",
+        "options": [
+          "1 tablespoon ground flaxseed mixed with 3 tablespoons water",
+          "1 tablespoon flour mixed with 1 tablespoon oil",
+          "1 teaspoon baking soda mixed with 3 tablespoons water",
+          "3 tablespoons melted butter mixed with salt"
+        ],
+        "correct_answer": "1 tablespoon ground flaxseed mixed with 3 tablespoons water",
+        "safety_tip": "Let the flaxseed mixture rest for several minutes until it becomes thick and gel-like.",
+        "explanation": "Ground flaxseed absorbs water and forms a gel that can help bind ingredients together in many baked goods."
+      },
+      {
+        "id": 4,
+        "question": "A brownie recipe needs one egg mainly for binding. Which fruit-based substitute is most appropriate?",
+        "options": [
+          "1/4 cup unsweetened applesauce",
+          "1 cup apple juice",
+          "1 tablespoon lemon zest",
+          "1/4 cup dried apple pieces"
+        ],
+        "correct_answer": "1/4 cup unsweetened applesauce",
+        "safety_tip": "Use unsweetened applesauce so you do not accidentally add too much sugar to the batter.",
+        "explanation": "About 1/4 cup of applesauce can replace one egg by adding moisture and helping hold the brownie ingredients together."
+      },
+      {
+        "id": 5,
+        "question": "Which substitute can replace one egg as a binder in banana bread?",
+        "options": [
+          "1/4 cup mashed ripe banana",
+          "1/4 cup sliced banana",
+          "1 teaspoon banana extract",
+          "1 cup banana-flavored yogurt"
+        ],
+        "correct_answer": "1/4 cup mashed ripe banana",
+        "safety_tip": "Remember that mashed banana adds sweetness and banana flavor, so it works best in compatible recipes.",
+        "explanation": "Mashed banana adds moisture and helps bind the ingredients, making it useful as an egg substitute in quick breads."
+      },
+      {
+        "id": 6,
+        "question": "Which ingredient is commonly used to help bind gluten-free bread dough?",
+        "options": [
+          "Xanthan gum",
+          "Baking cocoa",
+          "Powdered sugar",
+          "Vanilla extract"
+        ],
+        "correct_answer": "Xanthan gum",
+        "safety_tip": "Measure xanthan gum carefully because using too much can make baked goods gummy or overly dense.",
+        "explanation": "Xanthan gum helps hold gluten-free dough together and provides some of the structure normally created by gluten."
+      },
+      {
+        "id": 7,
+        "question": "A pudding recipe needs a starch thickener, but cornstarch is unavailable. Which substitute is most suitable?",
+        "options": [
+          "Potato starch",
+          "Baking powder",
+          "Gelatin dessert powder",
+          "Table salt"
+        ],
+        "correct_answer": "Potato starch",
+        "safety_tip": "Whisk potato starch into a cool liquid before heating it to reduce clumping.",
+        "explanation": "Potato starch is a strong starch-based thickener that can be used in many puddings, sauces, and fillings."
+      },
+      {
+        "id": 8,
+        "question": "Which ingredient is the best plant-based substitute for gelatin when making a firm dessert gel?",
+        "options": [
+          "Agar-agar",
+          "Cornmeal",
+          "Baking soda",
+          "Bread flour"
+        ],
+        "correct_answer": "Agar-agar",
+        "safety_tip": "Follow the package directions because agar-agar may need to boil before it activates properly.",
+        "explanation": "Agar-agar is made from seaweed and forms a firm gel, making it a common plant-based alternative to gelatin."
+      },
+      {
+        "id": 9,
+        "question": "A recipe calls for a cornstarch slurry. What is the correct way to prepare the substitute before adding it to hot liquid?",
+        "options": [
+          "Mix the starch with cold water until smooth",
+          "Sprinkle the dry starch directly into boiling liquid",
+          "Mix the starch with hot oil until browned",
+          "Combine the starch with baking soda"
+        ],
+        "correct_answer": "Mix the starch with cold water until smooth",
+        "safety_tip": "Pour the slurry into the hot liquid gradually while stirring to prevent lumps and splashing.",
+        "explanation": "Starch disperses more evenly in cold water, creating a smooth slurry that thickens when heated."
+      },
+      {
+        "id": 10,
+        "question": "Which ingredient can replace bread crumbs as a binder in a savory baked loaf?",
+        "options": [
+          "Finely ground rolled oats",
+          "Granulated sugar",
+          "Cornstarch mixed with oil",
+          "Baking powder"
+        ],
+        "correct_answer": "Finely ground rolled oats",
+        "safety_tip": "Check that the oats are certified gluten-free when cooking for someone with a gluten allergy or celiac disease.",
+        "explanation": "Finely ground oats absorb moisture and help hold the loaf together in a way similar to bread crumbs."
+      }
+    ]
+  }
+]

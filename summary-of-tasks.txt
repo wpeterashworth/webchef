@@ -16,3 +16,16 @@ Installed the Supabase CLI as a pinned dev dependency (supabase ^2.107.0) via
 npm. Created root package.json + package-lock.json (committed for reproducible
 team installs). Run the CLI with `npx supabase`. node_modules already gitignored.
 Next: supabase init + login + link + db push (needs project credentials).
+
+2026-06-30 — Josh
+Migrated the frontend from a static Svelte entry flow to SvelteKit structure.
+Moved component files into client/src/lib/components, global styles into
+client/src/app.css, and image assets into client/static/images (favicon moved to
+client/static/favicon.ico). Added SvelteKit config and app shell files:
+client/svelte.config.js, client/vite.config.js, and client/src/app.html.
+Created client/src/routes/+layout.svelte and client/src/routes/+page.svelte to
+replace app mounting, and moved lesson.svelte to
+client/src/routes/lesson/+page.svelte. Removed legacy entry files
+(client/index.html, client/app.svelte, client/scripts/main.js).
+Installed @sveltejs/vite-plugin-svelte and verified migration with a successful
+`pnpm run build` in client.
