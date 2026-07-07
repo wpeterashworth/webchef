@@ -1,7 +1,15 @@
-  [
+[
   {
+    "lessonId": "lesson-ingredient-substitutions-dairy-swaps-001",
     "category": "Ingredient Substitutions",
     "skill": "Dairy Swaps",
+    "title": "Dairy Swaps",
+    "learningGoal": "Learn the core ideas and safe practices for Dairy Swaps.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Dairy Swaps Basics",
+      "body": "This lesson introduces Dairy Swaps. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -14,7 +22,8 @@
         ],
         "correct_answer": "1 cup milk mixed with 1 tablespoon lemon juice",
         "safety_tip": "Let the milk and lemon juice sit for about 5 minutes before using it so the mixture can thicken slightly.",
-        "explanation": "The acid in the lemon juice gives regular milk the acidity needed to act similarly to buttermilk in pancakes and other baked goods."
+        "explanation": "The acid in the lemon juice gives regular milk the acidity needed to act similarly to buttermilk in pancakes and other baked goods.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -27,7 +36,8 @@
         ],
         "correct_answer": "1/2 cup evaporated milk mixed with 1/2 cup water",
         "safety_tip": "Check the can carefully because evaporated milk and sweetened condensed milk are not interchangeable.",
-        "explanation": "Evaporated milk is concentrated, so combining equal parts evaporated milk and water creates a mixture similar to regular milk."
+        "explanation": "Evaporated milk is concentrated, so combining equal parts evaporated milk and water creates a mixture similar to regular milk.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -40,7 +50,8 @@
         ],
         "correct_answer": "Plain Greek yogurt",
         "safety_tip": "Use plain, unsweetened yogurt so the flavor of the dish does not become sweet.",
-        "explanation": "Plain Greek yogurt has a similar thickness and tangy flavor, making it a good substitute for sour cream."
+        "explanation": "Plain Greek yogurt has a similar thickness and tangy flavor, making it a good substitute for sour cream.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -53,7 +64,8 @@
         ],
         "correct_answer": "3/4 cup whole milk mixed with 1/4 cup heavy cream",
         "safety_tip": "Add dairy gradually to a hot sauce and avoid rapid boiling to reduce the chance of curdling.",
-        "explanation": "Combining whole milk and heavy cream creates a fat level and texture similar to half-and-half."
+        "explanation": "Combining whole milk and heavy cream creates a fat level and texture similar to half-and-half.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -66,7 +78,8 @@
         ],
         "correct_answer": "3/4 cup milk mixed with 1/4 cup melted butter",
         "safety_tip": "Allow the melted butter to cool slightly before mixing it with cold milk to prevent splattering or separation.",
-        "explanation": "The milk provides liquid while the butter adds fat, creating a useful heavy cream substitute for cooking and baking."
+        "explanation": "The milk provides liquid while the butter adds fat, creating a useful heavy cream substitute for cooking and baking.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -79,7 +92,8 @@
         ],
         "correct_answer": "1 cup sour cream",
         "safety_tip": "Use unflavored sour cream so you do not accidentally change the sweetness or flavor of the muffins.",
-        "explanation": "Sour cream has a similar thickness, moisture level, and acidity, so it can usually replace plain yogurt in baked goods."
+        "explanation": "Sour cream has a similar thickness, moisture level, and acidity, so it can usually replace plain yogurt in baked goods.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -92,7 +106,8 @@
         ],
         "correct_answer": "1 cup skim milk mixed with about 2 teaspoons melted butter",
         "safety_tip": "Mix the melted butter into the milk slowly so it combines as evenly as possible.",
-        "explanation": "Adding a small amount of butter increases the fat content of skim milk, making it closer to whole milk."
+        "explanation": "Adding a small amount of butter increases the fat content of skim milk, making it closer to whole milk.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -105,7 +120,8 @@
         ],
         "correct_answer": "Unsweetened plain oat milk",
         "safety_tip": "Always choose an unsweetened and unflavored dairy-free milk for savory recipes.",
-        "explanation": "Unsweetened plain oat milk has a mild flavor and creamy texture that works well in mashed potatoes."
+        "explanation": "Unsweetened plain oat milk has a mild flavor and creamy texture that works well in mashed potatoes.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -118,7 +134,8 @@
         ],
         "correct_answer": "Mascarpone cheese",
         "safety_tip": "Keep soft cheeses refrigerated and do not leave them at room temperature for more than two hours.",
-        "explanation": "Mascarpone is a soft, creamy cheese with a texture close to cream cheese, although its flavor is milder."
+        "explanation": "Mascarpone is a soft, creamy cheese with a texture close to cream cheese, although its flavor is milder.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -131,13 +148,29 @@
         ],
         "correct_answer": "1 cup cottage cheese",
         "safety_tip": "Drain excess liquid from cottage cheese before adding it to prevent the casserole from becoming watery.",
-        "explanation": "Cottage cheese has a similar mild flavor and moist texture, making it a practical substitute for ricotta in casseroles."
+        "explanation": "Cottage cheese has a similar mild flavor and moist texture, making it a practical substitute for ricotta in casseroles.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Dairy Swaps.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-ingredient-substitutions-herb-and-spice-alts-002",
     "category": "Ingredient Substitutions",
     "skill": "Herb & Spice Alts",
+    "title": "Herb & Spice Alts",
+    "learningGoal": "Learn the core ideas and safe practices for Herb & Spice Alts.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Herb & Spice Alts Basics",
+      "body": "This lesson introduces Herb & Spice Alts. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -150,7 +183,8 @@
         ],
         "correct_answer": "1 teaspoon dried basil",
         "safety_tip": "Dried herbs are usually more concentrated than fresh herbs, so begin with a smaller amount.",
-        "explanation": "A common substitution ratio is 1 teaspoon of dried herbs for every 1 tablespoon of fresh herbs."
+        "explanation": "A common substitution ratio is 1 teaspoon of dried herbs for every 1 tablespoon of fresh herbs.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -163,7 +197,8 @@
         ],
         "correct_answer": "Fresh cilantro",
         "safety_tip": "Taste a small leaf first because cilantro has a stronger and more distinctive flavor than parsley.",
-        "explanation": "Fresh cilantro can provide a similar leafy appearance and fresh flavor, although it will give the dish a slightly different taste."
+        "explanation": "Fresh cilantro can provide a similar leafy appearance and fresh flavor, although it will give the dish a slightly different taste.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -176,7 +211,8 @@
         ],
         "correct_answer": "Oregano",
         "safety_tip": "Add the substitute gradually because oregano can taste stronger than thyme.",
-        "explanation": "Oregano and thyme both have earthy, savory flavors and are commonly used in similar dishes."
+        "explanation": "Oregano and thyme both have earthy, savory flavors and are commonly used in similar dishes.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -189,7 +225,8 @@
         ],
         "correct_answer": "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon nutmeg",
         "safety_tip": "Measure strong spices carefully because adding too much nutmeg or ginger can overpower the recipe.",
-        "explanation": "Pumpkin pie spice is typically a blend of warm spices such as cinnamon, ginger, nutmeg, cloves, and allspice."
+        "explanation": "Pumpkin pie spice is typically a blend of warm spices such as cinnamon, ginger, nutmeg, cloves, and allspice.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -202,7 +239,8 @@
         ],
         "correct_answer": "1/2 teaspoon cinnamon, 1/4 teaspoon ginger, and 1/4 teaspoon cloves",
         "safety_tip": "Use cloves sparingly because their flavor is especially strong.",
-        "explanation": "A combination of cinnamon, ginger, and cloves creates the warm, complex flavor associated with allspice."
+        "explanation": "A combination of cinnamon, ginger, and cloves creates the warm, complex flavor associated with allspice.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -215,7 +253,8 @@
         ],
         "correct_answer": "Thyme",
         "safety_tip": "Remove tough herb stems before serving, especially when using fresh woody herbs.",
-        "explanation": "Thyme has an earthy, savory flavor that pairs well with roasted chicken and can replace rosemary without making the dish taste sweet or sharply different."
+        "explanation": "Thyme has an earthy, savory flavor that pairs well with roasted chicken and can replace rosemary without making the dish taste sweet or sharply different.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -228,7 +267,8 @@
         ],
         "correct_answer": "Ground coriander",
         "safety_tip": "Start with slightly less coriander and taste the dish before adding more.",
-        "explanation": "Ground coriander has a warm, earthy flavor that can replace cumin in some savory recipes, though it is milder and slightly more citrusy."
+        "explanation": "Ground coriander has a warm, earthy flavor that can replace cumin in some savory recipes, though it is milder and slightly more citrusy.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -241,7 +281,8 @@
         ],
         "correct_answer": "A mixture of dried basil, oregano, and thyme",
         "safety_tip": "Crush dried herbs between clean fingers before adding them to help release their aroma.",
-        "explanation": "Italian seasoning commonly contains dried herbs such as basil, oregano, thyme, rosemary, and marjoram."
+        "explanation": "Italian seasoning commonly contains dried herbs such as basil, oregano, thyme, rosemary, and marjoram.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -254,7 +295,8 @@
         ],
         "correct_answer": "1/8 teaspoon garlic powder",
         "safety_tip": "Add garlic powder carefully because its concentrated flavor can become overpowering.",
-        "explanation": "Approximately 1/8 teaspoon of garlic powder can replace one average fresh garlic clove."
+        "explanation": "Approximately 1/8 teaspoon of garlic powder can replace one average fresh garlic clove.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -267,13 +309,29 @@
         ],
         "correct_answer": "Regular paprika",
         "safety_tip": "Check the label before adding paprika because hot paprika may add more heat than expected.",
-        "explanation": "Regular paprika provides a similar color and mild pepper flavor, although it does not provide the smokiness of smoked paprika."
+        "explanation": "Regular paprika provides a similar color and mild pepper flavor, although it does not provide the smokiness of smoked paprika.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Herb & Spice Alts.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-ingredient-substitutions-baking-binders-and-thickeners-003",
     "category": "Ingredient Substitutions",
     "skill": "Baking Binders & Thickeners",
+    "title": "Baking Binders & Thickeners",
+    "learningGoal": "Learn the core ideas and safe practices for Baking Binders & Thickeners.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Baking Binders & Thickeners Basics",
+      "body": "This lesson introduces Baking Binders & Thickeners. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -286,7 +344,8 @@
         ],
         "correct_answer": "2 tablespoons all-purpose flour",
         "safety_tip": "Flour must be cooked thoroughly to remove its raw taste and make it safe to eat.",
-        "explanation": "All-purpose flour has less thickening power than cornstarch, so about 2 tablespoons of flour are needed to replace 1 tablespoon of cornstarch."
+        "explanation": "All-purpose flour has less thickening power than cornstarch, so about 2 tablespoons of flour are needed to replace 1 tablespoon of cornstarch.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -299,7 +358,8 @@
         ],
         "correct_answer": "Arrowroot starch",
         "safety_tip": "Mix arrowroot with a cool liquid before adding it to a hot filling to help prevent lumps.",
-        "explanation": "Arrowroot starch has thickening properties similar to cornstarch and can often replace it using a one-to-one ratio."
+        "explanation": "Arrowroot starch has thickening properties similar to cornstarch and can often replace it using a one-to-one ratio.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -312,7 +372,8 @@
         ],
         "correct_answer": "1 tablespoon ground flaxseed mixed with 3 tablespoons water",
         "safety_tip": "Let the flaxseed mixture rest for several minutes until it becomes thick and gel-like.",
-        "explanation": "Ground flaxseed absorbs water and forms a gel that can help bind ingredients together in many baked goods."
+        "explanation": "Ground flaxseed absorbs water and forms a gel that can help bind ingredients together in many baked goods.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -325,7 +386,8 @@
         ],
         "correct_answer": "1/4 cup unsweetened applesauce",
         "safety_tip": "Use unsweetened applesauce so you do not accidentally add too much sugar to the batter.",
-        "explanation": "About 1/4 cup of applesauce can replace one egg by adding moisture and helping hold the brownie ingredients together."
+        "explanation": "About 1/4 cup of applesauce can replace one egg by adding moisture and helping hold the brownie ingredients together.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -338,7 +400,8 @@
         ],
         "correct_answer": "1/4 cup mashed ripe banana",
         "safety_tip": "Remember that mashed banana adds sweetness and banana flavor, so it works best in compatible recipes.",
-        "explanation": "Mashed banana adds moisture and helps bind the ingredients, making it useful as an egg substitute in quick breads."
+        "explanation": "Mashed banana adds moisture and helps bind the ingredients, making it useful as an egg substitute in quick breads.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -351,7 +414,8 @@
         ],
         "correct_answer": "Xanthan gum",
         "safety_tip": "Measure xanthan gum carefully because using too much can make baked goods gummy or overly dense.",
-        "explanation": "Xanthan gum helps hold gluten-free dough together and provides some of the structure normally created by gluten."
+        "explanation": "Xanthan gum helps hold gluten-free dough together and provides some of the structure normally created by gluten.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -364,7 +428,8 @@
         ],
         "correct_answer": "Potato starch",
         "safety_tip": "Whisk potato starch into a cool liquid before heating it to reduce clumping.",
-        "explanation": "Potato starch is a strong starch-based thickener that can be used in many puddings, sauces, and fillings."
+        "explanation": "Potato starch is a strong starch-based thickener that can be used in many puddings, sauces, and fillings.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -377,7 +442,8 @@
         ],
         "correct_answer": "Agar-agar",
         "safety_tip": "Follow the package directions because agar-agar may need to boil before it activates properly.",
-        "explanation": "Agar-agar is made from seaweed and forms a firm gel, making it a common plant-based alternative to gelatin."
+        "explanation": "Agar-agar is made from seaweed and forms a firm gel, making it a common plant-based alternative to gelatin.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -390,7 +456,8 @@
         ],
         "correct_answer": "Mix the starch with cold water until smooth",
         "safety_tip": "Pour the slurry into the hot liquid gradually while stirring to prevent lumps and splashing.",
-        "explanation": "Starch disperses more evenly in cold water, creating a smooth slurry that thickens when heated."
+        "explanation": "Starch disperses more evenly in cold water, creating a smooth slurry that thickens when heated.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -403,8 +470,16 @@
         ],
         "correct_answer": "Finely ground rolled oats",
         "safety_tip": "Check that the oats are certified gluten-free when cooking for someone with a gluten allergy or celiac disease.",
-        "explanation": "Finely ground oats absorb moisture and help hold the loaf together in a way similar to bread crumbs."
+        "explanation": "Finely ground oats absorb moisture and help hold the loaf together in a way similar to bread crumbs.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Baking Binders & Thickeners.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   }
 ]

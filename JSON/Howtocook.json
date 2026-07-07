@@ -1,7 +1,15 @@
 [
- {
+  {
+    "lessonId": "lesson-how-to-cook-sauteing-and-pan-searing-001",
     "category": "How to Cook",
     "skill": "Sautéing & Pan-Searing",
+    "title": "Sautéing & Pan-Searing",
+    "learningGoal": "Learn the core ideas and safe practices for Sautéing & Pan-Searing.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Sautéing & Pan-Searing Basics",
+      "body": "This lesson introduces Sautéing & Pan-Searing. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -14,7 +22,8 @@
         ],
         "correct_answer": "Sautéing usually cooks smaller pieces quickly, while pan-searing browns the surface of larger pieces",
         "safety_tip": "Use long-handled utensils and keep the pan handle turned away from the edge of the stove.",
-        "explanation": "Sautéing typically uses relatively small pieces of food that cook quickly, while pan-searing focuses on creating a browned crust on larger portions."
+        "explanation": "Sautéing typically uses relatively small pieces of food that cook quickly, while pan-searing focuses on creating a browned crust on larger portions.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -27,7 +36,8 @@
         ],
         "correct_answer": "A preheated skillet helps the vegetables cook quickly and brown instead of slowly steaming",
         "safety_tip": "Do not leave an empty pan unattended because it can overheat quickly.",
-        "explanation": "Starting with a properly heated skillet encourages browning and helps moisture evaporate instead of collecting in the pan."
+        "explanation": "Starting with a properly heated skillet encourages browning and helps moisture evaporate instead of collecting in the pan.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -40,7 +50,8 @@
         ],
         "correct_answer": "Canola oil",
         "safety_tip": "If oil begins smoking heavily, reduce the heat and carefully move the pan away from the burner.",
-        "explanation": "Canola oil has a relatively high smoke point and a neutral flavor, making it suitable for medium-high-heat cooking."
+        "explanation": "Canola oil has a relatively high smoke point and a neutral flavor, making it suitable for medium-high-heat cooking.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -53,7 +64,8 @@
         ],
         "correct_answer": "Removing surface moisture helps the meat brown more effectively",
         "safety_tip": "Discard paper towels that touched raw meat and wash your hands immediately afterward.",
-        "explanation": "Surface moisture must evaporate before browning can begin, so drying the meat helps it develop a better crust."
+        "explanation": "Surface moisture must evaporate before browning can begin, so drying the meat helps it develop a better crust.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -66,7 +78,8 @@
         ],
         "correct_answer": "The food releases moisture and is more likely to steam than brown",
         "safety_tip": "Cook in batches when necessary so food can be spread in a single layer.",
-        "explanation": "Crowding traps moisture and lowers the pan temperature, which interferes with browning."
+        "explanation": "Crowding traps moisture and lowers the pan temperature, which interferes with browning.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -79,7 +92,8 @@
         ],
         "correct_answer": "After the first side has browned and releases from the pan fairly easily",
         "safety_tip": "Use tongs rather than a fork to reduce splattering and avoid puncturing the meat repeatedly.",
-        "explanation": "Once a crust forms, the food often releases more easily. Turning it too early can tear the surface and reduce browning."
+        "explanation": "Once a crust forms, the food often releases more easily. Turning it too early can tear the surface and reduce browning.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -92,7 +106,8 @@
         ],
         "correct_answer": "Turn off the heat and cover the skillet with a metal lid",
         "safety_tip": "Never use water on a grease fire because it can spread burning oil.",
-        "explanation": "Turning off the heat and covering the pan removes heat and oxygen, which can extinguish a small grease fire."
+        "explanation": "Turning off the heat and covering the pan removes heat and oxygen, which can extinguish a small grease fire.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -105,7 +120,8 @@
         ],
         "correct_answer": "Similar sizes help the pieces cook at approximately the same rate",
         "safety_tip": "Use a stable cutting board and keep your fingertips curled away from the knife blade.",
-        "explanation": "Uniform pieces are more likely to finish cooking together, reducing the chance of some pieces being raw while others overcook."
+        "explanation": "Uniform pieces are more likely to finish cooking together, reducing the chance of some pieces being raw while others overcook.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -118,7 +134,8 @@
         ],
         "correct_answer": "Adding liquid to the hot pan to loosen browned bits from the bottom",
         "safety_tip": "Add liquid carefully because a hot pan may create steam and splattering.",
-        "explanation": "Deglazing dissolves flavorful browned bits, called fond, so they can be incorporated into a sauce."
+        "explanation": "Deglazing dissolves flavorful browned bits, called fond, so they can be incorporated into a sauce.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -131,13 +148,29 @@
         ],
         "correct_answer": "Measure the internal temperature with a food thermometer",
         "safety_tip": "Chicken should reach an internal temperature of 165°F in its thickest part.",
-        "explanation": "A thermometer checks whether the center has reached a safe temperature, while surface color alone cannot confirm doneness."
+        "explanation": "A thermometer checks whether the center has reached a safe temperature, while surface color alone cannot confirm doneness.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Sautéing & Pan-Searing.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-how-to-cook-boiling-simmering-and-poaching-002",
     "category": "How to Cook",
     "skill": "Boiling, Simmering, & Poaching",
+    "title": "Boiling, Simmering, & Poaching",
+    "learningGoal": "Learn the core ideas and safe practices for Boiling, Simmering, & Poaching.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Boiling, Simmering, & Poaching Basics",
+      "body": "This lesson introduces Boiling, Simmering, & Poaching. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -150,9 +183,10 @@
         ],
         "correct_answer": "Large bubbles continuously rise and break across the liquid's surface",
         "safety_tip": "Keep pot handles turned inward and avoid leaning directly over boiling liquid.",
-        "explanation": "At a full boil, vigorous bubbles form throughout the liquid and continuously break at the surface."
+        "explanation": "At a full boil, vigorous bubbles form throughout the liquid and continuously break at the surface.",
+        "correct_index": 0
       },
-        {
+      {
         "id": 2,
         "question": "How does simmering differ from boiling?",
         "options": [
@@ -163,7 +197,8 @@
         ],
         "correct_answer": "Simmering uses gentler heat and produces smaller, less vigorous bubbles",
         "safety_tip": "Lower the burner after liquid reaches a boil if the recipe calls for a simmer.",
-        "explanation": "A simmer is gentler than a full boil and is useful for foods that need steady cooking without aggressive movement."
+        "explanation": "A simmer is gentler than a full boil and is useful for foods that need steady cooking without aggressive movement.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -176,7 +211,8 @@
         ],
         "correct_answer": "Poaching",
         "safety_tip": "Keep the liquid hot but not rapidly bubbling so delicate foods do not break apart.",
-        "explanation": "Poaching cooks food in gently heated liquid, usually below the temperature of a simmer."
+        "explanation": "Poaching cooks food in gently heated liquid, usually below the temperature of a simmer.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -189,7 +225,8 @@
         ],
         "correct_answer": "Eggs",
         "safety_tip": "Lower eggs gently into the liquid to prevent splashing hot water.",
-        "explanation": "Poached eggs are cooked gently in hot water without their shells, allowing the whites to set while the yolks remain tender."
+        "explanation": "Poached eggs are cooked gently in hot water without their shells, allowing the whites to set while the yolks remain tender.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -202,7 +239,8 @@
         ],
         "correct_answer": "Gentle simmering develops flavor while reducing the chance of toughening or breaking ingredients apart",
         "safety_tip": "Stir occasionally and scrape the bottom gently to prevent ingredients from sticking.",
-        "explanation": "A simmer cooks food steadily and gently, helping flavors combine while protecting delicate ingredients."
+        "explanation": "A simmer cooks food steadily and gently, helping flavors combine while protecting delicate ingredients.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -215,7 +253,8 @@
         ],
         "correct_answer": "It gives the pasta room to move and helps prevent excessive sticking",
         "safety_tip": "Lower pasta into boiling water carefully to avoid splashes.",
-        "explanation": "A generous amount of water allows pasta pieces to circulate and helps dilute released starch."
+        "explanation": "A generous amount of water allows pasta pieces to circulate and helps dilute released starch.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -228,7 +267,8 @@
         ],
         "correct_answer": "Stir it soon after adding it to help prevent sticking",
         "safety_tip": "Use a long spoon and stir away from your body to reduce the risk of splashing.",
-        "explanation": "Pasta is most likely to stick together shortly after entering the water, so early stirring helps separate the pieces."
+        "explanation": "Pasta is most likely to stick together shortly after entering the water, so early stirring helps separate the pieces.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -241,7 +281,8 @@
         ],
         "correct_answer": "Use oven mitts, pour slowly into a stable colander, and direct steam away from your face",
         "safety_tip": "Hot steam can burn skin even without direct contact with the water.",
-        "explanation": "Protective mitts, a stable colander, and controlled pouring reduce the risk of spills, steam burns, and dropped cookware."
+        "explanation": "Protective mitts, a stable colander, and controlled pouring reduce the risk of spills, steam burns, and dropped cookware.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -254,7 +295,8 @@
         ],
         "correct_answer": "Reduce or turn off the heat and carefully move the pot if necessary",
         "safety_tip": "Do not grab a hot pot without dry oven mitts or potholders.",
-        "explanation": "Reducing the heat slows the bubbling and helps stop the liquid from spilling over the sides."
+        "explanation": "Reducing the heat slows the bubbling and helps stop the liquid from spilling over the sides.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -267,13 +309,29 @@
         ],
         "correct_answer": "Rapid bubbling can damage delicate food and cook it unevenly",
         "safety_tip": "Adjust the burner as needed to keep the liquid calm, with little or no visible bubbling.",
-        "explanation": "Poaching relies on gentle heat. Vigorous boiling can break delicate foods apart and make proteins tough."
+        "explanation": "Poaching relies on gentle heat. Vigorous boiling can break delicate foods apart and make proteins tough.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Boiling, Simmering, & Poaching.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-how-to-cook-oven-roasting-vs-baking-003",
     "category": "How to Cook",
     "skill": "Oven Roasting vs. Baking",
+    "title": "Oven Roasting vs. Baking",
+    "learningGoal": "Learn the core ideas and safe practices for Oven Roasting vs. Baking.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Oven Roasting vs. Baking Basics",
+      "body": "This lesson introduces Oven Roasting vs. Baking. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -286,7 +344,8 @@
         ],
         "correct_answer": "Roasting is commonly used for meats and vegetables, while baking is commonly used for breads, pastries, and casseroles",
         "safety_tip": "Use oven mitts whenever placing food into or removing food from a hot oven.",
-        "explanation": "Both methods use dry oven heat, but roasting is generally associated with browning meats and vegetables, while baking is associated with structured mixtures and doughs."
+        "explanation": "Both methods use dry oven heat, but roasting is generally associated with browning meats and vegetables, while baking is associated with structured mixtures and doughs.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -299,7 +358,8 @@
         ],
         "correct_answer": "A single layer allows hot air to circulate and encourages browning",
         "safety_tip": "Use a rimmed baking sheet so oil and vegetables are less likely to slide into the oven.",
-        "explanation": "Spacing reduces trapped moisture and exposes more surface area to dry heat, which promotes caramelization and browning."
+        "explanation": "Spacing reduces trapped moisture and exposes more surface area to dry heat, which promotes caramelization and browning.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -312,7 +372,8 @@
         ],
         "correct_answer": "Baking depends on specific ingredient ratios for structure and chemical reactions",
         "safety_tip": "Use dry measuring cups for dry ingredients and liquid measuring cups for liquids.",
-        "explanation": "Flour, liquid, fat, sugar, and leavening agents must remain in workable proportions for baked goods to rise and set properly."
+        "explanation": "Flour, liquid, fat, sugar, and leavening agents must remain in workable proportions for baked goods to rise and set properly.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -325,7 +386,8 @@
         ],
         "correct_answer": "The correct starting temperature helps the cookies spread, rise, and set as intended",
         "safety_tip": "Confirm that the oven is empty before preheating it.",
-        "explanation": "Placing cookies into a fully heated oven allows the ingredients to react according to the recipe's intended timing."
+        "explanation": "Placing cookies into a fully heated oven allows the ingredients to react according to the recipe's intended timing.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -338,7 +400,8 @@
         ],
         "correct_answer": "Roasting",
         "safety_tip": "Cut the potato pieces into similar sizes so they cook evenly.",
-        "explanation": "Roasting uses dry heat to cook the potatoes while browning and crisping their surfaces."
+        "explanation": "Roasting uses dry heat to cook the potatoes while browning and crisping their surfaces.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -351,7 +414,8 @@
         ],
         "correct_answer": "Oil promotes browning and helps seasonings adhere",
         "safety_tip": "Use only enough oil to coat the vegetables lightly because excess oil can drip or smoke.",
-        "explanation": "A thin coating of oil improves heat transfer, encourages browning, and helps herbs and spices stick to the food."
+        "explanation": "A thin coating of oil improves heat transfer, encourages browning, and helps herbs and spices stick to the food.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -364,7 +428,8 @@
         ],
         "correct_answer": "The center may sink or remain gummy",
         "safety_tip": "Use a toothpick or other recipe-recommended doneness test without touching the hot pan.",
-        "explanation": "The cake's structure needs enough heat and time to set. Removing it too early may cause the unsupported center to collapse."
+        "explanation": "The cake's structure needs enough heat and time to set. Removing it too early may cause the unsupported center to collapse.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -377,7 +442,8 @@
         ],
         "correct_answer": "Check the internal temperature in the thickest part with a food thermometer",
         "safety_tip": "Poultry should reach an internal temperature of 165°F without the thermometer touching bone.",
-        "explanation": "Browning does not prove that the center is safely cooked, so internal temperature is the most dependable test."
+        "explanation": "Browning does not prove that the center is safely cooked, so internal temperature is the most dependable test.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -390,7 +456,8 @@
         ],
         "correct_answer": "Opening the door releases heat and may cause uneven baking or collapse",
         "safety_tip": "Use the oven light and window to check progress when possible.",
-        "explanation": "Frequent temperature drops can interrupt rising and setting, especially during the early stages of baking."
+        "explanation": "Frequent temperature drops can interrupt rising and setting, especially during the early stages of baking.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -403,13 +470,29 @@
         ],
         "correct_answer": "Turning exposes different surfaces to the hot pan and promotes more even browning",
         "safety_tip": "Pull the oven rack out carefully and use a heat-resistant spatula while wearing oven mitts.",
-        "explanation": "The surfaces touching the hot pan usually brown fastest, so turning the pieces helps multiple sides develop color."
+        "explanation": "The surfaces touching the hot pan usually brown fastest, so turning the pieces helps multiple sides develop color.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Oven Roasting vs. Baking.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-utensil-handling-essential-knife-work-004",
     "category": "Utensil Handling",
     "skill": "Essential Knife Work",
+    "title": "Essential Knife Work",
+    "learningGoal": "Learn the core ideas and safe practices for Essential Knife Work.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Essential Knife Work Basics",
+      "body": "This lesson introduces Essential Knife Work. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -422,7 +505,8 @@
         ],
         "correct_answer": "Curl your fingertips under and guide the knife with your knuckles",
         "safety_tip": "Keep your fingertips tucked behind your knuckles so the side of the blade can move safely past them.",
-        "explanation": "The claw grip protects the fingertips while allowing the knuckles to guide the knife during controlled cuts."
+        "explanation": "The claw grip protects the fingertips while allowing the knuckles to guide the knife during controlled cuts.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -435,7 +519,8 @@
         ],
         "correct_answer": "A damp kitchen towel",
         "safety_tip": "Make sure the towel lies flat so the cutting board remains level.",
-        "explanation": "A damp towel creates friction between the counter and cutting board, helping prevent unexpected movement."
+        "explanation": "A damp towel creates friction between the counter and cutting board, helping prevent unexpected movement.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -448,7 +533,8 @@
         ],
         "correct_answer": "Chef's knife",
         "safety_tip": "Choose a knife that feels balanced and comfortable in your hand.",
-        "explanation": "A chef's knife has a broad, versatile blade designed for slicing, chopping, and mincing many common ingredients."
+        "explanation": "A chef's knife has a broad, versatile blade designed for slicing, chopping, and mincing many common ingredients.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -461,7 +547,8 @@
         ],
         "correct_answer": "A sharp knife requires less force and is less likely to slip",
         "safety_tip": "Even a sharp knife can cause injury, so always use controlled movements and proper hand placement.",
-        "explanation": "Dull knives require extra pressure, which increases the chance that the blade will slip unexpectedly."
+        "explanation": "Dull knives require extra pressure, which increases the chance that the blade will slip unexpectedly.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -474,7 +561,8 @@
         ],
         "correct_answer": "Hold it at your side with the blade pointed downward",
         "safety_tip": "Announce that you are carrying a knife when moving through a busy kitchen.",
-        "explanation": "Keeping the blade pointed downward and close to your side reduces the chance of accidentally cutting someone."
+        "explanation": "Keeping the blade pointed downward and close to your side reduces the chance of accidentally cutting someone.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -487,7 +575,8 @@
         ],
         "correct_answer": "Step back and let it fall",
         "safety_tip": "Never attempt to catch a falling knife because the blade may rotate unpredictably.",
-        "explanation": "Stepping away prevents hand and foot injuries. A falling knife is safer to retrieve only after it has landed."
+        "explanation": "Stepping away prevents hand and foot injuries. A falling knife is safer to retrieve only after it has landed.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -500,7 +589,8 @@
         ],
         "correct_answer": "Use a controlled rocking motion with a chef's knife",
         "safety_tip": "Keep the tip of the knife near the cutting board and move the handle in a controlled arc.",
-        "explanation": "A rocking motion allows the curved blade of a chef's knife to repeatedly pass through herbs efficiently and evenly."
+        "explanation": "A rocking motion allows the curved blade of a chef's knife to repeatedly pass through herbs efficiently and evenly.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -513,7 +603,8 @@
         ],
         "correct_answer": "Similar pieces cook at approximately the same rate",
         "safety_tip": "Create a flat side on round vegetables before making additional cuts so they do not roll.",
-        "explanation": "Uniform pieces are more likely to finish cooking together, reducing undercooked and overcooked portions."
+        "explanation": "Uniform pieces are more likely to finish cooking together, reducing undercooked and overcooked portions.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -526,7 +617,8 @@
         ],
         "correct_answer": "Cut a flat surface so the ingredient rests securely",
         "safety_tip": "Stabilize round ingredients before making smaller or more precise cuts.",
-        "explanation": "A flat surface prevents the ingredient from rolling while you cut it."
+        "explanation": "A flat surface prevents the ingredient from rolling while you cut it.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -539,13 +631,29 @@
         ],
         "correct_answer": "Wash it individually with the blade visible and pointed away from you",
         "safety_tip": "Never leave sharp knives submerged where someone may reach into the water without seeing them.",
-        "explanation": "Keeping the knife visible and washing it separately reduces the chance of accidental contact with the blade."
+        "explanation": "Keeping the knife visible and washing it separately reduces the chance of accidental contact with the blade.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Essential Knife Work.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-utensil-handling-pan-and-surface-matching-005",
     "category": "Utensil Handling",
     "skill": "Pan & Surface Matching",
+    "title": "Pan & Surface Matching",
+    "learningGoal": "Learn the core ideas and safe practices for Pan & Surface Matching.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Pan & Surface Matching Basics",
+      "body": "This lesson introduces Pan & Surface Matching. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -558,7 +666,8 @@
         ],
         "correct_answer": "Cast-iron skillet",
         "safety_tip": "Cast-iron handles become extremely hot, so use a dry oven mitt or handle cover.",
-        "explanation": "Cast iron retains heat well and provides a hot, stable surface for strong browning."
+        "explanation": "Cast iron retains heat well and provides a hot, stable surface for strong browning.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -571,7 +680,8 @@
         ],
         "correct_answer": "Nonstick skillet",
         "safety_tip": "Avoid using metal utensils that can scratch a nonstick coating.",
-        "explanation": "A nonstick surface allows delicate foods such as eggs to release more easily with a small amount of fat."
+        "explanation": "A nonstick surface allows delicate foods such as eggs to release more easily with a small amount of fat.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -584,7 +694,8 @@
         ],
         "correct_answer": "Stainless-steel saucepan",
         "safety_tip": "Do not cook with pans that have loose, peeling, or badly damaged coatings.",
-        "explanation": "Stainless steel is nonreactive and can hold acidic foods without noticeably affecting their flavor."
+        "explanation": "Stainless steel is nonreactive and can hold acidic foods without noticeably affecting their flavor.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -597,7 +708,8 @@
         ],
         "correct_answer": "A large stockpot",
         "safety_tip": "Do not overfill the pot, and turn its handles inward to reduce spill risks.",
-        "explanation": "A stockpot provides enough room for water and pasta to circulate while reducing the chance of boiling over."
+        "explanation": "A stockpot provides enough room for water and pasta to circulate while reducing the chance of boiling over.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -610,7 +722,8 @@
         ],
         "correct_answer": "A rimmed metal sheet pan",
         "safety_tip": "Use a rimmed pan so oil and food are less likely to slide into the oven.",
-        "explanation": "A metal sheet pan exposes vegetables to dry heat and gives them space to brown, while the rim contains oil and juices."
+        "explanation": "A metal sheet pan exposes vegetables to dry heat and gives them space to brown, while the rim contains oil and juices.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -623,7 +736,8 @@
         ],
         "correct_answer": "It distributes heat more evenly and reduces scorching",
         "safety_tip": "Even with a heavy pan, stir thick mixtures regularly and control the heat.",
-        "explanation": "A thick base moderates direct burner heat, helping prevent concentrated hot spots that can burn delicate mixtures."
+        "explanation": "A thick base moderates direct burner heat, helping prevent concentrated hot spots that can burn delicate mixtures.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -636,7 +750,8 @@
         ],
         "correct_answer": "A washable, nonporous cutting board",
         "safety_tip": "Wash the board, knife, hands, and nearby surfaces thoroughly after handling raw chicken.",
-        "explanation": "A nonporous cutting board is easier to clean and sanitize after contact with raw poultry."
+        "explanation": "A nonporous cutting board is easier to clean and sanitize after contact with raw poultry.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -649,7 +764,8 @@
         ],
         "correct_answer": "A flat bottom improves contact and promotes even heating",
         "safety_tip": "Lift heavy pans instead of dragging them across a glass stovetop to reduce scratching.",
-        "explanation": "Good contact between the pan and cooking surface helps transfer heat evenly and keeps the pan stable."
+        "explanation": "Good contact between the pan and cooking surface helps transfer heat evenly and keeps the pan stable.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -662,7 +778,8 @@
         ],
         "correct_answer": "A broiler-safe metal pan",
         "safety_tip": "Verify that the pan is broiler-safe because intense direct heat can damage unsuitable cookware.",
-        "explanation": "Metal pans labeled for broiler use can tolerate the strong radiant heat produced by a broiler."
+        "explanation": "Metal pans labeled for broiler use can tolerate the strong radiant heat produced by a broiler.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -675,13 +792,29 @@
         ],
         "correct_answer": "A wok or wide carbon-steel skillet",
         "safety_tip": "Have ingredients prepared before heating the pan because stir-frying happens quickly.",
-        "explanation": "A wok or wide skillet provides high heat, room for movement, and a broad cooking surface for rapid cooking."
+        "explanation": "A wok or wide skillet provides high heat, room for movement, and a broad cooking surface for rapid cooking.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Pan & Surface Matching.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-utensil-handling-hack-it-with-what-you-have-006",
     "category": "Utensil Handling",
     "skill": "Hack-it-With-What-You-Have",
+    "title": "Hack-it-With-What-You-Have",
+    "learningGoal": "Learn the core ideas and safe practices for Hack-it-With-What-You-Have.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Hack-it-With-What-You-Have Basics",
+      "body": "This lesson introduces Hack-it-With-What-You-Have. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -694,7 +827,8 @@
         ],
         "correct_answer": "A clean, smooth-sided bottle",
         "safety_tip": "Make sure the bottle is clean, dry, sealed, and free of cracks before using it.",
-        "explanation": "A smooth cylindrical bottle can press and roll dough in a way similar to a rolling pin."
+        "explanation": "A smooth cylindrical bottle can press and roll dough in a way similar to a rolling pin.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -707,7 +841,8 @@
         ],
         "correct_answer": "A folded paper towel or the back of a spoon",
         "safety_tip": "Do not use a paper towel on a hot pan or near an open flame.",
-        "explanation": "A folded paper towel or spoon can spread a thin coating of oil across a cool food surface."
+        "explanation": "A folded paper towel or spoon can spread a thin coating of oil across a cool food surface.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -720,7 +855,8 @@
         ],
         "correct_answer": "Hold a fitted lid slightly open while pouring carefully",
         "safety_tip": "Wear oven mitts, keep the lid secure, and pour hot water away from your body.",
-        "explanation": "A fitted lid can retain the pasta while allowing water to drain through a small opening."
+        "explanation": "A fitted lid can retain the pasta while allowing water to drain through a small opening.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -733,7 +869,8 @@
         ],
         "correct_answer": "Mince it with a knife",
         "safety_tip": "Create a flat side on the garlic clove before mincing so it stays stable.",
-        "explanation": "A chef's knife can cut garlic into very small pieces without requiring a specialized press."
+        "explanation": "A chef's knife can cut garlic into very small pieces without requiring a specialized press.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -746,7 +883,8 @@
         ],
         "correct_answer": "A sturdy fork",
         "safety_tip": "Mash the potatoes in a stable bowl or pot placed on a heat-resistant surface.",
-        "explanation": "A sturdy fork can press softened potatoes into a mashed texture, although the result may be slightly less smooth."
+        "explanation": "A sturdy fork can press softened potatoes into a mashed texture, although the result may be slightly less smooth.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -759,7 +897,8 @@
         ],
         "correct_answer": "Squeeze the lemon by hand over a strainer or between your fingers",
         "safety_tip": "Keep lemon juice away from cuts because the acid may sting.",
-        "explanation": "Hand-squeezing releases the juice, while a strainer or your fingers can catch the seeds."
+        "explanation": "Hand-squeezing releases the juice, while a strainer or your fingers can catch the seeds.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -772,7 +911,8 @@
         ],
         "correct_answer": "Divide the mixture into halves and then divide each half again",
         "safety_tip": "Wash your hands after handling raw ground meat and avoid touching other surfaces.",
-        "explanation": "Repeatedly dividing the mixture in half creates four portions that are reasonably similar in size."
+        "explanation": "Repeatedly dividing the mixture in half creates four portions that are reasonably similar in size.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -785,7 +925,8 @@
         ],
         "correct_answer": "Place a heat-safe bowl over a saucepan of gently simmering water",
         "safety_tip": "Keep the bowl above the water rather than touching it, and prevent water from entering the chocolate.",
-        "explanation": "Steam gently warms the bowl and reduces the risk of scorching the chocolate."
+        "explanation": "Steam gently warms the bowl and reduces the risk of scorching the chocolate.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -798,7 +939,8 @@
         ],
         "correct_answer": "The flat bottom of a heavy pan",
         "safety_tip": "Place the chicken between sheets of plastic wrap or inside a sturdy food-safe bag before flattening.",
-        "explanation": "The broad, flat bottom of a heavy pan can apply even pressure without cutting or tearing the meat."
+        "explanation": "The broad, flat bottom of a heavy pan can apply even pressure without cutting or tearing the meat.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -811,8 +953,16 @@
         ],
         "correct_answer": "A clean, slightly damp kitchen towel",
         "safety_tip": "Use a clean towel and keep it away from active burners or other heat sources.",
-        "explanation": "A slightly damp towel helps prevent the dough's surface from drying out while still allowing it to rise."
+        "explanation": "A slightly damp towel helps prevent the dough's surface from drying out while still allowing it to rise.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Hack-it-With-What-You-Have.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   }
 ]
