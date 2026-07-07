@@ -5,12 +5,26 @@
     let { heroSrc, description, onAction } = $props();
 </script>
 
-<img id="heroImage" src={heroSrc} alt="Hero content" />
-<h2 class="subheading">Welcome to WebChef</h2>
-<p class="description">{description}</p>
-
-<button onclick={() => onAction?.()}>Trigger Action</button>
+<div class="landing">
+    <img id="heroImage" src={heroSrc} alt="Hero content" />
+    <h2 class="subheading">Welcome to WebChef</h2>
+    <p class="description">{description}</p>
+    <button onclick={() => onAction?.()}>Trigger Action</button>
+</div>
 
 <style>
     
+    .landing{
+        background-color: var(--page-color);
+        
+        & img {
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            Width: 34%;
+            height: 58%;
+
+        }
+    
+    }
 </style>

@@ -1,2 +1,32 @@
+# Environment
 .env
-node_modules
+.env.*
+.env.*.local
+
+# Node
+node_modules/
+client/node_modules/
+
+# Build / cache
+.svelte-kit/
+.vite/
+dist/
+build/
+public/build/
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.tmp

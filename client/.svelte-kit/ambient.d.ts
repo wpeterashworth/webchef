@@ -40,20 +40,27 @@
 declare module '$env/static/private' {
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
-	export const ChocolateyInstall: string;
-	export const ChocolateyLastPathUpdate: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
+	export const CLAUDE_CODE_SSE_PORT: string;
 	export const COLORTERM: string;
 	export const CommonProgramFiles: string;
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
-	export const COPILOT_DEBUG_NONCE: string;
+	export const COREPACK_ENABLE_DOWNLOAD_PROMPT: string;
+	export const COREPACK_ROOT: string;
 	export const DriverData: string;
-	export const EFC_34656_1592913036: string;
-	export const EFC_34656_4126798990: string;
+	export const EFC_8672_1262719628: string;
+	export const EFC_8672_1592913036: string;
+	export const EFC_8672_2283032206: string;
+	export const EFC_8672_2775293581: string;
+	export const EFC_8672_2946480783: string;
+	export const EFC_8672_344590478: string;
+	export const EFC_8672_3789132940: string;
+	export const EFC_8672_4126798990: string;
+	export const FPS_BROWSER_APP_PROFILE_STRING: string;
+	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
-	export const HOME: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
 	export const INIT_CWD: string;
@@ -64,12 +71,8 @@ declare module '$env/static/private' {
 	export const NODE_ENV: string;
 	export const NODE_PATH: string;
 	export const npm_command: string;
-	export const npm_config_frozen_lockfile: string;
 	export const npm_config_node_gyp: string;
-	export const npm_config_registry: string;
 	export const npm_config_user_agent: string;
-	export const npm_config_verify_deps_before_run: string;
-	export const npm_config__jsr_registry: string;
 	export const npm_execpath: string;
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
@@ -81,14 +84,11 @@ declare module '$env/static/private' {
 	export const NVM_HOME: string;
 	export const NVM_SYMLINK: string;
 	export const OneDrive: string;
-	export const OneDriveConsumer: string;
-	export const OnlineServices: string;
 	export const OS: string;
 	export const Path: string;
 	export const PATHEXT: string;
-	export const platformcode: string;
+	export const pnpm_config_verify_deps_before_run: string;
 	export const PNPM_SCRIPT_SRC_DIR: string;
-	export const POWERSHELL_DISTRIBUTION_CHANNEL: string;
 	export const PROCESSOR_ARCHITECTURE: string;
 	export const PROCESSOR_IDENTIFIER: string;
 	export const PROCESSOR_LEVEL: string;
@@ -97,12 +97,8 @@ declare module '$env/static/private' {
 	export const ProgramFiles: string;
 	export const ProgramW6432: string;
 	export const PROMPT: string;
-	export const PSExecutionPolicyPreference: string;
 	export const PSModulePath: string;
 	export const PUBLIC: string;
-	export const PYTHONSTARTUP: string;
-	export const PYTHON_BASIC_REPL: string;
-	export const RegionCode: string;
 	export const SESSIONNAME: string;
 	export const SystemDrive: string;
 	export const SystemRoot: string;
@@ -114,6 +110,7 @@ declare module '$env/static/private' {
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
+	export const VBOX_MSI_INSTALL_PATH: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
@@ -121,7 +118,6 @@ declare module '$env/static/private' {
 	export const VSCODE_INJECTION: string;
 	export const VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
 	export const windir: string;
-	export const ZES_ENABLE_SYSMAN: string;
 }
 
 /**
@@ -210,20 +206,27 @@ declare module '$env/dynamic/private' {
 	export const env: {
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
-		ChocolateyInstall: string;
-		ChocolateyLastPathUpdate: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
+		CLAUDE_CODE_SSE_PORT: string;
 		COLORTERM: string;
 		CommonProgramFiles: string;
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
-		COPILOT_DEBUG_NONCE: string;
+		COREPACK_ENABLE_DOWNLOAD_PROMPT: string;
+		COREPACK_ROOT: string;
 		DriverData: string;
-		EFC_34656_1592913036: string;
-		EFC_34656_4126798990: string;
+		EFC_8672_1262719628: string;
+		EFC_8672_1592913036: string;
+		EFC_8672_2283032206: string;
+		EFC_8672_2775293581: string;
+		EFC_8672_2946480783: string;
+		EFC_8672_344590478: string;
+		EFC_8672_3789132940: string;
+		EFC_8672_4126798990: string;
+		FPS_BROWSER_APP_PROFILE_STRING: string;
+		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
-		HOME: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
 		INIT_CWD: string;
@@ -234,12 +237,8 @@ declare module '$env/dynamic/private' {
 		NODE_ENV: string;
 		NODE_PATH: string;
 		npm_command: string;
-		npm_config_frozen_lockfile: string;
 		npm_config_node_gyp: string;
-		npm_config_registry: string;
 		npm_config_user_agent: string;
-		npm_config_verify_deps_before_run: string;
-		npm_config__jsr_registry: string;
 		npm_execpath: string;
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
@@ -251,14 +250,11 @@ declare module '$env/dynamic/private' {
 		NVM_HOME: string;
 		NVM_SYMLINK: string;
 		OneDrive: string;
-		OneDriveConsumer: string;
-		OnlineServices: string;
 		OS: string;
 		Path: string;
 		PATHEXT: string;
-		platformcode: string;
+		pnpm_config_verify_deps_before_run: string;
 		PNPM_SCRIPT_SRC_DIR: string;
-		POWERSHELL_DISTRIBUTION_CHANNEL: string;
 		PROCESSOR_ARCHITECTURE: string;
 		PROCESSOR_IDENTIFIER: string;
 		PROCESSOR_LEVEL: string;
@@ -267,12 +263,8 @@ declare module '$env/dynamic/private' {
 		ProgramFiles: string;
 		ProgramW6432: string;
 		PROMPT: string;
-		PSExecutionPolicyPreference: string;
 		PSModulePath: string;
 		PUBLIC: string;
-		PYTHONSTARTUP: string;
-		PYTHON_BASIC_REPL: string;
-		RegionCode: string;
 		SESSIONNAME: string;
 		SystemDrive: string;
 		SystemRoot: string;
@@ -284,6 +276,7 @@ declare module '$env/dynamic/private' {
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
+		VBOX_MSI_INSTALL_PATH: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
@@ -291,7 +284,6 @@ declare module '$env/dynamic/private' {
 		VSCODE_INJECTION: string;
 		VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
 		windir: string;
-		ZES_ENABLE_SYSMAN: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
