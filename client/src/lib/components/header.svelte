@@ -18,6 +18,15 @@
 
 <header>
   <nav class="navigation">
+    <button id="theme-toggle" on:click={toggleTheme} aria-label="Toggle theme">
+      <img
+        id="theme-icon"
+        src={currentTheme === "dark" ? '/moon-svgrepo-com.svg' : '/sun-svgrepo-com.svg'}
+        alt={currentTheme === "dark" ? 'Moon' : 'Sun'}
+        width="36"
+        height="36"
+      />
+    </button>
     <img
       id="logo"
       src="/images/penguinhero.webp"
@@ -29,9 +38,6 @@
       <li><a href="/login">Login</a></li>
       <li><a href="/signup">Sign Up</a></li>
     </ul>
-    <button id="theme-toggle" on:click={toggleTheme}>
-      {currentTheme === "dark" ? "🌙" : "☀️"}
-    </button>
   </nav>
 </header>
 
@@ -49,6 +55,17 @@
       max-width: 100px;
       height: auto;
       order: 1; 
+    }
+
+    & button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      & img {
+        width: 36px;
+        height: 36px;
+        margin: 0px;
+      }
     }
 
     & h1 {
@@ -104,4 +121,18 @@
         }
       }
     }
-  }</style>
+  }
+
+  /* Theme toggle tweaks */
+  #theme-toggle {
+    padding: 4px;
+  }
+
+  #theme-icon {
+    width: 36px;
+    height: 36px;
+    transform: translateY(-4px);
+    display: block;
+    object-fit: contain;
+  }
+</style>

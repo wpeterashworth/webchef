@@ -39,6 +39,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/lesson";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/favicon.ico" | "/images/kitchenHero.webp" | "/images/penguinbottom.webp" | "/images/penguinhero.webp" | string & {};
+		Asset(): "/favicon.ico" | "/images/kitchenHero.webp" | "/images/penguinbottom.webp" | "/images/penguinhero.webp" | "/moon-svgrepo-com.svg" | "/sun-svgrepo-com.svg" | string & {};
 	}
 }
