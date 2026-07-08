@@ -29,3 +29,24 @@ client/src/routes/lesson/+page.svelte. Removed legacy entry files
 (client/index.html, client/app.svelte, client/scripts/main.js).
 Installed @sveltejs/vite-plugin-svelte and verified migration with a successful
 `pnpm run build` in client.
+
+2026-07-08 — Peter
+Implemented signup / login / logout with Supabase Auth (email + password),
+client-side flow. Installed @supabase/supabase-js in client. Added:
+  - client/src/lib/supabase/client.js — single browser Supabase client, reads
+    PUBLIC_SUPABASE_URL + PUBLIC_SUPABASE_ANON_KEY from client/.env
+  - client/src/lib/stores/auth.js — global `user` store (getSession on load +
+    onAuthStateChange keep it in sync) and a `logout()` helper; guarded by
+    `browser` so it doesn't run during SSR
+  - client/src/routes/login/+page.svelte and .../signup/+page.svelte — the two
+    routes the header already linked to (were 404ing), styled with app.css color
+    variables
+Updated client/src/lib/components/header.svelte so the nav reacts to auth state:
+signed-out shows Login / Sign Up; signed-in shows the user's email + Logout.
+Added client/.env + client/.env.example and a .gitignore exception so the
+template stays committed while real .env is ignored. Verified with `pnpm build`
+and manual testing of signup/login/logout. Auth chosen over the ADR's Auth0
+because the DB is already on Supabase; PROJECT-TASKLIST.txt updated to say
+Supabase Auth throughout (agents.md tech-stack table still lists Auth0 — left
+untouched per Peter). Next: signed-in route protection (Phase 3.4) and creating
+a users-table row on first login (Phase 3.3), pending Peter's go-ahead.

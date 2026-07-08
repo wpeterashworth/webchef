@@ -1,0 +1,6 @@
+7/8/26
+Today I finished the login and the signing up functionality for the site.
+Next up, I will work on an account page so that users can change their password, or delete their account. 
+Once the account page is done, I will update the navigation to display a first name instead of email, and have the email displayed separately on the account page.
+This will require a name field to be added to the signup page. 
+I'll probably also do some work on database models

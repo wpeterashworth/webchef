@@ -1,6 +1,8 @@
 <script>
   import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
   import { applyTheme, getInitialTheme } from "$lib/javascript/theme.js";
+  import { user, logout } from "$lib/stores/auth.js";
 
   let currentTheme = "light";
 
@@ -8,6 +10,11 @@
     currentTheme = currentTheme === "dark" ? "light" : "dark";
     localStorage.setItem("theme", currentTheme);
     applyTheme(currentTheme);
+  }
+
+  async function handleLogout() {
+    await logout();
+    goto("/");
   }
 
   onMount(() => {
@@ -26,8 +33,13 @@
     <h1>WebChef</h1>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/signup">Sign Up</a></li>
+      {#if $user}
+        <li class="user-email">{$user.email}</li>
+        <li><button class="link-button" on:click={handleLogout}>Logout</button></li>
+      {:else}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+      {/if}
     </ul>
     <button id="theme-toggle" on:click={toggleTheme}>
       {currentTheme === "dark" ? "🌙" : "☀️"}
@@ -69,6 +81,24 @@
 
       & a {
         text-decoration: none;
+        color: var(--text-color);
+
+        &:hover {
+          color: var(--text-color-hover);
+        }
+      }
+
+      & .user-email {
+        color: var(--text-color);
+        opacity: 0.85;
+      }
+
+      & .link-button {
+        padding: 0;
+        border: none;
+        background: none;
+        font: inherit;
+        cursor: pointer;
         color: var(--text-color);
 
         &:hover {
