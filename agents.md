@@ -16,7 +16,7 @@ A Duolingo-style web app for learning to cook — bite-sized lessons, streaks, a
 | Frontend | Svelte / SvelteKit              |
 | Backend  | Node.js + Express               |
 | Database | PostgreSQL (hosted on Supabase) |
-| Auth     | Auth0                           |
+| Auth     | Supabase Auth                   |
 | Hosting  | Render                          |
 
 ## Why This Stack
@@ -24,7 +24,7 @@ A Duolingo-style web app for learning to cook — bite-sized lessons, streaks, a
 - **Svelte** — minimal boilerplate, fast to build interactive lesson UIs, smaller bundle size for snappy feel.
 - **Express + Node** — straightforward REST API layer between the frontend and database.
 - **PostgreSQL (Supabase)** — relational data (users, lessons, progress, streaks, XP) maps naturally to tables and relationships. Supabase gives us a free hosted Postgres instance plus a dashboard for the whole team to inspect/edit data without local setup.
-- **Auth0** — handles signup/login/session management so we don't roll our own auth.
+- **Supabase Auth** — handles signup/login/session management (email + password) using the same Supabase project as our database, so we don't roll our own auth.
 - **Render** — simple deploy target for both the Express API and (if not done via Vercel/Netlify) the SvelteKit frontend.
 
 ## Project Structure (proposed)
@@ -47,17 +47,15 @@ Each team member needs a `.env` file (never commit this) based on `.env.example`
 # Database (Supabase Postgres)
 DATABASE_URL=
 
-# Auth0
-AUTH0_DOMAIN=
-AUTH0_CLIENT_ID=
-AUTH0_CLIENT_SECRET=
-AUTH0_AUDIENCE=
+# Supabase Auth (client-side; PUBLIC values, safe to expose in the browser)
+PUBLIC_SUPABASE_URL=
+PUBLIC_SUPABASE_ANON_KEY=
 
 # Server
 PORT=3000
 ```
 
-Supabase connection string and Auth0 credentials will be shared with the team via Microsoft Teams. Do not commit real credentials.
+Supabase connection string and anon (public) key will be shared with the team via Microsoft Teams. Do not commit real credentials.
 
 ## Getting Started
 
@@ -114,7 +112,7 @@ We're sharing a single Supabase Postgres instance for development. Before making
 
 ## Roadmap / Core Features
 
-- [ ] User auth (Auth0 signup/login)
+- [ ] User auth (Supabase Auth signup/login)
 - [ ] Lesson structure (units → lessons → steps)
 - [ ] Progress tracking (XP, streaks, completion)
 - [ ] Quiz/interaction types (multiple choice, ordering steps, ingredient matching)

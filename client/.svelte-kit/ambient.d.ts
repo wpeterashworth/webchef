@@ -47,6 +47,7 @@ declare module '$env/static/private' {
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
+	export const COPILOT_DEBUG_NONCE: string;
 	export const COREPACK_ENABLE_DOWNLOAD_PROMPT: string;
 	export const COREPACK_ROOT: string;
 	export const DriverData: string;
@@ -154,7 +155,8 @@ declare module '$env/static/private' {
  * The above values will be the same _even if_ different values for `ENVIRONMENT` or `PUBLIC_BASE_URL` are set at runtime, as they are statically replaced in your code with their build time values.
  */
 declare module '$env/static/public' {
-	
+	export const PUBLIC_SUPABASE_ANON_KEY: string;
+	export const PUBLIC_SUPABASE_URL: string;
 }
 
 /**
@@ -213,6 +215,7 @@ declare module '$env/dynamic/private' {
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
+		COPILOT_DEBUG_NONCE: string;
 		COREPACK_ENABLE_DOWNLOAD_PROMPT: string;
 		COREPACK_ROOT: string;
 		DriverData: string;
@@ -339,6 +342,8 @@ declare module '$env/dynamic/private' {
  */
 declare module '$env/dynamic/public' {
 	export const env: {
+		PUBLIC_SUPABASE_ANON_KEY: string;
+		PUBLIC_SUPABASE_URL: string;
 		[key: `PUBLIC_${string}`]: string | undefined;
 	}
 }

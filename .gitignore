@@ -2,6 +2,9 @@
 .env
 .env.*
 .env.*.local
+# ...but keep the committed templates
+!.env.example
+!client/.env.example
 
 # Node
 node_modules/

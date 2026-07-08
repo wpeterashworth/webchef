@@ -16,7 +16,7 @@ to build cooking skills progressively.
 | Frontend | Svelte / SvelteKit              |
 | Backend  | Node.js + Express *(or SvelteKit API routes — see note below)* |
 | Database | PostgreSQL (hosted on Supabase) |
-| Auth     | Auth0                           |
+| Auth     | Supabase Auth                   |
 | Hosting  | Render                          |
 
 ### Why this stack
@@ -28,7 +28,8 @@ to build cooking skills progressively.
   XP) maps naturally to tables. Supabase gives the whole team a single shared,
   hosted Postgres instance plus a dashboard to inspect/edit data without local
   setup. *(See [ADR-DataBase.md](./ADR-DataBase.md).)*
-- **Auth0** — handles signup/login/session management so we don't roll our own auth.
+- **Supabase Auth** — handles signup/login/session management (email + password)
+  using the same Supabase project as our database, so we don't roll our own auth.
 - **Render** — simple deploy target for both the API and the SvelteKit frontend.
 
 > **Open decision:** SvelteKit can handle backend API routes itself, so we may use
@@ -99,17 +100,15 @@ based on `.env.example`:
 DATABASE_URI=
 DB_PASSWORD=
 
-# Auth0
-AUTH0_DOMAIN=
-AUTH0_CLIENT_ID=
-AUTH0_CLIENT_SECRET=
-AUTH0_AUDIENCE=
+# Supabase Auth (client-side; PUBLIC values, safe to expose in the browser)
+PUBLIC_SUPABASE_URL=
+PUBLIC_SUPABASE_ANON_KEY=
 
 # Server
 PORT=3000
 ```
 
-The Supabase connection string and Auth0 credentials are shared with the team via
+The Supabase connection string and anon (public) key are shared with the team via
 Microsoft Teams. **Do not commit real credentials.**
 
 ---
@@ -147,7 +146,7 @@ the same database, coordinate before changing the schema:
 
 ## Roadmap / Core Features
 
-- [ ] User auth (Auth0 signup/login)
+- [ ] User auth (Supabase Auth signup/login)
 - [ ] Lesson structure (units → lessons → steps)
 - [ ] Progress tracking (XP, streaks, completion)
 - [ ] Quiz/interaction types (multiple choice, ordering steps, ingredient matching)
