@@ -13,6 +13,7 @@ client/node_modules/
 
 # Build / cache
 .svelte-kit/
+client/.svelte-kit/
 .vite/
 dist/
 build/
