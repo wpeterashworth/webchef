@@ -1,4 +1,6 @@
 <script>
+  import Header from "$lib/components/header.svelte";
+  import Footer from "$lib/components/footer.svelte";
   import { goto } from "$app/navigation";
   import { supabase } from "$lib/supabase/client.js";
 
@@ -33,8 +35,12 @@
   <title>Log In · WebChef</title>
 </svelte:head>
 
-<div class="auth-page">
-  <form class="auth-card" on:submit={handleLogin}>
+<div class="page-shell">
+  <Header />
+
+  <main class="page-main">
+    <div class="auth-page">
+      <form class="auth-card" on:submit={handleLogin}>
     <h1>Log In</h1>
 
     {#if errorMessage}
@@ -64,16 +70,29 @@
       Don't have an account? <a href="/signup">Sign up</a>
     </p>
   </form>
-</div>
+    </div>
+  </main>
 
+  <Footer />
+</div>
 <style>
-  .auth-page {
+  .page-shell {
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+  }
+
+  .page-main {
+    flex: 1;
+    display: flex;
     align-items: center;
-    min-height: 70vh;
+    justify-content: center;
     padding: 2rem 1rem;
-    background-color: var(--page-color);
+  }
+
+  .auth-page {
+    width: 100%;
+    max-width: 480px;
   }
 
   .auth-card {

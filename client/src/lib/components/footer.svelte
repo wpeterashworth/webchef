@@ -5,7 +5,7 @@
     <style>
     
       footer {
-        background-color: var(--panel-color);
+        background-color: var(--page-color);
         color: var(--text-color);
         padding: 20px;
         text-align: center;
