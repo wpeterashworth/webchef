@@ -3,18 +3,26 @@
   --color-secondary-dark: #003153;
   --color-tertiary-dark: #522200;
 
-  --color-primary-light: #84909c;
-  --color-secondary-light: #6d7b88;
+  --color-primary-light: #577088;
+  --color-secondary-light: #909ca8;
   --color-tertiary-light: #8f3c00;
 
-  --text-color-light: var(--color-primary-light);
-  --text-color-dark: var(--color-primary-dark);
+  --text-color-light: var(--color-primary-dark);
+  --text-color-dark: var(--color-primary-light);
+
+  --text-color-hover-light: var(--color-tertiary-dark);
+  --text-color-hover-dark: var(--color-tertiary-light);
 }
 
-.main {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+main {
+  background-color: var(--page-color);
+  color: var(--text-color);
+
+  background: linear-gradient(180deg, var(--page-color) 50%, var(--accent-color) 100%);
+  padding: 3rem 1rem;
+
+
+  min-height: 100vh;
 }
 
 body {

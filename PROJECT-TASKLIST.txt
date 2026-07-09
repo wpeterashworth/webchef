@@ -17,7 +17,7 @@ TECH STACK (already decided - see the ADRs)
   Frontend:  Svelte / SvelteKit
   Backend:   Node.js + Express  OR  SvelteKit API routes  (DECISION PENDING)
   Database:  PostgreSQL on Supabase (shared team instance)
-  Auth:      Auth0
+  Auth:      Supabase Auth
   Hosting:   Render
 
 CURRENT STATE (as of writing - what's already done)
@@ -44,7 +44,7 @@ LEGEND
      before merging to main. (Already in README - confirm everyone agrees.)
 0.3  Confirm every teammate can clone the repo and run git.
 0.4  Share credentials securely via Microsoft Teams (NOT committed):
-     Supabase connection string + password, Auth0 domain/client/secret.
+     Supabase connection string + password, Supabase project URL + anon key.
 0.5  RESOLVE THE OPEN DECISION: SvelteKit API routes vs. separate Express
      server. Everything in the backend phases depends on this answer.
      -> Recommendation: SvelteKit API routes (one app, less to deploy/maintain
@@ -56,7 +56,7 @@ LEGEND
 ==============================================================================
 1.1  Create .env.example (template, committed) and confirm .env is gitignored.
 1.2  Each teammate creates their own local .env from the template and fills in
-     the shared Supabase + Auth0 values.
+     the shared Supabase values (project URL + anon key).
 1.3  Verify everyone can connect to the shared Supabase database
      (run `npx supabase` / open the dashboard).
 1.4  Finalize project structure based on the Phase 0.5 decision:
@@ -83,13 +83,13 @@ LEGEND
      all changes as migration files, never ad-hoc dashboard edits.
 
 ==============================================================================
- PHASE 3 - AUTHENTICATION (Auth0)   [BLOCKER for any user-specific feature]
+ PHASE 3 - AUTHENTICATION (Supabase Auth)   [BLOCKER for any user-specific feature]
 ==============================================================================
-3.1  Configure the Auth0 application (callback URLs, allowed origins) for both
-     local dev and the future Render URL.
+3.1  Configure Supabase Auth (email/password provider, redirect/allowed URLs)
+     for both local dev and the future Render URL.
 3.2  Implement signup / login / logout flow in the app.
 3.3  On first login, create a matching row in the users table (keyed by the
-     Auth0 `sub`).
+     Supabase auth user id / `sub`).
 3.4  Protect routes/endpoints so only signed-in users reach lessons/dashboard.
 3.5  Implement GET /api/me (or equivalent) returning the signed-in profile.
 3.6  Verify: a brand-new user can register, log in, and a users row is created.
@@ -126,8 +126,8 @@ LEGEND
  PHASE 5 - FRONTEND UI   (can run [parallel] with Phase 4 using mock data)
 ==============================================================================
 5.1  Finish the landing page + shared layout (header/footer already started).
-5.2  Auth UI: login / signup buttons wired to Auth0; signed-in vs signed-out
-     states.
+5.2  Auth UI: login / signup buttons wired to Supabase Auth; signed-in vs
+     signed-out states.
 5.3  Dashboard / Home screen (see spec wireframe): greeting, streak, score,
      current level + level name, "Continue Learning", today's review, % done.
 5.4  Lesson screen: question prompt, answer options, "Check Answer"
@@ -169,7 +169,7 @@ LEGEND
 ==============================================================================
 8.1  Create the Render service(s) (one if SvelteKit-only, two if separate API).
 8.2  Set production environment variables in the Render dashboard.
-8.3  Point Auth0 callback/allowed URLs at the production domain.
+8.3  Point Supabase Auth redirect/allowed URLs at the production domain.
 8.4  Deploy, run a full smoke test on the live site.
 8.5  Share the live URL; confirm the team and instructor can access it.
 
@@ -189,6 +189,6 @@ LEGEND
   1. Phase 0.5 - decide SvelteKit-only vs. separate Express server. THIS UNBLOCKS
      the most work. (Recommendation above: go SvelteKit-only.)
   2. Phase 1 - get every teammate running the app locally with their own .env.
-  3. In parallel, start Phase 2 (database review + seed) and Phase 3 (Auth0),
+  3. In parallel, start Phase 2 (database review + seed) and Phase 3 (Supabase Auth),
      since the whole learning loop depends on both.
 ==============================================================================

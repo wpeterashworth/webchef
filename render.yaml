@@ -1,0 +1,23 @@
+# Render Blueprint — deploys the client as a static site.
+# Commit this file, then in Render: New → Blueprint → pick this repo.
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: webchef
+    runtime: static
+    rootDir: client
+    buildCommand: pnpm install && pnpm build
+    staticPublishPath: build
+    # PUBLIC_ vars are baked into the browser bundle at build time, so they
+    # must exist during the build. Set the values in the Render dashboard.
+    envVars:
+      - key: PUBLIC_SUPABASE_URL
+        sync: false
+      - key: PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+    # SPA fallback: serve 200.html for any path that isn't a real file,
+    # so client-side routing (login/signup/lesson) works on refresh/deep-link.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /200.html

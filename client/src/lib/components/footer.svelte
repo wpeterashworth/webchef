@@ -3,8 +3,10 @@
     </footer>
 
     <style>
+    
       footer {
-        background-color: #f8f8f8;
+        background-color: var(--panel-color);
+        color: var(--text-color);
         padding: 20px;
         text-align: center;
       }
