@@ -3,7 +3,7 @@ import root from '../root.js';
 import { set_building, set_prerendering } from '$app/env/internal';
 import { set_assets } from '$app/paths/internal/server';
 import { set_manifest, set_read_implementation } from '__sveltekit/server';
-import { set_private_env, set_public_env } from '../../../node_modules/.pnpm/@sveltejs+kit@2.68.0_@svelt_4f9ae6c1a53b45e493a0bedcde37f9fc/node_modules/@sveltejs/kit/src/runtime/shared-server.js';
+import { set_private_env, set_public_env } from '../../../node_modules/.pnpm/@sveltejs+kit@2.69.2_@svelt_a356a99aca7ac298c20a7c5b03f335c2/node_modules/@sveltejs/kit/src/runtime/shared-server.js';
 import error from '../shared/error-template.js';
 
 export const options = {
@@ -26,7 +26,7 @@ export const options = {
 		app: ({ head, body, assets, nonce, env }) => "<!doctype html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"utf-8\" />\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n    " + head + "\r\n  </head>\r\n  <body data-sveltekit-preload-data=\"hover\">\r\n    <div style=\"display: contents\">" + body + "</div>\r\n  </body>\r\n</html>\r\n",
 		error
 	},
-	version_hash: "9in81e"
+	version_hash: "1p94843"
 };
 
 export async function get_hooks() {
