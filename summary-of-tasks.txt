@@ -68,3 +68,30 @@ Changes:
 Verified with `pnpm build` — build/ contains 200.html + _app assets. .env was
 already gitignored/untracked, so no gitignore change needed. Cost: $0 (Render
 Static Site + Supabase free tier). Next: connect the repo in Render and deploy.
+
+2026-07-09 — Peter
+Fixed a Render build failure caused by prerendering. The build crashed with
+`Error: 404 /lesson/lesson-... (linked from /lesson)` and exit code 1, even
+though everything worked on localhost. Root cause: the lesson list page
+(client/src/routes/lesson/+page.svelte) links each card to /lesson/<lessonId>,
+but no route existed to handle those URLs. Localhost (vite dev) never noticed
+because nothing crawls the links; Render runs `vite build`, where the
+adapter-static prerender crawler follows every link and treats an unreachable
+one as fatal (strict mode). With prerender = true set globally in
+client/src/routes/+layout.js, the missing detail route 404'd and killed the
+build. Fix — created the dynamic route (new files, no teammate conflicts):
+  - client/src/routes/lesson/[lessonId]/+page.js — load() looks up the lesson by
+    params.lessonId across the three bundled JSON files (RecipeAdjust, Howtocook,
+    IngredientSub) and throws error(404) if not found. Runs at build time, so
+    each lesson prerenders to its own HTML file.
+  - client/src/routes/lesson/[lessonId]/+page.svelte — lesson detail view:
+    intro, learning goal / meta, each question with options (correct one
+    highlighted) and a collapsible <details> answer/explanation/safety-tip,
+    then the recap. Uses native <details> so it needs no JS and prerenders
+    cleanly; styled to match lesson-card.svelte.
+Verified with `pnpm build` — build now succeeds and build/lesson/ contains all
+12 prerendered lesson HTML files (previously the 12 that were 404ing). Note: the
+data was never the problem (it was already bundled/importable) — the route was
+simply missing. Left the on:submit deprecation warnings on login/signup alone
+(harmless, non-fatal). Next: commit + push these two files so the Render deploy
+goes through.
