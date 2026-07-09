@@ -43,6 +43,7 @@
     <ul>
       <li><a href="/">Home</a></li>
       {#if $user}
+        <li><a href="/lesson">Lesson</a></li>
         <li class="user-email">{$user.email}</li>
         <li><button class="link-button" on:click={handleLogout}>Logout</button></li>
       {:else}
