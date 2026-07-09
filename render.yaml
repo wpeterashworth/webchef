@@ -1,0 +1,23 @@
+# Render Blueprint — deploys the SvelteKit client as a free Static Site.
+# The app is a single-page app (adapter-static); Supabase is the backend, so
+# no web server is required. See client/svelte.config.js and src/routes/+layout.js.
+services:
+  - type: web
+    runtime: static
+    name: webchef-client
+    rootDir: client
+    buildCommand: pnpm install && pnpm build
+    staticPublishPath: build
+    # Serve the SPA fallback for any deep link (e.g. /login) so refreshes and
+    # direct navigation don't 404 — the client-side router takes over.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /200.html
+    # Set these in the Render dashboard (values live in client/.env, not committed).
+    # sync: false keeps them out of the blueprint so real values aren't stored in git.
+    envVars:
+      - key: PUBLIC_SUPABASE_URL
+        sync: false
+      - key: PUBLIC_SUPABASE_ANON_KEY
+        sync: false
