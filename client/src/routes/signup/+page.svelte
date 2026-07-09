@@ -2,6 +2,7 @@
   import { goto } from "$app/navigation";
   import { supabase } from "$lib/supabase/client.js";
 
+  let firstName = $state("");
   let email = $state("");
   let password = $state("");
   let confirmPassword = $state("");
@@ -20,7 +21,14 @@
     }
 
     loading = true;
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    // Stash the first name in Supabase Auth user metadata (options.data). It
+    // rides along with the account — no separate table needed — and is later
+    // read from user.user_metadata.first_name in the header.
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { first_name: firstName } },
+    });
     loading = false;
 
     if (error) {
@@ -52,6 +60,16 @@
     {#if infoMessage}
       <p class="info" role="status">{infoMessage}</p>
     {/if}
+
+    <label>
+      First name
+      <input
+        type="text"
+        bind:value={firstName}
+        required
+        autocomplete="given-name"
+      />
+    </label>
 
     <label>
       Email
