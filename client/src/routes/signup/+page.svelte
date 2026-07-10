@@ -79,7 +79,12 @@
 
         <label>
           Email
-          <input type="email" bind:value={email} required autocomplete="email" />
+          <input
+            type="email"
+            bind:value={email}
+            required
+            autocomplete="email"
+          />
         </label>
 
         <label>
@@ -119,23 +124,12 @@
 </div>
 
 <style>
-  .page-shell {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .page-main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1rem;
-  }
-
   .auth-page {
-    width: 100%;
-    max-width: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 2rem 1rem;
   }
 
   .auth-card {
