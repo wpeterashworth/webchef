@@ -1,4 +1,6 @@
 <script>
+  import Footer from "$lib/components/footer.svelte";
+  import Header from "$lib/components/header.svelte";
   import { goto } from "$app/navigation";
   import { supabase } from "$lib/supabase/client.js";
 
@@ -73,7 +75,6 @@
     align-items: center;
     min-height: 70vh;
     padding: 2rem 1rem;
-    background-color: var(--page-color);
   }
 
   .auth-card {
