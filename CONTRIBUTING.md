@@ -2,8 +2,13 @@
 
 This project deploys the SvelteKit app in **`client/`** to Render (`render.yaml` →
 `rootDir: client`). The whole team must use the **same pinned pnpm version** so the
-committed lockfile stays stable. These steps get your branch aligned with `main`
-after the deploy fixes landed.
+committed lockfile stays stable.
+
+**New here / catching up after the deploy fix?** Do these two sections in order:
+[One-time setup](#one-time-setup-per-machine), then
+[Getting onto the deploy fix](#getting-onto-the-deploy-fix-do-this-once). After that,
+[Staying in sync with `main`](#staying-in-sync-with-main-ongoing) is your day-to-day
+habit.
 
 > **The one rule that matters:** there is now a single committed
 > `client/pnpm-lock.yaml`. **Adopt it — do not delete and regenerate your own.**
@@ -24,11 +29,86 @@ corepack enable
 
 Then **open a new terminal** so the pnpm shim takes effect.
 
+> Corepack is necessary but **not sufficient** — it only decides *which pnpm runs*.
+> You still need to pull the fixed branch and refresh your install (next section).
+
 ---
 
-## Aligning your feature branch with `main`
+## Getting onto the deploy fix (do this once)
 
-Run these from the repo root.
+**For most teammates: your branch has already been aligned with `main` and pushed
+for you, so you don't need to merge or resolve anything — just pull and reinstall.**
+
+**1. Pull the fixed branch:**
+
+```bash
+git checkout <your-branch>
+git pull
+```
+
+This fast-forwards your local branch to the already-merged fix. If you have your own
+uncommitted work, run `git stash` first, then `git stash pop` after the pull.
+
+**2. Do one clean reinstall** (your old `node_modules` was built by the old pnpm):
+
+```bash
+rm -rf node_modules client/node_modules
+cd client
+pnpm install --frozen-lockfile
+```
+
+This is a one-time reset. After it, a plain `pnpm install` is fine day to day.
+
+**3. Verify:**
+
+```bash
+pnpm --version    # should print 11.11.0 while inside the repo
+pnpm build        # from client/ — should end with "Wrote site to build"
+```
+
+### If a pull or checkout complains about untracked files
+
+You may see *"untracked working tree files would be overwritten"* or a stray root
+`pnpm-lock.yaml` / `package-lock.json`. That's leftover cruft from before the fix.
+**Only if `git status` shows the file as untracked (`??`)**, delete it and retry:
+
+```bash
+git status --short        # confirm the file is marked ??  (untracked)
+rm pnpm-lock.yaml         # remove ONLY the untracked leftover, never tracked work
+```
+
+---
+
+## Staying in sync with `main` (ongoing)
+
+Pull `main` into your branch **at the start of each work session** and **again right
+before you push or open a PR**. Frequent small merges beat rare giant ones.
+
+```bash
+git checkout <your-branch>   # make sure you're on YOUR branch, not main
+git fetch origin             # download the latest
+git merge origin/main        # merge main INTO your branch
+```
+
+If that merge changed `client/package.json` or the lockfile, resync deps:
+
+```bash
+cd client
+pnpm install --frozen-lockfile
+```
+
+Because pnpm is now pinned, pulling `main` will **not** churn the lockfile anymore.
+
+> **One-way rule:** only ever merge **`main` → your branch**. Getting *your* work
+> into `main` goes through a pull request (or the `Team-merge` branch) — never a
+> direct push to `main`.
+
+---
+
+## Aligning a branch manually (fallback)
+
+You normally won't need this — your branch was already aligned for you. Use it only
+if you're on a branch that was **never** merged with the fix. Run from the repo root.
 
 **1. Merge the latest `main` into your branch:**
 
