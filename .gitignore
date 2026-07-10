@@ -5,6 +5,7 @@
 # ...but keep the committed templates
 !.env.example
 !client/.env.example
+client/.env
 
 # Node
 node_modules/
