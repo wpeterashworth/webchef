@@ -33,8 +33,10 @@
     <button id="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
       <img
         id="theme-icon"
-        src={currentTheme === "dark" ? '/moon-svgrepo-com.svg' : '/sun-svgrepo-com.svg'}
-        alt={currentTheme === "dark" ? 'Moon' : 'Sun'}
+        src={currentTheme === "dark"
+          ? "/moon-svgrepo-com.svg"
+          : "/sun-svgrepo-com.svg"}
+        alt={currentTheme === "dark" ? "Moon" : "Sun"}
         width="36"
         height="36"
       />
@@ -48,14 +50,14 @@
     <ul>
       <li><a href="/">Home</a></li>
       {#if $user}
+        <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/lesson">Lesson</a></li>
         <li><a href="/account">Account</a></li>
-        <li class="user-email">{$user.user_metadata?.first_name || $user.email}</li>
+        <li class="user-email">
+          {$user.user_metadata?.first_name || $user.email}
+        </li>
         <li>
-          <button
-            class="link-button"
-            onclick={() => (showLogoutModal = true)}
-          >
+          <button class="link-button" onclick={() => (showLogoutModal = true)}>
             Logout
           </button>
         </li>
@@ -89,7 +91,7 @@
     & img {
       max-width: 100px;
       height: auto;
-      order: 1; 
+      order: 1;
     }
 
     & button {
@@ -107,7 +109,7 @@
       margin: 0;
       order: 2;
     }
-    
+
     & ul {
       display: flex;
       flex-direction: row;
