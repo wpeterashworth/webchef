@@ -3,8 +3,12 @@
   import { goto } from "$app/navigation";
   import { applyTheme, getInitialTheme } from "$lib/javascript/theme.js";
   import { user, logout } from "$lib/stores/auth.js";
+  import ConfirmModal from "$lib/components/confirm-modal.svelte";
 
-  let currentTheme = "light";
+  let currentTheme = $state("light");
+  // Controls the "are you sure you want to log out?" dialog so a stray click
+  // on Logout doesn't sign the user out by accident.
+  let showLogoutModal = $state(false);
 
   function toggleTheme() {
     currentTheme = currentTheme === "dark" ? "light" : "dark";
@@ -12,7 +16,8 @@
     applyTheme(currentTheme);
   }
 
-  async function handleLogout() {
+  async function confirmLogout() {
+    showLogoutModal = false;
     await logout();
     goto("/");
   }
@@ -25,11 +30,13 @@
 
 <header>
   <nav class="navigation">
-    <button id="theme-toggle" on:click={toggleTheme} aria-label="Toggle theme">
+    <button id="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
       <img
         id="theme-icon"
-        src={currentTheme === "dark" ? '/moon-svgrepo-com.svg' : '/sun-svgrepo-com.svg'}
-        alt={currentTheme === "dark" ? 'Moon' : 'Sun'}
+        src={currentTheme === "dark"
+          ? "/moon-svgrepo-com.svg"
+          : "/sun-svgrepo-com.svg"}
+        alt={currentTheme === "dark" ? "Moon" : "Sun"}
         width="36"
         height="36"
       />
@@ -43,8 +50,17 @@
     <ul>
       <li><a href="/">Home</a></li>
       {#if $user}
-        <li class="user-email">{$user.email}</li>
-        <li><button class="link-button" on:click={handleLogout}>Logout</button></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/lesson">Lesson</a></li>
+        <li><a href="/account">Account</a></li>
+        <li class="user-email">
+          {$user.user_metadata?.first_name || $user.email}
+        </li>
+        <li>
+          <button class="link-button" onclick={() => (showLogoutModal = true)}>
+            Logout
+          </button>
+        </li>
       {:else}
         <li><a href="/login">Login</a></li>
         <li><a href="/signup">Sign Up</a></li>
@@ -52,6 +68,15 @@
     </ul>
   </nav>
 </header>
+
+<ConfirmModal
+  open={showLogoutModal}
+  title="Log out?"
+  message="You'll need to sign back in to continue your lessons."
+  confirmText="Log out"
+  onconfirm={confirmLogout}
+  oncancel={() => (showLogoutModal = false)}
+/>
 
 <style>
   nav {
@@ -66,7 +91,7 @@
     & img {
       max-width: 100px;
       height: auto;
-      order: 1; 
+      order: 1;
     }
 
     & button {
@@ -84,7 +109,7 @@
       margin: 0;
       order: 2;
     }
-    
+
     & ul {
       display: flex;
       flex-direction: row;

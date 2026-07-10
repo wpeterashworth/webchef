@@ -5,6 +5,7 @@
 # ...but keep the committed templates
 !.env.example
 !client/.env.example
+client/.env
 
 # Node
 node_modules/
@@ -12,6 +13,7 @@ client/node_modules/
 
 # Build / cache
 .svelte-kit/
+client/.svelte-kit/
 .vite/
 dist/
 build/

@@ -27,16 +27,38 @@
     }
 
     .landing-card {
-        width: 100%;
-        max-width: 1100px;
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-        padding: 2rem;
-        border-radius: 12px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.02));
-        box-shadow: 0 8px 24px rgba(2,6,23,0.35);
-    }
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 25px;
+    background: var(--page-color);
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.8);
+    overflow: hidden;
+}
+
+.landing-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 15px;
+    border-radius: inherit;
+    background: url('/images/woodframe.webp') center/cover no-repeat;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.landing-card > * {
+    position: relative;
+    z-index: 1;
+}
 
     #heroImage {
         width: 40%;
