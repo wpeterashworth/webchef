@@ -1,93 +1,176 @@
 [
-{
+  {
+    "lessonId": "lesson-recipe-adjustment-scaling-ratios-001",
     "category": "Recipe Adjustment",
     "skill": "Scaling Ratios",
+    "title": "Scaling Ratios",
+    "learningGoal": "Learn the core ideas and safe practices for Scaling Ratios.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Scaling Ratios Basics",
+      "body": "This lesson introduces Scaling Ratios. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
         "question": "A soup recipe serves 4 people and uses 2 cups of broth. How much broth is needed to serve 8 people?",
-        "options": ["3 cups", "4 cups", "6 cups", "8 cups"],
+        "options": [
+          "3 cups",
+          "4 cups",
+          "6 cups",
+          "8 cups"
+        ],
         "correct_answer": "4 cups",
         "safety_tip": "When doubling a recipe, multiply each ingredient amount by 2.",
-        "explanation": "Serving 8 people instead of 4 doubles the recipe, so 2 cups of broth becomes 4 cups."
+        "explanation": "Serving 8 people instead of 4 doubles the recipe, so 2 cups of broth becomes 4 cups.",
+        "correct_index": 1
       },
       {
         "id": 2,
         "question": "A cookie recipe makes 24 cookies and requires 3 cups of flour. How much flour is needed to make 12 cookies?",
-        "options": ["1 cup", "1 1/2 cups", "2 cups", "2 1/2 cups"],
+        "options": [
+          "1 cup",
+          "1 1/2 cups",
+          "2 cups",
+          "2 1/2 cups"
+        ],
         "correct_answer": "1 1/2 cups",
         "safety_tip": "Use level measuring cups when measuring flour, and avoid packing it down.",
-        "explanation": "Making 12 cookies is half of the original batch, so 3 cups of flour must be divided by 2."
+        "explanation": "Making 12 cookies is half of the original batch, so 3 cups of flour must be divided by 2.",
+        "correct_index": 1
       },
       {
         "id": 3,
         "question": "A recipe serves 6 and uses 1 1/2 teaspoons of salt. How much salt is needed to serve 12?",
-        "options": ["2 teaspoons", "2 1/2 teaspoons", "3 teaspoons", "4 teaspoons"],
+        "options": [
+          "2 teaspoons",
+          "2 1/2 teaspoons",
+          "3 teaspoons",
+          "4 teaspoons"
+        ],
         "correct_answer": "3 teaspoons",
         "safety_tip": "Measure salt carefully because small scaling errors can noticeably change the flavor.",
-        "explanation": "Serving 12 instead of 6 doubles the recipe, so 1 1/2 teaspoons becomes 3 teaspoons."
+        "explanation": "Serving 12 instead of 6 doubles the recipe, so 1 1/2 teaspoons becomes 3 teaspoons.",
+        "correct_index": 2
       },
       {
         "id": 4,
         "question": "A pasta recipe serves 8 and uses 2 pounds of pasta. How much pasta is needed to serve 2 people?",
-        "options": ["1/4 pound", "1/2 pound", "1 pound", "1 1/2 pounds"],
+        "options": [
+          "1/4 pound",
+          "1/2 pound",
+          "1 pound",
+          "1 1/2 pounds"
+        ],
         "correct_answer": "1/2 pound",
         "safety_tip": "Keep the same ingredient-to-serving ratio when reducing a recipe.",
-        "explanation": "Two servings are one-fourth of eight servings, so 2 pounds divided by 4 equals 1/2 pound."
+        "explanation": "Two servings are one-fourth of eight servings, so 2 pounds divided by 4 equals 1/2 pound.",
+        "correct_index": 1
       },
       {
         "id": 5,
         "question": "A pancake recipe makes 10 pancakes using 2 eggs. How many eggs are needed to make 20 pancakes?",
-        "options": ["3 eggs", "4 eggs", "5 eggs", "6 eggs"],
+        "options": [
+          "3 eggs",
+          "4 eggs",
+          "5 eggs",
+          "6 eggs"
+        ],
         "correct_answer": "4 eggs",
         "safety_tip": "Wash your hands and any surfaces that come into contact with raw eggs.",
-        "explanation": "Making 20 pancakes doubles the original recipe, so 2 eggs becomes 4 eggs."
+        "explanation": "Making 20 pancakes doubles the original recipe, so 2 eggs becomes 4 eggs.",
+        "correct_index": 1
       },
       {
         "id": 6,
         "question": "A sauce recipe makes 3 cups and uses 3/4 cup of tomato paste. How much tomato paste is needed to make 1 cup of sauce?",
-        "options": ["1/4 cup", "1/3 cup", "1/2 cup", "2/3 cup"],
+        "options": [
+          "1/4 cup",
+          "1/3 cup",
+          "1/2 cup",
+          "2/3 cup"
+        ],
         "correct_answer": "1/4 cup",
         "safety_tip": "Divide every ingredient by the same number when reducing the total yield.",
-        "explanation": "One cup is one-third of the original 3-cup yield, so 3/4 cup divided by 3 equals 1/4 cup."
+        "explanation": "One cup is one-third of the original 3-cup yield, so 3/4 cup divided by 3 equals 1/4 cup.",
+        "correct_index": 0
       },
       {
         "id": 7,
         "question": "A muffin recipe makes 12 muffins and uses 1/2 cup of sugar. How much sugar is needed to make 18 muffins?",
-        "options": ["2/3 cup", "3/4 cup", "1 cup", "1 1/4 cups"],
+        "options": [
+          "2/3 cup",
+          "3/4 cup",
+          "1 cup",
+          "1 1/4 cups"
+        ],
         "correct_answer": "3/4 cup",
         "safety_tip": "Find the scaling factor before changing any ingredient amounts.",
-        "explanation": "Eighteen muffins are 1.5 times the original batch, so 1/2 cup multiplied by 1.5 equals 3/4 cup."
+        "explanation": "Eighteen muffins are 1.5 times the original batch, so 1/2 cup multiplied by 1.5 equals 3/4 cup.",
+        "correct_index": 1
       },
       {
         "id": 8,
         "question": "A bread recipe uses 4 cups of flour and 2 cups of water. If you use 6 cups of flour, how much water keeps the same ratio?",
-        "options": ["2 cups", "3 cups", "4 cups", "5 cups"],
+        "options": [
+          "2 cups",
+          "3 cups",
+          "4 cups",
+          "5 cups"
+        ],
         "correct_answer": "3 cups",
         "safety_tip": "Maintain the original flour-to-water ratio to avoid dough that is too dry or too wet.",
-        "explanation": "The recipe uses 1 cup of water for every 2 cups of flour, so 6 cups of flour requires 3 cups of water."
+        "explanation": "The recipe uses 1 cup of water for every 2 cups of flour, so 6 cups of flour requires 3 cups of water.",
+        "correct_index": 1
       },
       {
         "id": 9,
         "question": "A casserole recipe serves 5 and uses 10 ounces of cheese. How much cheese is needed to serve 15?",
-        "options": ["20 ounces", "25 ounces", "30 ounces", "35 ounces"],
+        "options": [
+          "20 ounces",
+          "25 ounces",
+          "30 ounces",
+          "35 ounces"
+        ],
         "correct_answer": "30 ounces",
         "safety_tip": "Keep dairy refrigerated until you are ready to prepare the dish.",
-        "explanation": "Serving 15 people is three times the original yield, so 10 ounces multiplied by 3 equals 30 ounces."
+        "explanation": "Serving 15 people is three times the original yield, so 10 ounces multiplied by 3 equals 30 ounces.",
+        "correct_index": 2
       },
       {
         "id": 10,
         "question": "A salad dressing recipe uses 3 tablespoons of oil for every 1 tablespoon of vinegar. How much oil is needed if you use 4 tablespoons of vinegar?",
-        "options": ["7 tablespoons", "8 tablespoons", "12 tablespoons", "16 tablespoons"],
+        "options": [
+          "7 tablespoons",
+          "8 tablespoons",
+          "12 tablespoons",
+          "16 tablespoons"
+        ],
         "correct_answer": "12 tablespoons",
         "safety_tip": "Measure both ingredients with the same type of measuring spoon to keep the ratio consistent.",
-        "explanation": "The ratio is 3 tablespoons of oil for each tablespoon of vinegar, so 4 tablespoons of vinegar requires 12 tablespoons of oil."
+        "explanation": "The ratio is 3 tablespoons of oil for each tablespoon of vinegar, so 4 tablespoons of vinegar requires 12 tablespoons of oil.",
+        "correct_index": 2
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Scaling Ratios.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-recipe-adjustment-emergency-flavor-tuning-002",
     "category": "Recipe Adjustment",
     "skill": "Emergency Flavor Tuning",
+    "title": "Emergency Flavor Tuning",
+    "learningGoal": "Learn the core ideas and safe practices for Emergency Flavor Tuning.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Emergency Flavor Tuning Basics",
+      "body": "This lesson introduces Emergency Flavor Tuning. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -100,7 +183,8 @@
         ],
         "correct_answer": "Add a small amount of salt, stir, and taste again",
         "safety_tip": "Add seasoning gradually because you can add more salt, but removing excess salt is difficult.",
-        "explanation": "A small amount of salt can bring out flavors that are already present. Stirring and tasting after each addition prevents over-seasoning."
+        "explanation": "A small amount of salt can bring out flavors that are already present. Stirring and tasting after each addition prevents over-seasoning.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -113,7 +197,8 @@
         ],
         "correct_answer": "Add a small pinch of sugar and taste again",
         "safety_tip": "Use only a small amount of sugar at a time so the sauce does not become noticeably sweet.",
-        "explanation": "A small amount of sugar can balance excessive acidity without completely changing the flavor of the tomato sauce."
+        "explanation": "A small amount of sugar can balance excessive acidity without completely changing the flavor of the tomato sauce.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -126,7 +211,8 @@
         ],
         "correct_answer": "Stir in coconut milk or plain yogurt",
         "safety_tip": "Lower the heat before adding yogurt so it is less likely to curdle.",
-        "explanation": "Fat and dairy proteins can soften the sensation of chili heat, while adding more liquid also spreads the spicy compounds through a larger volume."
+        "explanation": "Fat and dairy proteins can soften the sensation of chili heat, while adding more liquid also spreads the spicy compounds through a larger volume.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -139,7 +225,8 @@
         ],
         "correct_answer": "Add more unsalted broth and other unseasoned ingredients",
         "safety_tip": "Taste the broth before adding it to confirm that it is unsalted or low in sodium.",
-        "explanation": "Adding unseasoned ingredients increases the total volume and dilutes the excess salt. Evaporation would concentrate the salt and make the problem worse."
+        "explanation": "Adding unseasoned ingredients increases the total volume and dilutes the excess salt. Evaporation would concentrate the salt and make the problem worse.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -152,7 +239,8 @@
         ],
         "correct_answer": "A small squeeze of lemon juice",
         "safety_tip": "Remove the sauce from high heat and add acid gradually to reduce the risk of curdling.",
-        "explanation": "A small amount of acid can cut through richness and make a heavy sauce taste more balanced."
+        "explanation": "A small amount of acid can cut through richness and make a heavy sauce taste more balanced.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -165,7 +253,8 @@
         ],
         "correct_answer": "Whisk in a little more oil and a small amount of sweetener",
         "safety_tip": "Make small adjustments and taste between additions so the dressing remains balanced.",
-        "explanation": "Additional oil dilutes the acid, while a small amount of sweetener can soften the perception of sourness."
+        "explanation": "Additional oil dilutes the acid, while a small amount of sweetener can soften the perception of sourness.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -178,7 +267,8 @@
         ],
         "correct_answer": "Transfer the sauce to a clean pan and balance it with a little fat or sweetness",
         "safety_tip": "Do not scrape burned residue from the bottom of the pan because it can intensify bitterness.",
-        "explanation": "Moving the sauce prevents further contact with burned residue, and a small amount of fat or sweetness may soften mild bitterness."
+        "explanation": "Moving the sauce prevents further contact with burned residue, and a small amount of fat or sweetness may soften mild bitterness.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -191,7 +281,8 @@
         ],
         "correct_answer": "A small splash of lime juice",
         "safety_tip": "Add acidic ingredients near the end and taste after each small addition.",
-        "explanation": "Acid can brighten flavors and add contrast when a dish tastes flat despite having enough salt."
+        "explanation": "Acid can brighten flavors and add contrast when a dish tastes flat despite having enough salt.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -204,7 +295,8 @@
         ],
         "correct_answer": "Add a small amount of acid and a pinch of salt",
         "safety_tip": "Add vinegar or citrus juice a few drops at a time to avoid making the sauce too sour.",
-        "explanation": "Acid and salt can reduce the perception of excessive sweetness and restore balance without adding more sugar."
+        "explanation": "Acid and salt can reduce the perception of excessive sweetness and restore balance without adding more sugar.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -217,13 +309,29 @@
         ],
         "correct_answer": "Fresh herbs and a little citrus zest",
         "safety_tip": "Wash fresh herbs and citrus thoroughly before chopping or zesting them.",
-        "explanation": "Fresh herbs add aroma, while citrus zest adds brightness without significantly increasing saltiness or changing the dish's texture."
+        "explanation": "Fresh herbs add aroma, while citrus zest adds brightness without significantly increasing saltiness or changing the dish's texture.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Emergency Flavor Tuning.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   },
   {
+    "lessonId": "lesson-recipe-adjustment-texture-fixes-003",
     "category": "Recipe Adjustment",
     "skill": "Texture Fixes",
+    "title": "Texture Fixes",
+    "learningGoal": "Learn the core ideas and safe practices for Texture Fixes.",
+    "estimatedMinutes": 8,
+    "intro": {
+      "headline": "Texture Fixes Basics",
+      "body": "This lesson introduces Texture Fixes. Read each prompt carefully, then practice with guided questions and feedback."
+    },
     "questions": [
       {
         "id": 1,
@@ -236,7 +344,8 @@
         ],
         "correct_answer": "Stir in a slurry made from cornstarch and cold water",
         "safety_tip": "Mix the cornstarch with cold water before adding it, then stir the hot soup continuously.",
-        "explanation": "A cornstarch slurry disperses smoothly and thickens the soup as it heats. Adding dry starch directly can create lumps."
+        "explanation": "A cornstarch slurry disperses smoothly and thickens the soup as it heats. Adding dry starch directly can create lumps.",
+        "correct_index": 0
       },
       {
         "id": 2,
@@ -249,7 +358,8 @@
         ],
         "correct_answer": "Stir in instant potato flakes a little at a time",
         "safety_tip": "Add the flakes gradually because too much can make the potatoes dry or pasty.",
-        "explanation": "Instant potato flakes absorb excess moisture and thicken mashed potatoes without adding a strong new flavor."
+        "explanation": "Instant potato flakes absorb excess moisture and thicken mashed potatoes without adding a strong new flavor.",
+        "correct_index": 0
       },
       {
         "id": 3,
@@ -262,7 +372,8 @@
         ],
         "correct_answer": "Whisk in a small amount of warm liquid at a time",
         "safety_tip": "Add liquid gradually and keep the heat moderate to prevent splashing or sudden separation.",
-        "explanation": "Adding warm liquid slowly allows you to loosen the sauce evenly without making it unexpectedly watery."
+        "explanation": "Adding warm liquid slowly allows you to loosen the sauce evenly without making it unexpectedly watery.",
+        "correct_index": 0
       },
       {
         "id": 4,
@@ -275,7 +386,8 @@
         ],
         "correct_answer": "Remove it from the heat and whisk in a small amount of warm cream",
         "safety_tip": "High heat can cause dairy sauces to separate, so lower or remove the heat before attempting a repair.",
-        "explanation": "Reducing the heat stops further separation, and gently whisking in warm cream may help restore a smoother emulsion."
+        "explanation": "Reducing the heat stops further separation, and gently whisking in warm cream may help restore a smoother emulsion.",
+        "correct_index": 0
       },
       {
         "id": 5,
@@ -288,7 +400,8 @@
         ],
         "correct_answer": "Spread it on a tray or cook it briefly uncovered over low heat",
         "safety_tip": "Keep the heat low and watch the rice closely so the bottom does not burn.",
-        "explanation": "Exposing the rice to air or gentle heat allows excess moisture to evaporate without adding more liquid."
+        "explanation": "Exposing the rice to air or gentle heat allows excess moisture to evaporate without adding more liquid.",
+        "correct_index": 0
       },
       {
         "id": 6,
@@ -301,7 +414,8 @@
         ],
         "correct_answer": "Whisk thoroughly or strain it through a fine-mesh strainer",
         "safety_tip": "Hold the strainer securely and pour hot gravy carefully to prevent burns.",
-        "explanation": "Whisking can break up small lumps, while straining physically removes lumps and produces a smoother gravy."
+        "explanation": "Whisking can break up small lumps, while straining physically removes lumps and produces a smoother gravy.",
+        "correct_index": 0
       },
       {
         "id": 7,
@@ -314,7 +428,8 @@
         ],
         "correct_answer": "Add a small amount of milk or water, one teaspoon at a time",
         "safety_tip": "Add liquid slowly because too much can make the dough sticky and cause the cookies to spread.",
-        "explanation": "A small amount of liquid can restore enough moisture for the dough to hold together without changing it dramatically."
+        "explanation": "A small amount of liquid can restore enough moisture for the dough to hold together without changing it dramatically.",
+        "correct_index": 0
       },
       {
         "id": 8,
@@ -327,7 +442,8 @@
         ],
         "correct_answer": "Whisk vigorously while slowly adding the oil",
         "safety_tip": "Use a stable bowl and pour the oil in a thin stream to maintain control while whisking.",
-        "explanation": "Slowly adding oil while whisking helps break the oil into tiny droplets and creates a more stable emulsion."
+        "explanation": "Slowly adding oil while whisking helps break the oil into tiny droplets and creates a more stable emulsion.",
+        "correct_index": 0
       },
       {
         "id": 9,
@@ -340,7 +456,8 @@
         ],
         "correct_answer": "Press it through a fine-mesh strainer while it is still warm",
         "safety_tip": "Handle the warm custard carefully and use a heat-resistant utensil when pressing it through the strainer.",
-        "explanation": "Straining removes small pieces of overcooked egg and produces a smoother custard texture."
+        "explanation": "Straining removes small pieces of overcooked egg and produces a smoother custard texture.",
+        "correct_index": 0
       },
       {
         "id": 10,
@@ -353,8 +470,16 @@
         ],
         "correct_answer": "Broil it briefly while watching it closely",
         "safety_tip": "Broilers can burn food quickly, so remain nearby and check the topping frequently.",
-        "explanation": "Brief exposure to intense top heat can brown and crisp the surface without significantly overcooking the entire casserole."
+        "explanation": "Brief exposure to intense top heat can brown and crisp the surface without significantly overcooking the entire casserole.",
+        "correct_index": 0
       }
-    ]
+    ],
+    "recap": [
+      "Review the main concepts from Texture Fixes.",
+      "Focus on accuracy first, then speed.",
+      "Use the safety tips during real kitchen practice."
+    ],
+    "stepMode": "questionOrder",
+    "defaultStepType": "multiple_choice"
   }
 ]
