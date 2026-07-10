@@ -1,6 +1,10 @@
 {
   "name": "webchef",
   "version": "1.0.0",
+  "packageManager": "pnpm@11.11.0",
+  "engines": {
+    "node": "24.x"
+  },
   "description": "WebChef — Duolingo-style cooking app",
   "main": "index.js",
   "scripts": {
@@ -20,9 +24,7 @@
   "homepage": "https://github.com/wpeterashworth/webchef#readme",
   "private": "true",
   "devDependencies": {
-    "supabase": "^2.107.0"
+    "supabase": "^2.109.1"
   },
-  "dependencies": {
-    "pnpm": "^11.9.0"
-  }
+  "dependencies": {}
 }

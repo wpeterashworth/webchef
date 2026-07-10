@@ -1,7 +1,10 @@
 <script>
+  import Header from "$lib/components/header.svelte";
+  import Footer from "$lib/components/footer.svelte";
   import { goto } from "$app/navigation";
   import { supabase } from "$lib/supabase/client.js";
 
+  let firstName = $state("");
   let email = $state("");
   let password = $state("");
   let confirmPassword = $state("");
@@ -20,7 +23,14 @@
     }
 
     loading = true;
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    // Stash the first name in Supabase Auth user metadata (options.data). It
+    // rides along with the account — no separate table needed — and is later
+    // read from user.user_metadata.first_name in the header.
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { first_name: firstName } },
+    });
     loading = false;
 
     if (error) {
@@ -42,52 +52,75 @@
   <title>Sign Up · WebChef</title>
 </svelte:head>
 
-<div class="auth-page">
-  <form class="auth-card" on:submit={handleSignup}>
-    <h1>Sign Up</h1>
+<div class="page-shell">
+  <Header />
 
-    {#if errorMessage}
-      <p class="error" role="alert">{errorMessage}</p>
-    {/if}
-    {#if infoMessage}
-      <p class="info" role="status">{infoMessage}</p>
-    {/if}
+  <main class="page-main">
+    <div class="auth-page">
+      <form class="auth-card" on:submit={handleSignup}>
+        <h1>Sign Up</h1>
 
-    <label>
-      Email
-      <input type="email" bind:value={email} required autocomplete="email" />
-    </label>
+        {#if errorMessage}
+          <p class="error" role="alert">{errorMessage}</p>
+        {/if}
+        {#if infoMessage}
+          <p class="info" role="status">{infoMessage}</p>
+        {/if}
 
-    <label>
-      Password
-      <input
-        type="password"
-        bind:value={password}
-        required
-        minlength="6"
-        autocomplete="new-password"
-      />
-    </label>
+        <label>
+          First name
+          <input
+            type="text"
+            bind:value={firstName}
+            required
+            autocomplete="given-name"
+          />
+        </label>
 
-    <label>
-      Confirm Password
-      <input
-        type="password"
-        bind:value={confirmPassword}
-        required
-        minlength="6"
-        autocomplete="new-password"
-      />
-    </label>
+        <label>
+          Email
+          <input
+            type="email"
+            bind:value={email}
+            required
+            autocomplete="email"
+          />
+        </label>
 
-    <button type="submit" disabled={loading}>
-      {loading ? "Creating account…" : "Sign Up"}
-    </button>
+        <label>
+          Password
+          <input
+            type="password"
+            bind:value={password}
+            required
+            minlength="6"
+            autocomplete="new-password"
+          />
+        </label>
 
-    <p class="switch">
-      Already have an account? <a href="/login">Log in</a>
-    </p>
-  </form>
+        <label>
+          Confirm Password
+          <input
+            type="password"
+            bind:value={confirmPassword}
+            required
+            minlength="6"
+            autocomplete="new-password"
+          />
+        </label>
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Creating account…" : "Sign Up"}
+        </button>
+
+        <p class="switch">
+          Already have an account? <a href="/login">Log in</a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <Footer />
 </div>
 
 <style>
@@ -97,7 +130,6 @@
     align-items: center;
     min-height: 70vh;
     padding: 2rem 1rem;
-    background-color: var(--page-color);
   }
 
   .auth-card {

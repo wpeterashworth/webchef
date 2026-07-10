@@ -1,4 +1,6 @@
-# Render Blueprint — deploys the client as a static site.
+# Render Blueprint — deploys the SvelteKit client as a free Static Site.
+# The app is a single-page app (adapter-static); Supabase is the backend, so
+# no web server is required. See client/svelte.config.js.
 # Commit this file, then in Render: New → Blueprint → pick this repo.
 # https://render.com/docs/blueprint-spec
 services:
