@@ -50,3 +50,13 @@ because the DB is already on Supabase; PROJECT-TASKLIST.txt updated to say
 Supabase Auth throughout (agents.md tech-stack table still lists Auth0 — left
 untouched per Peter). Next: signed-in route protection (Phase 3.4) and creating
 a users-table row on first login (Phase 3.3), pending Peter's go-ahead.
+
+2026-07-10 — Josh
+Created JSON/easy_mode_lessons.json from cooking_app_easy_mode_lessons_for_copilot.md.
+Kept the existing JSON lesson banks unchanged and added a separate nested easy-mode
+dataset with 4 categories, 12 skills, and 36 mini-lessons so the current app wiring
+is not disturbed.
+
+2026-07-10 — Josh
+Added an additive Supabase migration at supabase/migrations/20260710000000_easy_mode_lessons_schema.sql.
+It introduces new easy-mode lesson tables only; it does not rename, drop, or alter the existing schema.
