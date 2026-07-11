@@ -49,9 +49,9 @@
     <h1>WebChef</h1>
     <ul>
       <li><a href="/">Home</a></li>
+      <li><a href="/lesson">Lessons</a></li>
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/lesson">Lesson</a></li>
         <li><a href="/account">Account</a></li>
         <li class="user-email">
           {$user.user_metadata?.first_name || $user.email}

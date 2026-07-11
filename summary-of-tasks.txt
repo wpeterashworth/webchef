@@ -105,3 +105,28 @@ is not disturbed.
 2026-07-10 — Josh
 Added an additive Supabase migration at supabase/migrations/20260710000000_easy_mode_lessons_schema.sql.
 It introduces new easy-mode lesson tables only; it does not rename, drop, or alter the existing schema.
+2026-07-10 — Luke
+Fixed the lessons page so lesson cards render visibly. Updated
+client/src/routes/lesson/+page.svelte with a proper page shell, header, and
+responsive grid (12 cards from bundled JSON). Updated lesson-card.svelte to use
+Svelte 5 $props(), theme CSS variables (--panel-color, --text-color) for dark/light
+visibility, and the wood-frame border (matching landing.svelte) with z-index so
+card content stays on top. Moved Lessons nav link in header.svelte so it shows
+for all users (not only when signed in). Fixed lesson detail page to use
+$derived(data.lesson). Verified with `pnpm build` and dev server at /lesson.
+
+2026-07-10 — Luke
+Restructured lessons into 4 top-level cards (Recipe Adjustment, Ingredient
+Substitutions, How to Cook, Utensil Handling). Added client/src/lib/lessons.js to
+group the 12 JSON skills into 4 category lessons. Lesson list now shows 4 cards
+with skill + question counts. Rewrote lesson/[lessonId]/+page.svelte as a
+step-by-step flow per skill: intro → interactive quiz (one question at a time with
+feedback) → skill recap → next skill. Updated +page.js with entries() to prerender
+only the 4 lesson routes. Verified with `pnpm build`.
+
+2026-07-10 — Luke
+Added per-card difficulty selection (Beginner, Intermediate, Advanced) on
+lesson-card.svelte. Each level controls how many skills and questions are included
+(client/src/lib/lessons.js). Start Lesson passes ?difficulty= in the URL; the
+lesson flow filters content accordingly and shows the chosen level in the header.
+Verified with `pnpm build`.
