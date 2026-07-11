@@ -7,8 +7,11 @@
   --color-secondary-light: #909ca8;
   --color-tertiary-light: #8f3c00;
 
-  --text-color-light: var(--color-primary-dark);
-  --text-color-dark: var(--color-primary-light);
+  --text-color-light: #102030;
+  --text-color-dark: #f2f6fa;
+
+  --text-muted-light: #2a3d52;
+  --text-muted-dark: #c8d4e0;
 
   --text-color-hover-light: var(--color-tertiary-dark);
   --text-color-hover-dark: var(--color-tertiary-light);
