@@ -4,7 +4,10 @@
   import { onMount } from "svelte";
   import Header from "$lib/components/header.svelte";
   import Footer from "$lib/components/footer.svelte";
-  import { applyDifficulty, normalizeDifficulty } from "$lib/javascript/lessons.js";
+  import {
+    applyDifficulty,
+    normalizeDifficulty,
+  } from "$lib/javascript/lessons.js";
 
   let { data } = $props();
 
@@ -25,24 +28,26 @@
   /** @type {'intro' | 'quiz' | 'section-done' | 'complete'} */
   let phase = $state("intro");
   let sectionIndex = $state(0);
-  let questionIndex = $state(0);
+  let stepIndex = $state(0);
   let selectedOption = $state(null);
   let answered = $state(false);
 
   const currentSection = $derived(lesson.sections[sectionIndex]);
-  const currentQuestion = $derived(currentSection?.questions[questionIndex]);
+  const currentStep = $derived(currentSection?.steps?.[stepIndex]);
+  const currentQuestion = $derived(currentStep?.question);
 
   $effect(() => {
     lesson.difficulty;
     phase = "intro";
     sectionIndex = 0;
-    questionIndex = 0;
+    stepIndex = 0;
     selectedOption = null;
     answered = false;
   });
 
   function correctIndex(question) {
-    if (typeof question.correct_index === "number") return question.correct_index;
+    if (typeof question.correct_index === "number")
+      return question.correct_index;
     return question.options.indexOf(question.correct_answer);
   }
 
@@ -52,7 +57,7 @@
 
   function startQuiz() {
     phase = "quiz";
-    questionIndex = 0;
+    stepIndex = 0;
     selectedOption = null;
     answered = false;
   }
@@ -65,8 +70,8 @@
 
   function nextStep() {
     if (phase === "quiz") {
-      if (questionIndex < currentSection.questions.length - 1) {
-        questionIndex += 1;
+      if (stepIndex < currentSection.steps.length - 1) {
+        stepIndex += 1;
         selectedOption = null;
         answered = false;
         return;
@@ -79,7 +84,7 @@
     if (phase === "section-done") {
       if (sectionIndex < lesson.sections.length - 1) {
         sectionIndex += 1;
-        questionIndex = 0;
+        stepIndex = 0;
         selectedOption = null;
         answered = false;
         phase = "intro";
@@ -112,7 +117,7 @@
     <div class="progress">
       Skill {sectionIndex + 1} of {lesson.skillCount}
       {#if phase === "quiz"}
-        · Question {questionIndex + 1} of {currentSection.questions.length}
+        · Step {stepIndex + 1} of {currentSection.steps.length}
       {/if}
     </div>
 
@@ -127,7 +132,10 @@
     {:else if phase === "quiz" && currentQuestion}
       <section class="panel quiz-panel">
         <p class="skill-label">{currentSection.skill}</p>
-        <h2>{currentQuestion.question}</h2>
+        <h2>{currentStep.title}</h2>
+        <p class="mini-lesson-text">{currentStep.lessonText}</p>
+
+        <h3>{currentQuestion.question}</h3>
 
         <ul class="options">
           {#each currentQuestion.options as option, index}
@@ -148,19 +156,29 @@
         </ul>
 
         {#if answered}
-          <div class="feedback" class:success={isCorrect(currentQuestion, selectedOption)}>
+          <div
+            class="feedback"
+            class:success={isCorrect(currentQuestion, selectedOption)}
+          >
             <p>
               <strong>
-                {isCorrect(currentQuestion, selectedOption) ? "Correct!" : "Not quite."}
+                {isCorrect(currentQuestion, selectedOption)
+                  ? "Correct!"
+                  : "Not quite."}
               </strong>
               {currentQuestion.explanation}
             </p>
-            <p class="tip"><strong>Safety tip:</strong> {currentQuestion.safety_tip}</p>
+            {#if currentQuestion.safety_tip}
+              <p class="tip">
+                <strong>Safety tip:</strong>
+                {currentQuestion.safety_tip}
+              </p>
+            {/if}
           </div>
 
           <button class="primary" onclick={nextStep}>
-            {questionIndex < currentSection.questions.length - 1
-              ? "Next question"
+            {stepIndex < currentSection.steps.length - 1
+              ? "Next mini lesson"
               : "Finish skill"}
           </button>
         {/if}
@@ -176,7 +194,9 @@
         </ul>
 
         <button class="primary" onclick={nextStep}>
-          {sectionIndex < lesson.sections.length - 1 ? "Next skill" : "Finish lesson"}
+          {sectionIndex < lesson.sections.length - 1
+            ? "Next skill"
+            : "Finish lesson"}
         </button>
       </section>
     {:else}
@@ -265,6 +285,16 @@
     margin: 0 0 0.75rem;
     font-size: 1.15rem;
     color: var(--text-color);
+  }
+
+  .quiz-panel h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+    color: var(--text-color);
+  }
+
+  .mini-lesson-text {
+    white-space: pre-line;
   }
 
   .panel p {
