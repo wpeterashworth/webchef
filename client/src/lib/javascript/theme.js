@@ -4,6 +4,7 @@ const themes = {
     "--panel-color": "var(--color-secondary-light)",
     "--accent-color": "var(--color-tertiary-light)",
     "--text-color": "var(--text-color-light)",
+    "--text-muted": "var(--text-muted-light)",
     "--text-hover-color": "var(--text-color-hover-light)",
   },
   dark: {
@@ -11,6 +12,7 @@ const themes = {
     "--panel-color": "var(--color-secondary-dark)",
     "--accent-color": "var(--color-tertiary-dark)",
     "--text-color": "var(--text-color-dark)",
+    "--text-muted": "var(--text-muted-dark)",
     "--text-hover-color": "var(--text-color-hover-dark)",
   },
 };
