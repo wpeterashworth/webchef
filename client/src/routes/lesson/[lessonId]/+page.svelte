@@ -193,7 +193,19 @@
           {/each}
         </ul>
 
-        {#if answered}
+        {#if !answered}
+          <button
+            class="primary"
+            disabled={selectedOption === null}
+            onclick={submitAnswer}
+          >
+            Submit answer
+          </button>
+
+          {#if selectedOption === null}
+            <p class="hint">Pick an answer, then submit.</p>
+          {/if}
+        {:else}
           <div class="feedback" class:success={isCorrect(currentQuestion, selectedOption)}>
             <p>
               <strong>
