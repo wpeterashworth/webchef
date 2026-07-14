@@ -6,8 +6,16 @@
   import Footer from "$lib/components/footer.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
   import { applyDifficulty, normalizeDifficulty } from "$lib/javascript/lessons.js";
+  import { COMPLETED } from "$lib/javascript/progress.js";
+  import { progress, markStarted, setStatus } from "$lib/stores/progress.js";
 
   let { data } = $props();
+
+  // Progress is saved best-effort: a failed write must not block the learner
+  // mid-quiz, but it shouldn't fail silently either.
+  let progressError = $state(null);
+
+  const savedStatus = $derived($progress[data.lesson.id]?.status);
 
   let difficulty = $state("beginner");
 
@@ -56,6 +64,12 @@
     questionIndex = 0;
     selectedOption = null;
     answered = false;
+
+    // markStarted() won't downgrade a lesson that's already in progress or
+    // completed, so replaying a finished lesson doesn't un-complete it.
+    markStarted(data.lesson.id, savedStatus).catch((error) => {
+      progressError = error;
+    });
   }
 
   // Picking an option only *stages* it — the learner can change their mind as
@@ -97,6 +111,11 @@
       }
 
       phase = "complete";
+
+      // The lesson counts as completed once every skill in it is done.
+      setStatus(data.lesson.id, COMPLETED).catch((error) => {
+        progressError = error;
+      });
     }
   }
 </script>
@@ -126,6 +145,12 @@
         · Question {questionIndex + 1} of {currentSection.questions.length}
       {/if}
     </div>
+
+    {#if progressError}
+      <p class="save-error">
+        Your progress couldn't be saved: {progressError.message}
+      </p>
+    {/if}
 
     {#if phase === "intro"}
       <section class="panel intro-panel">
@@ -397,6 +422,15 @@
     margin: 0.5rem 0 0;
     font-size: 0.8rem;
     color: var(--text-muted);
+  }
+
+  .save-error {
+    margin: 0 0 1rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 0.85rem;
   }
 
   .link-button {

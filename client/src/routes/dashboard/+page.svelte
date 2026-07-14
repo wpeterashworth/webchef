@@ -2,6 +2,28 @@
   import Footer from "$lib/components/footer.svelte";
   import Header from "$lib/components/header.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
+  import { getLessonCatalog } from "$lib/javascript/lessons.js";
+  import { TODO, IN_PROGRESS, COMPLETED } from "$lib/javascript/progress.js";
+  import { progress, progressReady, progressError } from "$lib/stores/progress.js";
+
+  // Progress rows only know a lesson by its slug, so pair each one back up with
+  // the lesson it belongs to in order to show a title and a link.
+  const lessons = getLessonCatalog();
+
+  const byStatus = $derived.by(() => {
+    const groups = { [TODO]: [], [IN_PROGRESS]: [], [COMPLETED]: [] };
+
+    for (const lesson of lessons) {
+      const row = $progress[lesson.lessonId];
+      // No row means the lesson isn't tracked — it belongs in none of the lists.
+      if (row) groups[row.status]?.push({ ...lesson, ...row });
+    }
+
+    return groups;
+  });
+
+  const dateFor = (row) =>
+    new Date(row.completed_at ?? row.created_at).toLocaleDateString();
 </script>
 
 <svelte:head>
@@ -26,18 +48,24 @@
         <div class="hero-pill">🔥 7 day streak</div>
       </header>
 
+  {#if $progressError}
+    <p class="load-error">
+      Your progress couldn't be loaded: {$progressError.message}
+    </p>
+  {/if}
+
   <div class="summary-grid">
     <article class="summary-card">
       <h2>Started</h2>
-      <p>3 lessons</p>
+      <p>{byStatus[IN_PROGRESS].length} lessons</p>
     </article>
     <article class="summary-card">
-      <h2>Planned</h2>
-      <p>2 recipes</p>
+      <h2>To-Do</h2>
+      <p>{byStatus[TODO].length} lessons</p>
     </article>
     <article class="summary-card">
       <h2>Completed</h2>
-      <p>8 lessons</p>
+      <p>{byStatus[COMPLETED].length} lessons</p>
     </article>
   </div>
 
@@ -48,44 +76,43 @@
     </div>
 
     <div class="card-box">
-      <div class="card">
-        <h3>Lesson 1: How to make a penguin</h3>
-        <p>Started on: 1/1/2023</p>
-      </div>
-
-      <div class="card">
-        <h3>Lesson 2: How to make a penguin</h3>
-        <p>Started on: 1/1/2023</p>
-      </div>
-
-      <div class="card">
-        <h3>Lesson 3: How to make a penguin</h3>
-        <p>Started on: 1/1/2023</p>
-      </div>
+      {#if !$progressReady}
+        <p class="empty">Loading…</p>
+      {:else if byStatus[IN_PROGRESS].length === 0}
+        <p class="empty">Nothing in progress. Open a lesson to get going.</p>
+      {:else}
+        {#each byStatus[IN_PROGRESS] as lesson (lesson.lessonId)}
+          <a class="card" href={lesson.href}>
+            <h3>{lesson.title}</h3>
+            <p>Started on: {dateFor(lesson)}</p>
+          </a>
+        {/each}
+      {/if}
     </div>
   </section>
 
   <section id="planned-lessons" class="container">
     <div class="section-title">
-      <h2>Planned Lessons</h2>
+      <h2>To-Do Lessons</h2>
       <span>Coming up</span>
     </div>
 
     <div class="card-box">
-      <div class="card">
-        <h3>Lesson 1: How to make a penguin</h3>
-        <p>Planned for: 1/1/2023</p>
-      </div>
-
-      <div class="card">
-        <h3>Lesson 2: How to make a penguin</h3>
-        <p>Planned for: 1/1/2023</p>
-      </div>
-
-      <div class="card">
-        <h3>Lesson 3: How to make a penguin</h3>
-        <p>Planned for: 1/1/2023</p>
-      </div>
+      {#if !$progressReady}
+        <p class="empty">Loading…</p>
+      {:else if byStatus[TODO].length === 0}
+        <p class="empty">
+          Your to-do list is empty. Add a lesson from the
+          <a href="/lesson">lessons page</a>.
+        </p>
+      {:else}
+        {#each byStatus[TODO] as lesson (lesson.lessonId)}
+          <a class="card" href={lesson.href}>
+            <h3>{lesson.title}</h3>
+            <p>Added on: {dateFor(lesson)}</p>
+          </a>
+        {/each}
+      {/if}
     </div>
   </section>
 
@@ -96,20 +123,18 @@
     </div>
 
     <div class="card-box">
-      <div class="card">
-        <h3>Lesson 1: How to make a penguin</h3>
-        <p>Completed on: 1/1/2023</p>
-      </div>
-
-      <div class="card">
-        <h3>Lesson 2: How to make a penguin</h3>
-        <p>Completed on: 1/1/2023</p>
-      </div>
-
-      <div class="card">
-        <h3>Lesson 3: How to make a penguin</h3>
-        <p>Completed on: 1/1/2023</p>
-      </div>
+      {#if !$progressReady}
+        <p class="empty">Loading…</p>
+      {:else if byStatus[COMPLETED].length === 0}
+        <p class="empty">No lessons finished yet.</p>
+      {:else}
+        {#each byStatus[COMPLETED] as lesson (lesson.lessonId)}
+          <a class="card" href={lesson.href}>
+            <h3>{lesson.title}</h3>
+            <p>Completed on: {dateFor(lesson)}</p>
+          </a>
+        {/each}
+      {/if}
     </div>
   </section>
 </section>
@@ -248,6 +273,15 @@
         border: 1px solid rgba(0, 0, 0, 0.05);
         border-radius: 12px;
 
+        /* The cards are links now, so each one opens the lesson it names. */
+        flex: 1;
+        display: block;
+        text-decoration: none;
+
+        &:hover {
+          border-color: var(--text-muted);
+        }
+
         & h3 {
           margin: 0 0 0.35rem;
           font-size: 1rem;
@@ -261,5 +295,20 @@
         flex-direction: row;
       }
     }
+  }
+
+  .empty {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .load-error {
+    margin: 0 0 1rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 0.85rem;
   }
 </style>
