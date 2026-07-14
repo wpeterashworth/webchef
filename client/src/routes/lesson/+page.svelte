@@ -1,6 +1,7 @@
 <script>
   import Header from "$lib/components/header.svelte";
   import Footer from "$lib/components/footer.svelte";
+  import AuthGuard from "$lib/components/auth-guard.svelte";
   import LessonCard from "$lib/components/lesson-card.svelte";
   import { getLessonCatalog } from "$lib/javascript/lessons.js";
 
@@ -15,26 +16,28 @@
   <Header />
 
   <main class="page-content">
-    <section class="lessons-page">
-      <header class="page-header">
-        <p class="eyebrow">Choose a topic</p>
-        <h1>Lessons</h1>
-        <p class="intro">
-          Each lesson walks you through several skills — pick a difficulty, read a
-          short intro, take the quiz, then move on to the next topic.
-        </p>
-      </header>
+    <AuthGuard>
+      <section class="lessons-page">
+        <header class="page-header">
+          <p class="eyebrow">Choose a topic</p>
+          <h1>Lessons</h1>
+          <p class="intro">
+            Each lesson walks you through several skills — pick a difficulty, read
+            a short intro, take the quiz, then move on to the next topic.
+          </p>
+        </header>
 
-      {#if cards.length > 0}
-        <div class="lesson-grid">
-          {#each cards as card (card.href)}
-            <LessonCard {...card} />
-          {/each}
-        </div>
-      {:else}
-        <p class="empty-state">No lessons are available yet. Check back soon.</p>
-      {/if}
-    </section>
+        {#if cards.length > 0}
+          <div class="lesson-grid">
+            {#each cards as card (card.href)}
+              <LessonCard {...card} />
+            {/each}
+          </div>
+        {:else}
+          <p class="empty-state">No lessons are available yet. Check back soon.</p>
+        {/if}
+      </section>
+    </AuthGuard>
   </main>
 
   <Footer />

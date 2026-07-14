@@ -3,6 +3,8 @@
     DIFFICULTY_LEVELS,
     countQuestionsForSkills,
   } from "$lib/javascript/lessons.js";
+  import { STATUS_LABEL, TODO } from "$lib/javascript/progress.js";
+  import { progress, setStatus, clearStatus } from "$lib/stores/progress.js";
 
   let {
     title = "Lesson Name",
@@ -10,10 +12,32 @@
     questionCount = 0,
     label = "",
     href = "#",
+    lessonId = "",
     skills = [],
   } = $props();
 
   let selectedDifficulty = $state(DIFFICULTY_LEVELS[0].id);
+  let saving = $state(false);
+
+  // undefined when the lesson isn't tracked at all — that's the fourth state,
+  // and it's the absence of a row rather than a status of its own.
+  const status = $derived($progress[lessonId]?.status);
+  const onTodo = $derived(status === TODO);
+
+  async function toggleTodo() {
+    saving = true;
+    try {
+      // Only ever toggles the to-do flag. A started or completed lesson keeps
+      // its status — you don't "un-complete" a lesson by clicking a checkbox.
+      if (onTodo) {
+        await clearStatus(lessonId);
+      } else if (!status) {
+        await setStatus(lessonId, TODO);
+      }
+    } finally {
+      saving = false;
+    }
+  }
 
   const activeLevel = $derived(
     DIFFICULTY_LEVELS.find((level) => level.id === selectedDifficulty) ??
@@ -41,6 +65,12 @@
 
     <h2>{title}</h2>
 
+    {#if status}
+      <span class="status-badge" data-status={status}>
+        {STATUS_LABEL[status]}
+      </span>
+    {/if}
+
     <p class="description">{description}</p>
 
     <div class="difficulty">
@@ -64,7 +94,26 @@
       </p>
     </div>
 
-    <a class="button" href={startHref}>Start Lesson</a>
+    <div class="actions">
+      <!-- A completed or in-progress lesson has a status of its own, so the
+           to-do toggle only makes sense for untracked or to-do lessons. -->
+      {#if !status || onTodo}
+        <button
+          type="button"
+          class="todo-toggle"
+          class:on={onTodo}
+          disabled={saving}
+          aria-pressed={onTodo}
+          onclick={toggleTodo}
+        >
+          {onTodo ? "✓ On To-Do" : "+ To-Do"}
+        </button>
+      {/if}
+
+      <a class="button" href={startHref}>
+        {status === "completed" ? "Review" : status ? "Continue" : "Start Lesson"}
+      </a>
+    </div>
   </div>
 </article>
 
@@ -177,8 +226,60 @@
     font-weight: 600;
   }
 
+  .status-badge {
+    align-self: flex-start;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .status-badge[data-status="todo"] {
+    background: #6366f1;
+  }
+
+  .status-badge[data-status="in_progress"] {
+    background: #eab308;
+  }
+
+  .status-badge[data-status="completed"] {
+    background: #22c55e;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .todo-toggle {
+    padding: 0.35rem 0.7rem;
+    border: 1px solid color-mix(in srgb, var(--text-color) 25%, transparent);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .todo-toggle.on {
+    background: #6366f1;
+    border-color: #6366f1;
+    color: #ffffff;
+  }
+
+  .todo-toggle:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
   .button {
-    align-self: flex-end;
+    margin-left: auto;
     padding: 0.45rem 0.8rem;
     border-radius: 999px;
     background: var(--accent-color);
