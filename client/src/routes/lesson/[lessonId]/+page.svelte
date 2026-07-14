@@ -58,9 +58,18 @@
     answered = false;
   }
 
+  // Picking an option only *stages* it — the learner can change their mind as
+  // often as they like. Nothing is revealed until they submit, so a stray click
+  // can't burn a question.
   function selectOption(index) {
     if (answered) return;
     selectedOption = index;
+  }
+
+  // Committing the answer is what reveals the result. Guarded so an Enter key
+  // on the focused button can't submit an empty answer.
+  function submitAnswer() {
+    if (answered || selectedOption === null) return;
     answered = true;
   }
 
@@ -136,6 +145,8 @@
             <li>
               <button
                 type="button"
+                disabled={answered}
+                aria-pressed={selectedOption === index}
                 class:selected={selectedOption === index}
                 class:correct={answered && isCorrect(currentQuestion, index)}
                 class:incorrect={answered &&
@@ -149,7 +160,19 @@
           {/each}
         </ul>
 
-        {#if answered}
+        {#if !answered}
+          <button
+            class="primary"
+            disabled={selectedOption === null}
+            onclick={submitAnswer}
+          >
+            Submit answer
+          </button>
+
+          {#if selectedOption === null}
+            <p class="hint">Pick an answer, then submit.</p>
+          {/if}
+        {:else}
           <div class="feedback" class:success={isCorrect(currentQuestion, selectedOption)}>
             <p>
               <strong>
@@ -357,6 +380,23 @@
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
+  }
+
+  /* Submit stays visible but inert until an option is picked, so the learner can
+     see what the next step is before they've chosen one. */
+  .primary:disabled {
+    background: color-mix(in srgb, #12b7ea 35%, var(--panel-color));
+    cursor: not-allowed;
+  }
+
+  .options button:disabled {
+    cursor: default;
+  }
+
+  .hint {
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
   }
 
   .link-button {
