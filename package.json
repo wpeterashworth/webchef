@@ -8,7 +8,10 @@
   "description": "WebChef — Duolingo-style cooking app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lessons:payload": "node scripts/generate-lessons-seed-sql.mjs",
+    "lessons:payload:sql": "node scripts/generate-lessons-seed-sql.mjs --sql",
+    "lessons:ingest": "node scripts/ingest-lessons-payload.mjs"
   },
   "repository": {
     "type": "git",
@@ -26,5 +29,7 @@
   "devDependencies": {
     "supabase": "^2.109.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
 }
