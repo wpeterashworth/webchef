@@ -124,100 +124,100 @@
     border-radius: 24px;
     background: var(--card-bg);
     min-height: 190px;
+    max-width: 480px;
     overflow: hidden;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
     transition:
       border-color 0.2s ease,
       background 0.2s ease;
-  }
 
-  .card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 12px;
-    border-radius: inherit;
-    background: url("/images/woodframe.webp") center/cover no-repeat;
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    z-index: 0;
-  }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 12px;
+      border-radius: inherit;
+      background: url("/images/woodframe.webp") center/cover no-repeat;
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  .card-inner {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 1rem;
-    min-height: 190px;
-    color: var(--text-color);
-  }
+    .card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+      min-height: 190px;
+      color: var(--text-color);
+    }
 
-  .topline {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 600;
-  }
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
 
-  h2 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-color);
-  }
+    h2 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
 
-  .description {
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    flex: 1;
-    line-height: 1.45;
-  }
+    .description {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex: 1;
+      line-height: 1.45;
+    }
 
-  .difficulty {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+    .difficulty {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
 
-  .difficulty-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
+    .difficulty-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
 
-  .difficulty-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
+    .difficulty-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
 
-  .difficulty-options button {
-    border: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--page-color) 88%, var(--text-color));
-    color: var(--text-color);
-    padding: 0.3rem 0.65rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
+      button {
+        border: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+        border-radius: 999px;
+        background: color-mix(in srgb, var(--page-color) 88%, var(--text-color));
+        color: var(--text-color);
+        padding: 0.3rem 0.65rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
 
-  .difficulty-options button.selected {
-    background: var(--level-color);
-    border-color: var(--level-color);
-    color: #ffffff;
-  }
+      button.selected {
+        background: var(--level-color);
+        border-color: var(--level-color);
+        color: #ffffff;
+      }
+    }
 
   .difficulty-hint {
     margin: 0;
@@ -290,7 +290,9 @@
     transition: background 0.2s ease;
   }
 
-  .button:hover {
-    filter: brightness(1.05);
+      &:hover {
+        filter: brightness(1.05);
+      }
+    }
   }
 </style>
