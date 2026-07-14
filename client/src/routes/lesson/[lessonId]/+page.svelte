@@ -4,6 +4,7 @@
   import { onMount } from "svelte";
   import Header from "$lib/components/header.svelte";
   import Footer from "$lib/components/footer.svelte";
+  import AuthGuard from "$lib/components/auth-guard.svelte";
   import { applyDifficulty, normalizeDifficulty } from "$lib/javascript/lessons.js";
 
   let { data } = $props();
@@ -99,6 +100,7 @@
   <Header />
 
   <main class="lesson">
+    <AuthGuard>
     <a class="back" href="/lesson">← All lessons</a>
 
     <p class="category">{lesson.category}</p>
@@ -189,6 +191,7 @@
         <a class="primary link-button" href="/lesson">Back to lessons</a>
       </section>
     {/if}
+    </AuthGuard>
   </main>
 
   <Footer />

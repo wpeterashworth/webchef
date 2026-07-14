@@ -1,6 +1,7 @@
 <script>
   import Footer from "$lib/components/footer.svelte";
   import Header from "$lib/components/header.svelte";
+  import AuthGuard from "$lib/components/auth-guard.svelte";
 </script>
 
 <svelte:head>
@@ -11,6 +12,7 @@
   <Header />
 
   <main class="page-content">
+    <AuthGuard>
     <section class="dashboard">
       <header class="hero">
         <div>
@@ -111,6 +113,7 @@
     </div>
   </section>
 </section>
+    </AuthGuard>
   </main>
 
   <Footer />
