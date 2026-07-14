@@ -3,6 +3,7 @@
   import Footer from "$lib/components/footer.svelte";
   import { goto } from "$app/navigation";
   import { supabase } from "$lib/supabase/client.js";
+  import "$lib/styles/auth-pages.css";
 
   let firstName = $state("");
   let email = $state("");
@@ -122,91 +123,3 @@
 
   <Footer />
 </div>
-
-<style>
-  .auth-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
-    padding: 2rem 1rem;
-  }
-
-  .auth-card {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    max-width: 360px;
-    padding: 2rem;
-    border-radius: 12px;
-    background-color: var(--panel-color);
-    color: var(--text-color);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  }
-
-  h1 {
-    margin: 0 0 0.5rem;
-    text-align: center;
-  }
-
-  label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    font-weight: 600;
-  }
-
-  input {
-    padding: 0.6rem 0.75rem;
-    border: 1px solid var(--text-color);
-    border-radius: 6px;
-    font-size: 1rem;
-  }
-
-  button {
-    margin-top: 0.5rem;
-    padding: 0.7rem;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--accent-color);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  .switch {
-    margin: 0;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-
-  .switch a {
-    color: var(--text-hover-color);
-    font-weight: 600;
-  }
-
-  .error {
-    margin: 0;
-    padding: 0.6rem 0.75rem;
-    border-radius: 6px;
-    background-color: rgba(220, 53, 69, 0.15);
-    color: #b00020;
-    font-size: 0.9rem;
-  }
-
-  .info {
-    margin: 0;
-    padding: 0.6rem 0.75rem;
-    border-radius: 6px;
-    background-color: rgba(40, 167, 69, 0.15);
-    color: #1b6b32;
-    font-size: 0.9rem;
-  }
-</style>
