@@ -75,7 +75,11 @@
 
     <div class="difficulty">
       <span class="difficulty-label">Difficulty</span>
-      <div class="difficulty-options" role="group" aria-label="Choose difficulty">
+      <div
+        class="difficulty-options"
+        role="group"
+        aria-label="Choose difficulty"
+      >
         {#each DIFFICULTY_LEVELS as level (level.id)}
           <button
             type="button"
@@ -111,7 +115,11 @@
       {/if}
 
       <a class="button" href={startHref}>
-        {status === "completed" ? "Review" : status ? "Continue" : "Start Lesson"}
+        {status === "completed"
+          ? "Review"
+          : status
+            ? "Continue"
+            : "Start Lesson"}
       </a>
     </div>
   </div>
@@ -204,7 +212,11 @@
       button {
         border: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
         border-radius: 999px;
-        background: color-mix(in srgb, var(--page-color) 88%, var(--text-color));
+        background: color-mix(
+          in srgb,
+          var(--page-color) 88%,
+          var(--text-color)
+        );
         color: var(--text-color);
         padding: 0.3rem 0.65rem;
         font-size: 0.72rem;
@@ -219,80 +231,79 @@
       }
     }
 
-  .difficulty-hint {
-    margin: 0;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    font-weight: 600;
-  }
+    .difficulty-hint {
+      margin: 0;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
 
-  .status-badge {
-    align-self: flex-start;
-    padding: 0.15rem 0.55rem;
-    border-radius: 999px;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #ffffff;
-  }
+    .status-badge {
+      align-self: flex-start;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
 
-  .status-badge[data-status="todo"] {
-    background: #6366f1;
-  }
+    .status-badge[data-status="todo"] {
+      background: #6366f1;
+    }
 
-  .status-badge[data-status="in_progress"] {
-    background: #eab308;
-  }
+    .status-badge[data-status="in_progress"] {
+      background: #eab308;
+    }
 
-  .status-badge[data-status="completed"] {
-    background: #22c55e;
-  }
+    .status-badge[data-status="completed"] {
+      background: #22c55e;
+    }
 
-  .actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-  }
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
 
-  .todo-toggle {
-    padding: 0.35rem 0.7rem;
-    border: 1px solid color-mix(in srgb, var(--text-color) 25%, transparent);
-    border-radius: 999px;
-    background: transparent;
-    color: var(--text-color);
-    font-size: 0.72rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
+    .todo-toggle {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid color-mix(in srgb, var(--text-color) 25%, transparent);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-color);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-  .todo-toggle.on {
-    background: #6366f1;
-    border-color: #6366f1;
-    color: #ffffff;
-  }
+    .todo-toggle.on {
+      background: #6366f1;
+      border-color: #6366f1;
+      color: #ffffff;
+    }
 
-  .todo-toggle:disabled {
-    opacity: 0.6;
-    cursor: wait;
-  }
+    .todo-toggle:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
 
-  .button {
-    margin-left: auto;
-    padding: 0.45rem 0.8rem;
-    border-radius: 999px;
-    background: var(--accent-color);
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 600;
-    transition: background 0.2s ease;
-  }
+    .button {
+      margin-left: auto;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: var(--accent-color);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
 
-      &:hover {
-        filter: brightness(1.05);
-      }
+    &:hover {
+      filter: brightness(1.05);
     }
   }
 </style>
