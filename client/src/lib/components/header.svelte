@@ -50,6 +50,7 @@
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/lesson">Lessons</a></li>
+      <li><a href="/recipes">Recipes</a></li>
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/account">Account</a></li>
