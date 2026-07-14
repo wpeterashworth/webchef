@@ -3,8 +3,14 @@
     DIFFICULTY_LEVELS,
     countQuestionsForSkills,
   } from "$lib/javascript/lessons.js";
+  import {
+    difficultyUnlocked,
+    pointsForDifficulty,
+    unlockRequirement,
+  } from "$lib/javascript/points.js";
   import { STATUS_LABEL, TODO } from "$lib/javascript/progress.js";
   import { progress, setStatus, clearStatus } from "$lib/stores/progress.js";
+  import { profile } from "$lib/stores/profile.js";
 
   let {
     title = "Lesson Name",
@@ -18,6 +24,8 @@
 
   let selectedDifficulty = $state(DIFFICULTY_LEVELS[0].id);
   let saving = $state(false);
+
+  const userLevel = $derived($profile?.level_number ?? 0);
 
   // undefined when the lesson isn't tracked at all — that's the fourth state,
   // and it's the absence of a row rather than a status of its own.
@@ -81,20 +89,30 @@
         aria-label="Choose difficulty"
       >
         {#each DIFFICULTY_LEVELS as level (level.id)}
+          {@const unlocked = difficultyUnlocked(userLevel, level.id)}
           <button
             type="button"
             class:selected={selectedDifficulty === level.id}
+            class:locked={!unlocked}
             style={`--level-color: ${level.accentColor}`}
-            onclick={() => (selectedDifficulty = level.id)}
+            disabled={!unlocked}
+            title={unlocked ? "" : unlockRequirement(level.id)}
+            onclick={() => {
+              if (unlocked) selectedDifficulty = level.id;
+            }}
           >
             {level.label}
+            {#if !unlocked}
+              <span class="lock">🔒</span>
+            {/if}
           </button>
         {/each}
       </div>
       <p class="difficulty-hint">
         {activeLevel.skillCount}
         {activeLevel.skillCount === 1 ? "skill" : "skills"} ·
-        {activeLevel.questionsPerSkill} questions each
+        {activeLevel.questionsPerSkill} questions each ·
+        {pointsForDifficulty(selectedDifficulty)} XP
       </p>
     </div>
 
@@ -228,6 +246,16 @@
         background: var(--level-color);
         border-color: var(--level-color);
         color: #ffffff;
+      }
+
+      button.locked {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+
+      .lock {
+        margin-left: 0.2rem;
+        font-size: 0.65rem;
       }
     }
 

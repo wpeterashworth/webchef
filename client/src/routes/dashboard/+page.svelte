@@ -9,6 +9,8 @@
     progressReady,
     progressError,
   } from "$lib/stores/progress.js";
+  import { profile, profileReady } from "$lib/stores/profile.js";
+  import { canViewLeaderboard } from "$lib/javascript/points.js";
 
   // Progress rows only know a lesson by its slug, so pair each one back up with
   // the lesson it belongs to in order to show a title and a link.
@@ -49,8 +51,27 @@
               completed cooking challenges in one place.
             </p>
           </div>
-          <div class="hero-pill">🔥 7 day streak</div>
+          <div class="hero-pill">
+            {#if $profileReady && $profile}
+              Lv {$profile.level_number} · {$profile.level_title}<br />
+              {$profile.xp} XP · 🔥 {$profile.current_streak} day streak
+            {:else}
+              🔥 Loading stats…
+            {/if}
+          </div>
         </header>
+
+        {#if $profileReady && $profile && !canViewLeaderboard($profile.level_number)}
+          <p class="unlock-hint">
+            Earn 10 XP (complete a beginner lesson) to unlock the leaderboard.
+          </p>
+        {/if}
+
+        {#if $profileReady && $profile && canViewLeaderboard($profile.level_number)}
+          <p class="leaderboard-link">
+            <a href="/leaderboard">View leaderboard →</a>
+          </p>
+        {/if}
 
         {#if $progressError}
           <p class="load-error">
@@ -137,7 +158,12 @@
               {#each byStatus[COMPLETED] as lesson (lesson.lessonId)}
                 <a class="card" href={lesson.href}>
                   <h3>{lesson.title}</h3>
-                  <p>Completed on: {dateFor(lesson)}</p>
+                  <p>
+                    Completed on: {dateFor(lesson)}
+                    {#if lesson.points_earned}
+                      · {lesson.points_earned} XP
+                    {/if}
+                  </p>
                 </a>
               {/each}
             {/if}
@@ -319,6 +345,19 @@
       background: #fee2e2;
       color: #991b1b;
       font-size: 0.85rem;
+    }
+
+    .unlock-hint,
+    .leaderboard-link {
+      margin: 0 0 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .leaderboard-link a {
+      color: #12b7ea;
+      font-weight: 600;
+      text-decoration: none;
     }
   }
 </style>

@@ -67,7 +67,9 @@ export async function getProgress() {
 
   const { data, error } = await supabase
     .from("user_progress")
-    .select("lesson_slug, status, score, completed_at, created_at")
+    .select(
+      "lesson_slug, status, score, difficulty, points_earned, completed_at, created_at",
+    )
     .eq("user_id", profileId);
 
   if (error) throw new Error(`Could not load your progress: ${error.message}`);
@@ -99,10 +101,28 @@ export async function setStatus(lessonSlug, status) {
       },
       { onConflict: "user_id,lesson_slug" },
     )
-    .select("lesson_slug, status, score, completed_at, created_at")
+    .select(
+      "lesson_slug, status, score, difficulty, points_earned, completed_at, created_at",
+    )
     .single();
 
   if (error) throw new Error(`Could not save your progress: ${error.message}`);
+
+  return data;
+}
+
+/**
+ * Mark a lesson complete and award points through the database RPC.
+ * Replaying at a higher difficulty only grants the point difference.
+ */
+export async function completeLesson(lessonSlug, difficulty, score = null) {
+  const { data, error } = await supabase.rpc("complete_lesson", {
+    p_lesson_slug: lessonSlug,
+    p_difficulty: difficulty,
+    p_score: score,
+  });
+
+  if (error) throw new Error(`Could not award lesson points: ${error.message}`);
 
   return data;
 }

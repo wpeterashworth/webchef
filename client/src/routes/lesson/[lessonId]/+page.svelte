@@ -6,14 +6,17 @@
   import Footer from "$lib/components/footer.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
   import { applyDifficulty, normalizeDifficulty } from "$lib/javascript/lessons.js";
-  import { COMPLETED } from "$lib/javascript/progress.js";
-  import { progress, markStarted, setStatus } from "$lib/stores/progress.js";
+  import { difficultyUnlocked, pointsForDifficulty } from "$lib/javascript/points.js";
+  import { progress, markStarted, completeLesson } from "$lib/stores/progress.js";
+  import { profile } from "$lib/stores/profile.js";
 
   let { data } = $props();
 
   // Progress is saved best-effort: a failed write must not block the learner
   // mid-quiz, but it shouldn't fail silently either.
   let progressError = $state(null);
+  let completionResult = $state(null);
+  let correctAnswers = $state(0);
 
   const savedStatus = $derived($progress[data.lesson.id]?.status);
 
@@ -30,6 +33,13 @@
   afterNavigate(syncDifficulty);
 
   const lesson = $derived(applyDifficulty(data.lesson, difficulty));
+
+  $effect(() => {
+    const level = $profile?.level_number ?? 0;
+    if (!difficultyUnlocked(level, difficulty)) {
+      difficulty = "beginner";
+    }
+  });
 
   /** @type {'intro' | 'quiz' | 'section-done' | 'complete'} */
   let phase = $state("intro");
@@ -48,6 +58,8 @@
     questionIndex = 0;
     selectedOption = null;
     answered = false;
+    completionResult = null;
+    correctAnswers = 0;
   });
 
   function correctIndex(question) {
@@ -85,6 +97,10 @@
   function submitAnswer() {
     if (answered || selectedOption === null) return;
     answered = true;
+
+    if (isCorrect(currentQuestion, selectedOption)) {
+      correctAnswers += 1;
+    }
   }
 
   function nextStep() {
@@ -112,10 +128,18 @@
 
       phase = "complete";
 
-      // The lesson counts as completed once every skill in it is done.
-      setStatus(data.lesson.id, COMPLETED).catch((error) => {
-        progressError = error;
-      });
+      const score =
+        lesson.totalQuestions > 0
+          ? Math.round((correctAnswers / lesson.totalQuestions) * 100)
+          : null;
+
+      completeLesson(data.lesson.id, lesson.difficulty, score)
+        .then((result) => {
+          completionResult = result;
+        })
+        .catch((error) => {
+          progressError = error;
+        });
     }
   }
 </script>
@@ -236,6 +260,25 @@
           You finished all {lesson.skillCount} skills in {lesson.title} at
           {lesson.difficultyLabel.toLowerCase()} level. Nice work!
         </p>
+
+        {#if completionResult}
+          <p class="reward">
+            {#if completionResult.points_awarded > 0}
+              +{completionResult.points_awarded} XP earned
+              ({pointsForDifficulty(lesson.difficulty)} pts max for this difficulty).
+            {:else}
+              No new XP — you already earned the points for this difficulty.
+            {/if}
+          </p>
+          <p class="reward">
+            Level {completionResult.level_number}: {completionResult.level_title}
+            · {completionResult.xp} XP total
+          </p>
+          {#if completionResult.leveled_up}
+            <p class="level-up">Level up!</p>
+          {/if}
+        {/if}
+
         <a class="primary link-button" href="/lesson">Back to lessons</a>
       </section>
     {/if}
@@ -435,5 +478,16 @@
 
   .link-button {
     margin-top: 0.5rem;
+  }
+
+  .reward {
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .level-up {
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+    color: #16a34a;
   }
 </style>

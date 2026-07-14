@@ -121,3 +121,14 @@ lesson-card.svelte. Each level controls how many skills and questions are includ
 (client/src/lib/lessons.js). Start Lesson passes ?difficulty= in the URL; the
 lesson flow filters content accordingly and shows the chosen level in the header.
 Verified with `pnpm build`.
+
+2026-07-14 — Luke
+Implemented the point system from point-system.txt in client code and Supabase.
+Added supabase/migrations/20260714220000_point_system.sql: levels table (0–20 with
+titles, XP thresholds, unlocks), users.level_number/level_title, user_progress
+difficulty/points_earned, complete_lesson RPC (awards 10/25/50 XP by difficulty,
+updates level), and get_leaderboard RPC (level 1+). Client: points.js constants,
+profile store/API, completeLesson wired from lesson finish flow, difficulty gates
+on lesson cards (Intermediate @ 2, Expert @ 5), dashboard level/XP display,
+leaderboard page (unlocks @ level 1), header nav link. Verified with `pnpm build`.
+Next: team applies migration via `npx supabase db push` before testing end-to-end.
