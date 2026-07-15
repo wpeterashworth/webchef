@@ -38,18 +38,7 @@ where conname in (
 );
 ```
 
-### 4) User difficulty columns present
-
-```sql
-select column_name, data_type, column_default
-from information_schema.columns
-where table_schema = 'public'
-  and table_name in ('users', 'user_progress')
-  and column_name in ('difficulty_preference', 'difficulty_level')
-order by table_name, column_name;
-```
-
-### 5) RLS enabled on lesson-bank tables
+### 4) RLS enabled on lesson-bank tables
 
 ```sql
 select tablename, rowsecurity
@@ -59,7 +48,7 @@ where schemaname = 'public'
 order by tablename;
 ```
 
-### 6) Policies exist for authenticated read
+### 5) Policies exist for authenticated read
 
 ```sql
 select schemaname, tablename, policyname, roles, cmd

@@ -188,3 +188,8 @@ Implemented direct payload-to-DB ingest workflow and removed giant default seed 
   - Removed supabase/migrations/20260715091000_seed_lessons_all_modes.sql
   - Updated package.json scripts: lessons:payload, lessons:payload:sql, lessons:ingest
   - Updated seed and rollout docs to use payload ingest as default workflow.
+
+2026-07-15 — Lesson schema decision
+Kept user tables untouched and narrowed the consolidated schema migration to lessons-only.
+Removed user difficulty/profile changes from supabase/migrations/20260715090000_lessons_users_models_v2.sql
+and updated NEXT_STEPS_CHECKLIST.md to drop user-model verification steps.
