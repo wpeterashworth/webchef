@@ -1,7 +1,13 @@
 <script>
-    export let heroSrc = "/images/penguinhero.webp";
-    export let description = "Bite-sized lessons, streaks, and XP to build cooking skills progressively.";
-    export let onAction;
+    // Presentational only: the parent decides where "Get Started" goes, because
+    // that depends on whether someone is signed in and the landing card has no
+    // business knowing about auth.
+    let {
+        heroSrc = "/images/penguinhero.webp",
+        description = "Bite-sized lessons, streaks, and XP to build cooking skills progressively.",
+        actionHref = "/signup",
+        actionLabel = "Get Started",
+    } = $props();
 </script>
 
 <section class="landing">
@@ -12,8 +18,7 @@
             <h2 class="title">Welcome to WebChef</h2>
             <p class="description">{description}</p>
             <div class="actions">
-                <button class="primary" on:click={() => onAction?.()}>Get Started</button>
-                <a class="secondary" href="/signup">Sign up</a>
+                <a class="primary" href={actionHref}>{actionLabel}</a>
             </div>
         </div>
     </div>
@@ -91,8 +96,10 @@
     }
 
     .primary {
+        display: inline-block;
         background: var(--accent-color, #ff7a18);
         color: white;
+        text-decoration: none;
         border: none;
         padding: 0.75rem 1.25rem;
         border-radius: 8px;
@@ -103,14 +110,6 @@
 
     .primary:hover {
         transform: translateY(-2px);
-    }
-
-    .secondary {
-        color: var(--text-color);
-        text-decoration: none;
-        padding: 0.5rem 0.75rem;
-        border-radius: 6px;
-        border: 1px solid rgba(255,255,255,0.06);
     }
 
     /* Responsive: stack vertically on small screens */
