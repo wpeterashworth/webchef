@@ -36,3 +36,10 @@ export function patchProfile(fields) {
   profile.update((current) => (current ? { ...current, ...fields } : current));
   api.clearProfileCache();
 }
+
+/** Save a cosmetic level title and update the profile store. */
+export async function updateDisplayTitle(title) {
+  const saved = await api.setDisplayTitle(title);
+  patchProfile({ level_title: saved });
+  return saved;
+}

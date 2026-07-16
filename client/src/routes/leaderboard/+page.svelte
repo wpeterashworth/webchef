@@ -6,13 +6,28 @@
   import { canViewLeaderboard } from "$lib/javascript/points.js";
   import { profile, profileReady, patchProfile } from "$lib/stores/profile.js";
 
-  let rows = $state([]);
+  let fetchedRows = $state([]);
   let loadError = $state(null);
   let loading = $state(true);
   let usernameInput = $state("");
   let usernameError = $state("");
   let usernameSaving = $state(false);
   let usernameSaved = $state(false);
+
+  const rows = $derived.by(() => {
+    const current = $profile;
+    if (!current?.username) return fetchedRows;
+
+    return fetchedRows.map((row) =>
+      row.username === current.username
+        ? {
+            ...row,
+            level_number: current.level_number,
+            level_title: current.level_title,
+          }
+        : row,
+    );
+  });
 
   const canView = $derived(
     $profileReady && $profile ? canViewLeaderboard($profile.level_number) : false,
@@ -36,7 +51,7 @@
       patchProfile({ username: next });
       usernameInput = next;
       usernameSaved = true;
-      rows = rows.map((row) =>
+      fetchedRows = fetchedRows.map((row) =>
         row.username === previous ? { ...row, username: next } : row,
       );
     } catch (error) {
@@ -53,18 +68,18 @@
     loadError = null;
 
     if (!canViewLeaderboard($profile?.level_number ?? 0)) {
-      rows = [];
+      fetchedRows = [];
       loading = false;
       return;
     }
 
     getLeaderboard()
       .then((data) => {
-        rows = data;
+        fetchedRows = data;
       })
       .catch((error) => {
         loadError = error;
-        rows = [];
+        fetchedRows = [];
       })
       .finally(() => {
         loading = false;

@@ -3,37 +3,43 @@
   import Footer from "$lib/components/footer.svelte";
   import Header from "$lib/components/header.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
-  import {
-    getLessonCatalog,
-    getDifficultyLevel,
-  } from "$lib/javascript/lessons.js";
+  import { getLessonCatalog, getDifficultyLevel } from "$lib/javascript/lessons.js";
   import { TODO, IN_PROGRESS, COMPLETED } from "$lib/javascript/progress.js";
   import {
     progress,
     progressReady,
     progressError,
   } from "$lib/stores/progress.js";
-  import { profile, profileReady } from "$lib/stores/profile.js";
+  import { profile, profileReady, updateDisplayTitle } from "$lib/stores/profile.js";
   import {
     canViewLeaderboard,
     canCreateLessons,
     nextLevelProgress,
+    unlockedLevelTitles,
   } from "$lib/javascript/points.js";
   import {
     getMyUserLessons,
     userLessonRowToCard,
   } from "$lib/javascript/user-lessons.js";
 
-  let lessons = $state([]);
+  const lessons = getLessonCatalog();
 
   let customLessons = $state({});
+  let titleSaving = $state(false);
+  let titleError = $state("");
+
+  const titleOptions = $derived(
+    $profile ? unlockedLevelTitles($profile.level_number) : [],
+  );
 
   const canCreate = $derived(
     $profileReady && $profile ? canCreateLessons($profile.level_number) : false,
   );
 
   const xpProgress = $derived(
-    $profile ? nextLevelProgress($profile.xp, $profile.level_number) : null,
+    $profile
+      ? nextLevelProgress($profile.xp, $profile.level_number)
+      : null,
   );
 
   const catalogById = $derived.by(() => ({
@@ -63,12 +69,6 @@
 
   onMount(async () => {
     try {
-      lessons = await getLessonCatalog();
-    } catch {
-      lessons = [];
-    }
-
-    try {
       const rows = await getMyUserLessons();
       customLessons = Object.fromEntries(
         rows.map((row) => [row.slug, userLessonRowToCard(row)]),
@@ -92,6 +92,20 @@
     const separator = href.includes("?") ? "&" : "?";
     return `${href}${separator}difficulty=${difficulty}`;
   }
+
+  async function changeTitle(nextTitle) {
+    if (!$profile || titleSaving || nextTitle === $profile.level_title) return;
+
+    titleSaving = true;
+    titleError = "";
+    try {
+      await updateDisplayTitle(nextTitle);
+    } catch (error) {
+      titleError = error.message;
+    } finally {
+      titleSaving = false;
+    }
+  }
 </script>
 
 <svelte:head>
@@ -112,8 +126,25 @@
             {#if $profileReady && $profile && xpProgress}
               <div class="level-display">
                 <span class="level-number">Lv {$profile.level_number}</span>
-                <span class="level-title">{$profile.level_title}</span>
+                {#if titleOptions.length > 1}
+                  <select
+                    class="title-select"
+                    value={$profile.level_title}
+                    disabled={titleSaving}
+                    aria-label="Choose level title"
+                    onchange={(event) => changeTitle(event.currentTarget.value)}
+                  >
+                    {#each titleOptions as title (title)}
+                      <option value={title}>{title}</option>
+                    {/each}
+                  </select>
+                {:else}
+                  <span class="level-title">{$profile.level_title}</span>
+                {/if}
               </div>
+              {#if titleError}
+                <p class="title-error" role="alert">{titleError}</p>
+              {/if}
               <p class="xp-progress">
                 {#if xpProgress.isMax}
                   {$profile.xp} XP · Max level
@@ -143,9 +174,7 @@
 
         {#if $profileReady && $profile && canViewLeaderboard($profile.level_number)}
           <div class="builder-actions">
-            <a class="builder-btn secondary" href="/leaderboard"
-              >View leaderboard</a
-            >
+            <a class="builder-btn secondary" href="/leaderboard">View leaderboard</a>
           </div>
         {/if}
 
@@ -172,12 +201,8 @@
 
         {#if canCreate}
           <div class="builder-actions">
-            <a class="builder-btn primary" href="/lesson/create"
-              >Create a lesson</a
-            >
-            <a class="builder-btn secondary" href="/lesson/my-lessons"
-              >My lessons</a
-            >
+            <a class="builder-btn primary" href="/lesson/create">Create a lesson</a>
+            <a class="builder-btn secondary" href="/lesson/my-lessons">My lessons</a>
           </div>
         {/if}
 
@@ -197,10 +222,7 @@
             {:else}
               {#each byStatus[IN_PROGRESS] as lesson (lesson.lessonId)}
                 {@const diff = difficultyMeta(lesson.difficulty)}
-                <a
-                  class="progress-card"
-                  href={lessonHref(lesson.href, lesson.difficulty)}
-                >
+                <a class="progress-card" href={lessonHref(lesson.href, lesson.difficulty)}>
                   <div class="progress-card-top">
                     <h3>{lesson.title}</h3>
                     {#if diff}
@@ -273,10 +295,7 @@
             {:else}
               {#each byStatus[COMPLETED] as lesson (lesson.lessonId)}
                 {@const diff = difficultyMeta(lesson.difficulty)}
-                <a
-                  class="progress-card"
-                  href={lessonHref(lesson.href, lesson.difficulty)}
-                >
+                <a class="progress-card" href={lessonHref(lesson.href, lesson.difficulty)}>
                   <div class="progress-card-top">
                     <h3>{lesson.title}</h3>
                     {#if diff}
@@ -314,9 +333,17 @@
 <style>
   .dashboard {
     padding: 2rem;
-    /* max-width: 980px; */
     width: 70%;
+    max-width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 700px) {
+    .dashboard {
+      width: 100%;
+      padding: 1rem;
+    }
   }
 
   .hero {
@@ -367,6 +394,52 @@
       line-height: 1.1;
       color: #ffffff;
       letter-spacing: -0.01em;
+    }
+
+    & .title-select {
+      appearance: none;
+      -webkit-appearance: none;
+      max-width: 100%;
+      margin: 0;
+      padding: 0 1.6rem 0 0;
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-size: 1rem;
+      font: inherit;
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+    }
+
+    & .title-select:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    & .title-select:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    & .title-select option {
+      color: var(--text-color);
+      background: var(--panel-color);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    & .title-error {
+      margin: 0 0 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fee2e2;
     }
 
     & .xp-progress {
@@ -506,11 +579,16 @@
     border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 16px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 
     & .section-title {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
       margin-bottom: 0.75rem;
 
       & h2 {
@@ -526,21 +604,24 @@
 
     & .card-box {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
       gap: 0.75rem;
+      min-width: 0;
     }
 
     & .progress-card {
       display: block;
+      min-width: 0;
+      max-width: 100%;
       padding: 1rem 1.1rem;
       border-radius: 12px;
       background: var(--page-color);
       border: 1px solid color-mix(in srgb, var(--text-color) 14%, transparent);
       text-decoration: none;
       color: var(--text-color);
-      transition:
-        border-color 0.15s ease,
-        box-shadow 0.15s ease;
+      box-sizing: border-box;
+      overflow: hidden;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
       &:hover {
         border-color: var(--text-muted);
@@ -554,14 +635,18 @@
       align-items: flex-start;
       gap: 0.6rem;
       margin-bottom: 0.45rem;
+      min-width: 0;
     }
 
     & .progress-card h3 {
       margin: 0;
+      flex: 1 1 auto;
+      min-width: 0;
       font-size: 1.05rem;
       font-weight: 700;
       line-height: 1.35;
       color: var(--text-color);
+      overflow-wrap: anywhere;
     }
 
     & .progress-meta {
@@ -569,6 +654,7 @@
       font-size: 0.875rem;
       line-height: 1.45;
       color: var(--text-muted);
+      overflow-wrap: anywhere;
     }
 
     & .progress-meta strong {
@@ -623,6 +709,16 @@
       margin: 0 0 1rem;
       color: var(--text-muted);
       font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .container {
+      padding: 1rem;
+    }
+
+    .container .card-box {
+      grid-template-columns: 1fr;
     }
   }
 </style>
