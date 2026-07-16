@@ -10,7 +10,9 @@
     userLessonRowToCard,
   } from "$lib/javascript/user-lessons.js";
 
-  const builtInCards = getLessonCatalog();
+  let builtInCards = $state([]);
+  let loadingBuiltIn = $state(true);
+  let builtInError = $state(null);
 
   let communityCards = $state([]);
   let loadingCommunity = $state(true);
@@ -19,6 +21,15 @@
   const cards = $derived([...builtInCards, ...communityCards]);
 
   onMount(async () => {
+    try {
+      builtInCards = await getLessonCatalog();
+    } catch (error) {
+      builtInError = error;
+      builtInCards = [];
+    } finally {
+      loadingBuiltIn = false;
+    }
+
     try {
       const rows = await getPublicUserLessons();
       communityCards = rows.map(userLessonRowToCard);
@@ -45,10 +56,14 @@
           <p class="eyebrow">Choose a topic</p>
           <h1>Lessons</h1>
           <p class="intro">
-            Each lesson walks you through several skills — pick a difficulty, read
-            a short intro, take the quiz, then move on to the next topic.
+            Each lesson walks you through several skills — pick a difficulty,
+            read a short intro, take the quiz, then move on to the next topic.
           </p>
         </header>
+
+        {#if builtInError}
+          <p class="banner-error">{builtInError.message}</p>
+        {/if}
 
         {#if communityError}
           <p class="banner-error">{communityError.message}</p>
@@ -60,8 +75,10 @@
               <LessonCard {...card} />
             {/each}
           </div>
-        {:else if !loadingCommunity}
-          <p class="empty-state">No lessons are available yet. Check back soon.</p>
+        {:else if !loadingCommunity && !loadingBuiltIn}
+          <p class="empty-state">
+            No lessons are available yet. Check back soon.
+          </p>
         {:else}
           <div class="lesson-grid">
             {#each builtInCards as card (card.lessonId)}

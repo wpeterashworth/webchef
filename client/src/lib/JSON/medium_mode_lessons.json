@@ -1,0 +1,1104 @@
+{
+  "categories": [
+    {
+      "name": "Ingredient Substitutions",
+      "skills": [
+        {
+          "name": "Dairy Swaps",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Dairy Does More Than Add Liquid",
+              "lessonText": "Dairy swaps work best when you think about the job of the ingredient first. In baked goods, dairy might add moisture, tang, fat, or tenderness. A substitute should replace the most important job, not just look similar.\n\nFor medium questions, pay attention to clues like “moisture and tang” or “richness.” Yogurt and sour cream are both thick and tangy, while whole milk has more fat than skim milk. If a substitute is missing fat, a small amount of butter can sometimes help.",
+              "questions": [
+                {
+                  "text": "A muffin batter uses plain yogurt to add moisture and tang. Which substitute is closest?",
+                  "choices": [
+                    "Water",
+                    "Sour cream",
+                    "Melted butter",
+                    "Bread crumbs"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Sour cream is thick and tangy, so it can replace plain yogurt better than a thin or dry ingredient."
+                },
+                {
+                  "text": "You need whole milk for quick bread, but you only have skim milk. Which change best restores some richness?",
+                  "choices": [
+                    "Use plain water",
+                    "Use vinegar only",
+                    "Use skim milk with a small amount of melted butter",
+                    "Use dry flour"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Skim milk has less fat than whole milk. Adding a little melted butter helps replace some richness."
+                }
+              ]
+            },
+            {
+              "title": "Match Texture and Flavor",
+              "lessonText": "Some dairy ingredients matter because of their texture. Dips, spreads, casseroles, and fillings often need dairy that is thick, soft, or spoonable instead of thin and pourable.\n\nFor medium questions, compare the way the ingredient behaves. Cream cheese needs another smooth, spreadable cheese. Ricotta needs something soft and mild that can work in a baked dish. Thin liquids usually will not replace thick dairy very well.",
+              "questions": [
+                {
+                  "text": "A cheesecake-style dip needs cream cheese. Which option will give the closest creamy texture?",
+                  "choices": [
+                    "Skim milk",
+                    "Lemon juice",
+                    "Dry oats",
+                    "Neufchâtel cheese"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Neufchâtel cheese has a texture similar to cream cheese, so it works well in creamy dips."
+                },
+                {
+                  "text": "A baked pasta dish calls for ricotta, but you do not have any. Which substitute is most reasonable?",
+                  "choices": [
+                    "Cottage cheese",
+                    "Orange juice",
+                    "Vegetable oil",
+                    "Cornstarch"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Cottage cheese is soft and mild, making it a reasonable substitute for ricotta in many casseroles."
+                }
+              ]
+            },
+            {
+              "title": "Some Swaps Change the Final Dish",
+              "lessonText": "Rich dairy ingredients can affect both texture and flavor. Half-and-half, cream, evaporated milk, and whole milk are not identical because they have different amounts of fat, water, and concentration.\n\nFor medium questions, look for whether the substitute needs to be diluted, enriched, or combined with another ingredient. Evaporated milk is concentrated, while half-and-half is between milk and cream in richness.",
+              "questions": [
+                {
+                  "text": "A pasta sauce calls for half-and-half. Which substitute best matches its balance of milkiness and richness?",
+                  "choices": [
+                    "Water and lemon juice",
+                    "Equal parts milk and heavy cream",
+                    "Bread crumbs and oil",
+                    "Plain broth only"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Half-and-half is made from milk and cream, so combining milk and cream gives a similar richness."
+                },
+                {
+                  "text": "A soup recipe uses whole milk, but you only have evaporated milk. What should you do before using it?",
+                  "choices": [
+                    "Add vinegar until it curdles",
+                    "Use it as a dry powder",
+                    "Dilute it with water",
+                    "Replace it with oil"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Evaporated milk is concentrated, so diluting it with water makes it closer to regular milk."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Herb & Spice Alts",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Fresh and Dried Herbs Are Different",
+              "lessonText": "Fresh herbs, dried herbs, and powdered seasonings can all add flavor, but they are not used in the same amounts. Dried herbs and powders are usually more concentrated because much of the water has been removed.\n\nFor medium questions, watch for measurement clues. A common starting point is about one-third as much dried herb as fresh herb. Garlic powder is also much stronger by volume than fresh garlic, so only a small amount is needed.",
+              "questions": [
+                {
+                  "text": "A soup calls for 2 tablespoons of fresh parsley, but you only have dried parsley. What is a reasonable starting amount?",
+                  "choices": [
+                    "2 tablespoons dried parsley",
+                    "1/2 cup dried parsley",
+                    "No parsley at all",
+                    "2 teaspoons dried parsley"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Dried herbs are stronger than fresh herbs, so about one-third as much dried herb is a good starting point."
+                },
+                {
+                  "text": "A recipe uses one fresh garlic clove, but you only have garlic powder. Which amount is most appropriate?",
+                  "choices": [
+                    "About 1/8 teaspoon garlic powder",
+                    "1 tablespoon garlic powder",
+                    "1 cup garlic powder",
+                    "1 teaspoon cinnamon"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Garlic powder is concentrated, so a small amount can replace one fresh garlic clove."
+                }
+              ]
+            },
+            {
+              "title": "Think About the Herb’s Job",
+              "lessonText": "Herb substitutes should match the flavor role of the original herb. Some herbs are earthy and savory, some are bright and fresh, and some are better for roasted foods than delicate garnishes.\n\nFor medium questions, use the food as a clue. Thyme, marjoram, and rosemary are savory herbs often used in cooked dishes. Warm baking spices or sweet ingredients are usually not good replacements for savory herbs.",
+              "questions": [
+                {
+                  "text": "A savory recipe calls for thyme, but none is available. Which herb is the most suitable substitute?",
+                  "choices": [
+                    "Cinnamon",
+                    "Marjoram",
+                    "Vanilla extract",
+                    "Sugar"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Marjoram has a mild herbal flavor that can work in many savory recipes that use thyme."
+                },
+                {
+                  "text": "You are roasting chicken and are out of rosemary. Which herb would be the best substitute?",
+                  "choices": [
+                    "Mint candy",
+                    "Cocoa powder",
+                    "Thyme",
+                    "Powdered sugar"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Thyme is savory and herbal, so it can work well in many roasted chicken recipes."
+                }
+              ]
+            },
+            {
+              "title": "Some Seasonings Are Blends",
+              "lessonText": "Seasoning blends are made from smaller ingredients. If you know the flavor family of the blend, you can often make a close substitute with individual herbs or spices.\n\nFor medium questions, separate warm baking blends from savory herb blends. Allspice has a warm flavor similar to cinnamon, nutmeg, and cloves. Italian seasoning usually points toward dried herbs like basil, oregano, thyme, and rosemary.",
+              "questions": [
+                {
+                  "text": "A spice mix needs the warm flavor of allspice. Which blend is the best substitute?",
+                  "choices": [
+                    "Basil, parsley, and oregano",
+                    "Salt, pepper, and garlic powder",
+                    "Flour, sugar, and baking soda",
+                    "Cinnamon, nutmeg, and cloves"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Allspice has warm baking-spice flavors, so cinnamon, nutmeg, and cloves can create a similar effect."
+                },
+                {
+                  "text": "You are out of Italian seasoning. Which homemade mix is the closest match?",
+                  "choices": [
+                    "Dried basil, oregano, thyme, and rosemary",
+                    "Cinnamon, nutmeg, and cloves",
+                    "Sugar and cocoa powder",
+                    "Vinegar and oil"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Italian seasoning is usually an herbal blend, so basil, oregano, thyme, and rosemary are a close match."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Baking Binders & Thickeners",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Binders Hold Ingredients Together",
+              "lessonText": "Binders help a mixture stay together instead of crumbling apart. Eggs are common binders, but fruit purees and seed mixtures can also help in some baked goods.\n\nFor medium questions, look at the type of recipe. Applesauce can work well in brownies because it adds moisture and binding. Mashed banana is especially reasonable in banana bread because its flavor already fits the recipe.",
+              "questions": [
+                {
+                  "text": "A brownie recipe needs one egg mainly to help hold the batter together. Which fruit-based substitute makes sense?",
+                  "choices": [
+                    "1 cup water",
+                    "1/4 cup applesauce",
+                    "1 tablespoon salt",
+                    "1 cup uncooked rice"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Applesauce can help bind and add moisture when the egg is mainly used for binding."
+                },
+                {
+                  "text": "A banana bread recipe is missing one egg used for binding. Which substitute fits the recipe best?",
+                  "choices": [
+                    "1 cup lemon juice",
+                    "1 tablespoon black pepper",
+                    "1/4 cup mashed banana",
+                    "1 cup dry pasta"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Mashed banana can help bind ingredients and adds moisture, especially in banana bread."
+                }
+              ]
+            },
+            {
+              "title": "Thickeners Make Mixtures Less Runny",
+              "lessonText": "Thickeners help liquids become thicker, but different starches work better in different situations. Cornstarch, arrowroot, and tapioca starch can all thicken, but the best choice depends on the food.\n\nFor medium questions, notice whether the recipe is a fruit filling, pudding, sauce, or gravy. Arrowroot is often a good cornstarch substitute in fruit fillings, while tapioca starch can help thicken soft mixtures like pudding.",
+              "questions": [
+                {
+                  "text": "A fruit filling needs cornstarch, but you only have arrowroot starch. What should you do?",
+                  "choices": [
+                    "Use four times as much sugar",
+                    "Use baking powder instead",
+                    "Use bread crumbs only",
+                    "Use an equal amount of arrowroot starch"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Arrowroot starch can often replace cornstarch in equal amounts, especially in fruit fillings."
+                },
+                {
+                  "text": "A pudding needs a starch thickener, but cornstarch is unavailable. Which substitute is most suitable?",
+                  "choices": [
+                    "Tapioca starch",
+                    "Whole peppercorns",
+                    "Shredded lettuce",
+                    "Vegetable oil"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Tapioca starch can help thicken puddings and other soft mixtures when cornstarch is not available."
+                }
+              ]
+            },
+            {
+              "title": "Technique Matters With Thickeners",
+              "lessonText": "The right substitute can still fail if the texture is handled poorly. Lumps need smoothing or straining, while savory binders need something that can absorb moisture and hold ingredients together.\n\nFor medium questions, think about the problem you are fixing. Lumpy gravy needs whisking or straining. A savory loaf that is missing bread crumbs needs another dry binder, such as oats or crushed crackers.",
+              "questions": [
+                {
+                  "text": "Your gravy has small lumps after thickening. What is the best way to improve it?",
+                  "choices": [
+                    "Add more dry flour without mixing",
+                    "Whisk it well and strain it if needed",
+                    "Freeze it immediately",
+                    "Add whole eggs directly to the hot gravy"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Whisking can break up small lumps, and straining can remove lumps that do not smooth out."
+                },
+                {
+                  "text": "A savory baked loaf needs bread crumbs for binding, but you are out. Which substitute is reasonable?",
+                  "choices": [
+                    "Ice cubes",
+                    "Lemonade",
+                    "Rolled oats or crushed crackers",
+                    "Whole cinnamon sticks"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Rolled oats or crushed crackers can absorb moisture and help hold a savory loaf together."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Recipe Adjustment",
+      "skills": [
+        {
+          "name": "Scaling Ratios",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Doubling a Recipe",
+              "lessonText": "Scaling up means finding how much larger the new batch is and multiplying the ingredients by that amount. When the number of servings doubles, the basic ingredient amounts usually double too.\n\nFor medium questions, compare the original amount to the new amount. If pancakes go from 10 to 20, that is double. If servings go from 6 to 12, that is also double, even when the ingredient amount is a fraction.",
+              "questions": [
+                {
+                  "text": "A pancake recipe makes 10 pancakes with 2 eggs. How many eggs are needed for 20 pancakes?",
+                  "choices": [
+                    "3 eggs",
+                    "2 eggs",
+                    "1 egg",
+                    "4 eggs"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "The recipe is doubled from 10 pancakes to 20 pancakes, so the eggs double from 2 to 4."
+                },
+                {
+                  "text": "A recipe serves 6 and uses 1 1/2 teaspoons of salt. How much salt is needed to serve 12?",
+                  "choices": [
+                    "3 teaspoons",
+                    "1 1/2 teaspoons",
+                    "1 teaspoon",
+                    "6 teaspoons"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "The recipe is doubled from 6 servings to 12 servings, so the salt doubles to 3 teaspoons."
+                }
+              ]
+            },
+            {
+              "title": "Cutting a Recipe in Half",
+              "lessonText": "Scaling down uses the same idea as scaling up, but the multiplier is less than 1. If the new batch is half the size, divide the ingredient amounts in half.\n\nFor medium questions, look for recipes being reduced from 8 servings to 4, or from 16 pieces to 8. Fractions can be divided too: half of 3/4 cup is 3/8 cup.",
+              "questions": [
+                {
+                  "text": "A pasta recipe serves 8 and uses 2 pounds of pasta. How much pasta is needed for 4 servings?",
+                  "choices": [
+                    "1/2 pound",
+                    "1 pound",
+                    "2 pounds",
+                    "4 pounds"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Four servings is half of eight servings, so the pasta is cut in half from 2 pounds to 1 pound."
+                },
+                {
+                  "text": "A brownie recipe makes 16 squares and uses 3/4 cup cocoa powder. How much cocoa is needed for 8 squares?",
+                  "choices": [
+                    "3/4 cup",
+                    "1 1/2 cups",
+                    "3/8 cup",
+                    "1/8 cup"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Eight squares is half the recipe, so 3/4 cup is cut in half to 3/8 cup."
+                }
+              ]
+            },
+            {
+              "title": "Keep the Same Ratio",
+              "lessonText": "Some recipes depend on ingredients staying in the same balance. Dressings, sauces, bread, and batters can change texture or flavor if the ratio shifts too much.\n\nFor medium questions, identify the relationship between ingredients or batch size. A 3-to-1 dressing ratio means the larger ingredient stays three times the smaller one. A sauce reduced to one-third needs one-third of each ingredient.",
+              "questions": [
+                {
+                  "text": "A salad dressing uses 3 tablespoons oil for every 1 tablespoon vinegar. How much oil is needed for 4 tablespoons vinegar?",
+                  "choices": [
+                    "6 tablespoons",
+                    "4 tablespoons",
+                    "1 tablespoon",
+                    "12 tablespoons"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "The ratio is 3 parts oil to 1 part vinegar. Four tablespoons of vinegar need 12 tablespoons of oil."
+                },
+                {
+                  "text": "A sauce recipe makes 3 cups and uses 3/4 cup tomato paste. How much tomato paste is needed for 1 cup of sauce?",
+                  "choices": [
+                    "1/4 cup",
+                    "1/2 cup",
+                    "3/4 cup",
+                    "1 cup"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "One cup of sauce is one-third of the recipe, so 3/4 cup divided by 3 equals 1/4 cup."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Emergency Flavor Tuning",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Start With the Most Likely Fix",
+              "lessonText": "Flat or bland food does not always need more salt. If a dish is already salty enough but still tastes dull, it may need brightness, freshness, or acidity.\n\nFor medium questions, pay attention to phrases like “already salty enough.” That clue means more salt is probably the wrong move. A small squeeze of citrus, vinegar, or fresh herbs can make flavors feel more awake without increasing saltiness.",
+              "questions": [
+                {
+                  "text": "A bean chili tastes flat, but it already has enough salt. What could add needed brightness?",
+                  "choices": [
+                    "More salt",
+                    "A squeeze of lime juice",
+                    "Plain flour",
+                    "Ice cubes"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "If the dish is salty enough but still tastes flat, a small amount of acid can brighten the flavor."
+                },
+                {
+                  "text": "A finished rice dish tastes one-dimensional but is already salty. Which addition is most likely to help?",
+                  "choices": [
+                    "More salt",
+                    "A large amount of flour",
+                    "Fresh herbs or a little lemon",
+                    "Plain water only"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Fresh herbs or a little acid can add brightness without making the rice saltier."
+                }
+              ]
+            },
+            {
+              "title": "Calm Down Spicy Heat",
+              "lessonText": "When food is too spicy, the goal is to make the heat feel less intense without ruining the dish. Creamy, fatty, or mild ingredients can soften spicy heat.\n\nFor medium questions, notice whether the dish should stay thick. Yogurt, sour cream, coconut milk, or cream can reduce perceived heat better than water because they add richness instead of simply thinning the food.",
+              "questions": [
+                {
+                  "text": "A pot of chili is too spicy, but you do not want to make it watery. What is the best adjustment?",
+                  "choices": [
+                    "Add more chili powder",
+                    "Add black pepper",
+                    "Boil until the heat disappears",
+                    "Stir in sour cream or plain yogurt"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Creamy ingredients can soften perceived heat without thinning the chili as much as water would."
+                },
+                {
+                  "text": "A spicy soup is too intense for your roommate. Which add-in would most likely make it taste milder?",
+                  "choices": [
+                    "Coconut milk or cream",
+                    "Extra hot sauce",
+                    "More cayenne",
+                    "Dry rice added after serving"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Creamy or fatty ingredients can make spicy heat feel less harsh."
+                }
+              ]
+            },
+            {
+              "title": "Fix Saltiness by Spreading It Out",
+              "lessonText": "Saltiness is a concentration problem. The most reliable fix is to spread the salt through more unsalted food or liquid so each bite tastes less salty.\n\nFor medium questions, choose an unsalted version of something that already belongs in the dish. Soup can be stretched with unsalted broth and vegetables. Salty rice can be mixed with plain cooked rice instead of adding sugar or more seasoning.",
+              "questions": [
+                {
+                  "text": "A soup tastes too salty and there is room in the pot. Which fix is most reliable?",
+                  "choices": [
+                    "Add more salt",
+                    "Add unsalted broth and extra vegetables",
+                    "Add hot sauce",
+                    "Add baking powder"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Adding unsalted liquid and ingredients spreads the salt through more food."
+                },
+                {
+                  "text": "A rice dish is too salty, but the texture is good. What is the best way to make it easier to eat?",
+                  "choices": [
+                    "Add more soy sauce",
+                    "Add salt on top",
+                    "Mix in unsalted cooked rice",
+                    "Cook it until dry and crunchy"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Unsalted rice increases the total amount of food and lowers the salty concentration."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Texture Fixes",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Thickening Food That Is Too Thin",
+              "lessonText": "Thin sauces, soups, and fillings often need a thickener, but adding dry starch straight into hot liquid can create lumps. A slurry helps the thickener spread evenly.\n\nFor medium questions, look for words like “smooth,” “without clumps,” or “runny.” Mixing starch with cold liquid first is usually safer. If lumps have already formed, whisking and straining can improve the texture.",
+              "questions": [
+                {
+                  "text": "A pan sauce looks watery. What is the best way to thicken it without clumps?",
+                  "choices": [
+                    "Dump in dry flour",
+                    "Add ice cubes",
+                    "Turn off the heat and add sugar",
+                    "Stir in a smooth slurry made with cold liquid"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "A slurry spreads the thickener evenly before it goes into the hot sauce."
+                },
+                {
+                  "text": "A fruit filling is runny while cooking. Which method gives the smoothest thickening?",
+                  "choices": [
+                    "Mix starch with cold water first, then stir it in",
+                    "Sprinkle dry starch over the top and leave it",
+                    "Add oil",
+                    "Add uncooked pasta"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Mixing starch with cold liquid first helps prevent lumps."
+                }
+              ]
+            },
+            {
+              "title": "Thinning Food That Is Too Thick",
+              "lessonText": "Thick sauces can usually be loosened by adding liquid slowly. Separated or grainy sauces need gentler handling because harsh heat can make the texture worse.\n\nFor medium questions, decide whether the food is simply too thick or starting to break. Too thick means add a little liquid and stir. Grainy or separated often means lower the heat, whisk gently, and add a small splash of warm liquid.",
+              "questions": [
+                {
+                  "text": "A cheese sauce becomes too thick after sitting for a few minutes. What should you do?",
+                  "choices": [
+                    "Add dry flour",
+                    "Whisk in a small splash of warm milk",
+                    "Boil it hard without stirring",
+                    "Add ice cubes"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Adding warm liquid slowly helps loosen the sauce while keeping control of the texture."
+                },
+                {
+                  "text": "A gravy is thicker than you wanted right before serving. What is the safest fix?",
+                  "choices": [
+                    "Add a full cup of broth all at once",
+                    "Add more dry flour",
+                    "Whisk in small splashes of broth",
+                    "Cook it longer"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Small additions of liquid help thin the gravy without overshooting."
+                }
+              ]
+            },
+            {
+              "title": "Fixing Watery Foods",
+              "lessonText": "Texture problems can come from too much moisture or not enough moisture. Wet foods may need extra moisture cooked off, while dry mixtures may need a small amount of liquid or fat.\n\nFor medium questions, match the fix to the direction of the problem. Wet rice can often be uncovered so steam escapes. Dry, crumbly cookie dough needs a controlled addition of moisture or softened fat, not more dry flour.",
+              "questions": [
+                {
+                  "text": "A batch of cooked rice is slightly too wet. What is the best immediate fix?",
+                  "choices": [
+                    "Add more water",
+                    "Add ice",
+                    "Stir in dry flour",
+                    "Uncover it and let extra moisture steam off over low heat"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Letting extra moisture steam off can help wet rice become less soggy."
+                },
+                {
+                  "text": "Cookie dough is dry and crumbly and will not hold together. What is the best adjustment?",
+                  "choices": [
+                    "Add a small amount of liquid or softened fat",
+                    "Add more dry flour",
+                    "Bake it immediately without changing anything",
+                    "Add ice cubes"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Dry, crumbly dough usually needs a small amount of moisture or fat to help it come together."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "How to Cook",
+      "skills": [
+        {
+          "name": "Sautéing & Pan-Searing",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Sautéing vs. Pan-Searing",
+              "lessonText": "Sautéing and pan-searing both use a pan, heat, and some fat, but the movement and goal are different. Sautéing usually uses smaller pieces that move often. Pan-searing usually keeps larger pieces in place long enough to brown.\n\nFor medium questions, use the food size and movement as clues. Small diced onions stirred often point to sautéing. Larger tofu slabs or pieces of meat left mostly still are more likely being pan-seared.",
+              "questions": [
+                {
+                  "text": "You are cooking small diced onions while stirring them often in a little oil. Which method are you most likely using?",
+                  "choices": [
+                    "Poaching",
+                    "Sautéing",
+                    "Freezing",
+                    "Baking a cake"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Sautéing usually cooks smaller pieces of food while they are moved around in a pan."
+                },
+                {
+                  "text": "You want browned tofu slabs with a crust on the outside and little movement in the pan. Which method fits best?",
+                  "choices": [
+                    "Boiling",
+                    "Steaming",
+                    "Pan-searing",
+                    "Microwaving in water"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Pan-searing focuses on browning the outside of food against a hot pan."
+                }
+              ]
+            },
+            {
+              "title": "Do Not Overcrowd the Pan",
+              "lessonText": "Browning needs heat, space, and moisture control. If a pan is crowded, food releases steam and has a harder time browning. If pieces are different sizes, they may cook unevenly.\n\nFor medium questions, look for clues about liquid collecting in the pan or uneven cooking. Smaller batches help crowded food brown. Similar-sized pieces help vegetables finish cooking at about the same time.",
+              "questions": [
+                {
+                  "text": "Vegetables in a crowded skillet are releasing liquid and not browning. What should you do next time?",
+                  "choices": [
+                    "Add more vegetables at once",
+                    "Cover the pan tightly from the start",
+                    "Add ice",
+                    "Cook them in smaller batches"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Cooking in smaller batches gives moisture room to escape and helps browning happen."
+                },
+                {
+                  "text": "Why are vegetables often cut into similar-sized pieces before sautéing?",
+                  "choices": [
+                    "So they cook more evenly",
+                    "So they become raw again",
+                    "So they do not need heat",
+                    "So they all taste like sugar"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Similar-sized pieces cook at similar rates, which helps avoid undercooked or overcooked pieces."
+                }
+              ]
+            },
+            {
+              "title": "Dry Food Browns Better",
+              "lessonText": "Surface moisture slows browning because the pan must evaporate water before a crust can form. This matters for meat, tofu, and foods that have been sitting in marinade.\n\nFor medium questions, notice whether the food is wet from packaging or marinade. Patting or blotting the surface dry helps the food sear instead of steam, especially when you want a browned crust.",
+              "questions": [
+                {
+                  "text": "Chicken breasts are wet from the package before searing. What should you do first?",
+                  "choices": [
+                    "Add extra water to the pan",
+                    "Pat the surface dry with a paper towel",
+                    "Coat them in sugar only",
+                    "Freeze them immediately"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Drying the surface helps the chicken brown instead of steaming."
+                },
+                {
+                  "text": "A tofu slice has extra marinade on the outside before searing. Why might blotting it help?",
+                  "choices": [
+                    "It makes the tofu raw",
+                    "It removes the need for heat",
+                    "Less surface moisture makes browning easier",
+                    "It makes the pan colder"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Extra moisture has to evaporate before browning can happen, so blotting helps searing."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Boiling, Simmering, & Poaching",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Recognizing a Full Boil",
+              "lessonText": "Boiling uses strong, active bubbles. Pasta usually needs water that is fully boiling, plus enough movement and stirring to keep pieces from sticking.\n\nFor medium questions, check what the bubbles are doing. A few bubbles around the edge is not a full boil yet. After pasta is added, stirring helps separate the pieces while the water returns to a boil.",
+              "questions": [
+                {
+                  "text": "Your pasta water has only a few small bubbles around the edge. What should you do before adding pasta?",
+                  "choices": [
+                    "Add pasta immediately and turn off the heat",
+                    "Add ice",
+                    "Remove all the water",
+                    "Wait for a stronger boil"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Pasta usually cooks best when added to water that has reached a full boil."
+                },
+                {
+                  "text": "After pasta is added, the boiling slows down and pieces start sticking. What should you do?",
+                  "choices": [
+                    "Stir and let the water return to a boil",
+                    "Add flour",
+                    "Freeze the pot",
+                    "Stop cooking immediately"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Stirring helps prevent sticking while the water returns to a boil."
+                }
+              ]
+            },
+            {
+              "title": "Simmering Is Gentler Than Boiling",
+              "lessonText": "Simmering is controlled, gentle bubbling. It is useful when food needs time to cook, soften, or develop flavor without being tossed around by aggressive boiling.\n\nFor medium questions, think about control. Soups and stews often simmer because hard boiling can make textures rough. If a pot boils over, lowering the heat or moving it off the burner is the first safe response.",
+              "questions": [
+                {
+                  "text": "Why are soups and stews often simmered instead of boiled hard?",
+                  "choices": [
+                    "Simmering makes food raw again",
+                    "Gentler bubbles help texture and flavor develop",
+                    "Simmering only works in the freezer",
+                    "Simmering removes all liquid instantly"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Simmering cooks steadily without tossing ingredients around as much as a hard boil."
+                },
+                {
+                  "text": "A pot starts boiling over. What should you do first?",
+                  "choices": [
+                    "Turn the heat higher",
+                    "Cover it tighter and walk away",
+                    "Lower the heat or carefully move it off the burner",
+                    "Pour oil into the water"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Reducing the heat source helps stop the boil-over safely."
+                }
+              ]
+            },
+            {
+              "title": "Poaching Uses Very Gentle Heat",
+              "lessonText": "Poaching uses hot liquid below a strong simmer. It is gentle enough for delicate foods that could break apart or become tough in rapidly boiling water.\n\nFor medium questions, look for foods like eggs, fish, or tender chicken. If the liquid boils too hard, delicate foods can fall apart, toughen, or cook unevenly.",
+              "questions": [
+                {
+                  "text": "Which food is commonly cooked with gentle poaching?",
+                  "choices": [
+                    "Dry cereal",
+                    "Raw flour by itself",
+                    "Potato chips",
+                    "Eggs or fish"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Eggs and fish are delicate enough that gentle poaching can cook them without rough bubbling."
+                },
+                {
+                  "text": "Why should poaching liquid stay below a vigorous boil?",
+                  "choices": [
+                    "Strong boiling can break delicate foods apart or make them tough",
+                    "Boiling makes food invisible",
+                    "Boiling turns the liquid into ice",
+                    "Boiling removes the need for cooking"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Poaching should stay gentle so delicate foods keep their shape and texture."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Oven Roasting vs. Baking",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Roasting and Baking Use the Oven Differently",
+              "lessonText": "Roasting and baking both use dry oven heat, but they often aim for different results. Roasting usually focuses on browning structured foods, while baking depends on a recipe setting, rising, or spreading correctly.\n\nFor medium questions, use the food goal as the clue. Potato pieces that should get browned and crisp point to roasting. Cookies need the oven preheated so they start baking at the intended temperature.",
+              "questions": [
+                {
+                  "text": "Which oven method is best for seasoned potato pieces that should become browned and crisp?",
+                  "choices": [
+                    "Poaching",
+                    "Roasting",
+                    "Freezing",
+                    "Blending"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "Roasting uses dry oven heat and is a good method for browning potatoes."
+                },
+                {
+                  "text": "Why should an oven usually be preheated before baking cookies?",
+                  "choices": [
+                    "So the cookies stay raw",
+                    "So the oven becomes cold",
+                    "So the cookies begin baking at the intended temperature",
+                    "So measuring is unnecessary"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Preheating helps cookies bake at the temperature the recipe was designed for."
+                }
+              ]
+            },
+            {
+              "title": "Roasting Needs Space",
+              "lessonText": "Roasting works best when hot air can reach the food and surface moisture can escape. Oil and occasional turning can help more surfaces brown.\n\nFor medium questions, watch for clues about browning. A moderate amount of oil helps roasted vegetables brown and avoid drying out. Stirring or turning halfway through helps expose different sides to oven heat.",
+              "questions": [
+                {
+                  "text": "Why should roasted vegetables usually be tossed with a moderate amount of oil?",
+                  "choices": [
+                    "Oil makes vegetables freeze",
+                    "Oil replaces the oven",
+                    "Oil makes measuring impossible",
+                    "Oil helps browning and prevents too much drying"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "A moderate amount of oil helps vegetables brown and develop better texture."
+                },
+                {
+                  "text": "Why are roasted vegetables sometimes stirred halfway through cooking?",
+                  "choices": [
+                    "To help them brown more evenly",
+                    "To make them raw again",
+                    "To stop the oven from heating",
+                    "To remove all seasoning"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Turning or stirring exposes more sides to heat, which helps vegetables brown more evenly."
+                }
+              ]
+            },
+            {
+              "title": "Baking Needs Accuracy",
+              "lessonText": "Baking depends on timing, structure, and steady oven heat. Cakes, cookies, muffins, and breads can change if they lose heat or come out before they finish setting.\n\nFor medium questions, look for clues about the center, rise, and oven door. A cake removed too early may sink or stay undercooked. Opening the oven repeatedly can lower the temperature and affect structure.",
+              "questions": [
+                {
+                  "text": "What can happen if a cake is removed before the center has set?",
+                  "choices": [
+                    "The cake becomes fully frozen",
+                    "The center may sink or stay undercooked",
+                    "The cake turns into soup instantly",
+                    "The cake becomes raw flour again"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "If the center has not set, the cake may collapse, sink, or remain undercooked."
+                },
+                {
+                  "text": "Why should an oven door not be opened repeatedly while a cake is baking?",
+                  "choices": [
+                    "Opening the door makes the cake cook without heat",
+                    "Opening the door adds sugar",
+                    "Heat loss can affect how the cake rises and sets",
+                    "Opening the door sharpens knives"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Repeatedly opening the oven door can lower the temperature and affect the cake’s structure."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Utensil Handling",
+      "skills": [
+        {
+          "name": "Essential Knife Work",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Protect Your Fingers",
+              "lessonText": "Knife safety starts before the cut. Food should be stable, and your guiding hand should protect your fingertips while helping control the cut.\n\nFor medium questions, pay attention to shape and hand position. Round foods like potatoes and onions are safer after you create a flat side. In a claw grip, the knuckles guide the knife while the fingertips stay tucked back.",
+              "questions": [
+                {
+                  "text": "Before slicing a round potato, what should you do to make it safer?",
+                  "choices": [
+                    "Balance it on the roundest side",
+                    "Cover it in oil",
+                    "Hold it in the air while cutting",
+                    "Cut a flat side so it sits steadily"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Creating a flat side helps keep round foods from rolling while you cut them."
+                },
+                {
+                  "text": "When using a claw grip, what part of your hand should guide the knife?",
+                  "choices": [
+                    "Your knuckles",
+                    "Your fingertips stretched flat",
+                    "Your palm under the blade",
+                    "Your wrist against the cutting edge"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "With a claw grip, curled fingers stay back while the knuckles help guide the side of the knife."
+                }
+              ]
+            },
+            {
+              "title": "Keep the Cutting Board Stable",
+              "lessonText": "A safe cutting setup keeps both the board and the food under control. The board should not slide, and surfaces that touch raw meat should be easy to clean and sanitize.\n\nFor medium questions, think about what makes the station stable and clean. A damp towel can grip under a cutting board. Raw chicken belongs on a clean nonporous cutting board, not on absorbent or hard-to-clean surfaces.",
+              "questions": [
+                {
+                  "text": "Why is a damp towel useful under a cutting board?",
+                  "choices": [
+                    "It makes the knife dull",
+                    "It helps stop the board from sliding",
+                    "It replaces the food",
+                    "It makes the counter hotter"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "A damp towel adds grip between the board and the counter."
+                },
+                {
+                  "text": "Which surface is safest for cutting raw chicken?",
+                  "choices": [
+                    "A couch cushion",
+                    "A stack of paper towels",
+                    "A clean nonporous cutting board",
+                    "A carpeted floor"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "A nonporous cutting board can be cleaned and sanitized after touching raw chicken."
+                }
+              ]
+            },
+            {
+              "title": "Sharp Knives Are Safer Than Dull Knives",
+              "lessonText": "The right knife and safe cleaning habits both reduce risk. A chef’s knife handles many common chopping tasks, but sharp knives should be kept visible and controlled when washing.\n\nFor medium questions, match the tool to the task and avoid hidden blades. A chef’s knife is useful for onions, herbs, and vegetables. A sharp knife should be washed separately by hand, not left hidden in soapy water.",
+              "questions": [
+                {
+                  "text": "Which knife is generally best for chopping onions, herbs, and vegetables?",
+                  "choices": [
+                    "Butter knife",
+                    "Plastic spoon",
+                    "Rolling pin",
+                    "Chef’s knife"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "A chef’s knife is versatile and well-suited for chopping many vegetables and herbs."
+                },
+                {
+                  "text": "What is the safest way to wash a sharp kitchen knife?",
+                  "choices": [
+                    "Wash it separately by hand with the blade pointed away",
+                    "Hide it in a sink full of soapy water",
+                    "Toss it loosely into the dishwasher with the blade up",
+                    "Hold the blade edge directly in your palm"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Washing a knife separately keeps it visible and helps prevent accidental cuts."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pan & Surface Matching",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Use Heavy Pans for Browning",
+              "lessonText": "Different pans handle heat differently. Heavy pans spread and hold heat well, which helps with browning, high-heat cooking, and gentle control for thick sauces.\n\nFor medium questions, match the pan to the heat need. A heavy-bottomed saucepan can reduce scorching in custards or thick sauces. A wok or large skillet gives stir-fry ingredients room over high heat.",
+              "questions": [
+                {
+                  "text": "Why is a heavy-bottomed saucepan useful for custard or thick sauces?",
+                  "choices": [
+                    "It makes sauce freeze",
+                    "It spreads heat more evenly and helps reduce scorching",
+                    "It removes the need to stir",
+                    "It turns sauce into bread"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "A heavy-bottomed pan distributes heat more evenly, which helps prevent scorching."
+                },
+                {
+                  "text": "Which pan is best for making a stir-fry over high heat?",
+                  "choices": [
+                    "A plastic bowl",
+                    "A glass measuring cup",
+                    "A wok or large skillet",
+                    "A paper plate"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "A wok or large skillet gives food room and can handle the high heat used for stir-frying."
+                }
+              ]
+            },
+            {
+              "title": "Use Nonstick for Delicate Foods",
+              "lessonText": "The cooking surface should match the food. Delicate foods need easy release, while acidic foods need cookware that will not react with the acid.\n\nFor medium questions, separate sticking problems from reaction problems. Eggs often do best in nonstick. Tomato sauce is acidic, so stainless steel or enameled cookware is safer than reactive uncoated metal.",
+              "questions": [
+                {
+                  "text": "You are making an omelet and want it to release easily. Which pan is the best choice?",
+                  "choices": [
+                    "Stockpot",
+                    "Baking sheet",
+                    "Colander",
+                    "Nonstick skillet"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "A nonstick skillet helps delicate egg dishes release with less sticking."
+                },
+                {
+                  "text": "Which cookware is most appropriate for simmering an acidic tomato sauce?",
+                  "choices": [
+                    "Stainless steel or enameled cookware",
+                    "Uncoated reactive aluminum",
+                    "A cardboard box",
+                    "A plastic storage bag on the stove"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "Stainless steel or enameled cookware is nonreactive and works well for acidic tomato sauce."
+                }
+              ]
+            },
+            {
+              "title": "Use a Sheet Pan for Roasting",
+              "lessonText": "Some cooking methods need the right vessel size or material. Boiling needs enough space for liquid and food. Broiling needs cookware that can handle very high direct heat.\n\nFor medium questions, look at the cooking method. A large stockpot fits a large batch of pasta with enough water. Broiler-safe metal cookware or cast iron is better under a broiler than plastic, paper, or regular glass.",
+              "questions": [
+                {
+                  "text": "Which vessel is best for boiling a large batch of pasta?",
+                  "choices": [
+                    "A small mug",
+                    "A large stockpot",
+                    "A shallow plate",
+                    "A plastic bag"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "A large stockpot gives pasta enough water and space to cook evenly."
+                },
+                {
+                  "text": "Which cookware should be used under an oven broiler?",
+                  "choices": [
+                    "Thin plastic containers",
+                    "Paper plates",
+                    "Broiler-safe metal cookware or cast iron",
+                    "Regular drinking glasses"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Broilers use very high direct heat, so the cookware must be broiler-safe."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hack-it-With-What-You-Have",
+          "mode": "medium",
+          "miniLessons": [
+            {
+              "title": "Match the Shape and Job",
+              "lessonText": "When replacing a tool, first identify the job: rolling, pressing, brushing, straining, covering, or heating gently. A safe substitute should copy the shape or pressure without adding danger.\n\nFor medium questions, think about what the missing tool does physically. A meat mallet flattens with pressure, so a heavy skillet or rolling pin can work carefully. A pastry brush spreads a thin layer, which can also be done with a clean spoon or clean fingers.",
+              "questions": [
+                {
+                  "text": "You need to flatten chicken breasts but do not own a meat mallet. What can you use?",
+                  "choices": [
+                    "A paper towel",
+                    "A plastic straw",
+                    "A measuring cup full of water with no lid",
+                    "A heavy skillet or rolling pin"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "A heavy skillet or rolling pin can apply even pressure to flatten chicken when used carefully."
+                },
+                {
+                  "text": "You do not have a pastry brush. What can you use to spread oil lightly over bread or vegetables?",
+                  "choices": [
+                    "A clean spoon or clean fingers",
+                    "A dirty sponge",
+                    "A knife blade edge",
+                    "A piece of raw chicken"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "A clean spoon or clean fingers can spread a light layer of oil when a pastry brush is not available."
+                }
+              ]
+            },
+            {
+              "title": "Match the Action",
+              "lessonText": "Many specialty tools save time, but basic kitchen tools can often perform the same action. The substitute may be slower, but it should still be clean, safe, and effective.\n\nFor medium questions, focus on the action. A garlic press crushes garlic finely, but a knife can mince it. A citrus juicer squeezes and releases juice, but rolling the lemon and using a fork can help do the same job.",
+              "questions": [
+                {
+                  "text": "You do not have a garlic press. What is the best alternative for finely preparing garlic?",
+                  "choices": [
+                    "Leave the clove whole and uncooked",
+                    "Mince it finely with a knife",
+                    "Freeze it in the peel",
+                    "Replace it with sugar"
+                  ],
+                  "correctAnswer": "B",
+                  "feedback": "A knife can mince garlic finely, even without a garlic press."
+                },
+                {
+                  "text": "You need to juice a lemon but do not have a citrus juicer. What is the best method?",
+                  "choices": [
+                    "Put the whole lemon into the dish uncut",
+                    "Freeze the lemon and never cut it",
+                    "Roll it, cut it, and squeeze while using a fork to help release juice",
+                    "Replace the lemon with flour"
+                  ],
+                  "correctAnswer": "C",
+                  "feedback": "Rolling and squeezing the lemon with a fork helps release more juice without a juicer."
+                }
+              ]
+            },
+            {
+              "title": "Make Safe Setup Swaps",
+              "lessonText": "Some swaps involve hot water, rising dough, or other situations where safety matters more than speed. The best workaround should reduce risk while still doing the job.\n\nFor medium questions, avoid dangerous shortcuts. Pasta can be lifted with tongs or a slotted spoon if there is no colander. Rising dough can be covered with a clean damp towel or loose lid instead of something dirty, heavy, or unsafe.",
+              "questions": [
+                {
+                  "text": "You need to strain pasta but do not have a colander. What is the safest substitute?",
+                  "choices": [
+                    "Pour boiling water through your fingers",
+                    "Use a paper towel as a strainer",
+                    "Dump the pot quickly without holding it securely",
+                    "Use tongs or a slotted spoon to remove the pasta"
+                  ],
+                  "correctAnswer": "D",
+                  "feedback": "Tongs or a slotted spoon let you remove pasta without pouring a large pot of boiling water."
+                },
+                {
+                  "text": "You need to cover a bowl of rising dough but do not have plastic wrap. What is the best substitute?",
+                  "choices": [
+                    "A clean damp towel or loose-fitting lid",
+                    "A dirty cutting board",
+                    "A hot skillet directly on the dough",
+                    "A pile of raw meat"
+                  ],
+                  "correctAnswer": "A",
+                  "feedback": "A clean damp towel or loose lid can protect dough while still giving it room to rise."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

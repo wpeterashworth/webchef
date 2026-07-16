@@ -96,6 +96,15 @@ simply missing. Left the on:submit deprecation warnings on login/signup alone
 (harmless, non-fatal). Next: commit + push these two files so the Render deploy
 goes through.
 
+2026-07-10 — Josh
+Created JSON/easy_mode_lessons.json from cooking_app_easy_mode_lessons_for_copilot.md.
+Kept the existing JSON lesson banks unchanged and added a separate nested easy-mode
+dataset with 4 categories, 12 skills, and 36 mini-lessons so the current app wiring
+is not disturbed.
+
+2026-07-10 — Josh
+Added an additive Supabase migration at supabase/migrations/20260710000000_easy_mode_lessons_schema.sql.
+It introduces new easy-mode lesson tables only; it does not rename, drop, or alter the existing schema.
 
 2026-07-10 — Luke
 Added per-card difficulty selection (Beginner, Intermediate, Advanced) on
@@ -103,4 +112,71 @@ lesson-card.svelte. Each level controls how many skills and questions are includ
 (client/src/lib/lessons.js). Start Lesson passes ?difficulty= in the URL; the
 lesson flow filters content accordingly and shows the chosen level in the header.
 Verified with `pnpm build`.
+
+2026-07-14 — Lesson creation
+Created mode-specific lesson JSON files from markdown source content:
+  - client/src/lib/JSON/medium_mode_lessons.json from cooking_app_medium_mode_lessons_for_copilot.md
+  - client/src/lib/JSON/hard_mode_lessons.json from cooking_app_hard_mode_lessons_for_copilot.md
+Added scripts/convert-markdown-lessons.mjs to parse category/skill/mini-lesson/question
+blocks and validate structure during conversion (3 mini-lessons per skill, 2 questions
+per mini-lesson, 4 choices per question, valid A-D correct answer).
+Verified generation counts for each file: 4 categories, 12 skills, 36 mini-lessons,
+72 questions.
+
+2026-07-14 — Lesson creation
+Created standalone modal components for lesson and user table workflows:
+  - client/src/lib/components/lesson-table-modal.svelte
+  - client/src/lib/components/user-table-modal.svelte
+Both components include grouped form fields, local validation, save/cancel actions,
+and row-level controls (including progress-row removal in user modal). No route wiring
+or data API integration was added yet in this task.
+
+2026-07-14 — Lesson creation
+Added migration organization support and a consolidated forward-only schema update draft:
+  - supabase/migrations/MIGRATIONS_GUIDE.md
+  - supabase/migrations/20260715090000_lessons_users_models_v2.sql
+Guide documents naming conventions, migration types, and immutability rules to reduce
+team confusion. New migration draft combines lesson/user model changes for multi-difficulty
+content and per-difficulty progress tracking.
+
+2026-07-14 — Lesson creation
+Drafted lesson-bank RLS migration and rollout checklist:
+  - supabase/migrations/20260715090500_lessons_bank_rls.sql
+  - supabase/migrations/NEXT_STEPS_CHECKLIST.md
+RLS migration enables read-only authenticated access for lesson-bank tables and denies anon access.
+Checklist documents migration apply order and SQL verification queries for constraints, columns,
+RLS status, and policies.
+
+2026-07-14 — Lesson creation
+Implemented multi-mode lesson seed generation for updated JSON datasets:
+  - scripts/generate-lessons-seed-sql.mjs
+  - supabase/migrations/20260715091000_seed_lessons_all_modes.sql
+Generated an idempotent upsert migration from easy/medium/hard JSON files with totals:
+4 categories, 36 skill rows, 108 mini lessons, 180 questions. Updated rollout checklist
+to include seed migration apply order and row-count verification queries.
+
+2026-07-14 — Lesson creation
+Switched to schema-first lesson seeding workflow:
+  - Updated scripts/generate-lessons-seed-sql.mjs to generate
+    supabase/seed/lessons_seed_payload.json by default.
+  - Added optional SQL generation via `--sql` flag.
+  - Added supabase/seed/README.md documenting preferred workflow.
+  - Updated NEXT_STEPS_CHECKLIST.md to prefer payload seeding and keep SQL seed as optional snapshot.
+
+2026-07-14 — Lesson creation
+Implemented direct payload-to-DB ingest workflow and removed giant default seed migration path:
+  - Added supabase/migrations/20260715091500_create_lessons_ingest_function.sql
+  - Added scripts/ingest-lessons-payload.mjs
+  - Removed supabase/migrations/20260715091000_seed_lessons_all_modes.sql
+  - Updated package.json scripts: lessons:payload, lessons:payload:sql, lessons:ingest
+  - Updated seed and rollout docs to use payload ingest as default workflow.
+
+2026-07-15 — Lesson schema decision
+Kept user tables untouched and narrowed the consolidated schema migration to lessons-only.
+Removed user difficulty/profile changes from supabase/migrations/20260715090000_lessons_users_models_v2.sql
+and updated NEXT_STEPS_CHECKLIST.md to drop user-model verification steps.
+
+2026-07-16 — Josh
+Linked the WebChef Supabase project in the CLI, generated the lesson seed SQL from the normalized JSON sources, pushed the missing lesson migrations to the remote database, and verified the seeded row counts.
+Remote counts after the push: 4 categories, 36 skills, 108 mini lessons, 180 questions.
 
