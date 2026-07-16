@@ -61,3 +61,15 @@ export async function setUsername(username) {
   clearProfileCache();
   return data?.username ?? username;
 }
+
+/** Switch to a previously unlocked level title (saved on users.level_title). */
+export async function setDisplayTitle(title) {
+  const { data, error } = await supabase.rpc("set_display_title", {
+    p_title: title,
+  });
+
+  if (error) throw new Error(error.message);
+
+  clearProfileCache();
+  return data?.level_title ?? title;
+}
