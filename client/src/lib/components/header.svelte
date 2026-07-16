@@ -3,6 +3,7 @@
   import { goto } from "$app/navigation";
   import { applyTheme, getInitialTheme } from "$lib/javascript/theme.js";
   import { user, logout } from "$lib/stores/auth.js";
+  import { profile } from "$lib/stores/profile.js";
   import ConfirmModal from "$lib/components/confirm-modal.svelte";
 
   let currentTheme = $state("light");
@@ -77,6 +78,9 @@
       <li><a href="/recipes">Recipes</a></li>
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
+        {#if $profile?.is_admin}
+          <li><a href="/admin">Admin page</a></li>
+        {/if}
         <li>
           <a href="/account" class="user-email">
             {$user.user_metadata?.first_name || $user.email}
