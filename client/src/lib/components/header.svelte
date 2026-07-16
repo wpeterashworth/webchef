@@ -3,6 +3,8 @@
   import { goto } from "$app/navigation";
   import { applyTheme, getInitialTheme } from "$lib/javascript/theme.js";
   import { user, logout } from "$lib/stores/auth.js";
+  import { profile } from "$lib/stores/profile.js";
+  import { canViewLeaderboard, canCreateLessons } from "$lib/javascript/points.js";
   import ConfirmModal from "$lib/components/confirm-modal.svelte";
 
   let currentTheme = $state("light");
@@ -22,13 +24,37 @@
     goto("/");
   }
 
+  let headerEl = $state(null);
+
   onMount(() => {
     currentTheme = getInitialTheme();
     applyTheme(currentTheme);
   });
+
+  $effect(() => {
+    if (!headerEl) return;
+
+    const updateHeaderOffset = () => {
+      document.documentElement.style.setProperty(
+        "--site-header-offset",
+        `${headerEl.offsetHeight}px`,
+      );
+    };
+
+    updateHeaderOffset();
+    const observer = new ResizeObserver(updateHeaderOffset);
+    observer.observe(headerEl);
+    window.addEventListener("resize", updateHeaderOffset);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateHeaderOffset);
+      document.documentElement.style.removeProperty("--site-header-offset");
+    };
+  });
 </script>
 
-<header>
+<header bind:this={headerEl}>
   <nav class="navigation">
     <button id="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
       <img
@@ -53,6 +79,12 @@
       <li><a href="/recipes">Recipes</a></li>
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
+        {#if $profile && canViewLeaderboard($profile.level_number)}
+          <li><a href="/leaderboard">Leaderboard</a></li>
+        {/if}
+        {#if $profile && canCreateLessons($profile.level_number)}
+          <li><a href="/lesson/my-lessons">My Lessons</a></li>
+        {/if}
         <li><a href="/account">Account</a></li>
         <li class="user-email">
           {$user.user_metadata?.first_name || $user.email}
@@ -80,7 +112,30 @@
 />
 
 <style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    padding-bottom: 14px;
+    box-sizing: border-box;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 14px;
+    background: url("/images/woodframe.webp") center bottom / cover no-repeat;
+    pointer-events: none;
+  }
+
   nav {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;

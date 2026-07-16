@@ -9,6 +9,7 @@ import { writable } from "svelte/store";
 import { browser } from "$app/environment";
 import { user } from "$lib/stores/auth.js";
 import * as api from "$lib/javascript/progress.js";
+import { patchProfile } from "$lib/stores/profile.js";
 
 /** lesson slug -> progress row. Empty object when signed out. */
 export const progress = writable({});
@@ -48,8 +49,8 @@ if (browser) {
 }
 
 /** Save a status and reflect it in the store. */
-export async function setStatus(lessonSlug, status) {
-  const row = await api.setStatus(lessonSlug, status);
+export async function setStatus(lessonSlug, status, difficulty = null) {
+  const row = await api.setStatus(lessonSlug, status, difficulty);
   progress.update((rows) => ({ ...rows, [lessonSlug]: row }));
 }
 
@@ -66,4 +67,23 @@ export async function clearStatus(lessonSlug) {
     const { [lessonSlug]: _removed, ...rest } = rows;
     return rest;
   });
+}
+
+/** Finish a lesson, award points, and refresh local progress + profile state. */
+export async function completeLesson(lessonSlug, difficulty, score = null) {
+  const result = await api.completeLesson(lessonSlug, difficulty, score);
+
+  progress.set(
+    Object.fromEntries(
+      (await api.getProgress()).map((row) => [row.lesson_slug, row]),
+    ),
+  );
+
+  patchProfile({
+    xp: result.xp,
+    level_number: result.level_number,
+    level_title: result.level_title,
+  });
+
+  return result;
 }

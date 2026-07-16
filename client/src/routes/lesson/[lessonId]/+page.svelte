@@ -9,16 +9,43 @@
     applyDifficulty,
     normalizeDifficulty,
   } from "$lib/javascript/lessons.js";
-  import { COMPLETED } from "$lib/javascript/progress.js";
-  import { progress, markStarted, setStatus } from "$lib/stores/progress.js";
+  import { difficultyUnlocked, pointsForDifficulty } from "$lib/javascript/points.js";
+  import { getUserLessonBySlug } from "$lib/javascript/user-lessons.js";
+  import { progress, markStarted, completeLesson } from "$lib/stores/progress.js";
+  import { profile } from "$lib/stores/profile.js";
 
   let { data } = $props();
+
+  let fetchedLesson = $state(null);
+  let lessonLoadError = $state(null);
+  let loadingLesson = $state(data.needsFetch);
+
+  onMount(async () => {
+    if (!data.needsFetch) return;
+
+    try {
+      fetchedLesson = await getUserLessonBySlug(data.lessonId);
+      if (!fetchedLesson) {
+        lessonLoadError = new Error("This lesson was not found or is private.");
+      }
+    } catch (error) {
+      lessonLoadError = error;
+    } finally {
+      loadingLesson = false;
+    }
+  });
+
+  const baseLesson = $derived(data.lesson ?? fetchedLesson);
 
   // Progress is saved best-effort: a failed write must not block the learner
   // mid-quiz, but it shouldn't fail silently either.
   let progressError = $state(null);
+  let completionResult = $state(null);
+  let correctAnswers = $state(0);
 
-  const savedStatus = $derived($progress[data.lesson.id]?.status);
+  const savedStatus = $derived(
+    baseLesson ? $progress[baseLesson.id]?.status : undefined,
+  );
 
   let difficulty = $state("beginner");
 
@@ -32,7 +59,16 @@
   onMount(syncDifficulty);
   afterNavigate(syncDifficulty);
 
-  const lesson = $derived(applyDifficulty(data.lesson, difficulty));
+  const lesson = $derived(
+    baseLesson ? applyDifficulty(baseLesson, difficulty) : null,
+  );
+
+  $effect(() => {
+    const level = $profile?.level_number ?? 0;
+    if (!difficultyUnlocked(level, difficulty)) {
+      difficulty = "beginner";
+    }
+  });
 
   /** @type {'intro' | 'quiz' | 'section-done' | 'complete'} */
   let phase = $state("intro");
@@ -46,12 +82,15 @@
   const currentQuestion = $derived(currentStep?.question);
 
   $effect(() => {
+    if (!lesson) return;
     lesson.difficulty;
     phase = "intro";
     sectionIndex = 0;
     stepIndex = 0;
     selectedOption = null;
     answered = false;
+    completionResult = null;
+    correctAnswers = 0;
   });
 
   function correctIndex(question) {
@@ -65,14 +104,13 @@
   }
 
   function startQuiz() {
+    if (!baseLesson) return;
     phase = "quiz";
     stepIndex = 0;
     selectedOption = null;
     answered = false;
 
-    // markStarted() won't downgrade a lesson that's already in progress or
-    // completed, so replaying a finished lesson doesn't un-complete it.
-    markStarted(data.lesson.id, savedStatus).catch((error) => {
+    markStarted(baseLesson.id, savedStatus).catch((error) => {
       progressError = error;
     });
   }
@@ -90,9 +128,15 @@
   function submitAnswer() {
     if (answered || selectedOption === null) return;
     answered = true;
+
+    if (isCorrect(currentQuestion, selectedOption)) {
+      correctAnswers += 1;
+    }
   }
 
   function nextStep() {
+    if (!lesson || !baseLesson) return;
+
     if (phase === "quiz") {
       if (stepIndex < currentSection.steps.length - 1) {
         stepIndex += 1;
@@ -117,16 +161,24 @@
 
       phase = "complete";
 
-      // The lesson counts as completed once every skill in it is done.
-      setStatus(data.lesson.id, COMPLETED).catch((error) => {
-        progressError = error;
-      });
+      const score =
+        lesson.totalQuestions > 0
+          ? Math.round((correctAnswers / lesson.totalQuestions) * 100)
+          : null;
+
+      completeLesson(baseLesson.id, lesson.difficulty, score)
+        .then((result) => {
+          completionResult = result;
+        })
+        .catch((error) => {
+          progressError = error;
+        });
     }
   }
 </script>
 
 <svelte:head>
-  <title>{lesson.title} | WebChef</title>
+  <title>{lesson?.title ?? "Lesson"} | WebChef</title>
 </svelte:head>
 
 <div class="page-shell">
@@ -136,6 +188,11 @@
     <AuthGuard>
     <a class="back" href="/lesson">← All lessons</a>
 
+    {#if loadingLesson}
+      <p class="loading">Loading lesson…</p>
+    {:else if lessonLoadError}
+      <p class="save-error">{lessonLoadError.message}</p>
+    {:else if lesson}
     <p class="category">{lesson.category}</p>
     <h1>{lesson.title}</h1>
 
@@ -253,8 +310,28 @@
           You finished all {lesson.skillCount} skills in {lesson.title} at
           {lesson.difficultyLabel.toLowerCase()} level. Nice work!
         </p>
+
+        {#if completionResult}
+          <p class="reward">
+            {#if completionResult.points_awarded > 0}
+              +{completionResult.points_awarded} XP earned
+              ({pointsForDifficulty(lesson.difficulty)} pts max for this difficulty).
+            {:else}
+              No new XP — you already earned the points for this difficulty.
+            {/if}
+          </p>
+          <p class="reward">
+            Level {completionResult.level_number}: {completionResult.level_title}
+            · {completionResult.xp} XP total
+          </p>
+          {#if completionResult.leveled_up}
+            <p class="level-up">Level up!</p>
+          {/if}
+        {/if}
+
         <a class="primary link-button" href="/lesson">Back to lessons</a>
       </section>
+    {/if}
     {/if}
     </AuthGuard>
   </main>
@@ -462,5 +539,16 @@
 
   .link-button {
     margin-top: 0.5rem;
+  }
+
+  .reward {
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .level-up {
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+    color: #16a34a;
   }
 </style>

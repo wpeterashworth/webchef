@@ -3,8 +3,14 @@
     DIFFICULTY_LEVELS,
     countQuestionsForSkills,
   } from "$lib/javascript/lessons.js";
+  import {
+    difficultyUnlocked,
+    pointsForDifficulty,
+    unlockRequirement,
+  } from "$lib/javascript/points.js";
   import { STATUS_LABEL, TODO } from "$lib/javascript/progress.js";
   import { progress, setStatus, clearStatus } from "$lib/stores/progress.js";
+  import { profile } from "$lib/stores/profile.js";
 
   let {
     title = "Lesson Name",
@@ -19,20 +25,42 @@
   let selectedDifficulty = $state(DIFFICULTY_LEVELS[0].id);
   let saving = $state(false);
 
+  const userLevel = $derived($profile?.level_number ?? 0);
+
   // undefined when the lesson isn't tracked at all — that's the fourth state,
   // and it's the absence of a row rather than a status of its own.
   const status = $derived($progress[lessonId]?.status);
   const onTodo = $derived(status === TODO);
 
+  $effect(() => {
+    const savedDifficulty = $progress[lessonId]?.difficulty;
+    if (savedDifficulty) {
+      selectedDifficulty = savedDifficulty;
+    }
+  });
+
+  async function selectDifficulty(levelId) {
+    if (!difficultyUnlocked(userLevel, levelId)) return;
+
+    selectedDifficulty = levelId;
+
+    if (onTodo) {
+      saving = true;
+      try {
+        await setStatus(lessonId, TODO, levelId);
+      } finally {
+        saving = false;
+      }
+    }
+  }
+
   async function toggleTodo() {
     saving = true;
     try {
-      // Only ever toggles the to-do flag. A started or completed lesson keeps
-      // its status — you don't "un-complete" a lesson by clicking a checkbox.
       if (onTodo) {
         await clearStatus(lessonId);
       } else if (!status) {
-        await setStatus(lessonId, TODO);
+        await setStatus(lessonId, TODO, selectedDifficulty);
       }
     } finally {
       saving = false;
@@ -81,20 +109,28 @@
         aria-label="Choose difficulty"
       >
         {#each DIFFICULTY_LEVELS as level (level.id)}
+          {@const unlocked = difficultyUnlocked(userLevel, level.id)}
           <button
             type="button"
             class:selected={selectedDifficulty === level.id}
+            class:locked={!unlocked}
             style={`--level-color: ${level.accentColor}`}
-            onclick={() => (selectedDifficulty = level.id)}
+            disabled={!unlocked}
+            title={unlocked ? "" : unlockRequirement(level.id)}
+            onclick={() => selectDifficulty(level.id)}
           >
             {level.label}
+            {#if !unlocked}
+              <span class="lock">🔒</span>
+            {/if}
           </button>
         {/each}
       </div>
       <p class="difficulty-hint">
         {activeLevel.skillCount}
         {activeLevel.skillCount === 1 ? "skill" : "skills"} ·
-        {activeLevel.questionsPerSkill} questions each
+        {activeLevel.questionsPerSkill} questions each ·
+        {pointsForDifficulty(selectedDifficulty)} XP
       </p>
     </div>
 
@@ -228,6 +264,16 @@
         background: var(--level-color);
         border-color: var(--level-color);
         color: #ffffff;
+      }
+
+      button.locked {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+
+      .lock {
+        margin-left: 0.2rem;
+        font-size: 0.65rem;
       }
     }
 

@@ -6,6 +6,7 @@
   import "$lib/styles/auth-pages.css";
 
   let firstName = $state("");
+  let username = $state("");
   let email = $state("");
   let password = $state("");
   let confirmPassword = $state("");
@@ -30,7 +31,12 @@
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { first_name: firstName } },
+      options: {
+        data: {
+          first_name: firstName,
+          username: username.trim() || null,
+        },
+      },
     });
     loading = false;
 
@@ -75,6 +81,17 @@
             bind:value={firstName}
             required
             autocomplete="given-name"
+          />
+        </label>
+
+        <label>
+          Leaderboard name
+          <input
+            type="text"
+            bind:value={username}
+            maxlength="30"
+            autocomplete="nickname"
+            placeholder="Optional — shown on the leaderboard"
           />
         </label>
 
