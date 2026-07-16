@@ -3,17 +3,27 @@
   import { goto } from "$app/navigation";
   import { applyTheme, getInitialTheme } from "$lib/javascript/theme.js";
   import { user, logout } from "$lib/stores/auth.js";
+  import { profile } from "$lib/stores/profile.js";
+  import {
+    canViewLeaderboard,
+    canCreateLessons,
+  } from "$lib/javascript/points.js";
   import ConfirmModal from "$lib/components/confirm-modal.svelte";
 
   let currentTheme = $state("light");
   // Controls the "are you sure you want to log out?" dialog so a stray click
   // on Logout doesn't sign the user out by accident.
   let showLogoutModal = $state(false);
+  let menuOpen = $state(false);
 
   function toggleTheme() {
     currentTheme = currentTheme === "dark" ? "light" : "dark";
     localStorage.setItem("theme", currentTheme);
     applyTheme(currentTheme);
+  }
+
+  function toggleMenu() {
+    menuOpen = !menuOpen;
   }
 
   async function confirmLogout() {
@@ -54,33 +64,75 @@
 
 <header bind:this={headerEl}>
   <nav class="navigation">
-    <button id="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
+    <div id="logo-and-title">
       <img
-        id="theme-icon"
-        src={currentTheme === "dark"
-          ? "/moon-svgrepo-com.svg"
-          : "/sun-svgrepo-com.svg"}
-        alt={currentTheme === "dark" ? "Moon" : "Sun"}
-        width="36"
-        height="36"
+        id="logo"
+        src="/images/penguinhero.webp"
+        alt="WebChef penguin standing"
       />
-    </button>
-    <img
-      id="logo"
-      src="/images/penguinhero.webp"
-      alt="WebChef penguin standing"
-    />
-    <h1>WebChef</h1>
-    <ul>
+      <h1>WebChef</h1>
+    </div>
+
+    <div class="nav-controls">
+      <button id="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
+        <img
+          id="theme-icon"
+          src={currentTheme === "dark"
+            ? "/moon-svgrepo-com.svg"
+            : "/sun-svgrepo-com.svg"}
+          alt={currentTheme === "dark" ? "Moon" : "Sun"}
+          width="36"
+          height="36"
+        />
+      </button>
+
+      <button
+        class="hamburger"
+        onclick={toggleMenu}
+        aria-label="Toggle menu"
+        aria-expanded={menuOpen}
+      >
+        {#if menuOpen}
+          <img
+            src="/peeledbanana.png"
+            alt="Peeled banana menu open"
+            width="36"
+            height="36"
+          />
+        {:else}
+          <img
+            src="/banana.png"
+            alt="Banana menu closed"
+            width="36"
+            height="36"
+          />
+        {/if}
+      </button>
+    </div>
+
+    {#if menuOpen}
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <!-- svelte-ignore a11y_no_static_element_interactions -->
+      <div class="backdrop" onclick={() => (menuOpen = false)}></div>
+    {/if}
+
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+    <ul class:open={menuOpen} onclick={() => (menuOpen = false)}>
       <li><a href="/">Home</a></li>
       <li><a href="/lesson">Lessons</a></li>
       <li><a href="/recipes">Recipes</a></li>
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
-        <li>
-          <a href="/account" class="user-email">
-            {$user.user_metadata?.first_name || $user.email}
-          </a>
+        {#if $profile && canViewLeaderboard($profile.level_number)}
+          <li><a href="/leaderboard">Leaderboard</a></li>
+        {/if}
+        {#if $profile && canCreateLessons($profile.level_number)}
+          <li><a href="/lesson/my-lessons">My Lessons</a></li>
+        {/if}
+        <li><a href="/account">Account</a></li>
+        <li class="user-email">
+          {$user.user_metadata?.first_name || $user.email}
         </li>
         <li>
           <button class="link-button" onclick={() => (showLogoutModal = true)}>
@@ -130,10 +182,10 @@
   nav {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
+    padding: 0.75rem 1.5rem;
     background-color: var(--panel-color);
     color: var(--text-color);
 
@@ -160,47 +212,121 @@
     }
 
     & ul {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 280px;
+      max-width: 80vw;
+      height: 100vh;
+      background-color: var(--panel-color);
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+      border-left: 2px solid var(--accent-color);
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      padding: 5rem 1.5rem 2rem 1.5rem;
+      gap: 0;
       margin: 0;
-      padding: 0;
       list-style-type: none;
-      order: 3;
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-sizing: border-box;
 
-      & a {
-        text-decoration: none;
-        color: var(--text-color);
+      &.open {
+        transform: translateX(0);
+      }
 
-        &:hover {
-          color: var(--text-color-hover);
+      & li {
+        width: 100%;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+
+        & a,
+        & .link-button {
+          display: block;
+          padding: 1rem 0.5rem;
+          width: 100%;
+          text-align: left;
+          box-sizing: border-box;
+          font-size: 1.1rem;
+          text-decoration: none;
+          color: var(--text-color);
+
+          &:hover {
+            color: var(--text-color-hover);
+          }
         }
-      }
 
-      & .user-email {
-        color: var(--text-color);
-        opacity: 0.85;
-      }
+        &.user-email {
+          padding: 1rem 0.5rem;
+          font-size: 0.9rem;
+          font-weight: bold;
+          border-bottom: 2px solid rgba(128, 128, 128, 0.2);
+          color: var(--text-color);
+          opacity: 0.85;
+        }
 
-      & .link-button {
-        padding: 0;
-        border: none;
-        background: none;
-        font: inherit;
-        cursor: pointer;
-        color: var(--text-color);
-
-        &:hover {
-          color: var(--text-color-hover);
+        & .link-button {
+          border: none;
+          background: none;
+          font: inherit;
+          cursor: pointer;
         }
       }
     }
   }
 
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    order: 3;
+  }
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    color: var(--text-color);
+    border-radius: 4px;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+    z-index: 201;
+
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.15);
+      color: var(--text-color-hover);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 199;
+  }
+
   /* Desktop Styles */
   @media (min-width: 768px) {
+    .hamburger {
+      display: none;
+    }
+
     nav {
       flex-direction: row;
       justify-content: flex-start;
@@ -216,12 +342,42 @@
       }
 
       & ul {
-        order: 3;
-        margin-left: auto;
+        position: static;
+        width: auto;
+        height: auto;
+        max-width: none;
+        background-color: transparent;
+        box-shadow: none;
+        border-left: none;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
         gap: 0;
+        z-index: auto;
+        transform: none;
+        transition: none;
+        order: 2;
+        margin-left: auto;
 
         & li {
+          width: auto;
+          border-bottom: none;
           padding: 15px;
+
+          & a,
+          & .link-button {
+            display: inline;
+            padding: 0;
+            font-size: inherit;
+            width: auto;
+          }
+
+          &.user-email {
+            padding: 0;
+            font-size: inherit;
+            font-weight: normal;
+            border-bottom: none;
+          }
         }
       }
     }
@@ -238,5 +394,12 @@
     transform: translateY(-4px);
     display: block;
     object-fit: contain;
+  }
+
+  #logo-and-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    order: 1;
   }
 </style>
