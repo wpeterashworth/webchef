@@ -28,9 +28,8 @@
   "homepage": "https://github.com/wpeterashworth/webchef#readme",
   "private": "true",
   "devDependencies": {
-    "supabase": "^2.109.1"
-  },
-  "dependencies": {
+    "supabase": "^2.109.1",
+    "vitest": "^4.1.10",
     "pg": "^8.16.3"
   }
 }
