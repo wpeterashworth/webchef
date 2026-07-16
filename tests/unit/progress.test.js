@@ -16,6 +16,7 @@ vi.mock("$lib/supabase/client.js", () => ({
   supabase: mockSupabase,
 }));
 
+// Helper to create a realistic, thenable Supabase query builder mock
 function createQueryBuilder(result) {
   const builder = {
     select: vi.fn(() => builder),
@@ -24,6 +25,10 @@ function createQueryBuilder(result) {
     single: vi.fn(() => Promise.resolve(result)),
     delete: vi.fn(() => builder),
     upsert: vi.fn(() => builder),
+    // Make the builder a thenable so that direct await resolves to the result
+    then: vi.fn((onFulfilled, onRejected) =>
+      Promise.resolve(result).then(onFulfilled, onRejected)
+    ),
   };
 
   return builder;
