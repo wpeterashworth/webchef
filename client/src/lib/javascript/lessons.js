@@ -94,7 +94,9 @@ export function countQuestionsForSkills(skills, difficultyId) {
 /** Apply a difficulty level to a full lesson payload. */
 export function applyDifficulty(lesson, difficulty) {
   const level = getDifficultyLevel(difficulty);
-  const sections = lesson.sections
+  const sourceSections =
+    lesson.sectionsByMode?.[level.id] ?? lesson.sections ?? [];
+  const sections = sourceSections
     .slice(0, level.skillCount)
     .map((section) => ({
       ...section,
