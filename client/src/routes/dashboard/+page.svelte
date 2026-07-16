@@ -3,7 +3,8 @@
   import Footer from "$lib/components/footer.svelte";
   import Header from "$lib/components/header.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
-  import { getLessonCatalog, getDifficultyLevel } from "$lib/javascript/lessons.js";
+  import { getDifficultyLevel } from "$lib/javascript/lessons.js";
+  import { getLessonBankCatalogById } from "$lib/javascript/lesson-bank.js";
   import { TODO, IN_PROGRESS, COMPLETED } from "$lib/javascript/progress.js";
   import {
     progress,
@@ -22,9 +23,8 @@
     userLessonRowToCard,
   } from "$lib/javascript/user-lessons.js";
 
-  const lessons = getLessonCatalog();
-
   let customLessons = $state({});
+  let bankLessons = $state({});
   let titleSaving = $state(false);
   let titleError = $state("");
 
@@ -43,7 +43,7 @@
   );
 
   const catalogById = $derived.by(() => ({
-    ...Object.fromEntries(lessons.map((lesson) => [lesson.lessonId, lesson])),
+    ...bankLessons,
     ...customLessons,
   }));
 
@@ -69,11 +69,17 @@
 
   onMount(async () => {
     try {
-      const rows = await getMyUserLessons();
+      const [bank, rows] = await Promise.all([
+        getLessonBankCatalogById(),
+        getMyUserLessons(),
+      ]);
+
+      bankLessons = bank;
       customLessons = Object.fromEntries(
         rows.map((row) => [row.slug, userLessonRowToCard(row)]),
       );
     } catch {
+      bankLessons = {};
       customLessons = {};
     }
   });

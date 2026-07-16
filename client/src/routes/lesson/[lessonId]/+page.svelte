@@ -6,8 +6,9 @@
   import Footer from "$lib/components/footer.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
   import { applyDifficulty, normalizeDifficulty } from "$lib/javascript/lessons.js";
+  import { getLessonBankBySlug, isBankLessonSlug } from "$lib/javascript/lesson-bank.js";
   import { difficultyUnlocked, pointsForDifficulty } from "$lib/javascript/points.js";
-  import { getUserLessonBySlug } from "$lib/javascript/user-lessons.js";
+  import { getUserLessonBySlug, isUserLessonSlug } from "$lib/javascript/user-lessons.js";
   import { progress, markStarted, completeLesson } from "$lib/stores/progress.js";
   import { profile } from "$lib/stores/profile.js";
 
@@ -21,7 +22,12 @@
     if (!data.needsFetch) return;
 
     try {
-      fetchedLesson = await getUserLessonBySlug(data.lessonId);
+      if (isUserLessonSlug(data.lessonId)) {
+        fetchedLesson = await getUserLessonBySlug(data.lessonId);
+      } else if (isBankLessonSlug(data.lessonId)) {
+        fetchedLesson = await getLessonBankBySlug(data.lessonId);
+      }
+
       if (!fetchedLesson) {
         lessonLoadError = new Error("This lesson was not found or is private.");
       }

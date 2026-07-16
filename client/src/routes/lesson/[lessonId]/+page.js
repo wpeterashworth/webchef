@@ -1,12 +1,13 @@
 import { error } from "@sveltejs/kit";
-import { getAllLessonIds, getLessonById } from "$lib/javascript/lessons.js";
+import {
+  getAllBankLessonIds,
+  isBankLessonSlug,
+} from "$lib/javascript/lesson-bank.js";
 import { isUserLessonSlug } from "$lib/javascript/user-lessons.js";
 
 export function load({ params }) {
-  const lesson = getLessonById(params.lessonId);
-
-  if (lesson) {
-    return { lesson, needsFetch: false, lessonId: params.lessonId };
+  if (isBankLessonSlug(params.lessonId)) {
+    return { lesson: null, needsFetch: true, lessonId: params.lessonId };
   }
 
   if (isUserLessonSlug(params.lessonId)) {
@@ -16,7 +17,7 @@ export function load({ params }) {
   error(404, `Lesson "${params.lessonId}" was not found`);
 }
 
-/** Prerender exactly the 4 built-in lesson routes. */
+/** Prerender built-in lesson routes; content loads from Supabase at runtime. */
 export function entries() {
-  return getAllLessonIds().map((lessonId) => ({ lessonId }));
+  return getAllBankLessonIds().map((lessonId) => ({ lessonId }));
 }
