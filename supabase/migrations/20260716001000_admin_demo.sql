@@ -30,7 +30,7 @@ begin
       'completed_runs', (
         select count(*)
         from public.user_progress
-        where completed = true
+        where status = 'completed'
       )
     ),
     'recent_users', coalesce((

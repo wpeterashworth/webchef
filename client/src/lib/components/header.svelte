@@ -4,7 +4,6 @@
   import { applyTheme, getInitialTheme } from "$lib/javascript/theme.js";
   import { user, logout } from "$lib/stores/auth.js";
   import { profile } from "$lib/stores/profile.js";
-  import { profile } from "$lib/stores/profile.js";
   import {
     canViewLeaderboard,
     canCreateLessons,
@@ -126,7 +125,7 @@
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
         {#if $profile?.is_admin}
-          <li><a href="/admin">Admin page</a></li>
+          <li><a href="/admin">Admin</a></li>
         {/if}
         {#if $profile && canViewLeaderboard($profile.level_number)}
           <li><a href="/leaderboard">Leaderboard</a></li>
