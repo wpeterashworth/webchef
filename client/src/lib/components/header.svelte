@@ -64,14 +64,14 @@
 
 <header bind:this={headerEl}>
   <nav class="navigation">
-    <div id="logo-and-title">
+    <a id="logo-and-title" href="/">
       <img
         id="logo"
         src="/images/penguinhero.webp"
         alt="WebChef penguin standing"
       />
       <h1>WebChef</h1>
-    </div>
+    </a>
 
     <div class="nav-controls">
       <button id="theme-toggle" onclick={toggleTheme} aria-label="Toggle theme">
@@ -401,5 +401,7 @@
     align-items: center;
     gap: 0.5rem;
     order: 1;
+    text-decoration: none;
+    color: inherit;
   }
 </style>
