@@ -124,10 +124,15 @@
       <li><a href="/recipes">Recipes</a></li>
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
-        <li>
-          <a href="/account" class="user-email">
-            {$user.user_metadata?.first_name || $user.email}
-          </a>
+        {#if $profile && canViewLeaderboard($profile.level_number)}
+          <li><a href="/leaderboard">Leaderboard</a></li>
+        {/if}
+        {#if $profile && canCreateLessons($profile.level_number)}
+          <li><a href="/lesson/my-lessons">My Lessons</a></li>
+        {/if}
+        <li><a href="/account">Account</a></li>
+        <li class="user-email">
+          {$user.user_metadata?.first_name || $user.email}
         </li>
         <li>
           <button class="link-button" onclick={() => (showLogoutModal = true)}>
