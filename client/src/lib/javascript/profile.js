@@ -18,7 +18,7 @@ export async function getProfile() {
   const { data, error } = await supabase
     .from("users")
     .select(
-      "id, username, xp, level_number, level_title, current_streak, longest_streak",
+      "id, username, xp, level_number, level_title, current_streak, longest_streak, is_admin",
     )
     .eq("auth_user_id", user.id)
     .maybeSingle();
@@ -44,6 +44,14 @@ export async function getLeaderboard(limit = 50) {
   if (error) throw new Error(`Could not load the leaderboard: ${error.message}`);
 
   return data ?? [];
+}
+
+export async function getAdminDashboard() {
+  const { data, error } = await supabase.rpc("get_admin_dashboard");
+
+  if (error) throw new Error(`Could not load the admin dashboard: ${error.message}`);
+
+  return data;
 }
 
 export function clearProfileCache() {

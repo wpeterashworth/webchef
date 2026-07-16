@@ -180,3 +180,14 @@ and updated NEXT_STEPS_CHECKLIST.md to drop user-model verification steps.
 Linked the WebChef Supabase project in the CLI, generated the lesson seed SQL from the normalized JSON sources, pushed the missing lesson migrations to the remote database, and verified the seeded row counts.
 Remote counts after the push: 4 categories, 36 skills, 108 mini lessons, 180 questions.
 
+2026-07-16 — User name pending
+Added a demo-ready admin role and private admin dashboard.
+Changes:
+  - Added supabase/migrations/20260716001000_admin_demo.sql
+  - Added users.is_admin with default false
+  - Added public.get_admin_dashboard() RPC, restricted to authenticated users and guarded by an in-function admin check
+  - Updated client profile loading to include is_admin
+  - Added an /admin page with summary stats, newest users, and top cooks
+  - Added an Admin nav link that only appears for admin users
+Verified with `pnpm build` in client. Existing unrelated Svelte warnings remain for login/signup submit syntax and unused dashboard CSS selectors.
+
