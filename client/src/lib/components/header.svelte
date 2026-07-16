@@ -124,6 +124,9 @@
       <li><a href="/recipes">Recipes</a></li>
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
+        {#if $profile?.is_admin}
+          <li><a href="/admin">Admin</a></li>
+        {/if}
         {#if $profile && canViewLeaderboard($profile.level_number)}
           <li><a href="/leaderboard">Leaderboard</a></li>
         {/if}

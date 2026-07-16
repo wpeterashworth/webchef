@@ -18,7 +18,7 @@ export async function getProfile() {
   const { data, error } = await supabase
     .from("users")
     .select(
-      "id, username, xp, level_number, level_title, current_streak, longest_streak",
+      "id, username, xp, level_number, level_title, current_streak, longest_streak, is_admin",
     )
     .eq("auth_user_id", user.id)
     .maybeSingle();
@@ -46,6 +46,14 @@ export async function getLeaderboard(limit = 50) {
   return data ?? [];
 }
 
+export async function getAdminDashboard() {
+  const { data, error } = await supabase.rpc("get_admin_dashboard");
+
+  if (error) throw new Error(`Could not load the admin dashboard: ${error.message}`);
+
+  return data;
+}
+
 export function clearProfileCache() {
   cachedProfile = { authUserId: null, data: null };
 }
@@ -60,4 +68,16 @@ export async function setUsername(username) {
 
   clearProfileCache();
   return data?.username ?? username;
+}
+
+/** Switch to a previously unlocked level title (saved on users.level_title). */
+export async function setDisplayTitle(title) {
+  const { data, error } = await supabase.rpc("set_display_title", {
+    p_title: title,
+  });
+
+  if (error) throw new Error(error.message);
+
+  clearProfileCache();
+  return data?.level_title ?? title;
 }

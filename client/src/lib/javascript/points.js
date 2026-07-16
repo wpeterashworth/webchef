@@ -52,6 +52,22 @@ export function canShareLessonsPublicly(levelNumber) {
   return levelNumber >= UNLOCK_LEVEL.shareLessons;
 }
 
+/** First level at which each cosmetic title unlocks (synced with levels table). */
+export const LEVEL_TITLE_TIERS = [
+  { title: "Idiot Sandwitch", minLevel: 0 },
+  { title: "Couch Potato", minLevel: 1 },
+  { title: "Kitchen walker", minLevel: 5 },
+  { title: "Lamb Sauce Finder", minLevel: 10 },
+  { title: "Master Chef Dropout", minLevel: 16 },
+];
+
+/** Titles the user may display at their current level. */
+export function unlockedLevelTitles(levelNumber) {
+  return LEVEL_TITLE_TIERS.filter((tier) => levelNumber >= tier.minLevel).map(
+    (tier) => tier.title,
+  );
+}
+
 /** Cumulative XP to reach each level (index = level_number). Synced with DB. */
 export const LEVEL_MIN_XP = [
   0, 10, 35, 65, 100, 140, 190, 250, 320, 400, 490, 590, 700, 820, 950, 1090,

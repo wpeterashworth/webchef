@@ -8,7 +8,7 @@
     pointsForDifficulty,
     unlockRequirement,
   } from "$lib/javascript/points.js";
-  import { STATUS_LABEL, TODO } from "$lib/javascript/progress.js";
+  import { STATUS_LABEL, TODO, COMPLETED, IN_PROGRESS } from "$lib/javascript/progress.js";
   import { progress, setStatus, clearStatus } from "$lib/stores/progress.js";
   import { profile } from "$lib/stores/profile.js";
 
@@ -30,7 +30,27 @@
   // undefined when the lesson isn't tracked at all — that's the fourth state,
   // and it's the absence of a row rather than a status of its own.
   const status = $derived($progress[lessonId]?.status);
-  const onTodo = $derived(status === TODO);
+  const savedDifficulty = $derived($progress[lessonId]?.difficulty);
+  const statusAtSelectedDifficulty = $derived(
+    status && selectedDifficulty === savedDifficulty ? status : null,
+  );
+  const onTodoAtSelectedDifficulty = $derived(
+    status === TODO && selectedDifficulty === savedDifficulty,
+  );
+  const completedAtSelectedDifficulty = $derived(
+    status === COMPLETED && selectedDifficulty === savedDifficulty,
+  );
+  const inProgressAtSelectedDifficulty = $derived(
+    status === IN_PROGRESS && selectedDifficulty === savedDifficulty,
+  );
+
+  const actionLabel = $derived(
+    completedAtSelectedDifficulty
+      ? "Review"
+      : inProgressAtSelectedDifficulty
+        ? "Continue"
+        : "Start Lesson",
+  );
 
   $effect(() => {
     const savedDifficulty = $progress[lessonId]?.difficulty;
@@ -44,7 +64,7 @@
 
     selectedDifficulty = levelId;
 
-    if (onTodo) {
+    if (status === TODO) {
       saving = true;
       try {
         await setStatus(lessonId, TODO, levelId);
@@ -57,9 +77,9 @@
   async function toggleTodo() {
     saving = true;
     try {
-      if (onTodo) {
+      if (onTodoAtSelectedDifficulty) {
         await clearStatus(lessonId);
-      } else if (!status) {
+      } else {
         await setStatus(lessonId, TODO, selectedDifficulty);
       }
     } finally {
@@ -93,13 +113,15 @@
 
     <h2>{title}</h2>
 
-    {#if status}
-      <span class="status-badge" data-status={status}>
-        {STATUS_LABEL[status]}
+    {#if statusAtSelectedDifficulty}
+      <span class="status-badge" data-status={statusAtSelectedDifficulty}>
+        {STATUS_LABEL[statusAtSelectedDifficulty]}
       </span>
     {/if}
 
-    <p class="description">{description}</p>
+    <div class="description-scroll">
+      <p class="description">{description}</p>
+    </div>
 
     <div class="difficulty">
       <span class="difficulty-label">Difficulty</span>
@@ -135,27 +157,19 @@
     </div>
 
     <div class="actions">
-      <!-- A completed or in-progress lesson has a status of its own, so the
-           to-do toggle only makes sense for untracked or to-do lessons. -->
-      {#if !status || onTodo}
-        <button
-          type="button"
-          class="todo-toggle"
-          class:on={onTodo}
-          disabled={saving}
-          aria-pressed={onTodo}
-          onclick={toggleTodo}
-        >
-          {onTodo ? "✓ On To-Do" : "+ To-Do"}
-        </button>
-      {/if}
+      <button
+        type="button"
+        class="todo-toggle"
+        class:on={onTodoAtSelectedDifficulty}
+        disabled={saving}
+        aria-pressed={onTodoAtSelectedDifficulty}
+        onclick={toggleTodo}
+      >
+        + To-Do
+      </button>
 
       <a class="button" href={startHref}>
-        {status === "completed"
-          ? "Review"
-          : status
-            ? "Continue"
-            : "Start Lesson"}
+        {actionLabel}
       </a>
     </div>
   </div>
@@ -164,10 +178,13 @@
 <style>
   .card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 340px;
     border: 4px solid var(--accent-color);
     border-radius: 24px;
     background: var(--card-bg);
-    min-height: 190px;
     max-width: 480px;
     overflow: hidden;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
@@ -196,9 +213,10 @@
       z-index: 1;
       display: flex;
       flex-direction: column;
+      flex: 1;
       gap: 0.75rem;
+      min-height: 0;
       padding: 1rem;
-      min-height: 190px;
       color: var(--text-color);
     }
 
@@ -218,15 +236,32 @@
       color: var(--text-color);
     }
 
+    .description-scroll {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-right: 0.15rem;
+    }
+
+    .description-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .description-scroll::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--text-muted) 45%, transparent);
+    }
+
     .description {
       margin: 0;
       font-size: 0.85rem;
       color: var(--text-muted);
-      flex: 1;
       line-height: 1.45;
     }
 
     .difficulty {
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
@@ -308,6 +343,7 @@
     }
 
     .actions {
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
