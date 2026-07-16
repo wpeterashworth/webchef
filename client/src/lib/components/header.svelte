@@ -3,8 +3,6 @@
   import { goto } from "$app/navigation";
   import { applyTheme, getInitialTheme } from "$lib/javascript/theme.js";
   import { user, logout } from "$lib/stores/auth.js";
-  import { profile } from "$lib/stores/profile.js";
-  import { canViewLeaderboard, canCreateLessons } from "$lib/javascript/points.js";
   import ConfirmModal from "$lib/components/confirm-modal.svelte";
 
   let currentTheme = $state("light");
@@ -79,15 +77,10 @@
       <li><a href="/recipes">Recipes</a></li>
       {#if $user}
         <li><a href="/dashboard">Dashboard</a></li>
-        {#if $profile && canViewLeaderboard($profile.level_number)}
-          <li><a href="/leaderboard">Leaderboard</a></li>
-        {/if}
-        {#if $profile && canCreateLessons($profile.level_number)}
-          <li><a href="/lesson/my-lessons">My Lessons</a></li>
-        {/if}
-        <li><a href="/account">Account</a></li>
-        <li class="user-email">
-          {$user.user_metadata?.first_name || $user.email}
+        <li>
+          <a href="/account" class="user-email">
+            {$user.user_metadata?.first_name || $user.email}
+          </a>
         </li>
         <li>
           <button class="link-button" onclick={() => (showLogoutModal = true)}>
