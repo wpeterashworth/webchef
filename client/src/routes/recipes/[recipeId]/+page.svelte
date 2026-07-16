@@ -44,6 +44,16 @@
             {#if recipe.ingredients?.length}
               <span>🧺 {recipe.ingredients.length} ingredients</span>
             {/if}
+            {#if recipe.source_url}
+              <a
+                class="source-link"
+                href={recipe.source_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🔗 Original source
+              </a>
+            {/if}
           </div>
 
           {#if recipe.description}
@@ -67,22 +77,16 @@
 
           <section class="instructions">
             <h2>Instructions</h2>
-            <ol>
-              {#each recipe.instructions ?? [] as step, i (i)}
-                <li>{step}</li>
-              {/each}
-            </ol>
+            <div class="instructions-box">
+              <ol>
+                {#each recipe.instructions ?? [] as step, i (i)}
+                  <li>{step}</li>
+                {/each}
+              </ol>
+            </div>
           </section>
         </div>
 
-        {#if recipe.source_url}
-          <p class="source">
-            Recipe from
-            <a href={recipe.source_url} target="_blank" rel="noopener noreferrer">
-              the original source
-            </a>.
-          </p>
-        {/if}
       </article>
     {:else}
       <p class="status">
@@ -184,7 +188,24 @@
     line-height: 1.4;
   }
 
-  .instructions ol {
+  /* Pinned to the top of its grid cell, same as the ingredients panel, so a
+     short recipe doesn't stretch the column and leave a gap beside ingredients. */
+  .instructions {
+    align-self: start;
+  }
+
+  /* The scrollable "textbox". Capped height means long recipes scroll inside
+     this box instead of pushing the page down and leaving whitespace under the
+     ingredients list. */
+  .instructions-box {
+    max-height: 60vh;
+    overflow-y: auto;
+    background: var(--panel-color);
+    border-radius: 16px;
+    padding: 1.25rem;
+  }
+
+  .instructions-box ol {
     margin: 0;
     padding-left: 1.2rem;
     display: flex;
@@ -193,14 +214,19 @@
     line-height: 1.6;
   }
 
-  .instructions li {
+  .instructions-box li {
     padding-left: 0.3rem;
   }
 
-  .source {
-    margin-top: 2rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+  /* Sits inline in the .meta row; inherits its size/weight, but stays underlined
+     so it still reads as a link next to the plain stat spans. */
+  .source-link {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .source-link:hover {
+    color: var(--text-color);
   }
 
   .status {
