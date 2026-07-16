@@ -176,3 +176,7 @@ Kept user tables untouched and narrowed the consolidated schema migration to les
 Removed user difficulty/profile changes from supabase/migrations/20260715090000_lessons_users_models_v2.sql
 and updated NEXT_STEPS_CHECKLIST.md to drop user-model verification steps.
 
+2026-07-16 — Josh
+Linked the WebChef Supabase project in the CLI, generated the lesson seed SQL from the normalized JSON sources, pushed the missing lesson migrations to the remote database, and verified the seeded row counts.
+Remote counts after the push: 4 categories, 36 skills, 108 mini lessons, 180 questions.
+

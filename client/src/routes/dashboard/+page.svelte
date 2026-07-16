@@ -3,7 +3,10 @@
   import Footer from "$lib/components/footer.svelte";
   import Header from "$lib/components/header.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
-  import { getLessonCatalog, getDifficultyLevel } from "$lib/javascript/lessons.js";
+  import {
+    getLessonCatalog,
+    getDifficultyLevel,
+  } from "$lib/javascript/lessons.js";
   import { TODO, IN_PROGRESS, COMPLETED } from "$lib/javascript/progress.js";
   import {
     progress,
@@ -11,13 +14,17 @@
     progressError,
   } from "$lib/stores/progress.js";
   import { profile, profileReady } from "$lib/stores/profile.js";
-  import { canViewLeaderboard, canCreateLessons, nextLevelProgress } from "$lib/javascript/points.js";
+  import {
+    canViewLeaderboard,
+    canCreateLessons,
+    nextLevelProgress,
+  } from "$lib/javascript/points.js";
   import {
     getMyUserLessons,
     userLessonRowToCard,
   } from "$lib/javascript/user-lessons.js";
 
-  const lessons = getLessonCatalog();
+  let lessons = $state([]);
 
   let customLessons = $state({});
 
@@ -26,9 +33,7 @@
   );
 
   const xpProgress = $derived(
-    $profile
-      ? nextLevelProgress($profile.xp, $profile.level_number)
-      : null,
+    $profile ? nextLevelProgress($profile.xp, $profile.level_number) : null,
   );
 
   const catalogById = $derived.by(() => ({
@@ -57,6 +62,12 @@
   });
 
   onMount(async () => {
+    try {
+      lessons = await getLessonCatalog();
+    } catch {
+      lessons = [];
+    }
+
     try {
       const rows = await getMyUserLessons();
       customLessons = Object.fromEntries(
@@ -132,7 +143,9 @@
 
         {#if $profileReady && $profile && canViewLeaderboard($profile.level_number)}
           <div class="builder-actions">
-            <a class="builder-btn secondary" href="/leaderboard">View leaderboard</a>
+            <a class="builder-btn secondary" href="/leaderboard"
+              >View leaderboard</a
+            >
           </div>
         {/if}
 
@@ -159,8 +172,12 @@
 
         {#if canCreate}
           <div class="builder-actions">
-            <a class="builder-btn primary" href="/lesson/create">Create a lesson</a>
-            <a class="builder-btn secondary" href="/lesson/my-lessons">My lessons</a>
+            <a class="builder-btn primary" href="/lesson/create"
+              >Create a lesson</a
+            >
+            <a class="builder-btn secondary" href="/lesson/my-lessons"
+              >My lessons</a
+            >
           </div>
         {/if}
 
@@ -180,7 +197,10 @@
             {:else}
               {#each byStatus[IN_PROGRESS] as lesson (lesson.lessonId)}
                 {@const diff = difficultyMeta(lesson.difficulty)}
-                <a class="progress-card" href={lessonHref(lesson.href, lesson.difficulty)}>
+                <a
+                  class="progress-card"
+                  href={lessonHref(lesson.href, lesson.difficulty)}
+                >
                   <div class="progress-card-top">
                     <h3>{lesson.title}</h3>
                     {#if diff}
@@ -253,7 +273,10 @@
             {:else}
               {#each byStatus[COMPLETED] as lesson (lesson.lessonId)}
                 {@const diff = difficultyMeta(lesson.difficulty)}
-                <a class="progress-card" href={lessonHref(lesson.href, lesson.difficulty)}>
+                <a
+                  class="progress-card"
+                  href={lessonHref(lesson.href, lesson.difficulty)}
+                >
                   <div class="progress-card-top">
                     <h3>{lesson.title}</h3>
                     {#if diff}
@@ -515,7 +538,9 @@
       border: 1px solid color-mix(in srgb, var(--text-color) 14%, transparent);
       text-decoration: none;
       color: var(--text-color);
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 
       &:hover {
         border-color: var(--text-muted);
