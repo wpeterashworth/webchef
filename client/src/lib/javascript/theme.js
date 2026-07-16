@@ -6,6 +6,9 @@ const themes = {
     "--text-color": "var(--text-color-light)",
     "--text-muted": "var(--text-muted-light)",
     "--text-hover-color": "var(--text-color-hover-light)",
+    "--input-bg": "#ffffff",
+    "--input-text": "var(--text-color-light)",
+    "--input-border": "#2a3d52",
   },
   dark: {
     "--page-color": "var(--color-primary-dark)",
@@ -14,6 +17,9 @@ const themes = {
     "--text-color": "var(--text-color-dark)",
     "--text-muted": "var(--text-muted-dark)",
     "--text-hover-color": "var(--text-color-hover-dark)",
+    "--input-bg": "#243447",
+    "--input-text": "var(--text-color-dark)",
+    "--input-border": "#c8d4e0",
   },
 };
 

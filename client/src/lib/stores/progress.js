@@ -49,8 +49,8 @@ if (browser) {
 }
 
 /** Save a status and reflect it in the store. */
-export async function setStatus(lessonSlug, status) {
-  const row = await api.setStatus(lessonSlug, status);
+export async function setStatus(lessonSlug, status, difficulty = null) {
+  const row = await api.setStatus(lessonSlug, status, difficulty);
   progress.update((rows) => ({ ...rows, [lessonSlug]: row }));
 }
 

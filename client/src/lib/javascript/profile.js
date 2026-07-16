@@ -49,3 +49,15 @@ export async function getLeaderboard(limit = 50) {
 export function clearProfileCache() {
   cachedProfile = { authUserId: null, data: null };
 }
+
+/** Pick a leaderboard display name. Must be unique (case-insensitive). */
+export async function setUsername(username) {
+  const { data, error } = await supabase.rpc("set_username", {
+    p_username: username,
+  });
+
+  if (error) throw new Error(error.message);
+
+  clearProfileCache();
+  return data?.username ?? username;
+}

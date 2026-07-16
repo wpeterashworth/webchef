@@ -96,24 +96,6 @@ simply missing. Left the on:submit deprecation warnings on login/signup alone
 (harmless, non-fatal). Next: commit + push these two files so the Render deploy
 goes through.
 
-2026-07-10 — Luke
-Fixed the lessons page so lesson cards render visibly. Updated
-client/src/routes/lesson/+page.svelte with a proper page shell, header, and
-responsive grid (12 cards from bundled JSON). Updated lesson-card.svelte to use
-Svelte 5 $props(), theme CSS variables (--panel-color, --text-color) for dark/light
-visibility, and the wood-frame border (matching landing.svelte) with z-index so
-card content stays on top. Moved Lessons nav link in header.svelte so it shows
-for all users (not only when signed in). Fixed lesson detail page to use
-$derived(data.lesson). Verified with `pnpm build` and dev server at /lesson.
-
-2026-07-10 — Luke
-Restructured lessons into 4 top-level cards (Recipe Adjustment, Ingredient
-Substitutions, How to Cook, Utensil Handling). Added client/src/lib/lessons.js to
-group the 12 JSON skills into 4 category lessons. Lesson list now shows 4 cards
-with skill + question counts. Rewrote lesson/[lessonId]/+page.svelte as a
-step-by-step flow per skill: intro → interactive quiz (one question at a time with
-feedback) → skill recap → next skill. Updated +page.js with entries() to prerender
-only the 4 lesson routes. Verified with `pnpm build`.
 
 2026-07-10 — Luke
 Added per-card difficulty selection (Beginner, Intermediate, Advanced) on
@@ -122,13 +104,3 @@ lesson-card.svelte. Each level controls how many skills and questions are includ
 lesson flow filters content accordingly and shows the chosen level in the header.
 Verified with `pnpm build`.
 
-2026-07-14 — Luke
-Implemented the point system from point-system.txt in client code and Supabase.
-Added supabase/migrations/20260714220000_point_system.sql: levels table (0–20 with
-titles, XP thresholds, unlocks), users.level_number/level_title, user_progress
-difficulty/points_earned, complete_lesson RPC (awards 10/25/50 XP by difficulty,
-updates level), and get_leaderboard RPC (level 1+). Client: points.js constants,
-profile store/API, completeLesson wired from lesson finish flow, difficulty gates
-on lesson cards (Intermediate @ 2, Expert @ 5), dashboard level/XP display,
-leaderboard page (unlocks @ level 1), header nav link. Verified with `pnpm build`.
-Next: team applies migration via `npx supabase db push` before testing end-to-end.

@@ -7,10 +7,32 @@
   import AuthGuard from "$lib/components/auth-guard.svelte";
   import { applyDifficulty, normalizeDifficulty } from "$lib/javascript/lessons.js";
   import { difficultyUnlocked, pointsForDifficulty } from "$lib/javascript/points.js";
+  import { getUserLessonBySlug } from "$lib/javascript/user-lessons.js";
   import { progress, markStarted, completeLesson } from "$lib/stores/progress.js";
   import { profile } from "$lib/stores/profile.js";
 
   let { data } = $props();
+
+  let fetchedLesson = $state(null);
+  let lessonLoadError = $state(null);
+  let loadingLesson = $state(data.needsFetch);
+
+  onMount(async () => {
+    if (!data.needsFetch) return;
+
+    try {
+      fetchedLesson = await getUserLessonBySlug(data.lessonId);
+      if (!fetchedLesson) {
+        lessonLoadError = new Error("This lesson was not found or is private.");
+      }
+    } catch (error) {
+      lessonLoadError = error;
+    } finally {
+      loadingLesson = false;
+    }
+  });
+
+  const baseLesson = $derived(data.lesson ?? fetchedLesson);
 
   // Progress is saved best-effort: a failed write must not block the learner
   // mid-quiz, but it shouldn't fail silently either.
@@ -18,7 +40,9 @@
   let completionResult = $state(null);
   let correctAnswers = $state(0);
 
-  const savedStatus = $derived($progress[data.lesson.id]?.status);
+  const savedStatus = $derived(
+    baseLesson ? $progress[baseLesson.id]?.status : undefined,
+  );
 
   let difficulty = $state("beginner");
 
@@ -32,7 +56,9 @@
   onMount(syncDifficulty);
   afterNavigate(syncDifficulty);
 
-  const lesson = $derived(applyDifficulty(data.lesson, difficulty));
+  const lesson = $derived(
+    baseLesson ? applyDifficulty(baseLesson, difficulty) : null,
+  );
 
   $effect(() => {
     const level = $profile?.level_number ?? 0;
@@ -48,10 +74,11 @@
   let selectedOption = $state(null);
   let answered = $state(false);
 
-  const currentSection = $derived(lesson.sections[sectionIndex]);
-  const currentQuestion = $derived(currentSection?.questions[questionIndex]);
+  const currentSection = $derived(lesson?.sections?.[sectionIndex]);
+  const currentQuestion = $derived(currentSection?.questions?.[questionIndex]);
 
   $effect(() => {
+    if (!lesson) return;
     lesson.difficulty;
     phase = "intro";
     sectionIndex = 0;
@@ -72,14 +99,13 @@
   }
 
   function startQuiz() {
+    if (!baseLesson) return;
     phase = "quiz";
     questionIndex = 0;
     selectedOption = null;
     answered = false;
 
-    // markStarted() won't downgrade a lesson that's already in progress or
-    // completed, so replaying a finished lesson doesn't un-complete it.
-    markStarted(data.lesson.id, savedStatus).catch((error) => {
+    markStarted(baseLesson.id, savedStatus).catch((error) => {
       progressError = error;
     });
   }
@@ -104,6 +130,8 @@
   }
 
   function nextStep() {
+    if (!lesson || !baseLesson) return;
+
     if (phase === "quiz") {
       if (questionIndex < currentSection.questions.length - 1) {
         questionIndex += 1;
@@ -133,7 +161,7 @@
           ? Math.round((correctAnswers / lesson.totalQuestions) * 100)
           : null;
 
-      completeLesson(data.lesson.id, lesson.difficulty, score)
+      completeLesson(baseLesson.id, lesson.difficulty, score)
         .then((result) => {
           completionResult = result;
         })
@@ -145,7 +173,7 @@
 </script>
 
 <svelte:head>
-  <title>{lesson.title} | WebChef</title>
+  <title>{lesson?.title ?? "Lesson"} | WebChef</title>
 </svelte:head>
 
 <div class="page-shell">
@@ -155,6 +183,11 @@
     <AuthGuard>
     <a class="back" href="/lesson">← All lessons</a>
 
+    {#if loadingLesson}
+      <p class="loading">Loading lesson…</p>
+    {:else if lessonLoadError}
+      <p class="save-error">{lessonLoadError.message}</p>
+    {:else if lesson}
     <p class="category">{lesson.category}</p>
     <h1>{lesson.title}</h1>
 
@@ -281,6 +314,7 @@
 
         <a class="primary link-button" href="/lesson">Back to lessons</a>
       </section>
+    {/if}
     {/if}
     </AuthGuard>
   </main>

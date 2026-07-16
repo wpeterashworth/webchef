@@ -1,8 +1,9 @@
 <script>
+  import { onMount } from "svelte";
   import Footer from "$lib/components/footer.svelte";
   import Header from "$lib/components/header.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
-  import { getLessonCatalog } from "$lib/javascript/lessons.js";
+  import { getLessonCatalog, getDifficultyLevel } from "$lib/javascript/lessons.js";
   import { TODO, IN_PROGRESS, COMPLETED } from "$lib/javascript/progress.js";
   import {
     progress,
@@ -10,26 +11,76 @@
     progressError,
   } from "$lib/stores/progress.js";
   import { profile, profileReady } from "$lib/stores/profile.js";
-  import { canViewLeaderboard } from "$lib/javascript/points.js";
+  import { canViewLeaderboard, canCreateLessons, nextLevelProgress } from "$lib/javascript/points.js";
+  import {
+    getMyUserLessons,
+    userLessonRowToCard,
+  } from "$lib/javascript/user-lessons.js";
 
-  // Progress rows only know a lesson by its slug, so pair each one back up with
-  // the lesson it belongs to in order to show a title and a link.
   const lessons = getLessonCatalog();
+
+  let customLessons = $state({});
+
+  const canCreate = $derived(
+    $profileReady && $profile ? canCreateLessons($profile.level_number) : false,
+  );
+
+  const xpProgress = $derived(
+    $profile
+      ? nextLevelProgress($profile.xp, $profile.level_number)
+      : null,
+  );
+
+  const catalogById = $derived.by(() => ({
+    ...Object.fromEntries(lessons.map((lesson) => [lesson.lessonId, lesson])),
+    ...customLessons,
+  }));
 
   const byStatus = $derived.by(() => {
     const groups = { [TODO]: [], [IN_PROGRESS]: [], [COMPLETED]: [] };
 
-    for (const lesson of lessons) {
-      const row = $progress[lesson.lessonId];
-      // No row means the lesson isn't tracked — it belongs in none of the lists.
-      if (row) groups[row.status]?.push({ ...lesson, ...row });
+    for (const row of Object.values($progress)) {
+      const meta = catalogById[row.lesson_slug] ?? {
+        title: "Custom lesson",
+        href: `/lesson/${row.lesson_slug}`,
+        lessonId: row.lesson_slug,
+      };
+
+      groups[row.status]?.push({
+        ...meta,
+        ...row,
+        lessonId: row.lesson_slug,
+      });
     }
 
     return groups;
   });
 
+  onMount(async () => {
+    try {
+      const rows = await getMyUserLessons();
+      customLessons = Object.fromEntries(
+        rows.map((row) => [row.slug, userLessonRowToCard(row)]),
+      );
+    } catch {
+      customLessons = {};
+    }
+  });
+
   const dateFor = (row) =>
     new Date(row.completed_at ?? row.created_at).toLocaleDateString();
+
+  function difficultyMeta(difficulty) {
+    if (!difficulty) return null;
+    const level = getDifficultyLevel(difficulty);
+    return level ? { label: level.label, color: level.accentColor } : null;
+  }
+
+  function lessonHref(href, difficulty) {
+    if (!difficulty) return href;
+    const separator = href.includes("?") ? "&" : "?";
+    return `${href}${separator}difficulty=${difficulty}`;
+  }
 </script>
 
 <svelte:head>
@@ -46,18 +97,30 @@
           <div>
             <p class="eyebrow">Your learning hub</p>
             <h1>Dashboard</h1>
+
+            {#if $profileReady && $profile && xpProgress}
+              <div class="level-display">
+                <span class="level-number">Lv {$profile.level_number}</span>
+                <span class="level-title">{$profile.level_title}</span>
+              </div>
+              <p class="xp-progress">
+                {#if xpProgress.isMax}
+                  {$profile.xp} XP · Max level
+                {:else}
+                  {xpProgress.current}/{xpProgress.needed} XP
+                {/if}
+              </p>
+              <p class="streak-stats">
+                🔥 {$profile.current_streak} day streak
+              </p>
+            {:else if $profileReady}
+              <p class="level-loading">Loading stats…</p>
+            {/if}
+
             <p class="hero-copy">
               Keep track of your lesson progress, upcoming recipes, and
               completed cooking challenges in one place.
             </p>
-          </div>
-          <div class="hero-pill">
-            {#if $profileReady && $profile}
-              Lv {$profile.level_number} · {$profile.level_title}<br />
-              {$profile.xp} XP · 🔥 {$profile.current_streak} day streak
-            {:else}
-              🔥 Loading stats…
-            {/if}
           </div>
         </header>
 
@@ -68,9 +131,9 @@
         {/if}
 
         {#if $profileReady && $profile && canViewLeaderboard($profile.level_number)}
-          <p class="leaderboard-link">
-            <a href="/leaderboard">View leaderboard →</a>
-          </p>
+          <div class="builder-actions">
+            <a class="builder-btn secondary" href="/leaderboard">View leaderboard</a>
+          </div>
         {/if}
 
         {#if $progressError}
@@ -94,6 +157,13 @@
           </article>
         </div>
 
+        {#if canCreate}
+          <div class="builder-actions">
+            <a class="builder-btn primary" href="/lesson/create">Create a lesson</a>
+            <a class="builder-btn secondary" href="/lesson/my-lessons">My lessons</a>
+          </div>
+        {/if}
+
         <section id="started-lessons" class="container">
           <div class="section-title">
             <h2>Started Lessons</h2>
@@ -109,9 +179,20 @@
               </p>
             {:else}
               {#each byStatus[IN_PROGRESS] as lesson (lesson.lessonId)}
-                <a class="card" href={lesson.href}>
-                  <h3>{lesson.title}</h3>
-                  <p>Started on: {dateFor(lesson)}</p>
+                {@const diff = difficultyMeta(lesson.difficulty)}
+                <a class="progress-card" href={lessonHref(lesson.href, lesson.difficulty)}>
+                  <div class="progress-card-top">
+                    <h3>{lesson.title}</h3>
+                    {#if diff}
+                      <span
+                        class="difficulty-pill"
+                        style={`--pill-color: ${diff.color}`}
+                      >
+                        {diff.label}
+                      </span>
+                    {/if}
+                  </div>
+                  <p class="progress-meta">Started on {dateFor(lesson)}</p>
                 </a>
               {/each}
             {/if}
@@ -134,9 +215,24 @@
               </p>
             {:else}
               {#each byStatus[TODO] as lesson (lesson.lessonId)}
-                <a class="card" href={lesson.href}>
-                  <h3>{lesson.title}</h3>
-                  <p>Added on: {dateFor(lesson)}</p>
+                {@const todoDifficulty = lesson.difficulty ?? "beginner"}
+                {@const diff = difficultyMeta(todoDifficulty)}
+                <a
+                  class="progress-card"
+                  href={lessonHref(lesson.href, todoDifficulty)}
+                >
+                  <div class="progress-card-top">
+                    <h3>{lesson.title}</h3>
+                    {#if diff}
+                      <span
+                        class="difficulty-pill"
+                        style={`--pill-color: ${diff.color}`}
+                      >
+                        {diff.label}
+                      </span>
+                    {/if}
+                  </div>
+                  <p class="progress-meta">Added on {dateFor(lesson)}</p>
                 </a>
               {/each}
             {/if}
@@ -156,12 +252,28 @@
               <p class="empty">No lessons finished yet.</p>
             {:else}
               {#each byStatus[COMPLETED] as lesson (lesson.lessonId)}
-                <a class="card" href={lesson.href}>
-                  <h3>{lesson.title}</h3>
-                  <p>
-                    Completed on: {dateFor(lesson)}
+                {@const diff = difficultyMeta(lesson.difficulty)}
+                <a class="progress-card" href={lessonHref(lesson.href, lesson.difficulty)}>
+                  <div class="progress-card-top">
+                    <h3>{lesson.title}</h3>
+                    {#if diff}
+                      <span
+                        class="difficulty-pill"
+                        style={`--pill-color: ${diff.color}`}
+                      >
+                        {diff.label}
+                      </span>
+                    {:else}
+                      <span class="difficulty-pill muted">Completed</span>
+                    {/if}
+                  </div>
+                  <p class="progress-meta">
+                    Finished {dateFor(lesson)}
                     {#if lesson.points_earned}
-                      · {lesson.points_earned} XP
+                      · <strong>{lesson.points_earned} XP</strong>
+                    {/if}
+                    {#if typeof lesson.score === "number"}
+                      · Score {lesson.score}%
                     {/if}
                   </p>
                 </a>
@@ -206,23 +318,59 @@
     }
 
     & h1 {
-      margin: 0 0 0.4rem;
+      margin: 0 0 0.35rem;
       font-size: 2rem;
+    }
+
+    & .level-display {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.35rem 0.75rem;
+      margin: 0 0 0.35rem;
+    }
+
+    & .level-number {
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: #fff9f0;
+      letter-spacing: -0.02em;
+    }
+
+    & .level-title {
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    & .xp-progress {
+      margin: 0 0 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255, 249, 240, 0.82);
+    }
+
+    & .level-loading {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      color: rgba(255, 249, 240, 0.9);
+    }
+
+    & .streak-stats {
+      margin: 0 0 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255, 249, 240, 0.78);
     }
 
     & .hero-copy {
       margin: 0;
       max-width: 620px;
-    }
-
-    & .hero-pill {
-      background: var(--panel-color);
-
-      font-weight: 700;
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
-      white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     @media (max-width: 700px) {
@@ -255,6 +403,65 @@
       font-size: 1.2rem;
       font-weight: 700;
     }
+  }
+
+  .builder-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 1.25rem;
+  }
+
+  .builder-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .builder-btn:focus-visible {
+    outline: 2px solid #12b7ea;
+    outline-offset: 2px;
+  }
+
+  .builder-btn.primary {
+    background: #12b7ea;
+    color: #fff;
+    border: 1px solid #0ea5d8;
+    box-shadow: 0 2px 6px rgba(18, 183, 234, 0.25);
+  }
+
+  .builder-btn.primary:visited {
+    color: #fff;
+  }
+
+  .builder-btn.primary:hover {
+    background: #0ea5d8;
+  }
+
+  .builder-btn.secondary {
+    background: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+  }
+
+  .builder-btn.secondary:visited {
+    color: var(--text-color);
+  }
+
+  .builder-btn.secondary:hover {
+    border-color: #12b7ea;
   }
 
   .page-shell {
@@ -290,52 +497,92 @@
 
       & span {
         font-size: 0.9rem;
-        color: #777;
+        color: var(--text-muted);
       }
     }
 
     & .card-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.75rem;
+    }
+
+    & .progress-card {
       display: block;
+      padding: 1rem 1.1rem;
+      border-radius: 12px;
+      background: var(--page-color);
+      border: 1px solid color-mix(in srgb, var(--text-color) 14%, transparent);
+      text-decoration: none;
+      color: var(--text-color);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
-      & .lesson-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1rem;
-        & .card {
-          color: var(--text-color);
-          background: var(--page-color);
-          padding: 1rem 1.1rem;
-          border: 1px solid rgba(0, 0, 0, 0.05);
-          border-radius: 12px;
-
-          /* The cards are links now, so each one opens the lesson it names. */
-          flex: 1;
-          display: block;
-          text-decoration: none;
-
-          &:hover {
-            border-color: var(--text-muted);
-          }
-
-          & h3 {
-            margin: 0 0 0.35rem;
-            font-size: 1rem;
-          }
-
-          & p {
-            margin: 0;
-          }
-        }
-        @media (min-width: 700px) {
-          flex-direction: row;
-        }
+      &:hover {
+        border-color: var(--text-muted);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
       }
+    }
+
+    & .progress-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+    }
+
+    & .progress-card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text-color);
+    }
+
+    & .progress-meta {
+      margin: 0;
+      font-size: 0.875rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+
+    & .progress-meta strong {
+      color: var(--text-color);
+      font-weight: 700;
+    }
+
+    & .difficulty-pill {
+      flex-shrink: 0;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: color-mix(in srgb, var(--pill-color) 24%, var(--page-color));
+      color: var(--text-color);
+      border: 1px solid color-mix(in srgb, var(--pill-color) 50%, transparent);
+    }
+
+    & .difficulty-pill.muted {
+      background: var(--panel-color);
+      border-color: color-mix(in srgb, var(--text-muted) 35%, transparent);
+      color: var(--text-muted);
+      text-transform: none;
+      font-weight: 600;
+      font-size: 0.72rem;
     }
 
     .empty {
       margin: 0;
       color: var(--text-muted);
       font-size: 0.9rem;
+
+      & a {
+        color: #12b7ea;
+        font-weight: 600;
+        text-decoration: none;
+      }
     }
 
     .load-error {
@@ -347,17 +594,10 @@
       font-size: 0.85rem;
     }
 
-    .unlock-hint,
-    .leaderboard-link {
+    .unlock-hint {
       margin: 0 0 1rem;
       color: var(--text-muted);
       font-size: 0.9rem;
-    }
-
-    .leaderboard-link a {
-      color: #12b7ea;
-      font-weight: 600;
-      text-decoration: none;
     }
   }
 </style>

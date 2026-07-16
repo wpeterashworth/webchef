@@ -48,17 +48,22 @@ alter table users
   add column level_title text not null default 'Idiot Sandwitch';
 
 -- Keep existing rows consistent with their current xp.
-update users u
+update users
 set
-  level_number = lv.level_number,
-  level_title = lv.title
-from lateral (
-  select level_number, title
-  from levels
-  where min_total_xp <= u.xp
-  order by level_number desc
-  limit 1
-) lv;
+  level_number = (
+    select l.level_number
+    from levels l
+    where l.min_total_xp <= users.xp
+    order by l.level_number desc
+    limit 1
+  ),
+  level_title = (
+    select l.title
+    from levels l
+    where l.min_total_xp <= users.xp
+    order by l.level_number desc
+    limit 1
+  );
 
 -- ---------------------------------------------------------------------------
 -- user_progress — record difficulty played and points earned for a lesson
@@ -88,9 +93,10 @@ create or replace function public.level_for_xp(p_xp integer)
   returns table (level_number integer, level_title text)
   language sql
   stable
+  set search_path = ''
 as $$
   select l.level_number, l.title
-  from levels l
+  from public.levels l
   where l.min_total_xp <= p_xp
   order by l.level_number desc
   limit 1;

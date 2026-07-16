@@ -32,15 +32,35 @@
   const status = $derived($progress[lessonId]?.status);
   const onTodo = $derived(status === TODO);
 
+  $effect(() => {
+    const savedDifficulty = $progress[lessonId]?.difficulty;
+    if (savedDifficulty) {
+      selectedDifficulty = savedDifficulty;
+    }
+  });
+
+  async function selectDifficulty(levelId) {
+    if (!difficultyUnlocked(userLevel, levelId)) return;
+
+    selectedDifficulty = levelId;
+
+    if (onTodo) {
+      saving = true;
+      try {
+        await setStatus(lessonId, TODO, levelId);
+      } finally {
+        saving = false;
+      }
+    }
+  }
+
   async function toggleTodo() {
     saving = true;
     try {
-      // Only ever toggles the to-do flag. A started or completed lesson keeps
-      // its status — you don't "un-complete" a lesson by clicking a checkbox.
       if (onTodo) {
         await clearStatus(lessonId);
       } else if (!status) {
-        await setStatus(lessonId, TODO);
+        await setStatus(lessonId, TODO, selectedDifficulty);
       }
     } finally {
       saving = false;
@@ -97,9 +117,7 @@
             style={`--level-color: ${level.accentColor}`}
             disabled={!unlocked}
             title={unlocked ? "" : unlockRequirement(level.id)}
-            onclick={() => {
-              if (unlocked) selectedDifficulty = level.id;
-            }}
+            onclick={() => selectDifficulty(level.id)}
           >
             {level.label}
             {#if !unlocked}

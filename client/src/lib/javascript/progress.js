@@ -84,23 +84,26 @@ export async function getProgress() {
  * so "add to to-do" and "mark completed" are the same operation with a different
  * status, and re-running either is harmless.
  */
-export async function setStatus(lessonSlug, status) {
+export async function setStatus(lessonSlug, status, difficulty = null) {
   const profileId = await getProfileId();
   if (!profileId) throw new Error("You must be signed in to track progress.");
 
+  const payload = {
+    user_id: profileId,
+    lesson_slug: lessonSlug,
+    status,
+    completed_at: status === COMPLETED ? new Date().toISOString() : null,
+  };
+
+  const resolvedDifficulty =
+    difficulty ?? (status === TODO ? "beginner" : null);
+  if (resolvedDifficulty) {
+    payload.difficulty = resolvedDifficulty;
+  }
+
   const { data, error } = await supabase
     .from("user_progress")
-    .upsert(
-      {
-        user_id: profileId,
-        lesson_slug: lessonSlug,
-        status,
-        // Only a completed lesson has a completion time. Clearing it on the way
-        // back out keeps the column honest if a lesson is re-opened.
-        completed_at: status === COMPLETED ? new Date().toISOString() : null,
-      },
-      { onConflict: "user_id,lesson_slug" },
-    )
+    .upsert(payload, { onConflict: "user_id,lesson_slug" })
     .select(
       "lesson_slug, status, score, difficulty, points_earned, completed_at, created_at",
     )
