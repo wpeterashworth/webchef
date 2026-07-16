@@ -115,3 +115,14 @@ Client: points.js unlockedLevelTitles, profile.js setDisplayTitle, dashboard UI.
 Changed dashboard level title switcher from arrow buttons to a dropdown select.
 Fixed lesson card action label so "Review" only shows at the completed difficulty.
 
+2026-07-16 — User name pending
+Added a demo-ready admin role and private admin dashboard.
+Changes:
+  - Added supabase/migrations/20260716001000_admin_demo.sql
+  - Added users.is_admin with default false
+  - Added public.get_admin_dashboard() RPC, restricted to authenticated users and guarded by an in-function admin check
+  - Updated client profile loading to include is_admin
+  - Added an /admin page with summary stats, newest users, and top cooks
+  - Added an Admin nav link that only appears for admin users
+Verified with `pnpm build` in client. Existing unrelated Svelte warnings remain for login/signup submit syntax and unused dashboard CSS selectors.
+
