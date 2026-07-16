@@ -130,9 +130,10 @@
         {#if $profile && canCreateLessons($profile.level_number)}
           <li><a href="/lesson/my-lessons">My Lessons</a></li>
         {/if}
-        <li><a href="/account">Account</a></li>
-        <li class="user-email">
-          {$user.user_metadata?.first_name || $user.email}
+        <li>
+          <a href="/account">
+            {$user.user_metadata?.first_name || $user.email}
+          </a>
         </li>
         <li>
           <button class="link-button" onclick={() => (showLogoutModal = true)}>
@@ -259,15 +260,6 @@
           }
         }
 
-        &.user-email {
-          padding: 1rem 0.5rem;
-          font-size: 0.9rem;
-          font-weight: bold;
-          border-bottom: 2px solid rgba(128, 128, 128, 0.2);
-          color: var(--text-color);
-          opacity: 0.85;
-        }
-
         & .link-button {
           border: none;
           background: none;
@@ -370,13 +362,6 @@
             padding: 0;
             font-size: inherit;
             width: auto;
-          }
-
-          &.user-email {
-            padding: 0;
-            font-size: inherit;
-            font-weight: normal;
-            border-bottom: none;
           }
         }
       }
