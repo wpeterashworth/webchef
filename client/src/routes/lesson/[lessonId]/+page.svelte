@@ -5,21 +5,55 @@
   import Header from "$lib/components/header.svelte";
   import Footer from "$lib/components/footer.svelte";
   import AuthGuard from "$lib/components/auth-guard.svelte";
-  import { applyDifficulty, normalizeDifficulty } from "$lib/javascript/lessons.js";
-  import { getLessonBankBySlug, isBankLessonSlug } from "$lib/javascript/lesson-bank.js";
-  import { difficultyUnlocked, pointsForDifficulty } from "$lib/javascript/points.js";
-  import { getUserLessonBySlug, isUserLessonSlug } from "$lib/javascript/user-lessons.js";
-  import { progress, markStarted, completeLesson } from "$lib/stores/progress.js";
+  import {
+    applyDifficulty,
+    normalizeDifficulty,
+  } from "$lib/javascript/lessons.js";
+  import {
+    getLessonBankBySlug,
+    isBankLessonSlug,
+  } from "$lib/javascript/lesson-bank.js";
+  import {
+    difficultyUnlocked,
+    pointsForDifficulty,
+  } from "$lib/javascript/points.js";
+  import {
+    getUserLessonBySlug,
+    isUserLessonSlug,
+  } from "$lib/javascript/user-lessons.js";
+  import {
+    progress,
+    markStarted,
+    completeLesson,
+  } from "$lib/stores/progress.js";
   import { profile } from "$lib/stores/profile.js";
+
+  /** @typedef {import("$lib/javascript/types-core.js").LessonStatus} LessonStatus */
+  /** @typedef {import("$lib/javascript/types-core.js").LessonDifficulty} LessonDifficulty */
+  /** @typedef {import("$lib/javascript/types-core.js").ProgressRow} ProgressRow */
+  /** @typedef {import("$lib/javascript/types-core.js").CompletionResult} CompletionResult */
+  /** @typedef {import("$lib/javascript/types-core.js").UserProfile} UserProfile */
+  /** @typedef {import("$lib/svelte/types-routes.js").LessonQuestion} LessonQuestion */
+  /** @typedef {import("$lib/svelte/types-routes.js").LessonSection} LessonSection */
+  /** @typedef {import("$lib/svelte/types-routes.js").LessonPayloadBase} LessonPayloadBase */
+  /** @typedef {import("$lib/svelte/types-routes.js").LessonPayloadResolved} LessonPayloadResolved */
 
   let { data } = $props();
 
-  let fetchedLesson = $state(null);
-  let lessonLoadError = $state(null);
-  let loadingLesson = $state(data.needsFetch);
+  let fetchedLesson = $state(/** @type {LessonPayloadBase | null} */ (null));
+  let lessonLoadError = $state(/** @type {Error | null} */ (null));
+  let loadingLesson = $state(true);
+
+  const currentProgress = $derived(
+    /** @type {Record<string, ProgressRow>} */ ($progress),
+  );
+  const currentProfile = $derived(/** @type {UserProfile | null} */ ($profile));
 
   onMount(async () => {
-    if (!data.needsFetch) return;
+    if (!data.needsFetch) {
+      loadingLesson = false;
+      return;
+    }
 
     try {
       if (isUserLessonSlug(data.lessonId)) {
@@ -32,30 +66,36 @@
         lessonLoadError = new Error("This lesson was not found or is private.");
       }
     } catch (error) {
-      lessonLoadError = error;
+      lessonLoadError =
+        error instanceof Error ? error : new Error("Could not load lesson.");
     } finally {
       loadingLesson = false;
     }
   });
 
-  const baseLesson = $derived(data.lesson ?? fetchedLesson);
+  const baseLesson = $derived(
+    /** @type {LessonPayloadBase | null} */ (data.lesson ?? fetchedLesson),
+  );
 
   // Progress is saved best-effort: a failed write must not block the learner
   // mid-quiz, but it shouldn't fail silently either.
-  let progressError = $state(null);
-  let completionResult = $state(null);
+  let progressError = $state(/** @type {Error | null} */ (null));
+  let completionResult = $state(/** @type {CompletionResult | null} */ (null));
   let correctAnswers = $state(0);
 
   const savedStatus = $derived(
-    baseLesson ? $progress[baseLesson.id]?.status : undefined,
+    baseLesson ? currentProgress[baseLesson.id]?.status : undefined,
   );
 
-  let difficulty = $state("beginner");
+  let difficulty = $state(/** @type {LessonDifficulty} */ ("beginner"));
 
   function syncDifficulty() {
     if (!browser) return;
-    difficulty = normalizeDifficulty(
-      new URL(window.location.href).searchParams.get("difficulty"),
+    difficulty = /** @type {LessonDifficulty} */ (
+      normalizeDifficulty(
+        new URL(window.location.href).searchParams.get("difficulty") ??
+          "beginner",
+      )
     );
   }
 
@@ -63,11 +103,15 @@
   afterNavigate(syncDifficulty);
 
   const lesson = $derived(
-    baseLesson ? applyDifficulty(baseLesson, difficulty) : null,
+    baseLesson
+      ? /** @type {LessonPayloadResolved} */ (
+          applyDifficulty(baseLesson, difficulty)
+        )
+      : null,
   );
 
   $effect(() => {
-    const level = $profile?.level_number ?? 0;
+    const level = currentProfile?.level_number ?? 0;
     if (!difficultyUnlocked(level, difficulty)) {
       difficulty = "beginner";
     }
@@ -77,7 +121,7 @@
   let phase = $state("intro");
   let sectionIndex = $state(0);
   let questionIndex = $state(0);
-  let selectedOption = $state(null);
+  let selectedOption = $state(/** @type {number | null} */ (null));
   let answered = $state(false);
 
   const currentSection = $derived(lesson?.sections?.[sectionIndex]);
@@ -95,11 +139,17 @@
     correctAnswers = 0;
   });
 
+  /** @param {LessonQuestion} question */
   function correctIndex(question) {
-    if (typeof question.correct_index === "number") return question.correct_index;
+    if (typeof question.correct_index === "number")
+      return question.correct_index;
     return question.options.indexOf(question.correct_answer);
   }
 
+  /**
+   * @param {LessonQuestion} question
+   * @param {number} optionIndex
+   */
   function isCorrect(question, optionIndex) {
     return optionIndex === correctIndex(question);
   }
@@ -112,13 +162,15 @@
     answered = false;
 
     markStarted(baseLesson.id, savedStatus).catch((error) => {
-      progressError = error;
+      progressError =
+        error instanceof Error ? error : new Error("Could not save progress.");
     });
   }
 
   // Picking an option only *stages* it — the learner can change their mind as
   // often as they like. Nothing is revealed until they submit, so a stray click
   // can't burn a question.
+  /** @param {number} index */
   function selectOption(index) {
     if (answered) return;
     selectedOption = index;
@@ -128,6 +180,7 @@
   // on the focused button can't submit an empty answer.
   function submitAnswer() {
     if (answered || selectedOption === null) return;
+    if (!currentQuestion) return;
     answered = true;
 
     if (isCorrect(currentQuestion, selectedOption)) {
@@ -139,6 +192,7 @@
     if (!lesson || !baseLesson) return;
 
     if (phase === "quiz") {
+      if (!currentSection) return;
       if (questionIndex < currentSection.questions.length - 1) {
         questionIndex += 1;
         selectedOption = null;
@@ -172,7 +226,10 @@
           completionResult = result;
         })
         .catch((error) => {
-          progressError = error;
+          progressError =
+            error instanceof Error
+              ? error
+              : new Error("Could not save progress.");
         });
     }
   }
@@ -187,141 +244,153 @@
 
   <main class="lesson">
     <AuthGuard>
-    <a class="back" href="/lesson">← All lessons</a>
+      <a class="back" href="/lesson">← All lessons</a>
 
-    {#if loadingLesson}
-      <p class="loading">Loading lesson…</p>
-    {:else if lessonLoadError}
-      <p class="save-error">{lessonLoadError.message}</p>
-    {:else if lesson}
-    <p class="category">{lesson.category}</p>
-    <h1>{lesson.title}</h1>
+      {#if loadingLesson}
+        <p class="loading">Loading lesson…</p>
+      {:else if lessonLoadError}
+        <p class="save-error">{lessonLoadError.message}</p>
+      {:else if lesson}
+        <p class="category">{lesson.category}</p>
+        <h1>{lesson.title}</h1>
 
-    <p class="meta">
-      {lesson.difficultyLabel} · {lesson.skillCount} skills · {lesson.totalQuestions}
-      questions · about {lesson.estimatedMinutes} min
-    </p>
-
-    <div class="progress">
-      Skill {sectionIndex + 1} of {lesson.skillCount}
-      {#if phase === "quiz"}
-        · Question {questionIndex + 1} of {currentSection.questions.length}
-      {/if}
-    </div>
-
-    {#if progressError}
-      <p class="save-error">
-        Your progress couldn't be saved: {progressError.message}
-      </p>
-    {/if}
-
-    {#if phase === "intro"}
-      <section class="panel intro-panel">
-        <p class="skill-label">{currentSection.skill}</p>
-        <h2>{currentSection.intro.headline}</h2>
-        <p>{currentSection.intro.body}</p>
-        <p class="goal">{currentSection.learningGoal}</p>
-        <button class="primary" onclick={startQuiz}>Start quiz</button>
-      </section>
-    {:else if phase === "quiz" && currentQuestion}
-      <section class="panel quiz-panel">
-        <p class="skill-label">{currentSection.skill}</p>
-        <h2>{currentQuestion.question}</h2>
-
-        <ul class="options">
-          {#each currentQuestion.options as option, index}
-            <li>
-              <button
-                type="button"
-                disabled={answered}
-                aria-pressed={selectedOption === index}
-                class:selected={selectedOption === index}
-                class:correct={answered && isCorrect(currentQuestion, index)}
-                class:incorrect={answered &&
-                  selectedOption === index &&
-                  !isCorrect(currentQuestion, index)}
-                onclick={() => selectOption(index)}
-              >
-                {option}
-              </button>
-            </li>
-          {/each}
-        </ul>
-
-        {#if !answered}
-          <button
-            class="primary"
-            disabled={selectedOption === null}
-            onclick={submitAnswer}
-          >
-            Submit answer
-          </button>
-
-          {#if selectedOption === null}
-            <p class="hint">Pick an answer, then submit.</p>
-          {/if}
-        {:else}
-          <div class="feedback" class:success={isCorrect(currentQuestion, selectedOption)}>
-            <p>
-              <strong>
-                {isCorrect(currentQuestion, selectedOption) ? "Correct!" : "Not quite."}
-              </strong>
-              {currentQuestion.explanation}
-            </p>
-            <p class="tip"><strong>Safety tip:</strong> {currentQuestion.safety_tip}</p>
-          </div>
-
-          <button class="primary" onclick={nextStep}>
-            {questionIndex < currentSection.questions.length - 1
-              ? "Next question"
-              : "Finish skill"}
-          </button>
-        {/if}
-      </section>
-    {:else if phase === "section-done"}
-      <section class="panel recap-panel">
-        <p class="skill-label">{currentSection.skill}</p>
-        <h2>Skill complete</h2>
-        <ul>
-          {#each currentSection.recap as point}
-            <li>{point}</li>
-          {/each}
-        </ul>
-
-        <button class="primary" onclick={nextStep}>
-          {sectionIndex < lesson.sections.length - 1 ? "Next skill" : "Finish lesson"}
-        </button>
-      </section>
-    {:else}
-      <section class="panel complete-panel">
-        <h2>Lesson complete</h2>
-        <p>
-          You finished all {lesson.skillCount} skills in {lesson.title} at
-          {lesson.difficultyLabel.toLowerCase()} level. Nice work!
+        <p class="meta">
+          {lesson.difficultyLabel} · {lesson.skillCount} skills · {lesson.totalQuestions}
+          questions · about {lesson.estimatedMinutes} min
         </p>
 
-        {#if completionResult}
-          <p class="reward">
-            {#if completionResult.points_awarded > 0}
-              +{completionResult.points_awarded} XP earned
-              ({pointsForDifficulty(lesson.difficulty)} pts max for this difficulty).
-            {:else}
-              No new XP — you already earned the points for this difficulty.
-            {/if}
-          </p>
-          <p class="reward">
-            Level {completionResult.level_number}: {completionResult.level_title}
-            · {completionResult.xp} XP total
-          </p>
-          {#if completionResult.leveled_up}
-            <p class="level-up">Level up!</p>
+        <div class="progress">
+          Skill {sectionIndex + 1} of {lesson.skillCount}
+          {#if phase === "quiz" && currentSection}
+            · Question {questionIndex + 1} of {currentSection.questions.length}
           {/if}
+        </div>
+
+        {#if progressError}
+          <p class="save-error">
+            Your progress couldn't be saved: {progressError.message}
+          </p>
         {/if}
 
-        <a class="primary link-button" href="/lesson">Back to lessons</a>
-      </section>
-    {/if}
-    {/if}
+        {#if phase === "intro" && currentSection}
+          <section class="panel intro-panel">
+            <p class="skill-label">{currentSection.skill}</p>
+            <h2>{currentSection.intro.headline}</h2>
+            <p>{currentSection.intro.body}</p>
+            <p class="goal">{currentSection.learningGoal}</p>
+            <button class="primary" onclick={startQuiz}>Start quiz</button>
+          </section>
+        {:else if phase === "quiz" && currentQuestion && currentSection}
+          <section class="panel quiz-panel">
+            <p class="skill-label">{currentSection.skill}</p>
+            <h2>{currentQuestion.question}</h2>
+
+            <ul class="options">
+              {#each currentQuestion.options as option, index}
+                <li>
+                  <button
+                    type="button"
+                    disabled={answered}
+                    aria-pressed={selectedOption === index}
+                    class:selected={selectedOption === index}
+                    class:correct={answered &&
+                      isCorrect(currentQuestion, index)}
+                    class:incorrect={answered &&
+                      selectedOption === index &&
+                      !isCorrect(currentQuestion, index)}
+                    onclick={() => selectOption(index)}
+                  >
+                    {option}
+                  </button>
+                </li>
+              {/each}
+            </ul>
+
+            {#if !answered}
+              <button
+                class="primary"
+                disabled={selectedOption === null}
+                onclick={submitAnswer}
+              >
+                Submit answer
+              </button>
+
+              {#if selectedOption === null}
+                <p class="hint">Pick an answer, then submit.</p>
+              {/if}
+            {:else}
+              <div
+                class="feedback"
+                class:success={isCorrect(currentQuestion, selectedOption ?? -1)}
+              >
+                <p>
+                  <strong>
+                    {isCorrect(currentQuestion, selectedOption ?? -1)
+                      ? "Correct!"
+                      : "Not quite."}
+                  </strong>
+                  {currentQuestion.explanation}
+                </p>
+                <p class="tip">
+                  <strong>Safety tip:</strong>
+                  {currentQuestion.safety_tip}
+                </p>
+              </div>
+
+              <button class="primary" onclick={nextStep}>
+                {questionIndex < currentSection.questions.length - 1
+                  ? "Next question"
+                  : "Finish skill"}
+              </button>
+            {/if}
+          </section>
+        {:else if phase === "section-done" && currentSection}
+          <section class="panel recap-panel">
+            <p class="skill-label">{currentSection.skill}</p>
+            <h2>Skill complete</h2>
+            <ul>
+              {#each currentSection.recap as point}
+                <li>{point}</li>
+              {/each}
+            </ul>
+
+            <button class="primary" onclick={nextStep}>
+              {sectionIndex < lesson.sections.length - 1
+                ? "Next skill"
+                : "Finish lesson"}
+            </button>
+          </section>
+        {:else}
+          <section class="panel complete-panel">
+            <h2>Lesson complete</h2>
+            <p>
+              You finished all {lesson.skillCount} skills in {lesson.title} at
+              {lesson.difficultyLabel.toLowerCase()} level. Nice work!
+            </p>
+
+            {#if completionResult}
+              <p class="reward">
+                {#if completionResult.points_awarded > 0}
+                  +{completionResult.points_awarded} XP earned ({pointsForDifficulty(
+                    lesson.difficulty,
+                  )} pts max for this difficulty).
+                {:else}
+                  No new XP — you already earned the points for this difficulty.
+                {/if}
+              </p>
+              <p class="reward">
+                Level {completionResult.level_number}: {completionResult.level_title}
+                · {completionResult.xp} XP total
+              </p>
+              {#if completionResult.leveled_up}
+                <p class="level-up">Level up!</p>
+              {/if}
+            {/if}
+
+            <a class="primary link-button" href="/lesson">Back to lessons</a>
+          </section>
+        {/if}
+      {/if}
     </AuthGuard>
   </main>
 

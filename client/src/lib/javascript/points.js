@@ -15,10 +15,21 @@ export const UNLOCK_LEVEL = {
   expert: 5,
 };
 
+/** @param {import("$lib/javascript/types.js").LessonDifficulty | string} difficulty */
 export function pointsForDifficulty(difficulty) {
-  return LESSON_POINTS[difficulty] ?? LESSON_POINTS.beginner;
+  const key =
+    difficulty === "beginner" ||
+    difficulty === "intermediate" ||
+    difficulty === "advanced"
+      ? difficulty
+      : "beginner";
+  return LESSON_POINTS[key];
 }
 
+/**
+ * @param {number} levelNumber
+ * @param {import("$lib/javascript/types.js").LessonDifficulty | string} difficultyId
+ */
 export function difficultyUnlocked(levelNumber, difficultyId) {
   if (difficultyId === "beginner") return true;
   if (difficultyId === "intermediate") {
@@ -30,6 +41,7 @@ export function difficultyUnlocked(levelNumber, difficultyId) {
   return false;
 }
 
+/** @param {import("$lib/javascript/types.js").LessonDifficulty | string} difficultyId */
 export function unlockRequirement(difficultyId) {
   if (difficultyId === "intermediate") {
     return `Reach level ${UNLOCK_LEVEL.intermediate} to unlock`;
@@ -40,14 +52,17 @@ export function unlockRequirement(difficultyId) {
   return "";
 }
 
+/** @param {number} levelNumber */
 export function canViewLeaderboard(levelNumber) {
   return levelNumber >= UNLOCK_LEVEL.leaderboard;
 }
 
+/** @param {number} levelNumber */
 export function canCreateLessons(levelNumber) {
   return levelNumber >= UNLOCK_LEVEL.createLessons;
 }
 
+/** @param {number} levelNumber */
 export function canShareLessonsPublicly(levelNumber) {
   return levelNumber >= UNLOCK_LEVEL.shareLessons;
 }
@@ -62,6 +77,7 @@ export const LEVEL_TITLE_TIERS = [
 ];
 
 /** Titles the user may display at their current level. */
+/** @param {number} levelNumber */
 export function unlockedLevelTitles(levelNumber) {
   return LEVEL_TITLE_TIERS.filter((tier) => levelNumber >= tier.minLevel).map(
     (tier) => tier.title,
@@ -77,6 +93,10 @@ export const LEVEL_MIN_XP = [
 export const MAX_LEVEL = 20;
 
 /** XP earned toward the next level vs XP required for that level-up step. */
+/**
+ * @param {number} xp
+ * @param {number} levelNumber
+ */
 export function nextLevelProgress(xp, levelNumber) {
   if (levelNumber >= MAX_LEVEL) {
     return { current: xp, needed: LEVEL_MIN_XP[MAX_LEVEL], isMax: true };

@@ -1,8 +1,16 @@
+import { resolve } from 'node:path';
 import { defineConfig } from 'vitest/config';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { sveltekit } from '@sveltejs/kit/vite';
+
+const repoRoot = resolve(import.meta.dirname, '..');
 
 export default defineConfig({
-  plugins: [svelte({ hot: !process.env.VITEST })],
+  server: {
+    fs: {
+      allow: [repoRoot],
+    },
+  },
+  plugins: [sveltekit()],
   test: {
     globals: true,
     environment: 'jsdom',

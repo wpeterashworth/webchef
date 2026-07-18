@@ -2,10 +2,25 @@ import recipeAdjust from "$lib/JSON/RecipeAdjust.json";
 import howToCook from "$lib/JSON/Howtocook.json";
 import ingredientSub from "$lib/JSON/IngredientSub.json";
 
-const allSkills = [...recipeAdjust, ...howToCook, ...ingredientSub];
+/** @typedef {import("$lib/javascript/types-core.js").LessonDifficulty} LessonDifficulty */
+/** @typedef {import("$lib/svelte/types-routes.js").LessonSection} LessonSection */
+/** @typedef {import("$lib/svelte/types-routes.js").LessonPayloadBase} LessonPayloadBase */
+/** @typedef {import("$lib/svelte/types-routes.js").LessonPayloadResolved} LessonPayloadResolved */
+/** @typedef {import("$lib/svelte/types-routes.js").LessonCard} LessonCard */
+
+/** @typedef {{ category: string, questions: unknown[], estimatedMinutes?: number, skill?: string, title?: string, learningGoal?: string, intro?: { headline: string, body: string }, recap?: string[] }} JsonSkill */
+/** @typedef {{ id: LessonDifficulty, label: string, accentColor: string, skillCount: number, questionsPerSkill: number }} DifficultyLevel */
+
+/** @typedef {{ id: string, category: string, title: string, description: string }} LessonMeta */
+
+const allSkills = /** @type {JsonSkill[]} */ ([
+  ...recipeAdjust,
+  ...howToCook,
+  ...ingredientSub,
+]);
 
 /** Top-level lessons — each groups 3 skills from the JSON files. */
-const LESSON_META = [
+const LESSON_META = /** @type {LessonMeta[]} */ ([
   {
     id: "recipe-adjustment",
     category: "Recipe Adjustment",
@@ -34,9 +49,9 @@ const LESSON_META = [
     description:
       "Build knife skills, match pans to the job, and improvise with what you have on hand.",
   },
-];
+]);
 
-export const DIFFICULTY_LEVELS = [
+export const DIFFICULTY_LEVELS = /** @type {DifficultyLevel[]} */ ([
   {
     id: "beginner",
     label: "Beginner",
@@ -58,45 +73,65 @@ export const DIFFICULTY_LEVELS = [
     skillCount: 3,
     questionsPerSkill: 10,
   },
-];
+]);
 
-const DEFAULT_DIFFICULTY = DIFFICULTY_LEVELS[0].id;
+const DEFAULT_DIFFICULTY = DIFFICULTY_LEVELS[0]?.id ?? "beginner";
 
+/** @param {string | null | undefined} difficulty */
 export function normalizeDifficulty(difficulty) {
   return DIFFICULTY_LEVELS.some((level) => level.id === difficulty)
     ? difficulty
     : DEFAULT_DIFFICULTY;
 }
 
+/** @param {string | null | undefined} difficulty */
 export function getDifficultyLevel(difficulty) {
   const id = normalizeDifficulty(difficulty);
   return DIFFICULTY_LEVELS.find((level) => level.id === id);
 }
 
+/** @param {string} category */
 function skillsForCategory(category) {
   return allSkills.filter((skill) => skill.category === category);
 }
 
-function countQuestions(skills, difficultyId) {
-  const level = getDifficultyLevel(difficultyId);
+/** @param {JsonSkill[]} skills */
+/** @param {string | null | undefined} difficultyId */
+function countQuestions(
+  /** @type {JsonSkill[]} */ skills,
+  /** @type {string | null | undefined} */ difficultyId,
+) {
+  const level = getDifficultyLevel(difficultyId) ?? DIFFICULTY_LEVELS[0];
   const activeSkills = skills.slice(0, level.skillCount);
 
   return activeSkills.reduce(
-    (sum, skill) => sum + Math.min(level.questionsPerSkill, skill.questions.length),
+    (/** @type {number} */ sum, /** @type {JsonSkill} */ skill) =>
+      sum + Math.min(level.questionsPerSkill, skill.questions.length),
     0,
   );
 }
 
-export function countQuestionsForSkills(skills, difficultyId) {
+/** @param {JsonSkill[]} skills */
+/** @param {string | null | undefined} difficultyId */
+export function countQuestionsForSkills(
+  /** @type {JsonSkill[]} */ skills,
+  /** @type {string | null | undefined} */ difficultyId,
+) {
   return countQuestions(skills, difficultyId);
 }
 
 /** Apply a difficulty level to a full lesson payload. */
-export function applyDifficulty(lesson, difficulty) {
-  const level = getDifficultyLevel(difficulty);
+/** @param {LessonPayloadBase & { sectionsByMode?: Partial<Record<LessonDifficulty, LessonSection[]>> }} lesson */
+/** @param {string | null | undefined} difficulty */
+/** @returns {LessonPayloadResolved} */
+export function applyDifficulty(
+  /** @type {LessonPayloadBase & { sectionsByMode?: Partial<Record<LessonDifficulty, LessonSection[]>> }} */ lesson,
+  /** @type {string | null | undefined} */ difficulty,
+) {
+  const level = getDifficultyLevel(difficulty) ?? DIFFICULTY_LEVELS[0];
   const sourceSections =
     lesson.sectionsByMode?.[level.id] ?? lesson.sections ?? [];
-  const sections = sourceSections
+  const sections = /** @type {LessonSection[]} */ (sourceSections)
     .slice(0, level.skillCount)
     .map((section) => ({
       ...section,
@@ -118,28 +153,33 @@ export function applyDifficulty(lesson, difficulty) {
 }
 
 /** Cards for the /lesson list page (4 total). */
+/** @returns {LessonCard[]} */
 export function getLessonCatalog() {
   return LESSON_META.map((meta) => {
     const skills = skillsForCategory(meta.category);
 
-    return {
+    return /** @type {LessonCard} */ ({
       title: meta.title,
       description: meta.description,
       questionCount: countQuestions(skills, DEFAULT_DIFFICULTY),
       label: `${skills.length} skills`,
       href: `/lesson/${meta.id}`,
       lessonId: meta.id,
-      skills,
-    };
+      skills: /** @type {LessonSection[]} */ (skills),
+    });
   });
 }
 
 /** Full lesson payload for the detail / quiz flow. */
-export function getLessonById(lessonId) {
+/** @param {string} lessonId */
+/** @returns {LessonPayloadBase | null} */
+export function getLessonById(/** @type {string} */ lessonId) {
   const meta = LESSON_META.find((entry) => entry.id === lessonId);
   if (!meta) return null;
 
-  const sections = skillsForCategory(meta.category);
+  const sections = /** @type {LessonSection[]} */ (
+    skillsForCategory(meta.category)
+  );
 
   return {
     id: meta.id,

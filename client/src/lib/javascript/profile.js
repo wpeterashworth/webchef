@@ -1,8 +1,16 @@
 import { supabase } from "$lib/supabase/client.js";
 
-let cachedProfile = { authUserId: null, data: null };
+/** @typedef {import("$lib/javascript/types.js").UserProfile} UserProfile */
+/** @typedef {import("$lib/javascript/types.js").LeaderboardEntry} LeaderboardEntry */
+/** @typedef {import("$lib/javascript/types.js").AdminDashboardData} AdminDashboardData */
+
+let cachedProfile = /** @type {{ authUserId: string | null, data: UserProfile | null }} */ ({
+  authUserId: null,
+  data: null,
+});
 
 /** Gamification fields for the signed-in user, or null when signed out. */
+/** @returns {Promise<UserProfile | null>} */
 export async function getProfile() {
   const {
     data: { user },
@@ -36,6 +44,8 @@ export async function getProfile() {
 }
 
 /** Top players — only includes users at level 1+ (server enforced). */
+/** @param {number} [limit] */
+/** @returns {Promise<LeaderboardEntry[]>} */
 export async function getLeaderboard(limit = 50) {
   const { data, error } = await supabase.rpc("get_leaderboard", {
     p_limit: limit,
@@ -46,6 +56,7 @@ export async function getLeaderboard(limit = 50) {
   return data ?? [];
 }
 
+/** @returns {Promise<AdminDashboardData>} */
 export async function getAdminDashboard() {
   const { data, error } = await supabase.rpc("get_admin_dashboard");
 
@@ -59,6 +70,7 @@ export function clearProfileCache() {
 }
 
 /** Pick a leaderboard display name. Must be unique (case-insensitive). */
+/** @param {string} username */
 export async function setUsername(username) {
   const { data, error } = await supabase.rpc("set_username", {
     p_username: username,
@@ -71,6 +83,7 @@ export async function setUsername(username) {
 }
 
 /** Switch to a previously unlocked level title (saved on users.level_title). */
+/** @param {string} title */
 export async function setDisplayTitle(title) {
   const { data, error } = await supabase.rpc("set_display_title", {
     p_title: title,

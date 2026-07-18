@@ -11,7 +11,11 @@
     progressReady,
     progressError,
   } from "$lib/stores/progress.js";
-  import { profile, profileReady, updateDisplayTitle } from "$lib/stores/profile.js";
+  import {
+    profile,
+    profileReady,
+    updateDisplayTitle,
+  } from "$lib/stores/profile.js";
   import {
     canViewLeaderboard,
     canCreateLessons,
@@ -23,22 +27,64 @@
     userLessonRowToCard,
   } from "$lib/javascript/user-lessons.js";
 
-  let customLessons = $state({});
-  let bankLessons = $state({});
+  /** @typedef {"todo" | "in_progress" | "completed"} LessonStatus */
+
+  /**
+   * @typedef {object} UserProfile
+   * @property {number} level_number
+   * @property {number} xp
+   * @property {string} level_title
+   * @property {number} current_streak
+   */
+
+  /**
+   * @typedef {object} ProgressRow
+   * @property {string} lesson_slug
+   * @property {LessonStatus} status
+   * @property {number | null} score
+   * @property {string | null} difficulty
+   * @property {number | null} points_earned
+   * @property {string | null} completed_at
+   * @property {string} created_at
+   */
+
+  /**
+   * @typedef {object} LessonCard
+   * @property {string} title
+   * @property {string} href
+   * @property {string} lessonId
+   */
+
+  /**
+   * @typedef {LessonCard & ProgressRow} DashboardLesson
+   */
+
+  let customLessons = $state(/** @type {Record<string, LessonCard>} */ ({}));
+  let bankLessons = $state(/** @type {Record<string, LessonCard>} */ ({}));
   let titleSaving = $state(false);
   let titleError = $state("");
 
+  const currentProfile = $derived(/** @type {UserProfile | null} */ ($profile));
+  const currentProgress = $derived(
+    /** @type {Record<string, ProgressRow>} */ ($progress),
+  );
+  const currentProgressError = $derived(
+    /** @type {Error | null} */ ($progressError),
+  );
+
   const titleOptions = $derived(
-    $profile ? unlockedLevelTitles($profile.level_number) : [],
+    currentProfile ? unlockedLevelTitles(currentProfile.level_number) : [],
   );
 
   const canCreate = $derived(
-    $profileReady && $profile ? canCreateLessons($profile.level_number) : false,
+    $profileReady && currentProfile
+      ? canCreateLessons(currentProfile.level_number)
+      : false,
   );
 
   const xpProgress = $derived(
-    $profile
-      ? nextLevelProgress($profile.xp, $profile.level_number)
+    currentProfile
+      ? nextLevelProgress(currentProfile.xp, currentProfile.level_number)
       : null,
   );
 
@@ -48,9 +94,13 @@
   }));
 
   const byStatus = $derived.by(() => {
-    const groups = { [TODO]: [], [IN_PROGRESS]: [], [COMPLETED]: [] };
+    const groups = /** @type {Record<LessonStatus, DashboardLesson[]>} */ ({
+      [TODO]: [],
+      [IN_PROGRESS]: [],
+      [COMPLETED]: [],
+    });
 
-    for (const row of Object.values($progress)) {
+    for (const row of Object.values(currentProgress)) {
       const meta = catalogById[row.lesson_slug] ?? {
         title: "Custom lesson",
         href: `/lesson/${row.lesson_slug}`,
@@ -84,30 +134,45 @@
     }
   });
 
+  /** @param {ProgressRow} row */
   const dateFor = (row) =>
     new Date(row.completed_at ?? row.created_at).toLocaleDateString();
 
+  /** @param {string | null | undefined} difficulty */
   function difficultyMeta(difficulty) {
     if (!difficulty) return null;
     const level = getDifficultyLevel(difficulty);
     return level ? { label: level.label, color: level.accentColor } : null;
   }
 
+  /**
+   * @param {string} href
+   * @param {string | null | undefined} difficulty
+   */
   function lessonHref(href, difficulty) {
     if (!difficulty) return href;
     const separator = href.includes("?") ? "&" : "?";
     return `${href}${separator}difficulty=${difficulty}`;
   }
 
+  /** @param {string} nextTitle */
   async function changeTitle(nextTitle) {
-    if (!$profile || titleSaving || nextTitle === $profile.level_title) return;
+    if (
+      !currentProfile ||
+      titleSaving ||
+      nextTitle === currentProfile.level_title
+    )
+      return;
 
     titleSaving = true;
     titleError = "";
     try {
       await updateDisplayTitle(nextTitle);
     } catch (error) {
-      titleError = error.message;
+      titleError =
+        error instanceof Error
+          ? error.message
+          : "Could not update display title.";
     } finally {
       titleSaving = false;
     }
@@ -129,13 +194,15 @@
             <p class="eyebrow">Your learning hub</p>
             <h1>Dashboard</h1>
 
-            {#if $profileReady && $profile && xpProgress}
+            {#if $profileReady && currentProfile && xpProgress}
               <div class="level-display">
-                <span class="level-number">Lv {$profile.level_number}</span>
+                <span class="level-number"
+                  >Lv {currentProfile.level_number}</span
+                >
                 {#if titleOptions.length > 1}
                   <select
                     class="title-select"
-                    value={$profile.level_title}
+                    value={currentProfile.level_title}
                     disabled={titleSaving}
                     aria-label="Choose level title"
                     onchange={(event) => changeTitle(event.currentTarget.value)}
@@ -145,7 +212,7 @@
                     {/each}
                   </select>
                 {:else}
-                  <span class="level-title">{$profile.level_title}</span>
+                  <span class="level-title">{currentProfile.level_title}</span>
                 {/if}
               </div>
               {#if titleError}
@@ -153,13 +220,13 @@
               {/if}
               <p class="xp-progress">
                 {#if xpProgress.isMax}
-                  {$profile.xp} XP · Max level
+                  {currentProfile.xp} XP · Max level
                 {:else}
                   {xpProgress.current}/{xpProgress.needed} XP
                 {/if}
               </p>
               <p class="streak-stats">
-                🔥 {$profile.current_streak} day streak
+                🔥 {currentProfile.current_streak} day streak
               </p>
             {:else if $profileReady}
               <p class="level-loading">Loading stats…</p>
@@ -172,21 +239,23 @@
           </div>
         </header>
 
-        {#if $profileReady && $profile && !canViewLeaderboard($profile.level_number)}
+        {#if $profileReady && currentProfile && !canViewLeaderboard(currentProfile.level_number)}
           <p class="unlock-hint">
             Earn 10 XP (complete a beginner lesson) to unlock the leaderboard.
           </p>
         {/if}
 
-        {#if $profileReady && $profile && canViewLeaderboard($profile.level_number)}
+        {#if $profileReady && currentProfile && canViewLeaderboard(currentProfile.level_number)}
           <div class="builder-actions">
-            <a class="builder-btn secondary" href="/leaderboard">View leaderboard</a>
+            <a class="builder-btn secondary" href="/leaderboard"
+              >View leaderboard</a
+            >
           </div>
         {/if}
 
-        {#if $progressError}
+        {#if currentProgressError}
           <p class="load-error">
-            Your progress couldn't be loaded: {$progressError.message}
+            Your progress couldn't be loaded: {currentProgressError.message}
           </p>
         {/if}
 
@@ -207,8 +276,12 @@
 
         {#if canCreate}
           <div class="builder-actions">
-            <a class="builder-btn primary" href="/lesson/create">Create a lesson</a>
-            <a class="builder-btn secondary" href="/lesson/my-lessons">My lessons</a>
+            <a class="builder-btn primary" href="/lesson/create"
+              >Create a lesson</a
+            >
+            <a class="builder-btn secondary" href="/lesson/my-lessons"
+              >My lessons</a
+            >
           </div>
         {/if}
 
@@ -228,7 +301,10 @@
             {:else}
               {#each byStatus[IN_PROGRESS] as lesson (lesson.lessonId)}
                 {@const diff = difficultyMeta(lesson.difficulty)}
-                <a class="progress-card" href={lessonHref(lesson.href, lesson.difficulty)}>
+                <a
+                  class="progress-card"
+                  href={lessonHref(lesson.href, lesson.difficulty)}
+                >
                   <div class="progress-card-top">
                     <h3>{lesson.title}</h3>
                     {#if diff}
@@ -301,7 +377,10 @@
             {:else}
               {#each byStatus[COMPLETED] as lesson (lesson.lessonId)}
                 {@const diff = difficultyMeta(lesson.difficulty)}
-                <a class="progress-card" href={lessonHref(lesson.href, lesson.difficulty)}>
+                <a
+                  class="progress-card"
+                  href={lessonHref(lesson.href, lesson.difficulty)}
+                >
                   <div class="progress-card-top">
                     <h3>{lesson.title}</h3>
                     {#if diff}
@@ -627,7 +706,9 @@
       color: var(--text-color);
       box-sizing: border-box;
       overflow: hidden;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 
       &:hover {
         border-color: var(--text-muted);

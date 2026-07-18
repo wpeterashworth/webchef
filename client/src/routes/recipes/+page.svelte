@@ -3,14 +3,16 @@
   import Footer from "$lib/components/footer.svelte";
   import RecipeCard from "$lib/components/recipe-card.svelte";
   import { getRecipes, getCuisines, MEALS } from "$lib/javascript/recipes.js";
+  /** @typedef {import("$lib/javascript/types-recipes.js").RecipeCard} RecipeCardType */
+  /** @typedef {RecipeCardType & { description: string }} RecipeCardView */
 
-  let cuisine = $state(null);
-  let meal = $state(null);
+  let cuisine = $state(/** @type {string | null} */ (null));
+  let meal = $state(/** @type {string | null} */ (null));
 
-  let recipes = $state([]);
-  let cuisines = $state([]);
+  let recipes = $state(/** @type {RecipeCardView[]} */ ([]));
+  let cuisines = $state(/** @type {string[]} */ ([]));
   let loading = $state(true);
-  let loadError = $state(null);
+  let loadError = $state(/** @type {Error | null} */ (null));
 
   // The cuisine options come from the data, so they're fetched once up front —
   // unlike the recipes themselves, they don't change as filters change.
@@ -29,7 +31,12 @@
 
     getRecipes(filters)
       .then((result) => {
-        recipes = result;
+        recipes = /** @type {RecipeCardView[]} */ (
+          result.map((recipe) => ({
+            ...recipe,
+            description: recipe.description ?? "",
+          }))
+        );
       })
       .catch((error) => {
         loadError = error;
@@ -40,6 +47,10 @@
   });
 
   // Clicking the active chip clears it, so the filters double as toggles.
+  /**
+   * @param {string | null} current
+   * @param {string} value
+   */
   const toggle = (current, value) => (current === value ? null : value);
 
   const hasFilters = $derived(cuisine !== null || meal !== null);
@@ -126,9 +137,7 @@
           {/each}
         </div>
       {:else if hasFilters}
-        <p class="status">
-          No recipes match those filters. Try clearing one.
-        </p>
+        <p class="status">No recipes match those filters. Try clearing one.</p>
       {:else}
         <p class="status">No recipes are available yet. Check back soon.</p>
       {/if}

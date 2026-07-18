@@ -4,8 +4,10 @@ import { writable } from "svelte/store";
 import { browser } from "$app/environment";
 import { supabase } from "$lib/supabase/client.js";
 
+/** @typedef {import("@supabase/supabase-js").User} SupabaseUser */
+
 // Holds the current Supabase user object, or null when signed out.
-export const user = writable(null);
+export const user = writable(/** @type {SupabaseUser | null} */ (null));
 // Flips to true once we've checked for an existing session, so the UI can
 // avoid flickering between "logged out" and "logged in" on first paint.
 export const authReady = writable(false);
