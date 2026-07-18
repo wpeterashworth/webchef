@@ -15,6 +15,7 @@ function createServerStub() {
 
   return {
     auth: {
+      getUser: fail,
       getSession: fail,
       onAuthStateChange: fail,
       signInWithPassword: fail,
