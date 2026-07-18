@@ -4,11 +4,8 @@
 import { createClient } from "@supabase/supabase-js";
 import { env } from "$env/dynamic/public";
 
-const { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } = env;
-
-if (!PUBLIC_SUPABASE_URL || !PUBLIC_SUPABASE_ANON_KEY) {
-  throw new Error("Missing Supabase public environment variables.");
-}
+const PUBLIC_SUPABASE_URL = env.PUBLIC_SUPABASE_URL ?? "";
+const PUBLIC_SUPABASE_ANON_KEY = env.PUBLIC_SUPABASE_ANON_KEY ?? "";
 
 export const supabase = createClient(
   PUBLIC_SUPABASE_URL,
