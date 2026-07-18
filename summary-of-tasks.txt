@@ -126,3 +126,10 @@ Changes:
   - Added an Admin nav link that only appears for admin users
 Verified with `pnpm build` in client. Existing unrelated Svelte warnings remain for login/signup submit syntax and unused dashboard CSS selectors.
 
+2026-07-18 — Josh
+Fixed the Supabase browser client so CI no longer depends on generated `$env/static/public` exports for the public URL and anon key.
+Changes:
+  - Updated client/src/lib/supabase/client.js to read from `$env/dynamic/public`
+  - Added a runtime guard so missing public Supabase env vars fail fast with a clear error
+Verified with `pnpm run check` locally after the change; the GitHub error about missing exported members should now be avoided during CI.
+
