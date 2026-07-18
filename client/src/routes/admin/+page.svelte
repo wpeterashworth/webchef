@@ -4,11 +4,19 @@
   import AuthGuard from "$lib/components/auth-guard.svelte";
   import { getAdminDashboard } from "$lib/javascript/profile.js";
   import { profile, profileReady } from "$lib/stores/profile.js";
+  /**
+   * @typedef {{
+   *   counts?: Record<string, number>,
+   *   recent_users?: Array<{ username: string, email: string, level_number: number, xp: number, is_admin: boolean, joined_at: string | number | Date }>,
+   *   top_cooks?: Array<{ username: string, level_number: number, level_title: string, xp: number }>,
+   *   generated_at?: string | number | Date
+   * }} AdminDashboard
+   */
 
-  let dashboard = $state(null);
+  let dashboard = $state(/** @type {AdminDashboard | null} */ (null));
   let loading = $state(true);
   let loadError = $state("");
-  let loadedFor = $state(null);
+  let loadedFor = $state(/** @type {string | null} */ (null));
 
   $effect(() => {
     if (!$profileReady) return;
@@ -28,12 +36,15 @@
 
     getAdminDashboard()
       .then((data) => {
-        dashboard = data;
+        dashboard = /** @type {AdminDashboard} */ (data);
         loadedFor = $profile.id;
       })
       .catch((error) => {
         dashboard = null;
-        loadError = error.message;
+        loadError =
+          error instanceof Error
+            ? error.message
+            : "Could not load admin dashboard.";
       })
       .finally(() => {
         loading = false;
@@ -49,6 +60,7 @@
       : "",
   );
 
+  /** @param {string | number | Date} value */
   const joinedAt = (value) => new Date(value).toLocaleDateString();
 </script>
 

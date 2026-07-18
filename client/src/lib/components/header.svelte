@@ -32,7 +32,7 @@
     goto("/");
   }
 
-  let headerEl = $state(null);
+  let headerEl = $state(/** @type {HTMLElement | null} */ (null));
 
   onMount(() => {
     currentTheme = getInitialTheme();
@@ -40,18 +40,19 @@
   });
 
   $effect(() => {
-    if (!headerEl) return;
+    const el = headerEl;
+    if (!el) return;
 
     const updateHeaderOffset = () => {
       document.documentElement.style.setProperty(
         "--site-header-offset",
-        `${headerEl.offsetHeight}px`,
+        `${el.offsetHeight}px`,
       );
     };
 
     updateHeaderOffset();
     const observer = new ResizeObserver(updateHeaderOffset);
-    observer.observe(headerEl);
+    observer.observe(el);
     window.addEventListener("resize", updateHeaderOffset);
 
     return () => {

@@ -5,9 +5,10 @@
   import { getLeaderboard, setUsername } from "$lib/javascript/profile.js";
   import { canViewLeaderboard } from "$lib/javascript/points.js";
   import { profile, profileReady, patchProfile } from "$lib/stores/profile.js";
+  /** @typedef {{ rank: number, username: string, xp: number, level_number: number, level_title: string }} LeaderboardRow */
 
-  let fetchedRows = $state([]);
-  let loadError = $state(null);
+  let fetchedRows = $state(/** @type {LeaderboardRow[]} */ ([]));
+  let loadError = $state(/** @type {Error | null} */ (null));
   let loading = $state(true);
   let usernameInput = $state("");
   let usernameError = $state("");
@@ -30,7 +31,9 @@
   });
 
   const canView = $derived(
-    $profileReady && $profile ? canViewLeaderboard($profile.level_number) : false,
+    $profileReady && $profile
+      ? canViewLeaderboard($profile.level_number)
+      : false,
   );
 
   $effect(() => {
@@ -39,6 +42,7 @@
     }
   });
 
+  /** @param {SubmitEvent} event */
   async function saveUsername(event) {
     event.preventDefault();
     usernameError = "";
@@ -55,7 +59,8 @@
         row.username === previous ? { ...row, username: next } : row,
       );
     } catch (error) {
-      usernameError = error.message;
+      usernameError =
+        error instanceof Error ? error.message : "Could not save username.";
     } finally {
       usernameSaving = false;
     }
@@ -75,10 +80,19 @@
 
     getLeaderboard()
       .then((data) => {
-        fetchedRows = data;
+        fetchedRows = data.map((entry, index) => ({
+          rank: index + 1,
+          username: entry.username,
+          xp: entry.xp,
+          level_number: entry.level_number,
+          level_title: entry.level_title,
+        }));
       })
       .catch((error) => {
-        loadError = error;
+        loadError =
+          error instanceof Error
+            ? error
+            : new Error("Could not load leaderboard.");
         fetchedRows = [];
       })
       .finally(() => {
@@ -129,38 +143,40 @@
               {:else if usernameSaved}
                 <p class="saved" role="status">Username updated.</p>
               {:else}
-                <p class="hint">Anything goes — just pick a name nobody else has.</p>
+                <p class="hint">
+                  Anything goes — just pick a name nobody else has.
+                </p>
               {/if}
             </form>
           {/if}
 
           {#if loading}
-          <p class="status">Loading rankings…</p>
+            <p class="status">Loading rankings…</p>
           {:else if loadError}
-          <p class="error">{loadError.message}</p>
+            <p class="error">{loadError.message}</p>
           {:else if rows.length === 0}
-          <p class="status">No ranked players yet.</p>
+            <p class="status">No ranked players yet.</p>
           {:else}
-          <table>
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Chef</th>
-                <th>Level</th>
-                <th>XP</th>
-              </tr>
-            </thead>
-            <tbody>
-              {#each rows as row (row.rank)}
-                <tr class:me={row.username === $profile?.username}>
-                  <td>#{row.rank}</td>
-                  <td>{row.username}</td>
-                  <td>{row.level_number} · {row.level_title}</td>
-                  <td>{row.xp}</td>
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Chef</th>
+                  <th>Level</th>
+                  <th>XP</th>
                 </tr>
-              {/each}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {#each rows as row (row.rank)}
+                  <tr class:me={row.username === $profile?.username}>
+                    <td>#{row.rank}</td>
+                    <td>{row.username}</td>
+                    <td>{row.level_number} · {row.level_title}</td>
+                    <td>{row.xp}</td>
+                  </tr>
+                {/each}
+              </tbody>
+            </table>
           {/if}
         {/if}
       </section>
@@ -218,7 +234,8 @@
   td {
     padding: 0.75rem 1rem;
     text-align: left;
-    border-bottom: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--text-color) 12%, transparent);
   }
 
   th {

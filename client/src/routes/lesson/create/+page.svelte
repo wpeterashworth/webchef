@@ -27,7 +27,7 @@
   let introBody = $state("");
   let questions = $state([emptyQuestion()]);
   let isPublic = $state(false);
-  let editingSlug = $state(null);
+  let editingSlug = $state(/** @type {string | null} */ (null));
 
   let saving = $state(false);
   let errorMessage = $state("");
@@ -73,7 +73,8 @@
         safetyTip: question.safety_tip ?? "",
       }));
     } catch (error) {
-      errorMessage = error.message;
+      errorMessage =
+        error instanceof Error ? error.message : "Could not load your lesson.";
     }
   });
 
@@ -81,11 +82,13 @@
     questions = [...questions, emptyQuestion()];
   }
 
+  /** @param {number} index */
   function removeQuestion(index) {
     if (questions.length <= 1) return;
     questions = questions.filter((_, i) => i !== index);
   }
 
+  /** @param {number} questionIndex */
   function addOption(questionIndex) {
     questions = questions.map((entry, index) =>
       index === questionIndex
@@ -94,6 +97,7 @@
     );
   }
 
+  /** @param {number} questionIndex */
   function removeOption(questionIndex) {
     questions = questions.map((entry, index) => {
       if (index !== questionIndex || entry.options.length <= 2) return entry;
@@ -108,6 +112,7 @@
     });
   }
 
+  /** @param {SubmitEvent} event */
   async function handleSubmit(event) {
     event.preventDefault();
     errorMessage = "";
@@ -135,7 +140,8 @@
         return;
       }
     } catch (error) {
-      errorMessage = error.message;
+      errorMessage =
+        error instanceof Error ? error.message : "Could not save your lesson.";
     } finally {
       saving = false;
     }
@@ -154,13 +160,15 @@
       <section class="create-page">
         <header>
           <p class="eyebrow">Lesson builder</p>
-          <h1>{editingSlug ? "Edit your lesson" : "Create a personal lesson"}</h1>
+          <h1>
+            {editingSlug ? "Edit your lesson" : "Create a personal lesson"}
+          </h1>
         </header>
 
         {#if !canCreate}
           <p class="locked">
-            Reach level 1 (10 XP) to create personal lessons. Complete a beginner
-            lesson to unlock this feature.
+            Reach level 1 (10 XP) to create personal lessons. Complete a
+            beginner lesson to unlock this feature.
           </p>
         {:else}
           <form class="create-form" onsubmit={handleSubmit}>
@@ -178,22 +186,34 @@
 
             <label>
               Short description
-              <textarea bind:value={description} rows="2" maxlength="240"></textarea>
+              <textarea bind:value={description} rows="2" maxlength="240"
+              ></textarea>
             </label>
 
             <label>
               Skill name
-              <input type="text" bind:value={skillName} required maxlength="60" />
+              <input
+                type="text"
+                bind:value={skillName}
+                required
+                maxlength="60"
+              />
             </label>
 
             <label>
               Intro headline
-              <input type="text" bind:value={introHeadline} required maxlength="100" />
+              <input
+                type="text"
+                bind:value={introHeadline}
+                required
+                maxlength="100"
+              />
             </label>
 
             <label>
               Intro body
-              <textarea bind:value={introBody} required rows="3" maxlength="500"></textarea>
+              <textarea bind:value={introBody} required rows="3" maxlength="500"
+              ></textarea>
             </label>
 
             <div class="questions-block">
@@ -205,7 +225,8 @@
 
                   <label>
                     Prompt
-                    <textarea bind:value={question.question} required rows="2"></textarea>
+                    <textarea bind:value={question.question} required rows="2"
+                    ></textarea>
                   </label>
 
                   <div class="option-controls">
@@ -246,14 +267,17 @@
                     Correct option
                     <select bind:value={question.correctIndex}>
                       {#each question.options as option, optionIndex (optionIndex)}
-                        <option value={optionIndex}>Option {optionIndex + 1}</option>
+                        <option value={optionIndex}
+                          >Option {optionIndex + 1}</option
+                        >
                       {/each}
                     </select>
                   </label>
 
                   <label>
                     Explanation
-                    <textarea bind:value={question.explanation} rows="2"></textarea>
+                    <textarea bind:value={question.explanation} rows="2"
+                    ></textarea>
                   </label>
 
                   <label>
@@ -418,7 +442,11 @@
     opacity: 0.35;
     cursor: not-allowed;
     color: var(--text-muted);
-    background: color-mix(in srgb, var(--panel-color) 80%, var(--text-muted) 20%);
+    background: color-mix(
+      in srgb,
+      var(--panel-color) 80%,
+      var(--text-muted) 20%
+    );
   }
 
   button[type="submit"] {

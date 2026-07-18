@@ -11,15 +11,21 @@ import { user } from "$lib/stores/auth.js";
 import * as api from "$lib/javascript/progress.js";
 import { patchProfile } from "$lib/stores/profile.js";
 
+/** @typedef {import("$lib/javascript/types.js").ProgressRow} ProgressRow */
+/** @typedef {import("$lib/javascript/types.js").LessonStatus} LessonStatus */
+/** @typedef {import("$lib/javascript/types.js").LessonDifficulty} LessonDifficulty */
+/** @typedef {import("$lib/javascript/types.js").CompletionResult} CompletionResult */
+
 /** lesson slug -> progress row. Empty object when signed out. */
-export const progress = writable({});
+export const progress = writable(/** @type {Record<string, ProgressRow>} */ ({}));
 
 /** Flips true once progress has been fetched, so the UI can hold off on badges. */
 export const progressReady = writable(false);
 
 /** Set when a load or write fails, so pages can surface it instead of guessing. */
-export const progressError = writable(null);
+export const progressError = writable(/** @type {Error | null} */ (null));
 
+/** @param {ProgressRow[]} rows */
 const bySlug = (rows) =>
   Object.fromEntries(rows.map((row) => [row.lesson_slug, row]));
 
@@ -41,7 +47,9 @@ if (browser) {
       progressError.set(null);
     } catch (error) {
       progress.set({});
-      progressError.set(error);
+      progressError.set(
+        error instanceof Error ? error : new Error("Could not load progress."),
+      );
     } finally {
       progressReady.set(true);
     }
@@ -49,18 +57,26 @@ if (browser) {
 }
 
 /** Save a status and reflect it in the store. */
-export async function setStatus(lessonSlug, status, difficulty = null) {
+export async function setStatus(
+  /** @type {string} */ lessonSlug,
+  /** @type {LessonStatus} */ status,
+  /** @type {LessonDifficulty | null} */ difficulty = null,
+) {
   const row = await api.setStatus(lessonSlug, status, difficulty);
   progress.update((rows) => ({ ...rows, [lessonSlug]: row }));
 }
 
 /** Mark started, unless the lesson is already in progress or finished. */
-export async function markStarted(lessonSlug, currentStatus) {
+export async function markStarted(
+  /** @type {string} */ lessonSlug,
+  /** @type {LessonStatus | undefined} */ currentStatus,
+) {
   const row = await api.markStarted(lessonSlug, currentStatus);
   if (row) progress.update((rows) => ({ ...rows, [lessonSlug]: row }));
 }
 
 /** Stop tracking a lesson — removes it from the to-do list. */
+/** @param {string} lessonSlug */
 export async function clearStatus(lessonSlug) {
   await api.clearStatus(lessonSlug);
   progress.update((rows) => {
@@ -70,7 +86,12 @@ export async function clearStatus(lessonSlug) {
 }
 
 /** Finish a lesson, award points, and refresh local progress + profile state. */
-export async function completeLesson(lessonSlug, difficulty, score = null) {
+/** @returns {Promise<CompletionResult>} */
+export async function completeLesson(
+  /** @type {string} */ lessonSlug,
+  /** @type {LessonDifficulty} */ difficulty,
+  /** @type {number | null} */ score = null,
+) {
   const result = await api.completeLesson(lessonSlug, difficulty, score);
 
   progress.set(

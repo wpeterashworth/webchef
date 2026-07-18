@@ -14,12 +14,13 @@
     setUserLessonVisibility,
     userLessonRowToCard,
   } from "$lib/javascript/user-lessons.js";
+  /** @typedef {import("$lib/svelte/types-routes.js").LessonCard} LessonCard */
 
-  let lessons = $state([]);
-  let loadError = $state(null);
+  let lessons = $state(/** @type {LessonCard[]} */ ([]));
+  let loadError = $state(/** @type {Error | null} */ (null));
   let loading = $state(true);
   let actionError = $state("");
-  let busySlug = $state(null);
+  let busySlug = $state(/** @type {string | null} */ (null));
 
   const canCreate = $derived(
     $profileReady && $profile ? canCreateLessons($profile.level_number) : false,
@@ -38,7 +39,10 @@
       const rows = await getMyUserLessons();
       lessons = rows.map(userLessonRowToCard);
     } catch (error) {
-      loadError = error;
+      loadError =
+        error instanceof Error
+          ? error
+          : new Error("Could not load your lessons.");
       lessons = [];
     } finally {
       loading = false;
@@ -47,6 +51,10 @@
 
   onMount(loadLessons);
 
+  /**
+   * @param {string} slug
+   * @param {boolean} nextValue
+   */
   async function toggleShare(slug, nextValue) {
     actionError = "";
     busySlug = slug;
@@ -55,12 +63,16 @@
       await setUserLessonVisibility(slug, nextValue);
       await loadLessons();
     } catch (error) {
-      actionError = error.message;
+      actionError =
+        error instanceof Error
+          ? error.message
+          : "Could not update lesson visibility.";
     } finally {
       busySlug = null;
     }
   }
 
+  /** @param {string} slug */
   async function removeLesson(slug) {
     if (!confirm("Delete this lesson permanently?")) return;
 
@@ -71,7 +83,8 @@
       await deleteUserLesson(slug);
       await loadLessons();
     } catch (error) {
-      actionError = error.message;
+      actionError =
+        error instanceof Error ? error.message : "Could not delete lesson.";
     } finally {
       busySlug = null;
     }
@@ -97,9 +110,7 @@
         </header>
 
         {#if !canCreate}
-          <p class="locked">
-            Reach level 1 to create personal lessons.
-          </p>
+          <p class="locked">Reach level 1 to create personal lessons.</p>
         {:else if loading}
           <p class="status">Loading your lessons…</p>
         {:else if loadError}
@@ -128,7 +139,10 @@
 
                 <div class="actions">
                   <a class="button" href={lesson.href}>Play</a>
-                  <a class="button secondary" href={`/lesson/create?slug=${lesson.lessonId}`}>
+                  <a
+                    class="button secondary"
+                    href={`/lesson/create?slug=${lesson.lessonId}`}
+                  >
                     Edit
                   </a>
 
@@ -138,7 +152,11 @@
                       checked={lesson.isPublic}
                       disabled={!canShare || busySlug === lesson.lessonId}
                       onchange={(event) =>
-                        toggleShare(lesson.lessonId, event.currentTarget.checked)}
+                        toggleShare(
+                          lesson.lessonId,
+                          /** @type {HTMLInputElement} */ (event.currentTarget)
+                            .checked,
+                        )}
                     />
                     Public
                   </label>
@@ -159,7 +177,8 @@
 
         {#if canCreate && !canShare}
           <p class="hint">
-            Reach level 20 to share a lesson on the main Lessons page for everyone.
+            Reach level 20 to share a lesson on the main Lessons page for
+            everyone.
           </p>
         {/if}
       </section>

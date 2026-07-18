@@ -1,4 +1,3 @@
- 
 <script>
   import Header from "$lib/components/header.svelte";
   import Footer from "$lib/components/footer.svelte";
@@ -11,6 +10,7 @@
   let errorMessage = $state("");
   let loading = $state(false);
 
+  /** @param {SubmitEvent} event */
   async function handleLogin(event) {
     event.preventDefault();
     errorMessage = "";
@@ -43,35 +43,40 @@
   <main class="page-main">
     <div class="auth-page">
       <form class="auth-card" on:submit={handleLogin}>
-    <h1>Log In</h1>
+        <h1>Log In</h1>
 
-    {#if errorMessage}
-      <p class="error" role="alert">{errorMessage}</p>
-    {/if}
+        {#if errorMessage}
+          <p class="error" role="alert">{errorMessage}</p>
+        {/if}
 
-    <label>
-      Email
-      <input type="email" bind:value={email} required autocomplete="email" />
-    </label>
+        <label>
+          Email
+          <input
+            type="email"
+            bind:value={email}
+            required
+            autocomplete="email"
+          />
+        </label>
 
-    <label>
-      Password
-      <input
-        type="password"
-        bind:value={password}
-        required
-        autocomplete="current-password"
-      />
-    </label>
+        <label>
+          Password
+          <input
+            type="password"
+            bind:value={password}
+            required
+            autocomplete="current-password"
+          />
+        </label>
 
-    <button type="submit" disabled={loading}>
-      {loading ? "Logging in…" : "Log In"}
-    </button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in…" : "Log In"}
+        </button>
 
-    <p class="switch">
-      Don't have an account? <a href="/signup">Sign up</a>
-    </p>
-  </form>
+        <p class="switch">
+          Don't have an account? <a href="/signup">Sign up</a>
+        </p>
+      </form>
     </div>
   </main>
 

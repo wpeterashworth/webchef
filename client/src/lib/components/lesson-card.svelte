@@ -8,7 +8,12 @@
     pointsForDifficulty,
     unlockRequirement,
   } from "$lib/javascript/points.js";
-  import { STATUS_LABEL, TODO, COMPLETED, IN_PROGRESS } from "$lib/javascript/progress.js";
+  import {
+    STATUS_LABEL,
+    TODO,
+    COMPLETED,
+    IN_PROGRESS,
+  } from "$lib/javascript/progress.js";
   import { progress, setStatus, clearStatus } from "$lib/stores/progress.js";
   import { profile } from "$lib/stores/profile.js";
 
@@ -59,6 +64,7 @@
     }
   });
 
+  /** @param {import("$lib/javascript/types-core.js").LessonDifficulty} levelId */
   async function selectDifficulty(levelId) {
     if (!difficultyUnlocked(userLevel, levelId)) return;
 

@@ -14,6 +14,7 @@
   let infoMessage = $state("");
   let loading = $state(false);
 
+  /** @param {SubmitEvent} event */
   async function handleSignup(event) {
     event.preventDefault();
     errorMessage = "";

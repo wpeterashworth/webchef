@@ -23,6 +23,7 @@
   let pwInfo = $state("");
   let pwLoading = $state(false);
 
+  /** @param {SubmitEvent} event */
   async function handleChangePassword(event) {
     event.preventDefault();
     pwError = "";
@@ -35,10 +36,17 @@
 
     pwLoading = true;
 
+    const email = $user?.email;
+    if (!email) {
+      pwLoading = false;
+      pwError = "You are not signed in.";
+      return;
+    }
+
     // Supabase has no "verify my password" endpoint, so we re-sign-in with the
     // current password. If it fails, the current password was wrong.
     const { error: signInError } = await supabase.auth.signInWithPassword({
-      email: $user.email,
+      email,
       password: currentPassword,
     });
 
@@ -74,6 +82,7 @@
 
   // Step 1: user typed their password and pressed "Delete my account".
   // Ask for a final confirmation before doing anything irreversible.
+  /** @param {SubmitEvent} event */
   function requestDelete(event) {
     event.preventDefault();
     deleteError = "";
@@ -90,9 +99,16 @@
     deleteError = "";
     deleteLoading = true;
 
+    const email = $user?.email;
+    if (!email) {
+      deleteLoading = false;
+      deleteError = "You are not signed in.";
+      return;
+    }
+
     // Verify the current password the same way as the password change.
     const { error: signInError } = await supabase.auth.signInWithPassword({
-      email: $user.email,
+      email,
       password: deletePassword,
     });
 

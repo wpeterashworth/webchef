@@ -6,6 +6,11 @@
 
 import { supabase } from "$lib/supabase/client.js";
 
+/** @typedef {import("$lib/javascript/types.js").ProgressRow} ProgressRow */
+/** @typedef {import("$lib/javascript/types.js").LessonStatus} LessonStatus */
+/** @typedef {import("$lib/javascript/types.js").LessonDifficulty} LessonDifficulty */
+/** @typedef {import("$lib/javascript/types.js").CompletionResult} CompletionResult */
+
 export const TODO = "todo";
 export const IN_PROGRESS = "in_progress";
 export const COMPLETED = "completed";
@@ -20,7 +25,10 @@ export const STATUS_LABEL = {
 // user_progress.user_id points at users.id (the app's own uuid), not the Supabase
 // auth id — so every write needs the profile row's id. It never changes for a
 // given login, so look it up once and reuse it.
-let cachedProfile = { authUserId: null, profileId: null };
+let cachedProfile = /** @type {{ authUserId: string | null, profileId: string | null }} */ ({
+  authUserId: null,
+  profileId: null,
+});
 
 /**
  * The current user's row id in `users`, or null when signed out.
@@ -61,6 +69,7 @@ export async function getProfileId() {
 }
 
 /** Every progress row for the current user. Empty array when signed out. */
+/** @returns {Promise<ProgressRow[]>} */
 export async function getProgress() {
   const profileId = await getProfileId();
   if (!profileId) return [];
@@ -84,16 +93,21 @@ export async function getProgress() {
  * so "add to to-do" and "mark completed" are the same operation with a different
  * status, and re-running either is harmless.
  */
-export async function setStatus(lessonSlug, status, difficulty = null) {
+/** @returns {Promise<ProgressRow>} */
+export async function setStatus(
+  /** @type {string} */ lessonSlug,
+  /** @type {LessonStatus} */ status,
+  /** @type {LessonDifficulty | null} */ difficulty = null,
+) {
   const profileId = await getProfileId();
   if (!profileId) throw new Error("You must be signed in to track progress.");
 
-  const payload = {
+  const payload = /** @type {{ user_id: string, lesson_slug: string, status: LessonStatus, completed_at: string | null, difficulty?: LessonDifficulty }} */ ({
     user_id: profileId,
     lesson_slug: lessonSlug,
     status,
     completed_at: status === COMPLETED ? new Date().toISOString() : null,
-  };
+  });
 
   const resolvedDifficulty =
     difficulty ?? (status === TODO ? "beginner" : null);
@@ -118,7 +132,12 @@ export async function setStatus(lessonSlug, status, difficulty = null) {
  * Mark a lesson complete and award points through the database RPC.
  * Replaying at a higher difficulty only grants the point difference.
  */
-export async function completeLesson(lessonSlug, difficulty, score = null) {
+/** @returns {Promise<CompletionResult>} */
+export async function completeLesson(
+  /** @type {string} */ lessonSlug,
+  /** @type {LessonDifficulty} */ difficulty,
+  /** @type {number | null} */ score = null,
+) {
   const { data, error } = await supabase.rpc("complete_lesson", {
     p_lesson_slug: lessonSlug,
     p_difficulty: difficulty,
@@ -137,13 +156,18 @@ export async function completeLesson(lessonSlug, difficulty, score = null) {
  * lesson they've completed. Without this guard, replaying a finished lesson
  * would quietly un-complete it.
  */
-export async function markStarted(lessonSlug, currentStatus) {
+/** @returns {Promise<ProgressRow | null>} */
+export async function markStarted(
+  /** @type {string} */ lessonSlug,
+  /** @type {LessonStatus | undefined} */ currentStatus,
+) {
   if (currentStatus === COMPLETED || currentStatus === IN_PROGRESS) return null;
 
   return setStatus(lessonSlug, IN_PROGRESS);
 }
 
 /** Stop tracking a lesson entirely (e.g. taking it off the to-do list). */
+/** @param {string} lessonSlug */
 export async function clearStatus(lessonSlug) {
   const profileId = await getProfileId();
   if (!profileId) return;

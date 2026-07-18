@@ -7,6 +7,9 @@
 
 import { supabase } from "$lib/supabase/client.js";
 
+/** @typedef {import("$lib/javascript/types-recipes.js").Recipe} Recipe */
+/** @typedef {import("$lib/javascript/types-recipes.js").RecipeCard} RecipeCard */
+
 // Everything the cards need; the heavy jsonb columns are left out so the list
 // query stays small. The detail page asks for them separately.
 const CARD_FIELDS =
@@ -17,6 +20,8 @@ const CARD_FIELDS =
 // in the order a day actually happens.
 export const MEALS = ["breakfast", "lunch", "dinner", "snack", "dessert"];
 
+/** @typedef {{ cuisine?: string | null, meal?: string | null }} RecipeFilters */
+
 /**
  * Recipes, newest filters applied, alphabetical.
  *
@@ -24,7 +29,10 @@ export const MEALS = ["breakfast", "lunch", "dinner", "snack", "dessert"];
  * columns are text[], so we ask Postgres for rows whose array *contains* the
  * value — a recipe tagged ["lunch","dinner"] matches a filter of "dinner".
  */
-export async function getRecipes({ cuisine = null, meal = null } = {}) {
+/** @param {RecipeFilters} [filters] */
+/** @returns {Promise<RecipeCard[]>} */
+export async function getRecipes(filters = {}) {
+  const { cuisine = null, meal = null } = /** @type {RecipeFilters} */ (filters);
   let query = supabase.from("recipes").select(CARD_FIELDS);
 
   if (cuisine) query = query.contains("cuisines", [cuisine]);
@@ -53,7 +61,11 @@ export async function getCuisines() {
   return [...cuisines].sort();
 }
 
-/** One full recipe, including ingredients + instructions. Null if not found. */
+/**
+ * One full recipe, including ingredients + instructions. Null if not found.
+ * @param {string} id
+ * @returns {Promise<Recipe | null>}
+ */
 export async function getRecipeById(id) {
   const { data, error } = await supabase
     .from("recipes")
@@ -66,7 +78,11 @@ export async function getRecipeById(id) {
   return data;
 }
 
-/** Recipes unlocked by finishing a given lesson. */
+/**
+ * Recipes unlocked by finishing a given lesson.
+ * @param {string} lessonId
+ * @returns {Promise<RecipeCard[]>}
+ */
 export async function getRecipesForLesson(lessonId) {
   const { data, error } = await supabase
     .from("recipes")
@@ -80,6 +96,7 @@ export async function getRecipesForLesson(lessonId) {
 }
 
 /** "1h 20m" / "35m" — readyInMinutes is stored raw. */
+/** @param {number | null | undefined} minutes */
 export function formatMinutes(minutes) {
   if (!minutes) return null;
   if (minutes < 60) return `${minutes}m`;

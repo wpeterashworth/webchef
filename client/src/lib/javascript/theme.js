@@ -23,8 +23,12 @@ const themes = {
   },
 };
 
+/** @typedef {"light" | "dark"} ThemeName */
+
+/** @param {ThemeName | string | null | undefined} theme */
 export function applyTheme(theme) {
-  const selectedTheme = themes[theme] ? theme : "light";
+  const selectedTheme =
+    theme === "light" || theme === "dark" ? theme : "light";
   const root = document.documentElement;
 
   Object.entries(themes[selectedTheme]).forEach(([property, value]) => {

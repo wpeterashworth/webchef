@@ -9,11 +9,12 @@
     getPublicUserLessons,
     userLessonRowToCard,
   } from "$lib/javascript/user-lessons.js";
+  /** @typedef {import("$lib/svelte/types-routes.js").LessonCard} LessonCard */
 
-  let bankCards = $state([]);
-  let communityCards = $state([]);
+  let bankCards = $state(/** @type {LessonCard[]} */ ([]));
+  let communityCards = $state(/** @type {LessonCard[]} */ ([]));
   let loadingLessons = $state(true);
-  let loadError = $state(null);
+  let loadError = $state(/** @type {Error | null} */ (null));
 
   const cards = $derived([...bankCards, ...communityCards]);
 
@@ -29,7 +30,8 @@
       bankCards = bank;
       communityCards = community;
     } catch (error) {
-      loadError = error;
+      loadError =
+        error instanceof Error ? error : new Error("Could not load lessons.");
       bankCards = [];
       communityCards = [];
     } finally {
@@ -52,8 +54,8 @@
           <p class="eyebrow">Choose a topic</p>
           <h1>Lessons</h1>
           <p class="intro">
-            Each lesson walks you through several skills — pick a difficulty, read
-            a short intro, take the quiz, then move on to the next topic.
+            Each lesson walks you through several skills — pick a difficulty,
+            read a short intro, take the quiz, then move on to the next topic.
           </p>
         </header>
 
@@ -64,7 +66,9 @@
         {#if loadingLessons}
           <p class="status">Loading lessons…</p>
         {:else if cards.length === 0}
-          <p class="empty-state">No lessons are available yet. Check back soon.</p>
+          <p class="empty-state">
+            No lessons are available yet. Check back soon.
+          </p>
         {:else}
           <div class="lesson-grid">
             {#each cards as card (card.lessonId)}

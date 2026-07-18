@@ -4,17 +4,48 @@
   import Footer from "$lib/components/footer.svelte";
   import { getRecipeById, formatMinutes } from "$lib/javascript/recipes.js";
 
+  /**
+   * @typedef {object} RecipeIngredient
+   * @property {string=} original
+   * @property {string=} name
+   */
+
+  /**
+   * @typedef {object} Recipe
+   * @property {string} id
+   * @property {string} title
+   * @property {string | null=} description
+   * @property {string | null=} image_url
+   * @property {number | null=} ready_in_minutes
+   * @property {number | null=} servings
+   * @property {string | null=} source_url
+   * @property {RecipeIngredient[]=} ingredients
+   * @property {string[]=} instructions
+   */
+
   // Held as state rather than awaited in the markup, because <svelte:head> has
   // to sit at the top level of the component — it can't live inside an
   // {#await} or {#if} block, and the page title depends on the loaded recipe.
-  let recipe = $state(null);
-  let loadError = $state(null);
+  let recipe = $state(/** @type {Recipe | null} */ (null));
+  let loadError = $state(/** @type {Error | null} */ (null));
   let loading = $state(true);
 
-  getRecipeById(page.params.recipeId)
-    .then((result) => (recipe = result))
-    .catch((error) => (loadError = error))
-    .finally(() => (loading = false));
+  const recipeId = page.params.recipeId;
+
+  if (!recipeId) {
+    loadError = new Error("Recipe id is missing from the URL.");
+    loading = false;
+  } else {
+    getRecipeById(recipeId)
+      .then((result) => {
+        recipe = /** @type {Recipe | null} */ (result);
+      })
+      .catch((error) => {
+        loadError =
+          error instanceof Error ? error : new Error("Could not load recipe.");
+      })
+      .finally(() => (loading = false));
+  }
 </script>
 
 <svelte:head>
@@ -86,7 +117,6 @@
             </div>
           </section>
         </div>
-
       </article>
     {:else}
       <p class="status">
