@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 :root {
   --color-primary-dark: #1e2a38;
   --color-secondary-dark: #003153;
@@ -15,6 +17,30 @@
 
   --text-color-hover-light: var(--color-tertiary-dark);
   --text-color-hover-dark: var(--color-tertiary-light);
+
+  --font-title: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Titles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.eyebrow {
+  font-family: var(--font-title);
+}
+
+/* Everything else */
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-body);
 }
 
 html,

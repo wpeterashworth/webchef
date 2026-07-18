@@ -107,6 +107,7 @@
             height="36"
           />
         {/if}
+        <span class="hamburger-text">Menu</span>
       </button>
     </div>
 
@@ -126,12 +127,6 @@
         <li><a href="/dashboard">Dashboard</a></li>
         {#if $profile?.is_admin}
           <li><a href="/admin">Admin</a></li>
-        {/if}
-        {#if $profile && canViewLeaderboard($profile.level_number)}
-          <li><a href="/leaderboard">Leaderboard</a></li>
-        {/if}
-        {#if $profile && canCreateLessons($profile.level_number)}
-          <li><a href="/lesson/my-lessons">My Lessons</a></li>
         {/if}
         <li>
           <a href="/account">
@@ -284,10 +279,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.35rem;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 6px;
+    padding: 6px 12px;
     color: var(--text-color);
     border-radius: 4px;
     transition:
@@ -303,6 +299,11 @@
     &:active {
       transform: scale(0.95);
     }
+  }
+
+  .hamburger-text {
+    font-size: 0.95rem;
+    font-weight: 600;
   }
 
   .backdrop {
